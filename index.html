@@ -34,7 +34,7 @@ var leftPressed = false;
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
 }
@@ -97,7 +97,7 @@ function keyUpHandler(e) {
     }
 }
 
-setInterval(draw, 20);
+setInterval(draw, 15);
 
 var ballRadius = 10;
 
