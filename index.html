@@ -16,12 +16,6 @@
 	// JavaScript code goes here. I love lego trains
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
-	
-ctx.beginPath();
-ctx.arc(200, 100, 20, 0, Math.PI*2, false);
-ctx.fillStyle = "#0095DD";
-ctx.fill();
-ctx.closePath();
 
 var x = canvas.width/2;
 var y = canvas.height-30;
@@ -31,8 +25,8 @@ var dy = -2;
 
 function drawBall() {
     ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI*2);
-    ctx.fillStyle = "green";
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
 }
@@ -42,10 +36,18 @@ function draw() {
     drawBall();
     x += dx;
     y += dy;
+    
+    if(x + dx > canvas.width || x + dx < 0) {
+    dx = -dx;
 }
-setInterval(draw, 20);
 
+if(y + dy > canvas.height || y + dy < 0) {
+    dy = -dy;
+}
+}
+setInterval(draw, 10);
 
+var ballRadius = 10;
 
 </script>
 
