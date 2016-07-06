@@ -9,20 +9,28 @@
     </style>
 </head>
 <body>
-<p>Hello This is my game but it isn't finished</p>
+<p>Hello! This is my game but it isn't finished.</p>
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
-	// JavaScript code goes here I love lego trains
+	// JavaScript code goes here. I love lego trains
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
-	
+
+var x = canvas.width/2;
+var y = canvas.height-30;
+
+var dx = 2;
+var dy = -2;
+
 function draw() {
 ctx.beginPath();
-ctx.arc(50, 50, 10, 0, Math.PI*2);
+ctx.arc(x, y, 10, 0, Math.PI*2);
 ctx.fillStyle = "#0095DD";
 ctx.fill();
 ctx.closePath();
+x += dx;
+y += dy;
     // drawing code I love Doctor Who
 }
 setInterval(draw, 10);
