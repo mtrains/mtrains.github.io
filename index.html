@@ -47,7 +47,31 @@ for(c=0; c<brickColumnCount; c++) {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-console.log('i"M HAPPY')
+
+ctx.beginPath();
+ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "green";
+ctx.fill();
+ctx.closePath();
+
+ctx.beginPath();
+ctx.arc(232, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "#0000";
+ctx.fill();
+ctx.closePath();
+
+ctx.beginPath();
+ctx.arc(248, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "#0000";
+ctx.fill();
+ctx.closePath();
+
+ctx.beginPath();
+ctx.arc(240, 160, 20, 40, Math.PI*2, false);
+ctx.fillStyle = "0000";
+ctx.fill();
+ctx.closePath();
+
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
         rightPressed = true;
@@ -66,10 +90,21 @@ function keyUpHandler(e) {
     }
 }
 
+function collisionDetection() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                dy = -dy;
+            }
+        }
+    }
+}
+
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "0095DD";
+    ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
 }
