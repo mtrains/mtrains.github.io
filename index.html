@@ -53,29 +53,7 @@ for(c=0; c<brickColumnCount; c++) {
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
-ctx.beginPath();
-ctx.arc(240, 160, 20, 0, Math.PI*2, false);
-ctx.fillStyle = "green";
-ctx.fill();
-ctx.closePath();
 
-ctx.beginPath();
-ctx.arc(232, 160, 20, 0, Math.PI*2, false);
-ctx.fillStyle = "#0000";
-ctx.fill();
-ctx.closePath();
-
-ctx.beginPath();
-ctx.arc(248, 160, 20, 0, Math.PI*2, false);
-ctx.fillStyle = "#0000";
-ctx.fill();
-ctx.closePath();
-
-ctx.beginPath();
-ctx.arc(240, 160, 20, 40, Math.PI*2, false);
-ctx.fillStyle = "0000";
-ctx.fill();
-ctx.closePath();
 
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
@@ -177,6 +155,30 @@ function draw() {
     x += dx;
     y += dy;
 }
+
+ctx.beginPath();
+ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "green";
+ctx.fill();
+ctx.closePath();
+
+ctx.beginPath();
+ctx.arc(232, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "#0000";
+ctx.fill();
+ctx.closePath();
+
+ctx.beginPath();
+ctx.arc(248, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "#0000";
+ctx.fill();
+ctx.closePath();
+
+ctx.beginPath();
+ctx.arc(240, 160, 20, 40, Math.PI*2, false);
+ctx.fillStyle = "0000";
+ctx.fill();
+ctx.closePath();
 setInterval(draw, 11);
 }
 
