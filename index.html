@@ -205,6 +205,43 @@ function drawBall() {
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-150 , y , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-100 , y-100 , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-50 , y-40 , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x+100 , y , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-130 , y , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "purple";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-210 , y+200 , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
 }
 
 function draw() {
@@ -235,7 +272,7 @@ function draw() {
     y += dy;
 }
 
-setInterval(draw, 10);
+setInterval(draw, 6);
 
 //var canvas = document.getElementById("myCanvas");
 //var ctx = canvas.getContext("2d");
