@@ -1,5 +1,5 @@
 <p>This is my game. </p>
-<p> </p>
+<p>Refresh the page to restart. </p>
 
 <!DOCTYPE html>
 <html>
@@ -235,6 +235,12 @@ function drawBall() {
     
     ctx.beginPath();
     ctx.arc(x+5, y-4, ballRadius - 18, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x, y+4, ballRadius, 10, Math.PI*2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
