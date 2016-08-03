@@ -240,7 +240,7 @@ function drawBall() {
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(x-5, y+4, 10, 1);
+    ctx.rect(x-5, y+4, ballRadius - 10, 2);
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
