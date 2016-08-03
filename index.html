@@ -293,6 +293,18 @@ function drawBall() {
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
+//left cover    
+    ctx.beginPath();
+    ctx.rect(x-10, y+6, 1, 1);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+//right cover    
+    ctx.beginPath();
+    ctx.rect(x+9, y+6, 1, 1);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
 //            aaaaaaaa
 //          aaa      aaa
 //        a              a
