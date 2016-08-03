@@ -41,6 +41,8 @@ var brickHeight = 20;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
+var score = 0;
+var lives = 3;
 
 var bricks = [];
 for(c=0; c<brickColumnCount; c++) {
@@ -50,12 +52,11 @@ for(c=0; c<brickColumnCount; c++) {
     }
 }
 
-var score = 0;
-var lives = 3;
+
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
 
 function keyDownHandler(e) {
@@ -76,6 +77,12 @@ function keyUpHandler(e) {
     }
 }
 
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
+}
 
 
 function drawBall() {
@@ -190,14 +197,8 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
-document.addEventListener("mousemove", mouseMoveHandler, false);
 
-function mouseMoveHandler(e) {
-    var relativeX = e.clientX - canvas.offsetLeft;
-    if(relativeX > 0 && relativeX < canvas.width) {
-        paddleX = relativeX - paddleWidth/2;
-    }
-}
+
 
 draw();
 }
