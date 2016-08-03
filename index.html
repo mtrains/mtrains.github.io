@@ -221,62 +221,69 @@ var dx = 0;
 var dy = -0;
 
 function drawBall() {
+//red ball
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
-    
+//left eye    
     ctx.beginPath();
     ctx.arc(x-5, y-4, ballRadius - 18, 0, Math.PI*2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//right eye    
     ctx.beginPath();
     ctx.arc(x+5, y-4, ballRadius - 18, 0, Math.PI*2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//long part    
     ctx.beginPath();
     ctx.rect(x-7, y+4, 14, 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//left short part    
     ctx.beginPath();
     ctx.rect(x-10, y+6, 5, 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//right short part    
     ctx.beginPath();
     ctx.rect(x+5, y+6, 5, 2);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//top left dot    
     ctx.beginPath();
     ctx.rect(x-8, y+5, 1, 1);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//top right dot    
     ctx.beginPath();
     ctx.rect(x+7, y+5, 1, 1);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//bottom left dot    
     ctx.beginPath();
     ctx.rect(x-5, y+6, 1, 1);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+//bottom right dot    
     ctx.beginPath();
     ctx.rect(x+4, y+6, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//bottom left    
+    ctx.beginPath();
+    ctx.rect(x-10, y+8, 4, 1);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
