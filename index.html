@@ -305,13 +305,7 @@ function drawBall() {
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
-//            aaaaaaaa
-//          aaa      aaa
-//        a              a
-//
-//
-//
-//
+
 
 }
 
@@ -333,7 +327,11 @@ function draw() {
 setInterval(draw, 20);
 }
 
-
+if(start === "big fat ball")
+{
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+}
 
 if(start === "abcdefghijklmnopqrstuvwxyz")
 {
