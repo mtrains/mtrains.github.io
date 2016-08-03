@@ -204,11 +204,20 @@ draw();
 
 
 
+
+
+
+
+
+
+
+
+
 if (start==="no")
 {
 	var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var ballRadius = 10;
+var ballRadius = 20;
 var x = canvas.width/2;
 var y = canvas.height-30;
 var dx = 2;
@@ -217,7 +226,19 @@ var dy = -2;
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-4, y-4, ballRadius - 18, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x+4, y+4, ballRadius - 18, 0, Math.PI*2);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
