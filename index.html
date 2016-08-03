@@ -240,10 +240,18 @@ function drawBall() {
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(x, y+10, ballRadius, 20, Math.PI*2);
-    ctx.fillStyle = "black";
+    ctx.rect(x-5, y+4, 10, 1);
+    ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
+//            aaaaaaaa
+//          aaa      aaa
+//        a              a
+//
+//
+//
+//
+
 }
 
 function draw() {
