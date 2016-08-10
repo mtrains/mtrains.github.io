@@ -1,1 +1,40 @@
 <p>Hi</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="480" height="320"></canvas>
+
+<script>
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var dx = -2;
+var dy = 0;
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.rect(0, 318, 2, 480);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+  x += dx;
+  y += dy;
+
+}
+setInterval(draw, 10);
+
+</script>
+
+</body>
+</html>
+
