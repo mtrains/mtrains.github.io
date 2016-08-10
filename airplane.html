@@ -31,19 +31,19 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
-    if(e.keyCode == 38) {
+    if(e.keyCode == 40) {
         upPressed = true;
     }
-    else if(e.keyCode == 40) {
+    else if(e.keyCode == 38) {
         downPressed = true;
     }
 }
 
 function keyUpHandler(e) {
-    if(e.keyCode == 38) {
+    if(e.keyCode == 40) {
         upPressed = false;
     }
-    else if(e.keyCode == 40) {
+    else if(e.keyCode == 38 ) {
         downPressed = false;
     }
 }
