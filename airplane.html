@@ -24,27 +24,27 @@ var dy = 0;
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleY = (canvas.height-paddleWidth)+65;
-var rightPressed = false;
-var leftPressed = false;
+var upPressed = false;
+var downPressed = false;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
     if(e.keyCode == 38) {
-        rightPressed = true;
+        upPressed = true;
     }
     else if(e.keyCode == 40) {
-        leftPressed = true;
+        downPressed = true;
     }
 }
 
 function keyUpHandler(e) {
     if(e.keyCode == 38) {
-        rightPressed = false;
+        upPressed = false;
     }
     else if(e.keyCode == 40) {
-        leftPressed = false;
+        downPressed = false;
     }
 }
 
