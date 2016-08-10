@@ -71,11 +71,12 @@ function draw() {
   
   x += dx;
   y += dy;
+  
   if(upPressed && paddleX < canvas.width-paddleWidth) {
-    paddleX += 7;
+    paddleY += 7;
   }
   else if(downPressed && paddleX > 0) {
-    paddleX -= 7;
+    paddleY -= 7;
   }
 }
 
