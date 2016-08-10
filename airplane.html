@@ -66,8 +66,14 @@ function keyUpHandler(e) {
 
 function drawBall() {
   ctx.beginPath();
-  ctx.rect(x, y, 480, 5);
+  ctx.rect(x, y, 480, 2);
   ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.rect(x+490, y-48, 10, 40);
+  ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
   
