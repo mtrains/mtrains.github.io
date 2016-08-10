@@ -90,7 +90,7 @@ function drawBricks() {
             bricks[c][r].x = brickX;
             bricks[c][r].y = brickY;
             ctx.beginPath();
-            ctx.arc(brickX, brickY, brickWidth, brickHeight, Math.PI*2, false);
+            ctx.rect(brickX, brickY, brickWidth, brickHeight);
             ctx.fillStyle = "yellow";
             ctx.fill();
             ctx.closePath();
