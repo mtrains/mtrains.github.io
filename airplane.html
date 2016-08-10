@@ -60,7 +60,7 @@ function drawBall() {
 
 function drawPaddle() {
     ctx.beginPath();
-    ctx.rect(canvas.width-paddleWidth, paddleY, paddleWidth, paddleHeight);
+    ctx.rect(0, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
@@ -74,7 +74,7 @@ function draw() {
   x += dx;
   y += dy;
   
-  if(upPressed && paddleY < canvas.width-paddleWidth) {
+  if(upPressed && paddleY < canvas.height-paddleHeight) {
     paddleY += 7;
   }
   else if(downPressed && paddleY > 0) {
