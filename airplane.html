@@ -24,8 +24,29 @@ var dy = 0;
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
-var rightPressed = false;
-var leftPressed = false;
+var upPressed = false;
+var downPressed = false;
+
+document.addEventListener("keyright", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+function keyDownHandler(e) {
+    if(e.keyCode == 38) {
+        upPressed = true;
+    }
+    else if(e.keyCode == 40) {
+        downPressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 38) {
+        upPressed = false;
+    }
+    else if(e.keyCode == 40) {
+        downPressed = false;
+    }
+}
 
 function drawBall() {
   ctx.beginPath();
@@ -50,34 +71,15 @@ function draw() {
   
   x += dx;
   y += dy;
-  if(rightPressed && paddleX < canvas.width-paddleWidth) {
+  if(upPressed && paddleX < canvas.width-paddleWidth) {
     paddleX += 7;
   }
-  else if(leftPressed && paddleX > 0) {
+  else if(downPressed && paddleX > 0) {
     paddleX -= 7;
   }
 }
 
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
 
-function keyDownHandler(e) {
-    if(e.keyCode == 38) {
-        rightPressed = true;
-    }
-    else if(e.keyCode == 40) {
-        leftPressed = true;
-    }
-}
-
-function keyUpHandler(e) {
-    if(e.keyCode == 38) {
-        rightPressed = false;
-    }
-    else if(e.keyCode == 40) {
-        leftPressed = false;
-    }
-}
 
 setInterval(draw, 10);
 
