@@ -24,27 +24,27 @@ var dy = 0;
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
-var upPressed = false;
-var downPressed = false;
+var rightPressed = false;
+var leftPressed = false;
 
-document.addEventListener("keyright", keyDownHandler, false);
+document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
     if(e.keyCode == 38) {
-        upPressed = true;
+        rightPressed = true;
     }
     else if(e.keyCode == 40) {
-        downPressed = true;
+        leftPressed = true;
     }
 }
 
 function keyUpHandler(e) {
     if(e.keyCode == 38) {
-        upPressed = false;
+        rightPressed = false;
     }
     else if(e.keyCode == 40) {
-        downPressed = false;
+        leftPressed = false;
     }
 }
 
@@ -72,10 +72,10 @@ function draw() {
   x += dx;
   y += dy;
   
-  if(upPressed && paddleX < canvas.width-paddleWidth) {
+  if(rightPressed && paddleX < canvas.width-paddleWidth) {
     paddleY += 7;
   }
-  else if(downPressed && paddleX > 0) {
+  else if(leftPressed && paddleX > 0) {
     paddleY -= 7;
   }
 }
