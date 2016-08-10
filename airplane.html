@@ -22,13 +22,17 @@ var y = canvas.height-30;
 var dx = -2;
 var dy = 0;
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawBall() {
   ctx.beginPath();
-  ctx.rect(x, y, 2, 480);
+  ctx.rect(x, y, 480, 2);
   ctx.fillStyle = "gray";
   ctx.fill();
   ctx.closePath();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBall();
   x += dx;
   y += dy;
 
