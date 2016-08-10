@@ -54,6 +54,8 @@ function drawBall() {
   ctx.fillStyle = "gray";
   ctx.fill();
   ctx.closePath();
+  
+ 
 }
 
 function drawPaddle() {
@@ -72,10 +74,10 @@ function draw() {
   x += dx;
   y += dy;
   
-  if(rightPressed && paddleY < canvas.width-paddleWidth) {
+  if(upPressed && paddleY < canvas.width-paddleWidth) {
     paddleY += 7;
   }
-  else if(leftPressed && paddleY > 0) {
+  else if(downPressed && paddleY > 0) {
     paddleY -= 7;
   }
 }
@@ -89,3 +91,4 @@ setInterval(draw, 10);
 </body>
 </html>
 
+<p>I love airplanes</p>
