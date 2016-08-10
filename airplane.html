@@ -62,7 +62,7 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
-    if(e.keyCode == 39) {
+    if(e.keyCode == 38) {
         rightPressed = true;
     }
     else if(e.keyCode == 37) {
@@ -71,7 +71,7 @@ function keyDownHandler(e) {
 }
 
 function keyUpHandler(e) {
-    if(e.keyCode == 39) {
+    if(e.keyCode == 38) {
         rightPressed = false;
     }
     else if(e.keyCode == 37) {
