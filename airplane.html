@@ -33,6 +33,7 @@ var brickHeight = 20;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
+
 var bricks = [];
 for(c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
@@ -40,7 +41,6 @@ for(c=0; c<brickColumnCount; c++) {
         bricks[c][r] = { x: 0, y: 0 };
     }
 }
-
 
 
 document.addEventListener("keydown", keyDownHandler, false);
@@ -102,13 +102,12 @@ function drawBricks() {
             ctx.closePath();
         }
     }
-}
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBall();
   drawPaddle();
-  drawBricks
+  drawBricks();
   
   x += dx;
   y += dy;
