@@ -1,4 +1,3 @@
-# Airplane-game
 <p>FLY THE AIRPLANE</p>
 <p>Game not complete.</p>
 <!DOCTYPE html>
@@ -84,7 +83,7 @@ function draw() {
    x += dx;
    y += dy;
    
-   if(upPressed && paddleY < canvas.height-paddleHeight) {
+   if(upPressed && paddleY < canvas.height-paddleHeight-2) {
        paddleY += 5;
    }
    
