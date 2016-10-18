@@ -73,13 +73,13 @@ function drawPaddle() {
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(75, paddleY-5, paddleHeight/2, 0, Math.PI*2, false);
+    ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(80, paddleY-7.5, paddleHeight/4, 0, Math.PI*2, false);
+    ctx.arc(80, paddleY+7.5, paddleHeight/4, 0, Math.PI*2, false);
     ctx.fillStyle = "blue"; 
     ctx.fill();
     ctx.closePath(); 
