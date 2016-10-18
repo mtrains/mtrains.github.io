@@ -23,7 +23,7 @@ var y = canvas.height-2;
 var dx = -2;
 var dy = 0;
 var paddleHeight = 10;
-var paddleWidth = 75;
+var paddleWidth = 65;
 var paddleY = (canvas.height-paddleWidth)+65;
 var upPressed = false;
 var downPressed = false;
@@ -67,7 +67,7 @@ function drawBall() {
 
 function drawPaddle() {
     ctx.beginPath();
-    ctx.rect(0, paddleY, paddleWidth, paddleHeight);
+    ctx.rect(10, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
@@ -83,6 +83,8 @@ function drawPaddle() {
     ctx.fillStyle = "blue"; 
     ctx.fill();
     ctx.closePath(); 
+    
+    
 
 }
 
