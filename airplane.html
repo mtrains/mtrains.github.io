@@ -49,19 +49,30 @@ function keyUpHandler(e) {
     }
 }
 
-function drawBall() {
+function drawBuildings() {
   ctx.beginPath();
-  ctx.rect(x, y, 480, 2);
+  ctx.rect(x, y, 1880, 2);
   ctx.fillStyle = "gray";
   ctx.fill();
   ctx.closePath();
   
   ctx.beginPath();
-  ctx.rect(x+490, y-38, 10, 40);
+  ctx.rect(x+1880, y-38, 10, 40);
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
   
+  ctx.beginPath();
+  ctx.rect(x+1980, y-18, 20, 20);
+  ctx.fillStyle = "brown";
+  ctx.fill();
+  ctx.closePath();
+  
+    ctx.beginPath();
+    ctx.rect(x+1988, y-8, 4, 10); 
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
  
 }
 
@@ -98,7 +109,7 @@ function draw() {
    x += dx;
    y += dy;
    
-   if(upPressed && paddleY < canvas.height-paddleHeight-2) {
+   if(upPressed && paddleY < canvas.height-paddleHeight) {
        paddleY += 5;
    }
    
