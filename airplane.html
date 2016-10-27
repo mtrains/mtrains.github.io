@@ -74,11 +74,7 @@ function drawBall() {
     ctx.fill();
     ctx.closePath();
     
-    ctx.beginPath();
-    ctx.moveTo(75,50);
-    ctx.lineTo(100,75);
-    ctx.lineTo(100,25);
-    ctx.fill();
+
  
 }
 
@@ -88,6 +84,12 @@ function drawPaddle() {
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(0, paddleY);
+    ctx.lineTo(10,paddleY);
+    ctx.lineTo(10,paddleY+10);
+    ctx.fill();
     
     ctx.beginPath();
     ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
