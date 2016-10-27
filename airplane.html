@@ -89,7 +89,9 @@ function drawPaddle() {
     ctx.moveTo(0, paddleY);
     ctx.lineTo(10,paddleY);
     ctx.lineTo(10,paddleY+10);
+    ctx.fillStyle = "blue";
     ctx.fill();
+    ctx.closePath();
     
     ctx.beginPath();
     ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
