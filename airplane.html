@@ -120,13 +120,13 @@ function drawPaddle() {
     ctx.closePath(); 
     
     ctx.beginPath();
-    ctx.rect(15, paddleY-9, paddleWidth-5, 1);
+    ctx.rect(15, paddleY+9, paddleWidth-5, 1);
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(16, paddleY-8, paddleWidth-5, 1);
+    ctx.rect(16, paddleY+8, paddleWidth-5, 1);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
