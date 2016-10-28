@@ -84,7 +84,7 @@ function drawPaddle() {
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
-    
+    //back
     ctx.beginPath();
     ctx.moveTo(0, paddleY);
     ctx.lineTo(10,paddleY);
@@ -92,10 +92,10 @@ function drawPaddle() {
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
-    
+    //tail
     ctx.beginPath();
     ctx.moveTo(4, paddleY-10);
-    ctx.lineTo(8,paddleY);
+    ctx.lineTo(14,paddleY);
     ctx.lineTo(4,paddleY);
     ctx.fillStyle = "blue";
     ctx.fill();
