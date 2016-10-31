@@ -22,19 +22,26 @@ var x = canvas.width/2;
 var y = canvas.height-30;
 var dx = 2;
 var dy = 0;
-
+var color = red
+    
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(1920/2, 3200/2, 3200/2+1920, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
 }
 
 function drawScore() {
     ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Hello world!");
+    ctx.fillStyle = "color";
+    ctx.fillText("These words are changing colors!");
 }
     
 function draw() {
