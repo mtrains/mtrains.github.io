@@ -97,16 +97,16 @@ function drawPaddle() {
     ctx.moveTo(4, paddleY-10);
     ctx.lineTo(14,paddleY);
     ctx.lineTo(4,paddleY);
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
-    
+    //i don't know what this is 
     ctx.beginPath();
     ctx.rect(1, paddleY-10, 3, paddleHeight);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
-    
+    //circles in front of plane
     ctx.beginPath();
     ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
     ctx.fillStyle = "blue";
@@ -118,13 +118,13 @@ function drawPaddle() {
     ctx.fillStyle = "blue"; 
     ctx.fill();
     ctx.closePath(); 
-    
+    //red belly
     ctx.beginPath();
     ctx.rect(15, paddleY+9, paddleWidth-5, 1);
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
-    
+    //yellow line
     ctx.beginPath();
     ctx.rect(16, paddleY+8, paddleWidth-5, 1);
     ctx.fillStyle = "yellow";
