@@ -27,6 +27,7 @@ var paddleWidth = 65;
 var paddleY = (canvas.height-paddleWidth)+65;
 var upPressed = false;
 var downPressed = false;
+var airplaneSurvival = PI
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -75,10 +76,16 @@ function drawBall() {
     ctx.closePath();
     
 
- 
 }
 
+function collision() {
+    if (x === 1870 && paddleY>= 40) {
+        
+    }
+}
 function drawPaddle() {
+    if (airplaneSurvival === PI) {
+    
     ctx.beginPath();
     ctx.rect(10, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "blue";
@@ -146,7 +153,13 @@ function drawPaddle() {
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
-
+    }
+    else {
+    ctx.beginPath();
+    ctx.arc(30, paddleY+5, paddleHeight/4, 0, Math.PI*2, false);
+    ctx.fillStyle = "orange"; 
+    ctx.fill();
+    ctx.closePath(); 
 }
 
 
