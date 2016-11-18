@@ -56,13 +56,13 @@ function drawBall() {
   ctx.fillStyle = "gray";
   ctx.fill();
   ctx.closePath();
-  
+  //control tower
   ctx.beginPath();
   ctx.rect(x+1880, y-38, 10, 40);
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
-  
+  //random house
   ctx.beginPath();
   ctx.rect(x+1980, y-18, 20, 20);
   ctx.fillStyle = "brown";
@@ -79,8 +79,8 @@ function drawBall() {
 }
 
 function collision() {
-    if (x === 1870 && paddleY>= 40) {
-        
+    if (x > 1870 && x < 1880 && paddleY>= 40) {
+        airplaneSurvival === 2
     }
 }
 function drawPaddle() {
@@ -154,12 +154,13 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
     }
-    else {
+    else if(airplaneSurvival === 2){
     ctx.beginPath();
     ctx.arc(30, paddleY+5, paddleHeight/4, 0, Math.PI*2, false);
     ctx.fillStyle = "orange"; 
     ctx.fill();
     ctx.closePath(); 
+    }
 }
 
 
