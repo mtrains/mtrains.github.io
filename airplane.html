@@ -27,7 +27,7 @@ var paddleWidth = 65;
 var paddleY = (canvas.height-paddleWidth)+65;
 var upPressed = false;
 var downPressed = false;
-var airplaneSurvival = PI
+var airplaneSurvival = 3
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -88,7 +88,7 @@ function collision() {
     }
 }
 function drawPaddle() {
-    if (airplaneSurvival === PI) {
+    if (airplaneSurvival === 3) {
     
     ctx.beginPath();
     ctx.rect(10, paddleY, paddleWidth, paddleHeight);
