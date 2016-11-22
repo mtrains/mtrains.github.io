@@ -89,6 +89,13 @@ function collision() {
     }
 }
 function drawPaddle() {
+    
+    ctx.beginPath();
+    ctx.arc(380, 25, 25, 0, Math.PI*2, false);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+    
     if (airplaneSurvival === 3) {
     
     ctx.beginPath();
@@ -186,7 +193,7 @@ function drawPaddle() {
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(10, paddleY+9, 2, 1);
+    ctx.rect(9, paddleY+9, 2, 1);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
