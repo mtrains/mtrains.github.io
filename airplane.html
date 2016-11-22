@@ -1,5 +1,5 @@
 <p>FLY THE AIRPLANE</p>
-<p>Game not complete.</p>
+<p>Game not complete. Expect completion in 3 billion years or less. </p>
 <!DOCTYPE html>
 <html>
 <head>
@@ -184,13 +184,27 @@ function drawPaddle() {
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(10, paddleY+9, 2, 1);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
     //yellow line
     ctx.beginPath();
     ctx.rect(15, paddleY+8, paddleWidth, 1);
     ctx.fillStyle = "yellow";
     ctx.fill(); 
+    ctx.closePath(); 
+        
+    ctx.beginPath();
+    ctx.moveTo(1, paddleY-10);
+    ctx.lineTo(15,paddleY+8);
+    ctx.lineTo(15,paddleY+8);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
     ctx.closePath();
-    }//15, paddleY+9
+    }
     else {
     ctx.beginPath();
     ctx.arc(30, paddleY+5, paddleHeight/4, 0, Math.PI*2, false);
