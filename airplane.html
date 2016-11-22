@@ -24,10 +24,10 @@ var dx = -2;
 var dy = 0;
 var paddleHeight = 10;
 var paddleWidth = 65;
-var paddleY = (canvas.height-paddleWidth)+65;
+var paddleY = (canvas.height-paddleHeight);
 var upPressed = false;
 var downPressed = false;
-var airplaneSurvival = 3
+var airplaneSurvival = 3;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -79,13 +79,13 @@ function drawBall() {
 }
 
 function collision() {
-    if (x < -1870 && x > -1880 && paddleY>= 40) {
+    if (x < -1800 && x > -1880 && paddleY>= 40) {
         airplaneSurvival += 2 
-        dx *= 0
+        dx === 0
     }
-    else if (x < -1980 && x > -1990 && paddleY>= 20) {
+    else if (x < -1905 && x > -1990 && paddleY>= 20) {
         airplaneSurvival += 2
-        dx *= 0
+        dx === 0
     }
 }
 function drawPaddle() {
