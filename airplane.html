@@ -106,10 +106,18 @@ function drawPaddle() {
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.moveTo(0, paddleY);
-    ctx.lineTo(10,paddleY);
-    ctx.lineTo(10,paddleY+10);
-    ctx.fillStyle = "blue";
+    ctx.moveTo(4,paddleY);
+    ctx.lineTo(8,paddleY);
+    ctx.lineTo(15, paddleY+9);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(1,paddleY);
+    ctx.lineTo(3,paddleY);
+    ctx.lineTo(15, paddleY+9);
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
     //tail
