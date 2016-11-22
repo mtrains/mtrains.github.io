@@ -107,7 +107,7 @@ function drawPaddle() {
         
     ctx.beginPath();
     ctx.moveTo(4,paddleY);
-    ctx.lineTo(8,paddleY);
+    ctx.lineTo(7,paddleY);
     ctx.lineTo(15, paddleY+9);
     ctx.fillStyle = "red";
     ctx.fill();
@@ -186,11 +186,11 @@ function drawPaddle() {
     ctx.closePath();
     //yellow line
     ctx.beginPath();
-    ctx.rect(16, paddleY+8, paddleWidth-5, 1);
+    ctx.rect(15, paddleY+8, paddleWidth, 1);
     ctx.fillStyle = "yellow";
-    ctx.fill();
+    ctx.fill(); 
     ctx.closePath();
-    }
+    }//15, paddleY+9
     else {
     ctx.beginPath();
     ctx.arc(30, paddleY+5, paddleHeight/4, 0, Math.PI*2, false);
