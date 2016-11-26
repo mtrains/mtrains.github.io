@@ -28,6 +28,8 @@ var paddleY = (canvas.height-paddleHeight);
 var upPressed = false;
 var downPressed = false;
 var airplaneSurvival = 3;
+var good = 1
+var pie = good 
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -210,7 +212,13 @@ function drawPaddle() {
     ctx.lineTo(15,paddleY+8);
     ctx.fillStyle = "yellow";
     ctx.fill();
-    ctx.closePath();
+    ctx.closePath(); 
+         
+    ctx.beginPath();
+    ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
+    ctx.fillStyle = "yellow";
+    ctx.fill(); 
+    ctx.closePath(); 
     }
     else {
     ctx.beginPath();
