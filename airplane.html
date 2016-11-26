@@ -218,15 +218,36 @@ function drawPaddle() {
     ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
     ctx.fillStyle = "yellow";
     ctx.fill(); 
-    ctx.closePath(); 
+    ctx.closePath();
+    //engine
+    ctx.beginPath();
+    ctx.rect(27, paddleY+9, 5, 1);
+    ctx.fillStyle = "blue";
+    ctx.fill(); 
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(27, paddleY+10, 5, 1);
+    ctx.fillStyle = "red";
+    ctx.fill(); 
+    ctx.closePath();
     //wing
     ctx.beginPath();
     ctx.moveTo(22, paddleY+8);
-    ctx.lineTo(paddleWidth/2,paddleY+8);
+    ctx.lineTo(32,paddleY+8);
     ctx.lineTo(15,paddleY+10);
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath(); 
+     
+    //elevator
+    ctx.beginPath();
+    ctx.moveTo(2, paddleY);
+    ctx.lineTo(7,paddleY);
+    ctx.lineTo(0,paddleY+2);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
     //windows    
     ctx.beginPath();
     ctx.rect(15, paddleY+4, 1, 1);
@@ -409,7 +430,7 @@ function drawPaddle() {
     ctx.closePath();
     //cockpit
     ctx.beginPath();
-    ctx.rect(75, paddleY+4, 3, 1);
+    ctx.rect(75, paddleY+4, 4, 1);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
