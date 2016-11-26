@@ -219,6 +219,14 @@ function drawPaddle() {
     ctx.fillStyle = "yellow";
     ctx.fill(); 
     ctx.closePath(); 
+    //wing
+    ctx.beginPath();
+    ctx.moveTo(22, paddleY+8);
+    ctx.lineTo(paddleWidth/2,paddleY+8);
+    ctx.lineTo(15,paddleY+10);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath(); 
     //windows    
     ctx.beginPath();
     ctx.rect(15, paddleY+4, 1, 1);
