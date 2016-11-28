@@ -221,22 +221,22 @@ function drawPaddle() {
     ctx.closePath();
     //engine
     ctx.beginPath();
-    ctx.rect(37, paddleY+9, 5, 1);
+    ctx.rect(42, paddleY+9, 5, 1);
     ctx.fillStyle = "blue";
     ctx.fill(); 
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(37, paddleY+10, 5, 1);
+    ctx.rect(42, paddleY+10, 5, 1);
     ctx.fillStyle = "red";
     ctx.fill(); 
     ctx.closePath();
     //wing
     ctx.beginPath();
-    ctx.moveTo(32, paddleY+8);
-    ctx.lineTo(42,paddleY+8);
+    ctx.moveTo(37, paddleY+8);
+    ctx.lineTo(47,paddleY+8);
     ctx.lineTo(15,paddleY+12);
-    ctx.fillStyle = "gray";
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath(); 
     //elevator
@@ -244,7 +244,7 @@ function drawPaddle() {
     ctx.moveTo(2, paddleY);
     ctx.lineTo(7,paddleY);
     ctx.lineTo(0,paddleY+2);
-    ctx.fillStyle = "gray";
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     //windows    
@@ -462,7 +462,7 @@ function draw() {
     }
 }
 
-setInterval(draw, 10);
+setInterval(draw, 1000);
 
 
 </script>
