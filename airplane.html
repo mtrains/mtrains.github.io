@@ -235,7 +235,7 @@ function drawPaddle() {
     ctx.beginPath();
     ctx.moveTo(37, paddleY+8);
     ctx.lineTo(52,paddleY+8);
-    ctx.lineTo(15,paddleY+12);
+    ctx.lineTo(25,paddleY+12);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath(); 
@@ -462,7 +462,7 @@ function draw() {
     }
 }
 
-setInterval(draw, 0.10);
+setInterval(draw, 0.01);
 
 
 </script>
