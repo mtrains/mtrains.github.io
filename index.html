@@ -209,154 +209,167 @@ if (start==="letters")
 { 
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
+	var ballRadius = 10;
+	var x = canvas.width/2;
+	var y = canvas.height-30;
+	var dx = 5;
+	var dy = -5;
+	var paddleHeight = 10;
+	var paddleWidth = 75;
+	var paddleX = (canvas.width-paddleWidth)/2;
+	var rightPressed = false;
+	var leftPressed = false;
+	var score = 0;
+	var lives = 3;
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
 	
-	ctx.font = ¨16px Arial¨;
-	ctx.fillStyle = ¨green¨;
-	ctx.fillText(hello, 78, 54);
-	function keyDownHandler(e) {
+ctx.font = "16px Arial";
+ctx.fillStyle = "#0095DD";
+ctx.fillText("hi", 8, 20);	
+	
+function keyDownHandler(e) {
     if(e.keyCode == 5) {
         
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(5, 8, 20);
+    ctx.fillText("5", 8, 20);
 		
     }
     else if(e.keyCode == 6) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(6, 8, 20);
+    ctx.fillText("6", 8, 20);
     }    
 	    else if(e.keyCode == 7) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(7, 8, 20);
+    ctx.fillText("7", 8, 20);
     }    
 	    else if(e.keyCode == 8) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(8, 8, 20);
+    ctx.fillText("8", 8, 20);
     }    
 	    else if(e.keyCode == 9) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(9, 8, 20);
+    ctx.fillText("9", 8, 20);
     }    
 	    else if(e.keyCode == 10) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(10, 8, 20);
+    ctx.fillText("10", 8, 20);
     }    
 	    else if(e.keyCode == 11) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(11, 8, 20);
+    ctx.fillText("11", 8, 20);
     }    
 	    else if(e.keyCode == 12) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(12, 8, 20);
+    ctx.fillText("12", 8, 20);
     }    
 	    else if(e.keyCode == 13) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(13, 8, 20);
+    ctx.fillText("13", 8, 20);
     }    
 	    else if(e.keyCode == 14) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(14, 8, 20);
+    ctx.fillText("14", 8, 20);
     }    
 	    else if(e.keyCode == 15) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(15, 8, 20);
+    ctx.fillText("15", 8, 20);
     }    
 	    else if(e.keyCode == 16) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(16, 8, 20);
+    ctx.fillText("16", 8, 20);
     }    
 	    else if(e.keyCode == 17) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(17, 8, 20);
+    ctx.fillText("17", 8, 20);
     }    
 	    else if(e.keyCode == 18) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(18, 8, 20);
+    ctx.fillText("18", 8, 20);
     }    
 	    else if(e.keyCode == 19) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(19, 8, 20);
+    ctx.fillText("19", 8, 20);
     }    
 	    else if(e.keyCode == 20) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(20, 8, 20);
+    ctx.fillText("20", 8, 20);
     }    
 	    else if(e.keyCode == 21) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(21, 8, 20);
+    ctx.fillText("21", 8, 20);
     }    
 	    else if(e.keyCode == 22) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(22, 8, 20);
+    ctx.fillText("22", 8, 20);
     }    
 	    else if(e.keyCode == 23) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(23, 8, 20);
+    ctx.fillText("23", 8, 20);
     }    
 	    else if(e.keyCode == 24) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(24, 8, 20);
+    ctx.fillText("24", 8, 20);
     }    
 	    else if(e.keyCode == 25) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(25, 8, 20);
+    ctx.fillText("25", 8, 20);
     }    
 	    else if(e.keyCode == 26) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(26, 8, 20);
+    ctx.fillText("26", 8, 20);
     }    
 	    else if(e.keyCode == 27) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(27, 8, 20);
+    ctx.fillText("27", 8, 20);
     }    
 	    else if(e.keyCode == 28) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(28, 8, 20);
+    ctx.fillText("28", 8, 20);
     }    
 	    else if(e.keyCode == 29) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(29, 8, 20);
+    ctx.fillText("29", 8, 20);
     }    
 	    else if(e.keyCode == 30) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(30, 8, 20);
+    ctx.fillText("30", 8, 20);
     }    
 	    else if(e.keyCode == 31) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(31, 8, 20);
+    ctx.fillText("31", 8, 20);
     }    
 	    else if(e.keyCode == 32) {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(32, 8, 20);
+    ctx.fillText("32", 8, 20);
     }    
 	    
 	    
@@ -367,14 +380,14 @@ if (start==="letters")
     }
 }
 
-function keyUpHandler(e) {
-    if(e.keyCode == 39) {
-        rightPressed = false;
-    }
-    else if(e.keyCode == 37) {
-        leftPressed = false;
-    }
-}
+//function keyUpHandler(e) {
+    //if(e.keyCode == 39) {
+       // rightPressed = false;
+    //}
+   // else if(e.keyCode == 37) {
+  //      leftPressed = false;
+ //   }
+//}
 
 
 
