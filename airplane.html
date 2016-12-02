@@ -92,7 +92,7 @@ function drawObstacles() {
 
 }
 
-function collision() {
+function drawCollision() {
     if (x < -1800 && x > -1880 && paddleY>= 40) {
         airplaneSurvival += 4 
         dx === 0
@@ -458,9 +458,9 @@ function drawPaddle() {
 
 function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height);
-   drawBall();
+   drawObstacles();
    drawPaddle();
-  
+   drawCollision();
    
    x += dx;
    y += dy;
