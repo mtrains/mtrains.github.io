@@ -52,7 +52,14 @@ function keyUpHandler(e) {
     }
 }
 
-function drawBall() {
+function drawObstacles() {
+  //sky
+  ctx.beginPath();
+  ctx.rect(0, 0, canvasWidth, canvasHeight);
+  ctx.fillStyle = "blue";
+  ctx.fill();
+  ctx.closePath();
+    //runway
   ctx.beginPath();
   ctx.rect(x, y, 1880, 2);
   ctx.fillStyle = "gray";
@@ -71,22 +78,27 @@ function drawBall() {
   ctx.fill();
   ctx.closePath();
   
+  ctx.beginPath();
+  ctx.rect(x+2016, y-28, 6, 30); 
+  ctx.fillStyle = "black";
+  ctx.fill();
+  ctx.closePath();
+  
     ctx.beginPath();
     ctx.rect(x+1988, y-8, 4, 10); 
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
-    
 
 }
 
 function collision() {
     if (x < -1800 && x > -1880 && paddleY>= 40) {
-        airplaneSurvival += 2 
+        airplaneSurvival += 4 
         dx === 0
     }
     else if (x < -1905 && x > -1990 && paddleY>= 20) {
-        airplaneSurvival += 2
+        airplaneSurvival += 4
         dx === 0
     }
 }
@@ -434,7 +446,7 @@ function drawPaddle() {
     ctx.fill(); 
     ctx.closePath();
     }
-    else {
+    else if (airplaneSurvival > 3) {
     ctx.beginPath();
     ctx.arc(30, paddleY+5, paddleHeight/4, 0, Math.PI*2, false);
     ctx.fillStyle = "orange"; 
