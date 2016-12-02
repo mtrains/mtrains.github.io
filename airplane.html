@@ -95,11 +95,11 @@ function drawObstacles() {
 function drawCollision() {
     if (x < -1800 && x > -1880 && paddleY>= 270) {
         airplaneSurvival += 4 
-        dx === 0
+        dx *= 0
     }
     else if (x < -1905 && x > -1990 && paddleY>= 290) {
         airplaneSurvival += 4
-        dx === 0
+        dx *= 0
     }
 }
 function drawPaddle() {
