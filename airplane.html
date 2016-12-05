@@ -448,8 +448,16 @@ function drawPaddle() {
     }
     else if (airplaneSurvival > 3) {
     ctx.beginPath();
-    ctx.arc(30, paddleY+5, paddleHeight/4, 0, Math.PI*2, false);
-    ctx.fillStyle = "orange"; 
+    ctx.rect(10, paddleY, paddleWidth, paddleHeight);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    //back
+    ctx.beginPath();
+    ctx.moveTo(0, paddleY);
+    ctx.lineTo(10,paddleY);
+    ctx.lineTo(10,paddleY+10);
+    ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath(); 
     }
