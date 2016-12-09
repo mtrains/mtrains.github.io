@@ -507,7 +507,15 @@ function drawPaddle() {
     ctx.moveTo(20, paddleY+5);
     ctx.lineTo(26,paddleY+5);
     ctx.lineTo(23,paddleY-1);
-    ctx.fillStyle = "orange";
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+        //update this part
+    ctx.beginPath();
+    ctx.moveTo(20, paddleY+5);
+    ctx.lineTo(26,paddleY+5);
+    ctx.lineTo(23,paddleY-1);
+    ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
     }
