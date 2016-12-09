@@ -78,17 +78,26 @@ function drawObstacles() {
   ctx.fill();
   ctx.closePath();
   
-  ctx.beginPath();
-  ctx.rect(x+2016, y-28, 6, 30); 
-  ctx.fillStyle = "black";
-  ctx.fill();
-  ctx.closePath();
-  
     ctx.beginPath();
     ctx.rect(x+1988, y-8, 4, 10); 
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+  //tree
+    ctx.beginPath();
+    ctx.arc(x+2119, y-38, 12, 0, Math.PI*2, false);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(x+2116, y-28, 6, 30); 
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
+    
+  
+    
 
 }
 
@@ -248,7 +257,7 @@ function drawPaddle() {
     ctx.moveTo(37, paddleY+8);
     ctx.lineTo(52,paddleY+8);
     ctx.lineTo(25,paddleY+12);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath(); 
     //elevator
@@ -256,7 +265,7 @@ function drawPaddle() {
     ctx.moveTo(2, paddleY);
     ctx.lineTo(7,paddleY);
     ctx.lineTo(0,paddleY+2);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
     //windows    
@@ -460,6 +469,47 @@ function drawPaddle() {
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath(); 
+    //tail    
+    ctx.beginPath();
+    ctx.moveTo(4, paddleY-10);
+    ctx.lineTo(10,paddleY);
+    ctx.lineTo(4,paddleY);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(1, paddleY-10, 3, paddleHeight);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+        
+    //circles in front of plane
+    ctx.beginPath();
+    ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(80, paddleY+7.5, paddleHeight/4, 0, Math.PI*2, false);
+    ctx.fillStyle = "orange"; 
+    ctx.fill();
+    ctx.closePath(); 
+    //bottom
+    ctx.beginPath();
+    ctx.rect(11, paddleY+9, paddleWidth+4, 1);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    //fire
+    ctx.beginPath();
+    ctx.moveTo(20, paddleY+5);
+    ctx.lineTo(26,paddleY+5);
+    ctx.lineTo(23,paddleY-1);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
     }
 }
 //if(airplaneSurvival === 2)
