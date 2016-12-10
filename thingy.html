@@ -28,6 +28,12 @@ function keyDownHandler(e) {
         ctx.fillStyle = "blue";
         ctx.fill();
         ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.rect(canvasWidth/2+5, 55, 90, 30);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.closePath();
     }
     else if(e.keyCode == 65) {
         leftPressed = true;
