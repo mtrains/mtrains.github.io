@@ -10,13 +10,33 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="1920" height="3200"></canvas>
+<canvas id="myCanvas" width="1720" height="600"></canvas>
 
 <script>
 
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false); 
+    
+function keyDownHandler(e) {
+    if(e.keyCode == 84) {
+        //tardis
+        ctx.beginPath();
+        ctx.rect(canvasWidth/2, 50, 100, 425);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.closePath();
+    }
+    else if(e.keyCode == 65) {
+        leftPressed = true;
+    }
+    else {
+
+
+
+    
 var ballRadius = 10;
 var x = canvas.width/2;
 var y = canvas.height-30;
@@ -59,6 +79,8 @@ function draw() {
 }
 
 setInterval(draw, 10);
+    }
+}
 
 </script>
 
