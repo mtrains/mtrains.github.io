@@ -512,12 +512,16 @@ function drawPaddle() {
     ctx.closePath();
         //update this part
     ctx.beginPath();
-    ctx.moveTo(20, paddleY+5);
-    ctx.lineTo(26,paddleY+5);
-    ctx.lineTo(23,paddleY-1);
+    ctx.moveTo(21, paddleY+5);
+    ctx.lineTo(24,paddleY+5);
+    ctx.lineTo(23,paddleY+1);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
+        
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Game Over.", 100, 150);
     }
 }
 //if(airplaneSurvival === 2)
