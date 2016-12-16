@@ -59,6 +59,10 @@ function drawObstacles() {
   ctx.fillStyle = "turquoise";
   ctx.fill();
   ctx.closePath();
+    //instructions
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Use the up and down arrows to fly the airplane", x+50, 150);
     //runway
   ctx.beginPath();
   ctx.rect(x, y, 1880, 2);
@@ -512,7 +516,7 @@ function drawPaddle() {
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
-        //update this part
+        
     ctx.beginPath();
     ctx.moveTo(21, paddleY+5);
     ctx.lineTo(24,paddleY+5);
@@ -523,7 +527,7 @@ function drawPaddle() {
         
     ctx.font = "16px Arial";
     ctx.fillStyle = "orange";
-    ctx.fillText("Game Over.", 100, 150);
+    ctx.fillText("Game Over.", 200, 150);
     }
 }
 //if(airplaneSurvival === 2)
