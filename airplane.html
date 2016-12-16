@@ -28,17 +28,17 @@ var paddleY = (canvas.height-paddleHeight);
 var upPressed = false;
 var downPressed = false;
 var airplaneSurvival = 3;
-var good = 1
-var pie = good 
+var pie =  3.14159265358979
+var yum = pie
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
-    if(e.keyCode == 40) {
+    if(e.keyCode == 40 && pie = good) {
         upPressed = true;
     }
-    else if(e.keyCode == 38) {
+    else if(e.keyCode == 38 && pie = good) {
         downPressed = true;
     }
 }
@@ -105,10 +105,12 @@ function drawCollision() {
     if (x < -1800 && x > -1880 && paddleY>= 270) {
         airplaneSurvival += 4 
         dx *= 0
+        pie += 34
     }
     else if (x < -1905 && x > -1990 && paddleY>= 290) {
         airplaneSurvival += 4
         dx *= 0
+        pie += 34
     }
 }
 function drawPaddle() {
