@@ -30,15 +30,16 @@ var downPressed = false;
 var airplaneSurvival = 3;
 var pie =  3.14159265358979
 var yum = pie
+var paddleMovement = 5
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
-    if(e.keyCode == 40 && pie = 3.14159265358979) {
+    if(e.keyCode == 40) {
         upPressed = true;
     }
-    else if(e.keyCode == 38 && pie = 3.14159265358979) {
+    else if(e.keyCode == 38) {
         downPressed = true;
     }
 }
@@ -109,12 +110,12 @@ function drawCollision() {
     if (x < -1800 && x > -1880 && paddleY>= 270) {
         airplaneSurvival += 4 
         dx *= 0
-        pie += 34
+        paddleMovement *= 0
     }
     else if (x < -1905 && x > -1990 && paddleY>= 290) {
         airplaneSurvival += 4
         dx *= 0
-        pie += 34
+        paddleMovement *= 0
     }
 }
 function drawPaddle() {
@@ -542,11 +543,11 @@ function draw() {
    y += dy;
    
    if(upPressed && paddleY < canvas.height-paddleHeight) {
-       paddleY += 5;
+       paddleY += paddleMovement;
    }
    
     else if(downPressed && paddleY > 5) {
-         paddleY -= 5;
+         paddleY -= paddleMovement;
     }
 }
 
@@ -559,4 +560,4 @@ setInterval(draw, 10);
 </html>
 
 <p> Thanks to Mozilla Developer Network for tutorial! (2D breakout game using pure javascript) </p>
-<p> Also thanks to Southwest Airlines for their awesome airplane paint scheme. wefjowalws</p>
+<p> Also thanks to Southwest Airlines for their awesome airplane paint scheme. </p>
