@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="4800" height="3200"></canvas>
+<canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
 
@@ -30,7 +30,7 @@ var downPressed = false;
 var airplaneSurvival = 3;
 var pie =  3.14159265358979
 var yum = pie
-var paddleMovement = 5
+var paddleMovement = 3
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -41,6 +41,9 @@ function keyDownHandler(e) {
     }
     else if(e.keyCode == 38) {
         downPressed = true;
+    }
+    else if(e.keyCode == 32) {
+        document.location.reload();
     }
 }
 
@@ -63,7 +66,7 @@ function drawObstacles() {
     //instructions
     ctx.font = "16px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Use the up and down arrows to fly the airplane", x+50, 150);
+    ctx.fillText("Use the up and down arrows to fly the airplane.", x+200, 150);
     //runway
   ctx.beginPath();
   ctx.rect(x, y, 1880, 2);
@@ -528,7 +531,11 @@ function drawPaddle() {
         
     ctx.font = "16px Arial";
     ctx.fillStyle = "orange";
-    ctx.fillText("Game Over.", 200, 150);
+    ctx.fillText("Game Over.", 200, 130);
+        
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Press Space to Restart.", 150, 150);
     }
 }
 //if(airplaneSurvival === 2)
