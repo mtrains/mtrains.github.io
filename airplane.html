@@ -529,6 +529,38 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
         
+    ctx.beginPath();
+    ctx.moveTo(40, paddleY+9);
+    ctx.lineTo(46,paddleY+9);
+    ctx.lineTo(43,paddleY-4);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(41, paddleY+9);
+    ctx.lineTo(44,paddleY+9);
+    ctx.lineTo(43,paddleY+4);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+       
+        ctx.beginPath();
+    ctx.moveTo(70, paddleY+5);
+    ctx.lineTo(76,paddleY+5);
+    ctx.lineTo(73,paddleY);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(71, paddleY+5);
+    ctx.lineTo(74,paddleY+5);
+    ctx.lineTo(73,paddleY);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+        
     ctx.font = "16px Arial";
     ctx.fillStyle = "orange";
     ctx.fillText("Game Over.", 200, 130);
@@ -554,7 +586,7 @@ function draw() {
    }
    
     else if(downPressed && paddleY > 5) {
-         paddleY -= paddleMovement;
+         paddleY -= 3;
     }
 }
 
