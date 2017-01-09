@@ -10,11 +10,33 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="myCanvas" width="1200" height="900"></canvas>
 
 <script>
 	var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+	var ctx = canvas.getContext("2d");
+	//var rightPressed = false;
+	//var leftPressed = false;
+	
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
+	
+
+	
+function chooseAMadLib(e) {
+    if(e.keyCode == 68) {
+confirm ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so.")
+var one = prompt ("Enter a plural occupation. "
+		  "Example: firemen, writers, builders, etc.") 
+
+
+    }
+    else if(e.keyCode == 32) {
+        document.location.reload();
+    }
+}
+
+
 </script>
 
 </body>
