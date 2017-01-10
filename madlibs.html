@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="1200" height="900"></canvas>
+<canvas id="myCanvas" width="1200" height="600"></canvas>
 
 <script>
 	var canvas = document.getElementById("myCanvas");
@@ -19,7 +19,12 @@
 	//var leftPressed = false;
 	
 	document.addEventListener("keydown", keyDownHandler, false);
-	
+
+ctx.beginPath();
+ctx.rect(0, 0, 1200, 600);
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.closePath();
 	
 ctx.font = "160px Arial";
 ctx.fillStyle = "#0095DD";
@@ -30,6 +35,12 @@ function keyDownHandler(e) {
 confirm ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so. (See website at bottom of the page.")
 var one = prompt ("Enter a plural occupation. Example: firemen, writers, builders, etc.") 
 
+ctx.beginPath();
+ctx.rect(0, 0, 1200, 600);
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.closePath();
+	    
 ctx.font = "20px Arial";
 ctx.fillStyle = "#0095DD";
 ctx.fillText("Greetings "+one" of Dipil.", 10, 10);
