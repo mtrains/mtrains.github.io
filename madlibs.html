@@ -23,14 +23,16 @@
 	
 ctx.font = "160px Arial";
 ctx.fillStyle = "#0095DD";
-ctx.fillText("Mad Libs!!!!", 500, 200);
+ctx.fillText("Mad Libs!!!!", 300, 200);
 	
 function keyDownHandler(e) {
     if(e.keyCode == 68) {
-confirm ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so.")
+confirm ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so. (See website at bottom of the page.")
 var one = prompt ("Enter a plural occupation. Example: firemen, writers, builders, etc.") 
 
-
+ctx.font = "20px Arial";
+ctx.fillStyle = "#0095DD";
+ctx.fillText("Greetings "+one" of Dipil.", 10, 10);
     }
     else if(e.keyCode == 32) {
         document.location.reload();
@@ -42,3 +44,4 @@ var one = prompt ("Enter a plural occupation. Example: firemen, writers, builder
 
 </body>
 </html>
+<p>https://www.youtube.com/watch?v=bbioB5gfJ9o</p>
