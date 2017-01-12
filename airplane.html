@@ -60,7 +60,7 @@ function drawObstacles() {
   //sky
   ctx.beginPath();
   ctx.rect(0, 0, 480, 320);
-  ctx.fillStyle = "turquoise";
+  ctx.fillStyle = "orange";
   ctx.fill();
   ctx.closePath();
     //instructions
@@ -240,8 +240,8 @@ function drawPaddle() {
     ctx.beginPath();
     ctx.moveTo(1,paddleY-10);
     ctx.lineTo(15,paddleY+8);
-    ctx.stroke("yellow");
-    //ctx.fillStyle = "yellow";
+    ctx.stroke();
+    ctx.fillStyle = "yellow";
          
     ctx.beginPath();
     ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
