@@ -238,12 +238,9 @@ function drawPaddle() {
     ctx.closePath(); 
         
     ctx.beginPath();
-    ctx.moveTo(1, paddleY-10);
+    ctx.moveTo(1,paddleY-10);
     ctx.lineTo(15,paddleY+8);
-    ctx.lineTo(15,paddleY+8);
-    ctx.fillStyle = "yellow";
-    ctx.fill();
-    ctx.closePath(); 
+    ctx.stroke();
          
     ctx.beginPath();
     ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
