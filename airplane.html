@@ -65,7 +65,7 @@ function drawObstacles() {
   ctx.closePath();
     //instructions
     ctx.font = "25px Arial";
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "purple";
     ctx.fillText("Use the up and down arrows to fly the airplane.", x+160, 150);
     //runway
   ctx.beginPath();
@@ -240,8 +240,8 @@ function drawPaddle() {
     ctx.beginPath();
     ctx.moveTo(1,paddleY-10);
     ctx.lineTo(15,paddleY+8);
-    ctx.stroke();
-    ctx.fillStyle = "yellow";
+    ctx.stroke("yellow");
+    //ctx.fillStyle = "yellow";
          
     ctx.beginPath();
     ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
