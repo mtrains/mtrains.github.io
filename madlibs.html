@@ -36,9 +36,14 @@ var video = prompt ("In order to do this mad lib, you must watch Defenders of Di
 if(video = "stop") {
 	document.location.reload();
 }
-var one = prompt ("Enter a plural noun. Example: bananas, robbers, geese, etc.") 
-var two = prompt ("Enter a name. Example: Alex, Sam, River Song.")
-var three = prompt ("Enter an adjective. Example: happy, blue, mean")
+var one = prompt ("Enter a plural noun. Please capitalize it. Example: Bananas, Robbers, Geese, etc.") 
+var two = prompt ("Enter a name. Example: Alex, Sam, River Song, etc.")
+var three = prompt ("Enter an adjective. Example: happy, blue, mean, etc.")
+var four = prompt ("Enter a noun. Please capitalize it. Example: Earth, Monster Truck, Zoo, etc.")
+var five = prompt ("Enter a number. Example: 1, 3, a thousand, etc.")
+var six = prompt ("Enter a past tense verb. Example: waited, failed, ate, etc.")
+var seven = prompt ("Enter another past tense verb. Example: slept, camped, stepped, etc.")
+var eight = prompt ("Enter an adjective. Example: red, sleepy, awesome, etc.")
 ctx.beginPath();
 ctx.rect(0, 0, 1200, 600);
 ctx.fillStyle = "white";
@@ -47,7 +52,7 @@ ctx.closePath();
 	    
 ctx.font = "20px Arial";
 ctx.fillStyle = "#0095DD";
-ctx.fillText("Greetings, "+one+" of Dipil. I am Agent "+two+" of the "+three+"Organization of ", 30, 30);
+ctx.fillText("Greetings, "+one+" of Dipil. I am Agent "+two+" of the "+three+"Organization of "+four+" Protection. For "+five+" years, you have "+six+" ready, ready to be "+seven+" upon for the "+eight+" last defense", 30, 30);
     }
     else if(e.keyCode == 32) {
         document.location.reload();
