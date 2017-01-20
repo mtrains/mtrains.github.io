@@ -30,11 +30,12 @@ ctx.font = "160px Arial";
 ctx.fillStyle = "green";
 ctx.fillText("Mad Libs!!!!", 300, 200);
 	
-function keyCodes(e) {
-    if(e.keyCode == 68) {
+
+if(e.keyCode == 68) {
 var video = prompt ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so. (See website at bottom of the page.) Enter stop below to pause.")
 if(video = "stop") {
 	document.location.reload();
+	}
 }
 var one = prompt ("Enter a plural noun. Please capitalize it. Example: Bananas, Robbers, Geese, etc.") 
 var two = prompt ("Enter a name. Example: Alex, Sam, River Song, etc.")
@@ -58,7 +59,7 @@ ctx.fillText("Greetings, "+one+" of Dipil. I am Agent "+two+" of the "+three+"Or
     else if(e.keyCode == 32) {
         document.location.reload();
     }
-}
+
 
 
 </script>
