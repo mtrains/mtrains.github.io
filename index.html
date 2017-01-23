@@ -968,7 +968,11 @@ setInterval(draw, 20);
 
 else
 {
-    
+  ctx.beginPath();
+   ctx.arc(56, 56, 56, 0, Math.PI*2);
+   ctx.fillStyle = "green";
+   ctx.fill();
+   ctx.closePath();  
 
 
 
