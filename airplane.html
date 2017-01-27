@@ -109,6 +109,14 @@ function drawObstacles() {
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(x+1978, y-18);
+    ctx.lineTo(x+1992, y-18);
+    ctx.lineTo(x+1985.5, y-26);
+    ctx.fillStyle = "brown";
+    ctx.fill();
+    ctx.closePath();
   //tree
     ctx.beginPath();
     ctx.arc(x+2119, y-38, 12, 0, Math.PI*2, false);
