@@ -79,6 +79,24 @@ function drawObstacles() {
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.rect(x+1875, y-33, 20, 10);
+  ctx.fillStyle = "red";
+  ctx.fill();
+  ctx.closePath();
+    
+  ctx.beginPath();
+  ctx.rect(x+1880, y-32, 4, 8);
+  ctx.fillStyle = "black";
+  ctx.fill();
+  ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.rect(x+1886, y-32, 4, 8);
+  ctx.fillStyle = "black";
+  ctx.fill();
+  ctx.closePath();
   //random house
   ctx.beginPath();
   ctx.rect(x+1980, y-18, 20, 20);
@@ -103,8 +121,8 @@ function drawObstacles() {
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
-    
-  
+    //50 tall
+  //20 wide
     
 
 }
@@ -116,6 +134,11 @@ function drawCollision() {
         paddleMovement *= 0
     }
     else if (x < -1905 && x > -1990 && paddleY>= 290) {
+        airplaneSurvival += 4
+        dx *= 0
+        paddleMovement *= 0
+    }
+    else if (x < -2029 && x > -2049 && paddleY>= 260) {
         airplaneSurvival += 4
         dx *= 0
         paddleMovement *= 0
