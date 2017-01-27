@@ -112,8 +112,8 @@ function drawObstacles() {
     
     ctx.beginPath();
     ctx.moveTo(x+1978, y-18);
-    ctx.lineTo(x+1992, y-18);
-    ctx.lineTo(x+1985.5, y-26);
+    ctx.lineTo(x+2002, y-18);
+    ctx.lineTo(x+1990.5, y-26);
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
@@ -268,11 +268,11 @@ function drawPaddle() {
     ctx.fill(); 
     ctx.closePath(); 
         
-    ctx.beginPath();
-    ctx.moveTo(1,paddleY-10);
-    ctx.lineTo(15,paddleY+8);
-    ctx.stroke();
-    ctx.fillStyle = "yellow";
+    //ctx.beginPath();
+    //ctx.moveTo(1,paddleY-10);
+    //ctx.lineTo(15,paddleY+8);
+    //ctx.stroke();
+    //ctx.fillStyle = "yellow";
          
     ctx.beginPath();
     ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
