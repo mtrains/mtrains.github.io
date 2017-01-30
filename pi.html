@@ -20,9 +20,22 @@
   var dx = -2;
   var dy = 0;
 
-  
+
   
   function drawBall() {
+    ctx.beginPath();
+	ctx.rect(0, 0, 960, 640);
+	ctx.fillStyle = "black";
+	ctx.fill();
+	ctx.closePath();
+	  
+	ctx.beginPath();
+	ctx.arc(canvas.height/2, canvas.height/2, canvas.height/2, 0, Math.PI*2, false);
+	ctx.fillStyle = "yellow";
+	ctx.fill();
+	ctx.closePath();
+	  
+	  
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Pi", x, y);
