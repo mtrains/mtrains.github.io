@@ -10,21 +10,21 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="1000" height="660"></canvas>
+<canvas id="myCanvas" width="1040" height="640"></canvas>
 
 <script>
 	var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
-  var x = canvas.width/2;
+  var x = canvas.width/1.5;
   var y = canvas.height/2;
-  var dx = -2;
+  var dx = -1;
   var dy = 0;
 
 
   
   function drawBall() {
     ctx.beginPath();
-	ctx.rect(0, 0, 1000, 660);
+	ctx.rect(0, 0, 1040, 640);
 	ctx.fillStyle = "black";
 	ctx.fill();
 	ctx.closePath();
@@ -36,7 +36,7 @@
 	ctx.closePath();
 	  
 	  
-    ctx.font = "16px Arial";
+    ctx.font = "32px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("3.14159265358979323846", x, y);
 }
