@@ -606,7 +606,7 @@ function drawPaddle() {
     
 function drawOtherPlanes() {
     ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI*2);
+    ctx.arc(planeX, 100, 10, 0, Math.PI*2);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
