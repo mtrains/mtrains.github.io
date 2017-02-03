@@ -22,7 +22,8 @@ var x = canvas.width*0;
 var y = canvas.height-2;
 var dx = -2;
 var dy = 0;
-var planeX = canvas.width/2;
+var planeX = 4000;
+var planeDx = 2;
 var paddleHeight = 10;
 var paddleWidth = 65;
 var paddleY = (canvas.height-paddleHeight);
@@ -61,7 +62,7 @@ function drawObstacles() {
   //sky
   ctx.beginPath();
   ctx.rect(0, 0, 480, 320);
-  ctx.fillStyle = "turquoise";
+  ctx.fillStyle = "#0095DD";
   ctx.fill();
   ctx.closePath();
     //instructions
@@ -602,14 +603,25 @@ function drawPaddle() {
 }
 //if(airplaneSurvival === 2)
 
+    
+function drawOtherPlanes() {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI*2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+}
 function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height);
    drawObstacles();
    drawPaddle();
    drawCollision();
+   drawOtherPlanes();
    
    x += dx;
    y += dy;
+   planeX += planeDx;
+    
    
    if(upPressed && paddleY < canvas.height-paddleHeight) {
        paddleY += paddleMovement;
