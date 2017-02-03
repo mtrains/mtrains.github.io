@@ -59,10 +59,10 @@ function keyUpHandler(e) {
 }
 
 function drawObstacles() {
-  //sky
+  //sky#0095DD
   ctx.beginPath();
   ctx.rect(0, 0, 480, 320);
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = "turquoise";
   ctx.fill();
   ctx.closePath();
     //instructions
@@ -607,7 +607,7 @@ function drawPaddle() {
 function drawOtherPlanes() {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI*2);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 }
