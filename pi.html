@@ -16,7 +16,7 @@
 	var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   var x = canvas.width/1.5;
-  var y = canvas.height/2;
+  var y = 304;
   var dx = -1;
   var dy = 0;
 
@@ -50,11 +50,25 @@
 	  
 	 ctx.beginPath();
     ctx.moveTo(canvas.height/2, canvas.height/2);
-    ctx.lineTo(canvas.height-2, 182);
+    ctx.lineTo(canvas.height-22, 182);
     ctx.lineTo(canvas.height/2, 182);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath(); 
+	  
+	  ctx.beginPath();
+    ctx.moveTo(canvas.height/2, canvas.height/2);
+    ctx.lineTo(canvas.height-22, canvas.height-182);
+    ctx.lineTo(canvas.height/2, canvas.height-182);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath(); 
+	  
+	  ctx.beginPath();
+  ctx.rect(0, 304, canvas.height/2, 32);
+  ctx.fillStyle = "turquoise";
+  ctx.fill();
+  ctx.closePath();
 	 
 }
 
