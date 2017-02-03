@@ -23,7 +23,7 @@ var y = canvas.height-2;
 var dx = -2;
 var dy = 0;
 var planeX = 2000;
-var planeDx = -4;
+var planeDx = -2;
 var paddleHeight = 10;
 var paddleWidth = 65;
 var paddleY = (canvas.height-paddleHeight);
@@ -606,7 +606,7 @@ function drawPaddle() {
     
 function drawOtherPlanes() {
     ctx.beginPath();
-    ctx.arc(x+2000, 10, 10, 0, Math.PI*2);
+    ctx.arc(planeX, 10, 10, 0, Math.PI*2);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
