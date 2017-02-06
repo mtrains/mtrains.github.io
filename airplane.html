@@ -612,8 +612,15 @@ function drawPaddle() {
 
     
 function drawOtherPlanes() {
+    //small propeller plane
     ctx.beginPath();
     ctx.rect(planeX, 30, 60, 15);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(planeX+20, 23, 20, 7);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
