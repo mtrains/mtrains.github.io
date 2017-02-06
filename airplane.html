@@ -145,7 +145,7 @@ function drawCollision() {
         paddleMovement *= 0
     }
     //The plane can not take off until about 3 quarters down the runway.
-    else if (x > -1300){
+    else if (x > -300){
         paddleMovement *= 0
     }
     //random house
@@ -621,7 +621,7 @@ function drawOtherPlanes() {
     
     ctx.beginPath();
     ctx.rect(planeX+20, 23, 20, 7);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
 
