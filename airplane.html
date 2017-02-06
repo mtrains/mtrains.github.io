@@ -138,16 +138,23 @@ function drawObstacles() {
 }
 
 function drawCollision() {
+    //control tower
     if (x < -1800 && x > -1880 && paddleY>= 270) {
         airplaneSurvival += 4 
         dx *= 0
         paddleMovement *= 0
     }
+    //The plane can not take off until about 3 quarters down the runway.
+    else if (x > -1300){
+        paddleMovement *= 0
+    }
+    //random house
     else if (x < -1905 && x > -1990 && paddleY>= 290) {
         airplaneSurvival += 4
         dx *= 0
         paddleMovement *= 0
     }
+    //tree
     else if (x < -2029 && x > -2049 && paddleY>= 260) {
         airplaneSurvival += 4
         dx *= 0
