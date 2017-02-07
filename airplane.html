@@ -145,7 +145,7 @@ function drawCollision() {
         paddleMovement *= 0
     }
     //The plane can not take off until about 3 quarters down the runway.
-    else if (x < -1300){
+    else if (x < -1300 && x > -1301){
         paddleMovement *= 300
     }
     //random house
@@ -607,7 +607,7 @@ function drawPaddle() {
     ctx.fillStyle = "orange";
     ctx.fillText("Press Space to Restart.", 150, 150);
         
-        planeDx /= -3
+        //planeDx /= -3
     }
 }
 //if(airplaneSurvival === 2)
