@@ -149,7 +149,7 @@ function drawCollision() {
         paddleMovement *= 300
     }
     //if on ground and not runway, crash
-    else if (x > -1900 && paddleY > canvas.height-paddleHeight){
+    else if (x < -1900 && paddleY > canvas.height-paddleHeight){
         dx *= 0
         paddleMovement *= 0
         
