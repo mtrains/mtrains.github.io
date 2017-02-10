@@ -76,93 +76,93 @@ function drawObstacles() {
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
-  //start here
+  
   ctx.beginPath();
-  ctx.rect(x+1875, y-33, 20, 10);
+  ctx.rect(x+3750, 70, 40, 20);
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
     
   ctx.beginPath();
-  ctx.rect(x+1880, y-32, 4, 8);
+  ctx.rect(x+3760, 70, 8, 16);
   ctx.fillStyle = "black";
   ctx.fill();
   ctx.closePath();
   
   ctx.beginPath();
-  ctx.rect(x+1886, y-32, 4, 8);
+  ctx.rect(x+3772, 70, 8, 16);
   ctx.fillStyle = "black";
   ctx.fill();
   ctx.closePath();
   //random house
   ctx.beginPath();
-  ctx.rect(x+1980, y-18, 20, 20);
+  ctx.rect(x+3960, 40, 40, 40);
   ctx.fillStyle = "brown";
   ctx.fill();
   ctx.closePath();
   
     ctx.beginPath();
-    ctx.rect(x+1988, y-8, 4, 10); 
+    ctx.rect(x+3976, 20, 8, 20); 
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.moveTo(x+1978, y-18);
-    ctx.lineTo(x+2002, y-18);
-    ctx.lineTo(x+1990.5, y-26);
+    ctx.moveTo(x+3956, 40);
+    ctx.lineTo(x+4004, 40);
+    ctx.lineTo(x+3981, 56);
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
   //tree
     ctx.beginPath();
-    ctx.arc(x+2119, y-38, 12, 0, Math.PI*2, false);
+    ctx.arc(x+4238, 80, 24, 0, Math.PI*2, false);
     ctx.fillStyle = "green";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(x+2116, y-28, 6, 30); 
+    ctx.rect(x+4232, 60, 12, 60); 
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
-    //50 tall
-  //20 wide
+    //100 tall
+  //40 wide
     
 }
 function drawCollision() {
     //control tower
-    if (x < -1800 && x > -1880 && paddleY>= 270) {
-        airplaneSurvival += 4 
+    if (x < -3600 && x > -3760 && paddleY>= 540) {
+        airplaneSurvival += 8 
         dx *= 0
         paddleMovement *= 0
     }
     //The plane can not take off until about 3 quarters down the runway.
-    else if (x < -1000 && x > -1003){
-        paddleMovement += 3
+    else if (x < -2000 && x > -2006){
+        paddleMovement += 6
     }
     //if on ground and not runway, crash
-    else if (x < -1900 && paddleY > canvas.height-paddleHeight){
+    else if (x < -3800 && paddleY > canvas.height-paddleHeight){
         dx *= 0
         paddleMovement *= 0
         
-    ctx.font = "16px Arial";
+    ctx.font = "32px Arial";
     ctx.fillStyle = "orange";
-    ctx.fillText("Game Over.", 200, 130);
+    ctx.fillText("Game Over.", 400, 260);
         
     ctx.font = "16px Arial";
     ctx.fillStyle = "orange";
-    ctx.fillText("Press Space to Restart.", 150, 150);
+    ctx.fillText("Press Space to Restart.", 300, 300);
     }
     //random house
-    else if (x < -1905 && x > -1990 && paddleY>= 290) {
-        airplaneSurvival += 4
+    else if (x < -3810 && x > -3980 && paddleY>= 580) {
+        airplaneSurvival += 8
         dx *= 0
         paddleMovement *= 0
     }
     //tree
-    else if (x < -2029 && x > -2049 && paddleY>= 260) {
-        airplaneSurvival += 4
+    else if (x < -4058 && x > -4098 && paddleY>= 520) {
+        airplaneSurvival += 8
         dx *= 0
         paddleMovement *= 0
     }
@@ -170,19 +170,19 @@ function drawCollision() {
 function drawPaddle() {
     
     ctx.beginPath();
-    ctx.arc(380, 25, 25, 0, Math.PI*2, false);
+    ctx.arc(760, 50, 50, 0, Math.PI*2, false);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
     
-    if (airplaneSurvival === 3) {
+    if (airplaneSurvival === 6) {
     
     ctx.beginPath();
-    ctx.rect(10, paddleY, paddleWidth, paddleHeight);
+    ctx.rect(30, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
-    //back
+    //back start here
     ctx.beginPath();
     ctx.moveTo(0, paddleY);
     ctx.lineTo(10,paddleY);
