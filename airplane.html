@@ -32,7 +32,7 @@ var downPressed = false;
 var airplaneSurvival = 3;
 var pie =  3.14159265358979
 var yum = pie
-var paddleMovement = 0.01
+var paddleMovement = 0
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -145,8 +145,8 @@ function drawCollision() {
         paddleMovement *= 0
     }
     //The plane can not take off until about 3 quarters down the runway.
-    else if (x < -1300 && x > -1303){
-        paddleMovement *= 300
+    else if (x < -1000 && x > -1003){
+        paddleMovement += 3
     }
     //if on ground and not runway, crash
     else if (x < -1900 && paddleY > canvas.height-paddleHeight){
