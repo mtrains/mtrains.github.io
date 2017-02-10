@@ -1,0 +1,667 @@
+<p>FLY THE AIRPLANE</p>
+<p>Game not complete. Expect completion in 3 billion years or less. </p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="480" height="320"></canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var x = canvas.width*0;
+var y = canvas.height-2;
+var dx = -2;
+var dy = 0;
+var planeX = 4000;
+var planeDx = -3;
+var paddleHeight = 10;
+var paddleWidth = 65;
+var paddleY = (canvas.height-paddleHeight);
+var upPressed = false;
+var downPressed = false;
+var airplaneSurvival = 3;
+var pie =  3.14159265358979
+var yum = pie
+var paddleMovement = 0
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+function keyDownHandler(e) {
+    if(e.keyCode == 40) {
+        upPressed = true;
+    }
+    else if(e.keyCode == 38) {
+        downPressed = true;
+    }
+    else if(e.keyCode == 32) {
+        document.location.reload();
+    }
+}
+function keyUpHandler(e) {
+    if(e.keyCode == 40) {
+        upPressed = false;
+    }
+    else if(e.keyCode == 38 ) {
+        downPressed = false;
+    }
+}
+function drawObstacles() {
+  //sky#0095DD
+  ctx.beginPath();
+  ctx.rect(0, 0, 480, 320);
+  ctx.fillStyle = "turquoise";
+  ctx.fill();
+  ctx.closePath();
+    //instructions
+    ctx.font = "25px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Use the up and down arrows to fly the airplane.", x+160, 150);
+    //runway
+  ctx.beginPath();
+  ctx.rect(x, y, 1880, 2);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+  //control tower
+  ctx.beginPath();
+  ctx.rect(x+1880, y-38, 10, 40);
+  ctx.fillStyle = "red";
+  ctx.fill();
+  ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.rect(x+1875, y-33, 20, 10);
+  ctx.fillStyle = "red";
+  ctx.fill();
+  ctx.closePath();
+    
+  ctx.beginPath();
+  ctx.rect(x+1880, y-32, 4, 8);
+  ctx.fillStyle = "black";
+  ctx.fill();
+  ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.rect(x+1886, y-32, 4, 8);
+  ctx.fillStyle = "black";
+  ctx.fill();
+  ctx.closePath();
+  //random house
+  ctx.beginPath();
+  ctx.rect(x+1980, y-18, 20, 20);
+  ctx.fillStyle = "brown";
+  ctx.fill();
+  ctx.closePath();
+  
+    ctx.beginPath();
+    ctx.rect(x+1988, y-8, 4, 10); 
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(x+1978, y-18);
+    ctx.lineTo(x+2002, y-18);
+    ctx.lineTo(x+1990.5, y-26);
+    ctx.fillStyle = "brown";
+    ctx.fill();
+    ctx.closePath();
+  //tree
+    ctx.beginPath();
+    ctx.arc(x+2119, y-38, 12, 0, Math.PI*2, false);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(x+2116, y-28, 6, 30); 
+    ctx.fillStyle = "brown";
+    ctx.fill();
+    ctx.closePath();
+    //50 tall
+  //20 wide
+    
+}
+function drawCollision() {
+    //control tower
+    if (x < -1800 && x > -1880 && paddleY>= 270) {
+        airplaneSurvival += 4 
+        dx *= 0
+        paddleMovement *= 0
+    }
+    //The plane can not take off until about 3 quarters down the runway.
+    else if (x < -1000 && x > -1003){
+        paddleMovement += 3
+    }
+    //if on ground and not runway, crash
+    else if (x < -1900 && paddleY > canvas.height-paddleHeight){
+        dx *= 0
+        paddleMovement *= 0
+        
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Game Over.", 200, 130);
+        
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Press Space to Restart.", 150, 150);
+    }
+    //random house
+    else if (x < -1905 && x > -1990 && paddleY>= 290) {
+        airplaneSurvival += 4
+        dx *= 0
+        paddleMovement *= 0
+    }
+    //tree
+    else if (x < -2029 && x > -2049 && paddleY>= 260) {
+        airplaneSurvival += 4
+        dx *= 0
+        paddleMovement *= 0
+    }
+}
+function drawPaddle() {
+    
+    ctx.beginPath();
+    ctx.arc(380, 25, 25, 0, Math.PI*2, false);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+    
+    if (airplaneSurvival === 3) {
+    
+    ctx.beginPath();
+    ctx.rect(10, paddleY, paddleWidth, paddleHeight);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    //back
+    ctx.beginPath();
+    ctx.moveTo(0, paddleY);
+    ctx.lineTo(10,paddleY);
+    ctx.lineTo(10,paddleY+10);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(4,paddleY);
+    ctx.lineTo(7,paddleY);
+    ctx.lineTo(15, paddleY+9);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(4,paddleY);
+    ctx.lineTo(11,paddleY+9);
+    ctx.lineTo(15, paddleY+9);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(1,paddleY);
+    ctx.lineTo(4,paddleY);
+    ctx.lineTo(11, paddleY+9);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(1,paddleY);
+    ctx.lineTo(8,paddleY+9);
+    ctx.lineTo(11, paddleY+9);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    //tail
+    ctx.beginPath();
+    ctx.moveTo(4, paddleY-10);
+    ctx.lineTo(10,paddleY);
+    ctx.lineTo(4,paddleY);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(1, paddleY-10, 3, paddleHeight);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath(); 
+    
+    ctx.beginPath();
+    ctx.moveTo(1, paddleY-10);
+    ctx.lineTo(7,paddleY);
+    ctx.lineTo(1,paddleY);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(1, paddleY-4);
+    ctx.lineTo(4,paddleY);
+    ctx.lineTo(1,paddleY);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    //circles in front of plane
+    ctx.beginPath();
+    ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(80, paddleY+7.5, paddleHeight/4, 0, Math.PI*2, false);
+    ctx.fillStyle = "blue"; 
+    ctx.fill();
+    ctx.closePath(); 
+    //red belly
+    ctx.beginPath();
+    ctx.rect(11, paddleY+9, paddleWidth+4, 1);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(9, paddleY+9, 2, 1);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    //yellow line
+    ctx.beginPath();
+    ctx.rect(15, paddleY+8, paddleWidth, 1);
+    ctx.fillStyle = "yellow";
+    ctx.fill(); 
+    ctx.closePath(); 
+        
+    //ctx.beginPath();
+    //ctx.moveTo(1,paddleY-10);
+    //ctx.lineTo(15,paddleY+8);
+    //ctx.stroke();
+    //ctx.fillStyle = "yellow";
+         
+    ctx.beginPath();
+    ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
+    ctx.fillStyle = "yellow";
+    ctx.fill(); 
+    ctx.closePath();
+    //engine
+    ctx.beginPath();
+    ctx.rect(42, paddleY+9, 5, 1);
+    ctx.fillStyle = "blue";
+    ctx.fill(); 
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(42, paddleY+10, 5, 1);
+    ctx.fillStyle = "red";
+    ctx.fill(); 
+    ctx.closePath();
+    //wing
+    ctx.beginPath();
+    ctx.moveTo(37, paddleY+8);
+    ctx.lineTo(52,paddleY+8);
+    ctx.lineTo(25,paddleY+12);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath(); 
+    //elevator
+    ctx.beginPath();
+    ctx.moveTo(2, paddleY);
+    ctx.lineTo(7,paddleY);
+    ctx.lineTo(0,paddleY+2);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
+    //windows    
+    ctx.beginPath();
+    ctx.rect(15, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath(); 
+        
+    ctx.beginPath();
+    ctx.rect(17, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(19, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(21, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(23, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(25, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(27, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(29, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(31, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(33, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(35, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+                
+    ctx.beginPath();
+    ctx.rect(37, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath(); 
+        
+    ctx.beginPath();
+    ctx.rect(39, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();  
+        
+    ctx.beginPath();
+    ctx.rect(41, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();  
+        
+    ctx.beginPath();
+    ctx.rect(43, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();    
+        
+    ctx.beginPath();
+    ctx.rect(45, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();     
+        
+    ctx.beginPath();
+    ctx.rect(47, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();    
+        
+    ctx.beginPath();
+    ctx.rect(49, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();    
+        
+    ctx.beginPath();
+    ctx.rect(51, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();  
+        
+    ctx.beginPath();
+    ctx.rect(53, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(55, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(57, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(59, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(61, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(63, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(65, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(67, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(69, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(71, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(73, paddleY+4, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+    //cockpit
+    ctx.beginPath();
+    ctx.rect(75, paddleY+4, 4, 1);
+    ctx.fillStyle = "black";
+    ctx.fill(); 
+    ctx.closePath();
+    }
+    else if (airplaneSurvival > 3) {
+    ctx.beginPath();
+    ctx.rect(10, paddleY, paddleWidth, paddleHeight);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    //back
+    ctx.beginPath();
+    ctx.moveTo(0, paddleY);
+    ctx.lineTo(10,paddleY);
+    ctx.lineTo(10,paddleY+10);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath(); 
+    //tail    
+    ctx.beginPath();
+    ctx.moveTo(4, paddleY-10);
+    ctx.lineTo(10,paddleY);
+    ctx.lineTo(4,paddleY);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(1, paddleY-10, 3, paddleHeight);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+        
+    //circles in front of plane
+    ctx.beginPath();
+    ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(80, paddleY+7.5, paddleHeight/4, 0, Math.PI*2, false);
+    ctx.fillStyle = "orange"; 
+    ctx.fill();
+    ctx.closePath(); 
+    //bottom
+    ctx.beginPath();
+    ctx.rect(11, paddleY+9, paddleWidth+4, 1);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    //fire
+    ctx.beginPath();
+    ctx.moveTo(20, paddleY+5);
+    ctx.lineTo(26,paddleY+5);
+    ctx.lineTo(23,paddleY-1);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(21, paddleY+5);
+    ctx.lineTo(24,paddleY+5);
+    ctx.lineTo(23,paddleY+1);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(40, paddleY+9);
+    ctx.lineTo(46,paddleY+9);
+    ctx.lineTo(43,paddleY+3);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(41, paddleY+9);
+    ctx.lineTo(44,paddleY+9);
+    ctx.lineTo(43,paddleY+4);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+       
+        ctx.beginPath();
+    ctx.moveTo(70, paddleY+5);
+    ctx.lineTo(76,paddleY+5);
+    ctx.lineTo(73,paddleY);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(71, paddleY+5);
+    ctx.lineTo(74,paddleY+5);
+    ctx.lineTo(73,paddleY);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+        
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Game Over.", 200, 130);
+        
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Press Space to Restart.", 150, 150);
+        
+        //planeDx /= -3
+    }
+}
+//if(airplaneSurvival === 2)
+    
+function drawOtherPlanes() {
+    //small propeller plane
+    ctx.beginPath();
+    ctx.rect(planeX, 30, 60, 15);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(planeX+20, 23, 20, 7);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(planeX+20, 23);
+    ctx.lineTo(planeX+20, 30);
+    ctx.lineTo(planeX+15, 30);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+}
+function draw() {
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   drawObstacles();
+   drawPaddle();
+   drawCollision();
+   drawOtherPlanes();
+   
+   x += dx;
+   y += dy;
+   planeX += planeDx;
+    
+   
+   if(upPressed && paddleY < canvas.height-paddleHeight) {
+       paddleY += paddleMovement;
+   }
+   
+    else if(downPressed && paddleY > 5) {
+         paddleY -= paddleMovement;
+    }
+}
+setInterval(draw, 10);
+</script>
+
+</body>
+</html>
