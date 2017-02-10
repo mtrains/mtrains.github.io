@@ -12,23 +12,23 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="myCanvas" width="960" height="640"></canvas>
 
 <script>
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var x = canvas.width*0;
-var y = canvas.height-2;
-var dx = -2;
+var y = canvas.height-4;
+var dx = -4;
 var dy = 0;
-var planeX = 4000;
-var planeDx = -3;
-var paddleHeight = 10;
-var paddleWidth = 65;
+var planeX = 8000;
+var planeDx = -6;
+var paddleHeight = 30;
+var paddleWidth = 195;
 var paddleY = (canvas.height-paddleHeight);
 var upPressed = false;
 var downPressed = false;
-var airplaneSurvival = 3;
+var airplaneSurvival = 6;
 var pie =  3.14159265358979
 var yum = pie
 var paddleMovement = 0
@@ -56,27 +56,27 @@ function keyUpHandler(e) {
 function drawObstacles() {
   //sky#0095DD
   ctx.beginPath();
-  ctx.rect(0, 0, 480, 320);
+  ctx.rect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "turquoise";
   ctx.fill();
   ctx.closePath();
     //instructions
-    ctx.font = "25px Arial";
+    ctx.font = "50px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Use the up and down arrows to fly the airplane.", x+160, 150);
+    ctx.fillText("Use the up and down arrows to fly the airplane.", x+320, 300);
     //runway
   ctx.beginPath();
-  ctx.rect(x, y, 1880, 2);
+  ctx.rect(x, y, 3760, 4);
   ctx.fillStyle = "gray";
   ctx.fill();
   ctx.closePath();
   //control tower
   ctx.beginPath();
-  ctx.rect(x+1880, y-38, 10, 40);
+  ctx.rect(x+3760, 80, 20, 80);
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
-  
+  //start here
   ctx.beginPath();
   ctx.rect(x+1875, y-33, 20, 10);
   ctx.fillStyle = "red";
