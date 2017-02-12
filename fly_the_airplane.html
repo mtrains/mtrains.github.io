@@ -72,57 +72,57 @@ function drawObstacles() {
   ctx.closePath();
   //control tower
   ctx.beginPath();
-  ctx.rect(x+3760, 80, 20, 80);
+  ctx.rect(x+3760, canvas.width-80, 20, 80);
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
   
   ctx.beginPath();
-  ctx.rect(x+3750, 70, 40, 20);
+  ctx.rect(x+3750, canvas.width-70, 40, 20);
   ctx.fillStyle = "red";
   ctx.fill();
   ctx.closePath();
     
   ctx.beginPath();
-  ctx.rect(x+3760, 70, 8, 16);
+  ctx.rect(x+3760, canvas.width-70, 8, 16);
   ctx.fillStyle = "black";
   ctx.fill();
   ctx.closePath();
   
   ctx.beginPath();
-  ctx.rect(x+3772, 70, 8, 16);
+  ctx.rect(x+3772, canvas.width-70, 8, 16);
   ctx.fillStyle = "black";
   ctx.fill();
   ctx.closePath();
   //random house
   ctx.beginPath();
-  ctx.rect(x+3960, 40, 40, 40);
+  ctx.rect(x+3960, canvas.width-40, 40, 40);
   ctx.fillStyle = "brown";
   ctx.fill();
   ctx.closePath();
   
     ctx.beginPath();
-    ctx.rect(x+3976, 20, 8, 20); 
+    ctx.rect(x+3976, canvas.width-20, 8, 20); 
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.moveTo(x+3956, 40);
-    ctx.lineTo(x+4004, 40);
-    ctx.lineTo(x+3981, 56);
+    ctx.moveTo(x+3956, canvas.width-40);
+    ctx.lineTo(x+4004, canvas.width-40);
+    ctx.lineTo(x+3981, canvas.width-56);
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
   //tree
     ctx.beginPath();
-    ctx.arc(x+4238, 80, 24, 0, Math.PI*2, false);
+    ctx.arc(x+4238, canvas.width-80, 24, 0, Math.PI*2, false);
     ctx.fillStyle = "green";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(x+4232, 60, 12, 60); 
+    ctx.rect(x+4232, canvas.width-60, 12, 60); 
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
@@ -182,279 +182,279 @@ function drawPaddle() {
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
-    //back start here
+    //back 
     ctx.beginPath();
     ctx.moveTo(0, paddleY);
-    ctx.lineTo(10,paddleY);
-    ctx.lineTo(10,paddleY+10);
+    ctx.lineTo(30,paddleY);
+    ctx.lineTo(30,paddleY+30);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.moveTo(4,paddleY);
-    ctx.lineTo(7,paddleY);
-    ctx.lineTo(15, paddleY+9);
+    ctx.moveTo(12,paddleY);
+    ctx.lineTo(21,paddleY);
+    ctx.lineTo(45, paddleY+27);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.moveTo(4,paddleY);
-    ctx.lineTo(11,paddleY+9);
-    ctx.lineTo(15, paddleY+9);
+    ctx.moveTo(12,paddleY);
+    ctx.lineTo(33,paddleY+27);
+    ctx.lineTo(45, paddleY+27);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.moveTo(1,paddleY);
-    ctx.lineTo(4,paddleY);
-    ctx.lineTo(11, paddleY+9);
+    ctx.moveTo(3,paddleY);
+    ctx.lineTo(12,paddleY);
+    ctx.lineTo(33, paddleY+27);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.moveTo(1,paddleY);
-    ctx.lineTo(8,paddleY+9);
-    ctx.lineTo(11, paddleY+9);
+    ctx.moveTo(3,paddleY);
+    ctx.lineTo(24,paddleY+27);
+    ctx.lineTo(33, paddleY+27);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
-    //tail
+    //tail 
     ctx.beginPath();
-    ctx.moveTo(4, paddleY-10);
-    ctx.lineTo(10,paddleY);
-    ctx.lineTo(4,paddleY);
+    ctx.moveTo(12, paddleY-30);
+    ctx.lineTo(30,paddleY);
+    ctx.lineTo(12,paddleY);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(1, paddleY-10, 3, paddleHeight);
+    ctx.rect(3, paddleY-30, 9, paddleHeight);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath(); 
     
     ctx.beginPath();
-    ctx.moveTo(1, paddleY-10);
-    ctx.lineTo(7,paddleY);
-    ctx.lineTo(1,paddleY);
+    ctx.moveTo(3, paddleY-30);
+    ctx.lineTo(21,paddleY);
+    ctx.lineTo(3,paddleY);
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.moveTo(1, paddleY-4);
-    ctx.lineTo(4,paddleY);
-    ctx.lineTo(1,paddleY);
+    ctx.moveTo(3, paddleY-12);
+    ctx.lineTo(12,paddleY);
+    ctx.lineTo(3,paddleY);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
     //circles in front of plane
     ctx.beginPath();
-    ctx.arc(75, paddleY+5, paddleHeight/2, 0, Math.PI*2, false);
+    ctx.arc(225, paddleY+15, paddleHeight/2, 0, Math.PI*2, false);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(80, paddleY+7.5, paddleHeight/4, 0, Math.PI*2, false);
+    ctx.arc(240, paddleY+22.5, paddleHeight/4, 0, Math.PI*2, false);
     ctx.fillStyle = "blue"; 
     ctx.fill();
     ctx.closePath(); 
     //red belly
     ctx.beginPath();
-    ctx.rect(11, paddleY+9, paddleWidth+4, 1);
+    ctx.rect(33, paddleY+27, paddleWidth+12, 3);
     ctx.fillStyle = "#FF0000";
     ctx.fill();
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(9, paddleY+9, 2, 1);
+    ctx.rect(27, paddleY+27, 6, 3);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
     //yellow line
     ctx.beginPath();
-    ctx.rect(15, paddleY+8, paddleWidth, 1);
+    ctx.rect(45, paddleY+24, paddleWidth, 3);
     ctx.fillStyle = "yellow";
     ctx.fill(); 
     ctx.closePath(); 
         
     //ctx.beginPath();
-    //ctx.moveTo(1,paddleY-10);
-    //ctx.lineTo(15,paddleY+8);
+    //ctx.moveTo(3,paddleY-30);
+    //ctx.lineTo(45,paddleY+24);
     //ctx.stroke();
     //ctx.fillStyle = "yellow";
          
     ctx.beginPath();
-    ctx.rect(paddleWidth+15, paddleY+9, 1, 1);
+    ctx.rect(paddleWidth+45, paddleY+27, 3, 3);
     ctx.fillStyle = "yellow";
     ctx.fill(); 
     ctx.closePath();
     //engine
     ctx.beginPath();
-    ctx.rect(42, paddleY+9, 5, 1);
+    ctx.rect(126, paddleY+27, 15, 3);
     ctx.fillStyle = "blue";
     ctx.fill(); 
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(42, paddleY+10, 5, 1);
+    ctx.rect(126, paddleY+30, 15, 3);
     ctx.fillStyle = "red";
     ctx.fill(); 
     ctx.closePath();
     //wing
     ctx.beginPath();
-    ctx.moveTo(37, paddleY+8);
-    ctx.lineTo(52,paddleY+8);
-    ctx.lineTo(25,paddleY+12);
+    ctx.moveTo(111, paddleY+24);
+    ctx.lineTo(156,paddleY+24);
+    ctx.lineTo(75,paddleY+36);
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath(); 
     //elevator
     ctx.beginPath();
-    ctx.moveTo(2, paddleY);
-    ctx.lineTo(7,paddleY);
-    ctx.lineTo(0,paddleY+2);
+    ctx.moveTo(6, paddleY);
+    ctx.lineTo(21,paddleY);
+    ctx.lineTo(0,paddleY+4);
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
     //windows    
     ctx.beginPath();
-    ctx.rect(15, paddleY+4, 1, 1);
+    ctx.rect(75, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath(); 
         
     ctx.beginPath();
-    ctx.rect(17, paddleY+4, 1, 1);
+    ctx.rect(51, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(19, paddleY+4, 1, 1);
+    ctx.rect(57, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(21, paddleY+4, 1, 1);
+    ctx.rect(63, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(23, paddleY+4, 1, 1);
+    ctx.rect(69, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(25, paddleY+4, 1, 1);
+    ctx.rect(75, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(27, paddleY+4, 1, 1);
+    ctx.rect(81, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(29, paddleY+4, 1, 1);
+    ctx.rect(87, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(31, paddleY+4, 1, 1);
+    ctx.rect(93, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(33, paddleY+4, 1, 1);
+    ctx.rect(99, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(35, paddleY+4, 1, 1);
+    ctx.rect(105, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
                 
     ctx.beginPath();
-    ctx.rect(37, paddleY+4, 1, 1);
+    ctx.rect(111, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath(); 
         
     ctx.beginPath();
-    ctx.rect(39, paddleY+4, 1, 1);
+    ctx.rect(117, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();  
         
     ctx.beginPath();
-    ctx.rect(41, paddleY+4, 1, 1);
+    ctx.rect(123, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();  
         
     ctx.beginPath();
-    ctx.rect(43, paddleY+4, 1, 1);
+    ctx.rect(129, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();    
         
     ctx.beginPath();
-    ctx.rect(45, paddleY+4, 1, 1);
+    ctx.rect(135, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();     
         
     ctx.beginPath();
-    ctx.rect(47, paddleY+4, 1, 1);
+    ctx.rect(141, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();    
         
     ctx.beginPath();
-    ctx.rect(49, paddleY+4, 1, 1);
+    ctx.rect(147, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();    
         
     ctx.beginPath();
-    ctx.rect(51, paddleY+4, 1, 1);
+    ctx.rect(153, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();  
         
     ctx.beginPath();
-    ctx.rect(53, paddleY+4, 1, 1);
+    ctx.rect(159, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(55, paddleY+4, 1, 1);
+    ctx.rect(165, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
         
     ctx.beginPath();
-    ctx.rect(57, paddleY+4, 1, 1);
+    ctx.rect(171, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();
-        
+    //start here    
     ctx.beginPath();
     ctx.rect(59, paddleY+4, 1, 1);
     ctx.fillStyle = "black";
