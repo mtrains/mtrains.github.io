@@ -220,6 +220,14 @@ function drawPaddle() {
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(27,paddleY+30);
+    ctx.lineTo(24,paddleY+27);
+    ctx.lineTo(27, paddleY+27);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
     //tail 
     ctx.beginPath();
     ctx.moveTo(12, paddleY-30);
@@ -288,9 +296,17 @@ function drawPaddle() {
     //ctx.fillStyle = "yellow";
          
     ctx.beginPath();
-    ctx.rect(paddleWidth+45, paddleY+27, 3, 3);
+    ctx.rect(paddleWidth+45, paddleY+27, 2, 3);
     ctx.fillStyle = "yellow";
     ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.moveTo(paddleWidth+45, paddleY+27);
+    ctx.lineTo(paddleWidth+47,paddleY+27);
+    ctx.lineTo(paddleWidth+45,paddleY+25);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
     ctx.closePath();
     //engine
     ctx.beginPath();
@@ -300,7 +316,7 @@ function drawPaddle() {
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(126, paddleY+30, 15, 3);
+    ctx.rect(125, paddleY+30, 15, 3);
     ctx.fillStyle = "red";
     ctx.fill(); 
     ctx.closePath();
@@ -316,7 +332,7 @@ function drawPaddle() {
     ctx.beginPath();
     ctx.moveTo(6, paddleY);
     ctx.lineTo(21,paddleY);
-    ctx.lineTo(0,paddleY+4);
+    ctx.lineTo(0,paddleY+10);
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
@@ -629,7 +645,7 @@ function drawOtherPlanes() {
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
-    //
+    
     ctx.beginPath();
     ctx.moveTo(planeX+40, 46);
     ctx.lineTo(planeX+40, 60);
