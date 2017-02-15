@@ -20,7 +20,7 @@ var y = canvas.height-4;
 var dx = -4;
 var dy = 0;
 var planeX = 8000;
-var planeDx = -6;
+var planeDx = -1;
 var paddleHeight = 30;
 var paddleWidth = 195;
 var paddleY = (canvas.height-paddleHeight);
@@ -566,7 +566,7 @@ function drawPaddle() {
     ctx.closePath(); 
     //bottom
     ctx.beginPath();
-    ctx.rect(33, paddleY+18, paddleWidth+12, 3);
+    ctx.rect(33, paddleY+27, paddleWidth+14, 3);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
@@ -619,6 +619,8 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
         
+    
+        
     ctx.font = "32px Arial";
     ctx.fillStyle = "orange";
     ctx.fillText("Game Over.", 400, 260);
@@ -635,7 +637,7 @@ function drawPaddle() {
 function drawOtherPlanes() {
     //small propeller plane
     ctx.beginPath();
-    ctx.rect(planeX, 60, 120, 30);
+    ctx.rect(planeX, 60, 120, 25);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
