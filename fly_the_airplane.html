@@ -139,19 +139,7 @@ function drawCollision() {
     else if (x < -2000 && x > -2006){
         paddleMovement += 6
     }
-    //if on ground and not runway, crash
-    else if (x < -3800 && paddleY > canvas.height-paddleHeight){
-        dx *= 0
-        paddleMovement *= 0
-        
-    ctx.font = "32px Arial";
-    ctx.fillStyle = "orange";
-    ctx.fillText("Game Over.", 400, 260);
-        
-    ctx.font = "32px Arial";
-    ctx.fillStyle = "orange";
-    ctx.fillText("Press Space to Restart.", 300, 300);
-    }
+    
     //random house
     else if (x < -3735 && x > -4000 && paddleY>= 552) {
         airplaneSurvival += 8
@@ -163,6 +151,25 @@ function drawCollision() {
         airplaneSurvival += 8
         dx *= 0
         paddleMovement *= 0
+    }
+    //small propeller plane work on this later
+    else if (x < -planeX && x > -planeX && paddleY>= 60) {
+        airplaneSurvival += 8
+        dx *= 0
+        paddleMovement *= 0
+    }
+    //if on ground and not runway, crash 
+    else if (x < -3800 && paddleY > canvas.height-paddleHeight){
+        dx *= 0
+        paddleMovement *= 0
+        
+    ctx.font = "32px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Game Over.", 400, 260);
+        
+    ctx.font = "32px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Press Space to Restart.", 300, 300);
     }
 }
 function drawPaddle() {
@@ -566,7 +573,7 @@ function drawPaddle() {
     ctx.closePath(); 
     //bottom
     ctx.beginPath();
-    ctx.rect(33, paddleY+27, paddleWidth+14, 3);
+    ctx.rect(33, paddleY+27, paddleWidth+13, 3);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
@@ -637,7 +644,7 @@ function drawPaddle() {
 function drawOtherPlanes() {
     //small propeller plane
     ctx.beginPath();
-    ctx.rect(planeX, 60, 120, 25);
+    ctx.rect(planeX, 60, 96, 20);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
