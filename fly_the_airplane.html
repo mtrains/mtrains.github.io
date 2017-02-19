@@ -130,7 +130,7 @@ function drawObstacles() {
 }
 function drawCollision() {
     //control tower
-    if (x < -3375 && x > -3760 && paddleY>= 540) {
+    if (x < -3535 && x > -3780 && paddleY>= 520) {
         airplaneSurvival += 8 
         dx *= 0
         paddleMovement *= 0
@@ -148,12 +148,12 @@ function drawCollision() {
     ctx.fillStyle = "orange";
     ctx.fillText("Game Over.", 400, 260);
         
-    ctx.font = "16px Arial";
+    ctx.font = "32px Arial";
     ctx.fillStyle = "orange";
     ctx.fillText("Press Space to Restart.", 300, 300);
     }
     //random house
-    else if (x < -3810 && x > -3980 && paddleY>= 580) {
+    else if (x < -3735 && x > -4000 && paddleY>= 552) {
         airplaneSurvival += 8
         dx *= 0
         paddleMovement *= 0
@@ -174,7 +174,7 @@ function drawPaddle() {
     ctx.closePath();
     
     if (airplaneSurvival === 6) {
-    
+    //body
     ctx.beginPath();
     ctx.rect(30, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "blue";
