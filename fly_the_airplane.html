@@ -30,6 +30,8 @@ var airplaneSurvival = 6;
 var pie =  3.14159265358979
 var yum = pie
 var paddleMovement = 0
+var everything = 1
+var awesome = everything
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 function keyDownHandler(e) {
@@ -153,10 +155,11 @@ function drawCollision() {
         paddleMovement *= 0
     }
     //small propeller plane work on this later
-    else if (x < -planeX && x > -planeX && paddleY>= 60) {
+    else if (x < -planeX && x > -planeX && paddleY<= 80) {
         airplaneSurvival += 8
         dx *= 0
         paddleMovement *= 0
+        planeDx *= 0
     }
     //if on ground and not runway, crash 
     else if (x < -3800 && paddleY > canvas.height-paddleHeight){
@@ -650,15 +653,15 @@ function drawOtherPlanes() {
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(planeX+40, 46, 40, 14);
+    ctx.rect(planeX+20, 46, 40, 14);
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.moveTo(planeX+40, 46);
-    ctx.lineTo(planeX+40, 60);
-    ctx.lineTo(planeX+30, 60);
+    ctx.moveTo(planeX+20, 46);
+    ctx.lineTo(planeX+20, 60);
+    ctx.lineTo(planeX+10, 60);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
