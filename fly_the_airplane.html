@@ -62,7 +62,7 @@ function drawObstacles() {
   ctx.closePath();
     //instructions
     ctx.font = "50px Arial";
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillText("Use the up and down arrows to fly the airplane.", x+320, 300);
     //runway
   ctx.beginPath();
@@ -149,17 +149,24 @@ function drawCollision() {
         paddleMovement *= 0
     }
     //tree
-    else if (x < -4058 && x > -4098 && paddleY>= 520) {
+    else if (x < -4038 && x > -4098 && paddleY>= 520) {
         airplaneSurvival += 8
         dx *= 0
         paddleMovement *= 0
     }
     //small propeller plane work on this later
     else if (x < -planeX+195 && x > -planeX-96 && paddleY<= 110) {
-        airplaneSurvival += 8
-        dx *= 0
-        paddleMovement *= 0
+        //airplaneSurvival += 8
+        //dx *= 0
+        //paddleMovement *= 0
         //planeDx *= 0
+    ctx.font = "32px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Game Over.", 400, 260);
+        
+    ctx.font = "32px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Press Space to Restart.", 300, 300);
     }
     //if on ground and not runway, crash 
     else if (x < -3800 && paddleY > canvas.height-paddleHeight){
