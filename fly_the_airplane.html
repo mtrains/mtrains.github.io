@@ -155,7 +155,7 @@ function drawCollision() {
         paddleMovement *= 0
     }
     //small propeller plane work on this later
-    else if (x < -planeX  && x > -planeX && paddleY<= 110) {//+ 195-96
+    else if (x < -planeX+2  && x > -planeX-2 && paddleY<= 110) {//+ 195-96
         airplaneSurvival += 8
         dx *= 0
         paddleMovement *= 0
