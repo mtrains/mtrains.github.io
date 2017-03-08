@@ -10,12 +10,18 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="960" height="600"></canvas>
+<canvas id="myCanvas" width="1300" height="630"></canvas>
 
 <script>
+  ctx.beginPath();
+  ctx.rect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#0095DD";
+  ctx.fill();
+  ctx.closePath();
   
-  
-  
+  ctx.font = "50px ArialBlack";
+    ctx.fillStyle = "white";
+    ctx.fillText("ERROR. Page not found.", 400, 300);
 </script>
 
 </body>
