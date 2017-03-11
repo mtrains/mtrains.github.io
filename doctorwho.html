@@ -59,6 +59,14 @@ function keyUpHandler(e) {
     }
 }
     
+function drawWalls() {
+   ctx.beginPath();
+    ctx.rect(0, 165, canvas.width, 15);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath(); 
+}
+    
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
@@ -80,6 +88,7 @@ function drawPaddle() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPaddle();
+    drawWalls();
     
 if(rightPressed && paddleX < canvas.width-paddleWidth) {
     paddleX += 3;
