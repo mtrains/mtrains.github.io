@@ -72,17 +72,17 @@ function drawWalls() {
     ctx.closePath(); 
     
     if(paddleY >= 100 && paddleY <=180) {
-        downMovement === 0
+        downMovement == 0
     }
     else {
-        downMovement === 3   
+        downMovement == 3   
     }
 }
     
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
 }
