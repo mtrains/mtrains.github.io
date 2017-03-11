@@ -24,6 +24,11 @@ var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
+var rightMovement = 3;
+var leftMovement = 3;
+var upMovement = 3;
+var downMovement = 3;
+
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -65,6 +70,13 @@ function drawWalls() {
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath(); 
+    
+    if(paddleY >= 100 && paddleY <=180) {
+        downMovement === 0
+    }
+    else {
+        downMovement === 3   
+    }
 }
     
 function drawPaddle() {
@@ -91,16 +103,16 @@ function draw() {
     drawWalls();
     
 if(rightPressed && paddleX < canvas.width-paddleWidth) {
-    paddleX += 3;
+    paddleX += rightMovement;
 }
 else if(leftPressed && paddleX > 0) {
-    paddleX -= 3;
+    paddleX -= leftMovement;
 }  
 else if(upPressed && paddleY > 0) {
-    paddleY -= 3;
+    paddleY -= upMovement;
 } 
 else if(downPressed && paddleY < canvas.height-paddleHeight) {
-    paddleY += 3;
+    paddleY += downMovement;
 }
 }
 setInterval(draw, 10);
