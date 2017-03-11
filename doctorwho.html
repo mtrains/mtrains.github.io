@@ -10,13 +10,13 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="1366" height="630"></canvas>
+<canvas id="myCanvas" width="1260" height="630"></canvas>
 
 <script>
     
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var paddleHeight = 75;
+var paddleHeight = 65;
 var paddleWidth = 10;
 var paddleX = (canvas.width-paddleWidth)/2;
 var paddleY = (canvas.height-paddleHeight)/2;
@@ -62,7 +62,7 @@ function keyUpHandler(e) {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
 }
