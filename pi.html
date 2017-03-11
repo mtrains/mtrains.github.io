@@ -19,6 +19,8 @@
   var y = 336;
   var dx = -1.5;
   var dy = 0;
+  var mouth = 187
+  var pidx = 1
 
 
   
@@ -50,7 +52,7 @@
 	  
 	 ctx.beginPath();
     ctx.moveTo(canvas.height/2, canvas.height/2);
-    ctx.lineTo(canvas.height-28, 187);
+    ctx.lineTo(canvas.height-28, mouth);//this y
     ctx.lineTo(canvas.height/2, 187);
     ctx.fillStyle = "yellow";
     ctx.fill();
@@ -58,7 +60,7 @@
 	  
 	  ctx.beginPath();
     ctx.moveTo(canvas.height/2, canvas.height/2);
-    ctx.lineTo(canvas.height-28, canvas.height-187);
+    ctx.lineTo(canvas.height-28, canvas.height-mouth);
     ctx.lineTo(canvas.height/2, canvas.height-187);
     ctx.fillStyle = "yellow";
     ctx.fill();
@@ -81,6 +83,15 @@ function draw() {
     drawBall();
     x += dx;
     y += dy;
+	
+	mouth += pidx
+	if (mouth = canvas.height/2) {
+		pidx -= 2
+	}
+	else if (mouth = 187) {
+		pidx += 2 
+	}
+	
 }
   
   setInterval(draw, 10);
