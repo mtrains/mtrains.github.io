@@ -75,6 +75,12 @@ function drawWalls() {
         paddleY - 3
     }
     
+    ctx.beginPath();
+    ctx.rect(canvas.width/4, 0, 15, 165);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
+    
 }
     
 function drawPaddle() {
