@@ -71,18 +71,16 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath(); 
     
-    if(paddleY >= 100 && paddleY <=180) {
-        downMovement == 0
+    if(paddleY >= 103 && paddleY <=180) {
+        paddleY - 3
     }
-    else {
-        downMovement == 3   
-    }
+    
 }
     
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
-    ctx.fillStyle = "brown";
+    ctx.fillStyle = "hazel";
     ctx.fill();
     ctx.closePath();
 }
