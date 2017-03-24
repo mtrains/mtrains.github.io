@@ -94,13 +94,8 @@
     ctx.fillText("Yum!", 780, canvas.height*.75);
 	 
 }
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBall();
-    x += dx;
-    y += dy;
 	
+function drawYum() {
 	mouth += pidx
 	if (mouth = canvas.height/2) {
 		pidx -= 2
@@ -108,6 +103,17 @@ function draw() {
 	else if (mouth = 187) {
 		pidx += 2 
 	}
+	
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+	drawYum();
+    x += dx;
+    y += dy;
+	
+	
 	
 }
   
