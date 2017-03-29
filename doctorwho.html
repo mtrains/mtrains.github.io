@@ -71,7 +71,7 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath(); 
     
-    if(paddleY >= 104) { //&& paddleY <=180) {
+    if(paddleY <= 104) { //&& paddleY <=180) {
         paddleY - 3
     }
     
@@ -118,6 +118,11 @@ else if(upPressed && paddleY > 0) {
 else if(downPressed && paddleY < canvas.height-paddleHeight) {
     paddleY += downMovement;
 }
+//else if(downPressed && paddleY < canvas.height-paddleHeight) {
+//    paddleY += downMovement;
+//}
+    
+    
 }
 setInterval(draw, 10);
     
