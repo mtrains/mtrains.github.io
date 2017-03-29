@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="1260" height="630"></canvas>
+<canvas id="myCanvas" width="1260" height="1260"></canvas>
 
 <script>
     
@@ -71,9 +71,9 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath(); 
     
-    if(paddleY <= 104) { //&& paddleY <=180) {
-        paddleY - 3
-    }
+//    if(paddleY <= 104) { //&& paddleY <=180) {
+//        paddleY - 3
+//    }
     
     ctx.beginPath();
     ctx.rect(canvas.width/1.5, 0, 15, 165);
@@ -115,12 +115,12 @@ else if(leftPressed && paddleX > 0) {
 else if(upPressed && paddleY > 0) {
     paddleY -= upMovement;
 } 
-else if(downPressed && paddleY < canvas.height-paddleHeight) {
+else if(downPressed && paddleY < 100) {
     paddleY += downMovement;
 }
-//else if(downPressed && paddleY < canvas.height-paddleHeight) {
-//    paddleY += downMovement;
-//}
+else if(downPressed && paddleY < canvas.height-paddleHeight && paddleY > 180) {
+    paddleY += downMovement;
+}
     
     
 }
