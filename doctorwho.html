@@ -106,10 +106,10 @@ function draw() {
     drawPaddle();
     drawWalls();
     
-if(rightPressed && paddleX < canvas.width/1.5 && paddleY <100 && doorOne = true) {
+if(rightPressed && paddleX < (canvas.width/1.5) && paddleY <100 && doorOne = true) {
     paddleX += rightMovement;
 }
-if(rightPressed && paddleX < canvas.width-paddleWidth && doorOne = false && paddleY < 100) {
+else if(rightPressed && paddleX < canvas.width-paddleWidth && doorOne = false && paddleY < 100) {
     paddleX += rightMovement;
 }
 else if(leftPressed && paddleX > 0) {
