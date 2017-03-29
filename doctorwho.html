@@ -19,7 +19,7 @@ var ctx = canvas.getContext("2d");
 var paddleHeight = 65;
 var paddleWidth = 15;
 var paddleX = 125;
-var paddleY = 450;
+var paddleY = 50;
 var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
@@ -28,7 +28,7 @@ var rightMovement = 3;
 var leftMovement = 3;
 var upMovement = 3;
 var downMovement = 3;
-
+var doorOne = true
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -106,7 +106,10 @@ function draw() {
     drawPaddle();
     drawWalls();
     
-if(rightPressed && paddleX < canvas.width-paddleWidth) {
+if(rightPressed && paddleX < canvas.width/1.5 && paddleY <100 && doorOne = true) {
+    paddleX += rightMovement;
+}
+if(rightPressed && paddleX < canvas.width-paddleWidth && doorOne = false && paddleY < 100) {
     paddleX += rightMovement;
 }
 else if(leftPressed && paddleX > 0) {
