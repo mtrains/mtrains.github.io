@@ -65,7 +65,8 @@ function keyUpHandler(e) {
 }
     
 function drawWalls() {
-   ctx.beginPath();
+   //downMovement
+    ctx.beginPath();
     ctx.rect(0, 165, canvas.width, 15);
     ctx.fillStyle = "gray";
     ctx.fill();
@@ -77,13 +78,16 @@ function drawWalls() {
     else {
         downMovement = 3
     }
+    //rightMovement
     //door 1
     ctx.beginPath();
     ctx.rect(840, 0, 15, 165);
     ctx.fillStyle = "purple";
     ctx.fill();
     ctx.closePath();
-    
+    if(doorOne = true && paddleX >= 825){
+       //work on this 
+    }
 }
     
 function drawPaddle() {
