@@ -71,12 +71,12 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath(); 
     
-//    if(paddleY <= 104) { //&& paddleY <=180) {
-//        paddleY - 3
-//    }
+    if(paddleY <= 104) { //&& paddleY <=180) {
+        paddleY = 3
+    }
     //door 1
     ctx.beginPath();
-    ctx.rect(canvas.width/1.5, 0, 15, 165);
+    ctx.rect(840, 0, 15, 165);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
@@ -106,11 +106,14 @@ function draw() {
     drawPaddle();
     drawWalls();
     
-if(rightPressed && paddleX < (canvas.width/1.5) && paddleY <100 && doorOne = true) {
-    paddleX += rightMovement;
-}
-else if(rightPressed && paddleX < canvas.width-paddleWidth && doorOne = false && paddleY < 100) {
-    paddleX += rightMovement;
+//if(rightPressed && paddleX < 840 && paddleY <100 && doorOne = true) {
+//    paddleX += rightMovement;
+//}
+//else if(rightPressed && paddleX < canvas.width-paddleWidth && doorOne = false && paddleY < 100) {
+//    paddleX += rightMovement;
+//}
+if(rightPressed && paddleX < canvas.width - paddleWidth){
+    paddleX += rightMovement
 }
 else if(leftPressed && paddleX > 0) {
     paddleX -= leftMovement;
@@ -118,12 +121,12 @@ else if(leftPressed && paddleX > 0) {
 else if(upPressed && paddleY > 0) {
     paddleY -= upMovement;
 } 
-else if(downPressed && paddleY < 100) {
+else if(downPressed && paddleY < canvas.height-paddleWidth) {//100
     paddleY += downMovement;
 }
-else if(downPressed && paddleY < canvas.height-paddleHeight && paddleY > 180) {
-    paddleY += downMovement;
-}
+//else if(downPressed && paddleY < canvas.height-paddleHeight && paddleY > 180) {
+//    paddleY += downMovement;
+//}
     
     
 }
