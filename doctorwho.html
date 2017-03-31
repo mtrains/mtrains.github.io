@@ -71,8 +71,11 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath(); 
     
-    if(paddleY <= 104) { //&& paddleY <=180) {
-        paddleY = 3
+    if(paddleY >= 100 && paddleY <=180) { 
+        downMovement = 0
+    }
+    else {
+        downMovement = 3
     }
     //door 1
     ctx.beginPath();
