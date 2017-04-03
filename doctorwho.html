@@ -48,8 +48,10 @@ function keyDownHandler(e) {
         downPressed = true;
     }
     //doorone
-    else if(e.keyCode == 79 && paddleX > 800 && paddleY <= 120 && doorOne = true) {
+    else if(e.keyCode == 79){
+        if(paddleX > 800 && paddleY <= 120 && doorOne = true) {
         doorOne = false
+        }
     }
 }
 
