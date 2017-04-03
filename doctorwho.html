@@ -82,11 +82,14 @@ function drawWalls() {
     //door 1
     ctx.beginPath();
     ctx.rect(840, 0, 15, 165);
-    ctx.fillStyle = "purple";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
-    if(doorOne = true && paddleX >= 825){
-       //work on this 
+    if(doorOne = true && paddleX >= 825 && paddleY <= 120){
+       rightMovement = 0
+    }
+    else if(paddleX < 825 && paddleY <= 120){
+        rightMovement = 3
     }
 }
     
