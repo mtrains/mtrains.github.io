@@ -47,6 +47,10 @@ function keyDownHandler(e) {
     else if(e.keyCode == 83) {
         downPressed = true;
     }
+    //doorone
+    else if(e.keyCode == 79 && paddleX > 800 && paddleY <= 120 && doorOne = true) {
+        doorOne = false
+    }
 }
 
 function keyUpHandler(e) {
@@ -80,15 +84,20 @@ function drawWalls() {
     }
     //rightMovement
     //door 1
+    if (doorOne = true){
     ctx.beginPath();
     ctx.rect(840, 0, 15, 165);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
+    }
     if(doorOne = true && paddleX >= 825 && paddleY <= 120){
        rightMovement = 0
     }
     else if(paddleX < 825 && paddleY <= 120){
+        rightMovement = 3
+    }
+    else if(doorOne = false && paddleY <= 120){
         rightMovement = 3
     }
 }
