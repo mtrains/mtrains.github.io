@@ -49,9 +49,9 @@ function keyDownHandler(e) {
     }
     //doorone
     else if(e.keyCode == 79){
-        if(paddleX > 790 && paddleY <= 120 && doorOne == true) {// 
+        //if(paddleX > 0 && paddleY <= 120 && doorOne == true) {// paddleX > 780
         doorOne = false
-        }
+       // }
     }
 }
 
@@ -93,10 +93,10 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath();
     }
-    if(doorOne = true && paddleX >= 825 && paddleY <= 120){
+    if(doorOne = true && paddleX >= 815 && paddleY <= 120){
        rightMovement = 0
     }
-    else if(paddleX < 825 && paddleY <= 120){
+    else if(paddleX < 815 && paddleY <= 120){
         rightMovement = 3
     }
     else if(doorOne = false && paddleY <= 120){
