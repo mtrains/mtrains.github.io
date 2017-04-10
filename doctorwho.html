@@ -49,10 +49,9 @@ function keyDownHandler(e) {
     }
     //doorone
     else if(e.keyCode == 79){
-        //if(paddleX > 0 && paddleY <= 120 && doorOne == true) {// paddleX > 780
+        if(paddleX > 780 && paddleY <= 120 && doorOne == true) {
         doorOne = false
-        paddleHeight = 100
-       // }
+        }
     }
 }
 
