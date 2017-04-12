@@ -22,6 +22,10 @@ document.addEventListener("keydown", drawKeyDownHandler, false);
 
 	
 
+
+	
+function drawKeyDownHandler(e) {
+	
 ctx.beginPath();
 ctx.rect(0, 0, 1200, 600);
 ctx.fillStyle = "white";
@@ -30,9 +34,7 @@ ctx.closePath();
 	
 ctx.font = "160px Arial";
 ctx.fillStyle = "red";
-ctx.fillText("Mad Libs!!!!", 300, 200);
-	
-function drawKeyDownHandler(e) {
+ctx.fillText("Mad Libs!!!!", 300, 200);	
 	
 if(e.keyCode == 68) {
 var video = prompt ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so. (See website at bottom of the page.) Enter stop below to pause.")
