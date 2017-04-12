@@ -30,7 +30,7 @@ var upMovement = 3;
 var downMovement = 3;
 var doorOne = true
 var tardisX = 1000
-var tardisY = 50
+var tardisY = 15
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -116,7 +116,7 @@ function drawWalls() {
 function drawPaddle() {
     
     ctx.beginPath();
-    ctx.rect(tardisX, tardisY, 15, 150);
+    ctx.rect(tardisX, tardisY, 75, 150);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
