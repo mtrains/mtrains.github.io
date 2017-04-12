@@ -18,7 +18,7 @@
 	//var rightPressed = false;
 	//var leftPressed = false;
 	
-document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keydown", drawKeyDownHandler, false);
 
 	
 
@@ -29,10 +29,10 @@ ctx.fill();
 ctx.closePath();
 	
 ctx.font = "160px Arial";
-ctx.fillStyle = "blue";
+ctx.fillStyle = "red";
 ctx.fillText("Mad Libs!!!!", 300, 200);
 	
-function keyDownHandler(e) {
+function drawKeyDownHandler(e) {
 	
 if(e.keyCode == 68) {
 var video = prompt ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so. (See website at bottom of the page.) Enter stop below to pause.")
@@ -62,6 +62,10 @@ ctx.fillText("Greetings, "+one+" of Dipil. I am Agent "+two+" of the "+three+"Or
     if(e.keyCode == 32) {
         document.location.reload();
     }
+}
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	drawKeyDownHandler();
 }
 }
 
