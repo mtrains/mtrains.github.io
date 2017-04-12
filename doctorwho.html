@@ -73,6 +73,11 @@ function keyUpHandler(e) {
 }
     
 function drawWalls() {
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
    //downMovement
     ctx.beginPath();
     ctx.rect(0, 165, canvas.width, 15);
@@ -123,6 +128,22 @@ function drawPaddle() {
     
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX, paddleY);
+    ctx.lineTo(paddleX, paddleY+paddleHeight);
+    ctx.lineTo(paddleX+12,paddleY+paddleHeight);
+    ctx.fillStyle = "brown";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX+paddleWidth, paddleY);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+paddleHeight);
+    ctx.lineTo(paddleX+3,paddleY+paddleHeight);
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
@@ -140,8 +161,9 @@ function drawPaddle() {
     
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawPaddle();
     drawWalls();
+    drawPaddle();
+    
     
 //if(rightPressed && paddleX < 840 && paddleY <100 && doorOne = true) {
 //    paddleX += rightMovement;
