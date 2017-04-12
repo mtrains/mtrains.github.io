@@ -29,6 +29,8 @@ var leftMovement = 3;
 var upMovement = 3;
 var downMovement = 3;
 var doorOne = true
+var tardisX = 1000
+var tardisY = 50
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -112,6 +114,13 @@ function drawWalls() {
 }
     
 function drawPaddle() {
+    
+    ctx.beginPath();
+    ctx.rect(tardisX, tardisY, 75, 350);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "brown";
