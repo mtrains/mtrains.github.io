@@ -127,6 +127,20 @@ function drawPaddle() {
     ctx.closePath();
     
     ctx.beginPath();
+    ctx.rect(tardisX+1, tardisY+1, 73, 10);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.font = "10px Arial";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("POLICE", tardisX+3, tardisY+1);
+    
+    ctx.font = "10px Arial";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("BOX", tardisX+52, tardisY+1);
+    
+    ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "white";
     ctx.fill();
