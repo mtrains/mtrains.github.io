@@ -16,7 +16,7 @@
     
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var paddleHeight = 65;
+var paddleHeight = 55;
 var paddleWidth = 15;
 var paddleX = 125;
 var paddleY = 50;
@@ -161,6 +161,18 @@ function drawPaddle() {
     ctx.lineTo(paddleX+7, paddleY+3);
     ctx.lineTo(paddleX+12,paddleY+5);
     ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(paddleX+1, paddleY+paddleHeight, 6, 30);
+    ctx.fillStyle = "brown";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(paddleX+8, paddleY+paddleHeight, 6, 30);
+    ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
 }
