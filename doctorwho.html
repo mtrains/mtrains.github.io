@@ -33,6 +33,8 @@ var tardisX = 1000
 var tardisY = 15
 var doctor = true
 var tardis = false
+var tardisTime = 0
+var timeGoesByTardis = 1
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -63,9 +65,11 @@ function keyDownHandler(e) {
         if(tardis == false){
             tardis = true
             doctor = false
+            tardisTime += timeGoesByTardis
         }
-        if(tardis == true){
+        if(tardis == true && tardisTime > 100){
             tardis = false
+            tardisTime = 0
             if(doctor == false){
                 paddleX = tardisX
                 paddleY = tardisY
