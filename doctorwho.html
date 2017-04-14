@@ -59,6 +59,7 @@ function keyDownHandler(e) {
         }
     }
     else if(e.keyCode == 84){
+        if(paddleX >= tardisX && paddleX <= tardisX+75 && paddleY >= tardisY && paddleY <= tardisY+150){
         if(tardis == false){
             tardis = true
             doctor = false
@@ -72,6 +73,7 @@ function keyDownHandler(e) {
             }
                 
         }
+    }
     }
 }
 
