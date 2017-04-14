@@ -93,13 +93,13 @@ function keyUpHandler(e) {
 function drawWalls() {
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
    //downMovement
     ctx.beginPath();
     ctx.rect(0, 165, canvas.width, 15);
-    ctx.fillStyle = "gray";
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath(); 
     
