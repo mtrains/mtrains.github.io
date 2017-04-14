@@ -125,13 +125,13 @@ function drawWalls() {
     //ctx.fill();
     //ctx.closePath();
     //}
-    if(doorOne == false && paddleY <= 120){
+    if(doorOne == false && paddleY <= 118){
         rightMovement = 3
     }
-    else if(doorOne == true && paddleX >= 825 && paddleY <= 120){
+    else if(doorOne == true && paddleX >= 825 && paddleY <= 118){
        rightMovement = 0
     }
-    else if(doorOne == true && paddleX < 825 && paddleY <= 120){
+    else if(doorOne == true && paddleX < 825 && paddleY <= 118){
         rightMovement = 3
     }
 }
