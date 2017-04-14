@@ -147,6 +147,22 @@ function drawPaddle() {
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX+3, paddleY);
+    ctx.lineTo(paddleX+8, paddleY+3);
+    ctx.lineTo(paddleX+3,paddleY+5);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX+12, paddleY);
+    ctx.lineTo(paddleX+7, paddleY+3);
+    ctx.lineTo(paddleX+12,paddleY+5);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
 }
     
   //ctx.beginPath();
