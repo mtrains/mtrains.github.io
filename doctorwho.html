@@ -31,6 +31,8 @@ var downMovement = 3;
 var doorOne = true
 var tardisX = 1000
 var tardisY = 15
+var doctor = true
+var tardis = false
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -49,10 +51,26 @@ function keyDownHandler(e) {
     else if(e.keyCode == 83) {
         downPressed = true;
     }
-    //doorone
+    //sonic
     else if(e.keyCode == 79){
+        //doorOne
         if(paddleX > 780 && paddleY <= 120 && doorOne == true) {
         doorOne = false
+        }
+    }
+    else if(e.keyCode == 84){
+        if(tardis == false){
+            tardis == true
+            doctor == false
+        }
+        if(tardis == true){
+            tardis == false
+            if(doctor == false){
+                paddleX = tardisX
+                paddleY = tardisY
+                doctor == true
+            }
+                
         }
     }
 }
@@ -145,7 +163,7 @@ function drawPaddle() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
-    
+if (doctor == true){
     ctx.beginPath();
     ctx.moveTo(paddleX, paddleY);
     ctx.lineTo(paddleX, paddleY+paddleHeight);
@@ -189,6 +207,7 @@ function drawPaddle() {
     ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
+}
 }
     
   //ctx.beginPath();
