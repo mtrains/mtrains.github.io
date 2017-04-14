@@ -60,15 +60,15 @@ function keyDownHandler(e) {
     }
     else if(e.keyCode == 84){
         if(tardis == false){
-            tardis == true
-            doctor == false
+            tardis = true
+            doctor = false
         }
         if(tardis == true){
-            tardis == false
+            tardis = false
             if(doctor == false){
                 paddleX = tardisX
                 paddleY = tardisY
-                doctor == true
+                doctor = true
             }
                 
         }
@@ -157,13 +157,13 @@ function drawPaddle() {
     ctx.font = "10px Arial";
     ctx.fillStyle = "yellow";
     ctx.fillText("BOX", tardisX+50, tardisY+10);
-    
+if (doctor == true){    
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
-if (doctor == true){
+
     ctx.beginPath();
     ctx.moveTo(paddleX, paddleY);
     ctx.lineTo(paddleX, paddleY+paddleHeight);
