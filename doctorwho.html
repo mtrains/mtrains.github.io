@@ -65,7 +65,7 @@ function keyDownHandler(e) {
         if(tardis == false){
             tardis = true
             doctor = false
-            tardisTime += timeGoesByTardis
+            
         }
         if(tardis == true && tardisTime > 100){
             tardis = false
@@ -97,6 +97,10 @@ function keyUpHandler(e) {
 }
     
 function drawWalls() {
+    
+    if(tardis == true){
+        tardisTime += timeGoesByTardis
+    }
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "gray";
