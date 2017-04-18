@@ -24,6 +24,10 @@ var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
+var rightPressedT = false;
+var leftPressedT = false;
+var upPressedT = false;
+var downPressedT = false;
 var rightMovement = 3;
 var leftMovement = 3;
 var upMovement = 3;
@@ -42,16 +46,36 @@ document.addEventListener("keyup", keyUpHandler, false);
     
 function keyDownHandler(e) {
     if(e.keyCode == 68) {
-        rightPressed = true;
+        if(doctor == true && tardis == false){
+            rightPressed = true;
+        }
+        else if(tardis == true && doctor == false){
+            rightPressedT = true;
+        }
     }
     else if(e.keyCode == 65) {
-        leftPressed = true;
+        if(doctor == true && tardis == false){
+            leftPressed = true;
+        }
+        else if(tardis == true && doctor == false){
+            leftPressedT = true;
+        }
     }
     else if(e.keyCode == 87) {
-        upPressed = true;
+        if(doctor == true && tardis == false){
+            upPressed = true;
+        }
+        else if(tardis == true && doctor == false){
+            upPressedT = true;
+        }
     }
     else if(e.keyCode == 83) {
-        downPressed = true;
+        if(doctor == true && tardis == false){
+            downPressed = true;
+        }
+        else if(tardis == true && doctor == false){
+            downPressed = true;
+        }
     }
     //sonic
     else if(e.keyCode == 79){
@@ -60,6 +84,7 @@ function keyDownHandler(e) {
         doorOne = false
         }
     }
+    //tardis
     else if(e.keyCode == 84){
         if(paddleX >= tardisX && paddleX <= tardisX+75 && paddleY >= tardisY && paddleY <= tardisY+150){
         if(tardis == false){
@@ -82,17 +107,49 @@ function keyDownHandler(e) {
 }
 
 function keyUpHandler(e) {
+    //if(e.keyCode == 68) {
+    //    rightPressed = false;
+    //}
+    //else if(e.keyCode == 65) {
+    //    leftPressed = false;
+    //}
+    //else if(e.keyCode == 87) {
+    //    upPressed = false;
+    //}
+    //else if(e.keyCode == 83) {
+    //    downPressed = false;
+    //}
     if(e.keyCode == 68) {
-        rightPressed = false;
+        if(doctor == true && tardis == false){
+            rightPressed = false;
+        }
+        else if(tardis == true && doctor == false){
+            rightPressedT = false;
+        }
     }
     else if(e.keyCode == 65) {
-        leftPressed = false;
+        if(doctor == true && tardis == false){
+            leftPressed = false;
+        }
+        else if(tardis == true && doctor == false){
+            leftPressedT = false;
+        }
     }
     else if(e.keyCode == 87) {
-        upPressed = false;
+        if(doctor == true && tardis == false){
+            upPressed = false;
+        }
+        else if(tardis == true && doctor == false){
+            upPressedT = false;
+        }
     }
     else if(e.keyCode == 83) {
-        downPressed = false;
+        if(doctor == true && tardis == false){
+            downPressed = false;
+        }
+        else if(tardis == true && doctor == false){
+            downPressed = false;
+        }
     }
 }
     
@@ -246,8 +303,21 @@ else if(leftPressed && paddleX > 0) {
 else if(upPressed && paddleY > 0) {
     paddleY -= upMovement;
 } 
-else if(downPressed && paddleY < canvas.height-paddleWidth) {//100
+else if(downPressed && paddleY < canvas.height-paddleWidth) {
     paddleY += downMovement;
+}
+    
+if(rightPressedT && tardisX < canvas.width - 75){
+    tardisX += rightMovementT
+}
+else if(leftPressedT && tardisX > 0) {
+    tardisX -= leftMovementT;
+}  
+else if(upPressedT && tardisY > 0) {
+    tardisY -= upMovementT;
+} 
+else if(downPressedT && tardisY < canvas.height-150) {
+    tardisY += downMovementT;
 }
 
     
