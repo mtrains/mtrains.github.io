@@ -235,7 +235,7 @@ if (doctor == true){
     ctx.moveTo(paddleX, paddleY);
     ctx.lineTo(paddleX, paddleY+paddleHeight);
     ctx.lineTo(paddleX+12,paddleY+paddleHeight);
-    ctx.fillStyle = "brown";
+    ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     
@@ -243,7 +243,7 @@ if (doctor == true){
     ctx.moveTo(paddleX+paddleWidth, paddleY);
     ctx.lineTo(paddleX+paddleWidth, paddleY+paddleHeight);
     ctx.lineTo(paddleX+3,paddleY+paddleHeight);
-    ctx.fillStyle = "brown";
+    ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     
@@ -251,7 +251,7 @@ if (doctor == true){
     ctx.moveTo(paddleX+3, paddleY);
     ctx.lineTo(paddleX+8, paddleY+3);
     ctx.lineTo(paddleX+3,paddleY+5);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#cc0000";
     ctx.fill();
     ctx.closePath();
     
@@ -259,19 +259,19 @@ if (doctor == true){
     ctx.moveTo(paddleX+12, paddleY);
     ctx.lineTo(paddleX+7, paddleY+3);
     ctx.lineTo(paddleX+12,paddleY+5);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#cc0000";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.rect(paddleX+1, paddleY+paddleHeight, 6, 30);
-    ctx.fillStyle = "#8B4513";
+    ctx.fillStyle = "#5a2d0c";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.rect(paddleX+8, paddleY+paddleHeight, 6, 30);
-    ctx.fillStyle = "#8B4513";
+    ctx.fillStyle = "#5a2d0c";
     ctx.fill();
     ctx.closePath();
 }
