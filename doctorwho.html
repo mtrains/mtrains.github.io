@@ -74,7 +74,12 @@ function keyDownHandler(e) {
             downPressed = true;
         }
         else if(tardis == true && doctor == false){
-            downPressed = true;
+            downPressedT = true;
+            ctx.beginPath();
+ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "green";
+ctx.fill();
+ctx.closePath();
         }
     }
     //sonic
@@ -91,6 +96,7 @@ function keyDownHandler(e) {
             tardis = true
             doctor = false
             
+        } 
         }
         if(tardis == true && tardisTime > 50){
             tardis = false
@@ -103,7 +109,7 @@ function keyDownHandler(e) {
                 
         }
     }
-    }
+   
 }
 
 function keyUpHandler(e) {
@@ -148,7 +154,12 @@ function keyUpHandler(e) {
             downPressed = false;
         }
         else if(tardis == true && doctor == false){
-            downPressed = false;
+            downPressedT = false;
+            ctx.beginPath();
+ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "chocolate";
+ctx.fill();
+ctx.closePath();
         }
     }
 }
