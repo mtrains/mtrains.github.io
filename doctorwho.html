@@ -279,7 +279,7 @@ if (doctor == true){
     ctx.closePath();
     
     ctx.beginPath();
-ctx.arc(paddleX+7, paddleY-7, 7, 0, Math.PI*2, false);
+ctx.arc(paddleX+8, paddleY-7, 7, 0, Math.PI*2, false);
 ctx.fillStyle = "#ffc999";
 ctx.fill();
 ctx.closePath();
@@ -317,18 +317,18 @@ else if(downPressed && paddleY < canvas.height-paddleWidth) {
     paddleY += downMovement;
 }
     //tardis
-if(rightPressedT && tardisX < canvas.width - 75){
-    tardisX += rightMovementT
+if(rightPressedT){// && tardisX < canvas.width - 75
+    tardisX += 3;
     tardisColor = "purple"
 }
-else if(leftPressedT && tardisX > 0) {
-    tardisX -= leftMovementT;
+else if(leftPressedT ) {//&& tardisX > 0
+    tardisX -= 3;
 }  
-else if(upPressedT && tardisY > 0) {
-    tardisY -= upMovementT;
+else if(upPressedT ) {//&& tardisY > 0
+    tardisY -= 3;
 } 
-else if(downPressedT && tardisY < canvas.height-150) {
-    tardisY += downMovementT;
+else if(downPressedT ) {//&& tardisY < canvas.height-150
+    tardisY += 3;
 }
 
     
