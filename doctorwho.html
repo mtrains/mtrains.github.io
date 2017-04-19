@@ -277,6 +277,12 @@ if (doctor == true){
     ctx.fillStyle = "#5a2d0c";
     ctx.fill();
     ctx.closePath();
+    
+    ctx.beginPath();
+ctx.arc(paddleX+7, paddleY-7, 7, 0, Math.PI*2, false);
+ctx.fillStyle = "#ffc999";
+ctx.fill();
+ctx.closePath();
     //#ffc999 is head color
 }
 }
