@@ -257,6 +257,18 @@ function drawPaddle() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(tardisX+3, tardisY+14, 7, 14);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(tardisX+11, tardisY+14, 7, 14);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
 if (doctor == true){    
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
