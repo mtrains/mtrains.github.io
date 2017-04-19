@@ -322,7 +322,7 @@ if(rightPressed && paddleX < canvas.width - paddleWidth){
 else if(leftPressed && paddleX > 0) {
     paddleX -= leftMovement;
 }  
-else if(upPressed && paddleY > 0) {
+else if(upPressed && paddleY > 15) {
     paddleY -= upMovement;
 } 
 else if(downPressed && paddleY < canvas.height-paddleWidth) {
