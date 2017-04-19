@@ -172,9 +172,10 @@ function drawWalls() {
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath(); 
-    
+    //first wall
     if(paddleY >= 80 && paddleY <=180) { 
         downMovement = 0
+        
     }
     else {
         downMovement = 3
@@ -188,6 +189,15 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath();
     }
+    //upMovement
+    //first wall
+    if(paddleY == 180){
+        upMovement = 0
+    }
+    else{
+        upMovement = 3
+    }
+    
     //else if (doorOne == false){
     //ctx.beginPath();
     //ctx.rect(840, 0, 15, 165);
