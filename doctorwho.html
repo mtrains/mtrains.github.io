@@ -39,7 +39,7 @@ var doctor = true
 var tardis = false
 var tardisTime = 0
 var timeGoesByTardis = 1
-var tardisColor = "blue" 
+
     
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -279,11 +279,12 @@ if (doctor == true){
     ctx.closePath();
     
     ctx.beginPath();
-ctx.arc(paddleX+8, paddleY-7, 7, 0, Math.PI*2, false);
+ctx.arc(paddleX+7, paddleY-7, 7.5, 0, Math.PI*2, false);
 ctx.fillStyle = "#ffc999";
 ctx.fill();
 ctx.closePath();
     //#ffc999 is head color
+    //#9999ff is dim tardis color
 }
 }
     
@@ -299,8 +300,9 @@ ctx.closePath();
     
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawWalls();
-    drawPaddle();
+     drawPaddle();
+     drawWalls();
+   
     
     
 //doctor
@@ -317,17 +319,17 @@ else if(downPressed && paddleY < canvas.height-paddleWidth) {
     paddleY += downMovement;
 }
     //tardis
-if(rightPressedT){// && tardisX < canvas.width - 75
+if(rightPressedT && tardisX < canvas.width - 75){//
     tardisX += 3;
-    tardisColor = "purple"
+    
 }
-else if(leftPressedT ) {//&& tardisX > 0
+else if(leftPressedT && tardisX > 0) {//
     tardisX -= 3;
 }  
-else if(upPressedT ) {//&& tardisY > 0
+else if(upPressedT && tardisY > 0) {//
     tardisY -= 3;
 } 
-else if(downPressedT ) {//&& tardisY < canvas.height-150
+else if(downPressedT && tardisY < canvas.height-150) {//
     tardisY += 3;
 }
 
