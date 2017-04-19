@@ -300,9 +300,9 @@ ctx.closePath();
     
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-     drawPaddle();
+     
      drawWalls();
-   
+     drawPaddle();
     
     
 //doctor
@@ -319,7 +319,7 @@ else if(downPressed && paddleY < canvas.height-paddleWidth) {
     paddleY += downMovement;
 }
     //tardis
-if(rightPressedT && tardisX < canvas.width - 75){//
+if(rightPressedT && tardisX < canvas.width-75){//
     tardisX += 3;
     
 }
