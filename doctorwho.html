@@ -239,7 +239,7 @@ function tardisDontLandHere() {
 }
     
 function drawPaddle() {
-    if(tardisY >= 16){
+    if(tardis == true){
         ctx.beginPath();
         ctx.rect(tardisX, tardisY, 75, 150);
         ctx.fillStyle = "red";
