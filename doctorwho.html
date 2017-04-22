@@ -226,17 +226,7 @@ function drawWalls() {
     }
 }
     
-function tardisDontLandHere() {
-    if(tardisY >= 16 ){ //&& tardisY <= 179 && tardis == true
-        tardisBlue = "red"//#9999ff
-        tardisBlack = "gray"
-        
-    }
-    else{
-        tardisBlue = "blue"
-        tardisBlack = "black"
-    }
-}
+
     
 function drawPaddle() {
     
@@ -246,7 +236,7 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
     
-    if(tardis == true){
+    if(tardisY >= 16 && tardisY <= 179 && tardis == true){
         ctx.beginPath();
         ctx.rect(tardisX, tardisY, 75, 150);
         ctx.fillStyle = "red";
