@@ -239,7 +239,13 @@ function tardisDontLandHere() {
 }
     
 function drawPaddle() {
-    
+    if(tardisBlue = "red"){
+        ctx.beginPath();
+    ctx.rect(tardisX, tardisY, 75, 150);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+    }
     ctx.beginPath();
     ctx.rect(tardisX, tardisY, 75, 150);
     ctx.fillStyle = tardisBlue;
