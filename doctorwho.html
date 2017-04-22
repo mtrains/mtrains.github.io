@@ -239,6 +239,13 @@ function tardisDontLandHere() {
 }
     
 function drawPaddle() {
+    
+    ctx.beginPath();
+    ctx.rect(tardisX, tardisY, 75, 150);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    
     if(tardis == true){
         ctx.beginPath();
         ctx.rect(tardisX, tardisY, 75, 150);
@@ -246,12 +253,6 @@ function drawPaddle() {
         ctx.fill();
         ctx.closePath();
     }
-    ctx.beginPath();
-    ctx.rect(tardisX, tardisY, 75, 150);
-    ctx.fillStyle = "blue";
-    ctx.fill();
-    ctx.closePath();
-    
     ctx.beginPath();
     ctx.rect(tardisX+1, tardisY+1, 73, 10);
     ctx.fillStyle = tardisBlack;
