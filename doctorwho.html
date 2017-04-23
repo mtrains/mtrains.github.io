@@ -102,6 +102,7 @@ function keyDownHandler(e) {
         } 
         }
         if(tardis == true && tardisTime > 50){
+            if(canHeComeOut == true){
             tardis = false
             tardisTime = 0
             if(doctor == false){
@@ -114,6 +115,7 @@ function keyDownHandler(e) {
                 downPressedT = false
             }
                 
+        }
         }
     }
    
@@ -351,7 +353,7 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
     
-    if(tardisY >= 16 && tardisY <= 179 && tardis == true){
+    if(canHeComeOut == false){
             ctx.beginPath();
     ctx.rect(tardisX+7, tardisY+17, 8, 14);
     ctx.fillStyle = "gray";
