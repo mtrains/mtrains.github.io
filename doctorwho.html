@@ -226,7 +226,16 @@ function drawWalls() {
         rightMovement = 3
     }
 }
+function tardisHitWall() {
+    if (tardisY >= 16 && tardisY <= 179 && tardis == true){
+        canHeComeOut = false
+    }
+    else{
+        canHeComeOut = true
+    }
     
+    
+}
 
     
 function drawPaddle() {
@@ -237,7 +246,7 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
     
-    if(tardisY >= 16 && tardisY <= 179 && tardis == true){
+    if(canHeComeOut == false){
         ctx.beginPath();
         ctx.rect(tardisX, tardisY, 75, 150);
         ctx.fillStyle = "#9999ff";
