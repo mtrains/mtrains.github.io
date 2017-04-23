@@ -229,8 +229,9 @@ function drawWalls() {
     }
 }
 function tardisHitWall() {
-    if(tardisY >= 16 && tardisY <= 179 && tardis == true){
+    if(tardisY >= 16 ){//&& tardisY <= 179 && tardis == true
         canHeComeOut = false
+        tardisY = 599
     }
     else{
         canHeComeOut = true
