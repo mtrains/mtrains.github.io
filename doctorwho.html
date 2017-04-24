@@ -361,6 +361,12 @@ function drawPaddle() {
     ctx.closePath();
     
     ctx.beginPath();
+    ctx.rect(tardisX+9, tardisY+50, 23, 29);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
     ctx.rect(tardisX+40, tardisY+49, 29, 31);
     ctx.fillStyle = "#0000cc";
     ctx.fill();
