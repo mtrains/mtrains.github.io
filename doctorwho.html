@@ -250,6 +250,17 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
     
+    ctx.beginPath();
+    ctx.rect(tardisX+3, tardisY-5, 69, 5);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(tardisX-2, tardisY+1, 79, 10);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
     
     ctx.beginPath();
     ctx.rect(tardisX+1, tardisY+1, 73, 10);
@@ -301,19 +312,19 @@ function drawPaddle() {
     
     ctx.beginPath();
     ctx.rect(tardisX+7, tardisY+17, 8, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.rect(tardisX+16, tardisY+17, 9, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.rect(tardisX+26, tardisY+17, 8, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
@@ -325,7 +336,7 @@ function drawPaddle() {
     
     ctx.beginPath();
     ctx.rect(tardisX+16, tardisY+32, 9, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
@@ -337,19 +348,19 @@ function drawPaddle() {
     
      ctx.beginPath();
     ctx.rect(tardisX+41, tardisY+17, 8, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.rect(tardisX+50, tardisY+17, 9, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.rect(tardisX+60, tardisY+17, 8, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
@@ -361,7 +372,7 @@ function drawPaddle() {
     
     ctx.beginPath();
     ctx.rect(tardisX+50, tardisY+32, 9, 14);
-    ctx.fillStyle = tardisBlack;
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
@@ -376,9 +387,9 @@ function drawPaddle() {
     ctx.strokeStyle = tardisBlack;
     ctx.stroke();
     ctx.closePath();
-    
+//sign    
     ctx.beginPath();
-    ctx.rect(tardisX+9, tardisY+50, 23, 29);
+    ctx.rect(tardisX+9, tardisY+50, 23, 28);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
@@ -388,7 +399,7 @@ function drawPaddle() {
     ctx.strokeStyle = tardisBlack;
     ctx.stroke();
     ctx.closePath();
-    
+//circle    
     ctx.beginPath();
 ctx.arc(tardisX+55, tardisY+64, 4, 0, Math.PI*2, false);
 ctx.fillStyle = "white";
