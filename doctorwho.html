@@ -249,13 +249,7 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
     
-    if(canHeComeOut == false){
-        ctx.beginPath();
-        ctx.rect(tardisX, tardisY, 75, 150);
-        ctx.fillStyle = "#9999ff";
-        ctx.fill();
-        ctx.closePath();
-    }
+    
     ctx.beginPath();
     ctx.rect(tardisX+1, tardisY+1, 73, 10);
     ctx.fillStyle = tardisBlack;
@@ -269,6 +263,28 @@ function drawPaddle() {
     ctx.font = "10px Arial";
     ctx.fillStyle = "yellow";
     ctx.fillText("BOX", tardisX+50, tardisY+10);
+    
+    if(canHeComeOut == false){
+        ctx.beginPath();
+        ctx.rect(tardisX, tardisY, 75, 150);
+        ctx.fillStyle = "#9999ff";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+    ctx.rect(tardisX+1, tardisY+1, 73, 10);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.font = "10px Arial";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("POLICE", tardisX+3, tardisY+10);
+    
+    ctx.font = "10px Arial";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("BOX", tardisX+50, tardisY+10);
+    }
     
     ctx.beginPath();
     ctx.rect(tardisX+6, tardisY+16, 29, 31);
@@ -353,11 +369,11 @@ function drawPaddle() {
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath();
-    
+    //tardisX+6, tardisY+49, 29, 31
     ctx.beginPath();
-    ctx.rect(tardisX+6, tardisY+49, 29, 31);
-    ctx.fillStyle = "#0000cc";
-    ctx.fill();
+    ctx.rect(160, 10, 100, 40);
+    ctx.strokeStyle = "rgb(0,0,0)";
+    ctx.stroke();
     ctx.closePath();
     
     ctx.beginPath();
@@ -366,36 +382,8 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
     
-    ctx.beginPath();
-    ctx.rect(tardisX+40, tardisY+49, 29, 31);
-    ctx.fillStyle = "#0000cc";
-    ctx.fill();
-    ctx.closePath();
     
-    ctx.beginPath();
-    ctx.rect(tardisX+6, tardisY+82, 29, 31);
-    ctx.fillStyle = "#0000cc";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.rect(tardisX+40, tardisY+82, 29, 31);
-    ctx.fillStyle = "#0000cc";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.rect(tardisX+6, tardisY+115, 29, 31);
-    ctx.fillStyle = "#0000cc";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.rect(tardisX+40, tardisY+115, 29, 31);
-    ctx.fillStyle = "#0000cc";
-    ctx.fill();
-    ctx.closePath();
-    
+    //	
     if(canHeComeOut == false){
             ctx.beginPath();
     ctx.rect(tardisX+7, tardisY+17, 8, 14);
@@ -468,6 +456,8 @@ function drawPaddle() {
     ctx.fillStyle = "#d9d9d9";
     ctx.fill();
     ctx.closePath();
+        
+    
     }
     
 if (doctor == true){    
