@@ -263,6 +263,20 @@ function drawPaddle() {
     ctx.closePath();
     
     ctx.beginPath();
+    ctx.rect(tardisX+35, tardisY-13, 5, 5);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(tardisX+34, tardisY-13);
+    ctx.lineTo(tardisX+41, tardisY-13);
+    ctx.lineTo(tardisX+37, tardisY-15);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
     ctx.rect(tardisX-2, tardisY+1, 79, 10);
     ctx.fillStyle = "blue";
     ctx.fill();
@@ -304,6 +318,20 @@ function drawPaddle() {
     ctx.beginPath();
     ctx.rect(tardisX-2, tardisY+1, 79, 10);
     ctx.fillStyle = "9999ff";
+    ctx.fill();
+    ctx.closePath();
+        
+        ctx.beginPath();
+    ctx.rect(tardisX+35, tardisY-13, 5, 5);
+    ctx.fillStyle = "#b3feff";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(tardisX+34, tardisY-13);
+    ctx.lineTo(tardisX+41, tardisY-13);
+    ctx.lineTo(tardisX+37, tardisY-15);
+    ctx.fillStyle = "#9999ff";
     ctx.fill();
     ctx.closePath();
         
