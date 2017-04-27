@@ -42,6 +42,7 @@ var timeGoesByTardis = 1
 var tardisBlue = "blue"
 var tardisBlack = "rgb(0,0,0)"
 var canHeComeOut = true
+var sonic = false
 
     
 document.addEventListener("keydown", keyDownHandler, false);
@@ -83,6 +84,7 @@ function keyDownHandler(e) {
     }
     //sonic
     else if(e.keyCode == 79){
+        sonic = true
         //doorOne
         if(paddleX > 780 && paddleY <= 120 && doorOne == true) {
         doorOne = false
@@ -91,6 +93,7 @@ function keyDownHandler(e) {
     //tardis
     else if(e.keyCode == 84){
         if(paddleX >= tardisX && paddleX <= tardisX+75 && paddleY >= tardisY && paddleY <= tardisY+150){
+            sonic = false
         if(tardis == false){
             tardis = true
             doctor = false
@@ -103,6 +106,7 @@ function keyDownHandler(e) {
         }
         if(tardis == true && tardisTime > 50){
             if(canHeComeOut == true){
+            sonic = false
             tardis = false
             tardisTime = 0
             if(doctor == false){
@@ -570,6 +574,19 @@ ctx.closePath();
     }
     
 if (doctor == true){    
+    
+    ctx.beginPath();
+    ctx.rect(paddleX-2, paddleY, paddleWidth+4, 8);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(paddleX-6, paddleY, 5, paddleHeight/1.5);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "white";
@@ -619,6 +636,9 @@ if (doctor == true){
     ctx.fillStyle = "#5a2d0c";
     ctx.fill();
     ctx.closePath();
+    
+    
+    
     
     ctx.beginPath();
 ctx.arc(paddleX+7, paddleY-7, 7.5, 0, Math.PI*2, false);
