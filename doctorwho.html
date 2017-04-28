@@ -574,25 +574,47 @@ ctx.closePath();
     }
     
 if (doctor == true){    
-    
+    //arms
     ctx.beginPath();
-    ctx.rect(paddleX-2, paddleY, paddleWidth+4, 8);
+    ctx.rect(paddleX-2, paddleY+3, paddleWidth+4, 5);
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(paddleX-6, paddleY, 5, paddleHeight/1.5);
+    ctx.moveTo(paddleX, paddleY);
+    ctx.lineTo(paddleX, paddleY+3);
+    ctx.lineTo(paddleX-6,paddleY+3);
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     
+    ctx.beginPath();
+    ctx.moveTo(paddleX+paddleWidth, paddleY);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+3);
+    ctx.lineTo(paddleX+21 ,paddleY+3);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(paddleX-6, paddleY+3, 5, paddleHeight/1.6);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(paddleX+16, paddleY+3, 5, paddleHeight/1.6);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    //body
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
-
+//coat
     ctx.beginPath();
     ctx.moveTo(paddleX, paddleY);
     ctx.lineTo(paddleX, paddleY+paddleHeight);
@@ -608,7 +630,7 @@ if (doctor == true){
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
-    
+//bowtie    
     ctx.beginPath();
     ctx.moveTo(paddleX+3, paddleY);
     ctx.lineTo(paddleX+8, paddleY+3);
@@ -624,7 +646,7 @@ if (doctor == true){
     ctx.fillStyle = "#cc0000";
     ctx.fill();
     ctx.closePath();
-    
+ //legs   
     ctx.beginPath();
     ctx.rect(paddleX+1, paddleY+paddleHeight, 6, 30);
     ctx.fillStyle = "#5a2d0c";
@@ -639,7 +661,7 @@ if (doctor == true){
     
     
     
-    
+//head    
     ctx.beginPath();
 ctx.arc(paddleX+7, paddleY-7, 7.5, 0, Math.PI*2, false);
 ctx.fillStyle = "#ffc999";
