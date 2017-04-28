@@ -226,10 +226,10 @@ function drawWalls() {
     if(doorOne == false && paddleY <= 118){
         rightMovement = 3
     }
-    else if(doorOne == true && paddleX >= 825 && paddleY <= 118){
+    else if(doorOne == true && paddleX >= 819 && paddleY <= 118){
        rightMovement = 0
     }
-    else if(doorOne == true && paddleX < 825 && paddleY <= 118){
+    else if(doorOne == true && paddleX < 819 && paddleY <= 118){
         rightMovement = 3
     }
 }
@@ -621,7 +621,7 @@ if(sonic == true){
     else if(sonicRight == false){
         ctx.beginPath();
         ctx.rect(paddleX-16, paddleY+27, 15, 5);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = "chocolate";
         ctx.fill();
         ctx.closePath();
     }
