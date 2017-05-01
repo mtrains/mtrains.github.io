@@ -226,10 +226,10 @@ function drawWalls() {
     if(doorOne == false && paddleY <= 118){
         rightMovement = 3
     }
-    else if(doorOne == true && paddleX >= 819 && paddleY <= 118){
+    else if(doorOne == true && paddleX >= 817 && paddleY <= 118){
        rightMovement = 0
     }
-    else if(doorOne == true && paddleX < 819 && paddleY <= 118){
+    else if(doorOne == true && paddleX < 817 && paddleY <= 118){
         rightMovement = 3
     }
 }
@@ -716,11 +716,21 @@ function draw() {
     
     
 //doctor
-if(rightPressed && paddleX < canvas.width - paddleWidth){
+if(rightPressed && sonic == true && paddleX < canvas.width - 36){
     paddleX += rightMovement
     sonicRight = true
 }
-else if(leftPressed && paddleX > 0) {
+    
+else if(rightPressed && sonic == false && paddleX < canvas.width - 21){
+    paddleX += rightMovement
+    sonicRight = true
+}
+else if(leftPressed && sonic == true && paddleX > 21) {
+    paddleX -= leftMovement;
+    sonicRight = false
+}  
+    
+else if(leftPressed && sonic == false && paddleX > 6) {
     paddleX -= leftMovement;
     sonicRight = false
 }  
@@ -738,7 +748,7 @@ if(rightPressedT && tardisX < canvas.width-75){//
 else if(leftPressedT && tardisX > 0) {//
     tardisX -= 3;
 }  
-else if(upPressedT && tardisY > 0) {//
+else if(upPressedT && tardisY > 5) {//
     tardisY -= 3;
 } 
 else if(downPressedT && tardisY < canvas.height-150) {//
