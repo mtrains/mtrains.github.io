@@ -207,14 +207,8 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath();
     }
-    //upMovement
-    //first wall
-    if(paddleY >= 192 && paddleY <= 195){
-        upMovement = 0
-    }
-    else{
-        upMovement = 3
-    }
+    
+    
     
     //else if (doorOne == false){
     //ctx.beginPath();
@@ -231,6 +225,15 @@ function drawWalls() {
     }
     else if(doorOne == true && paddleX < 817 && paddleY <= 118){
         rightMovement = 3
+    }
+    //upMovement
+    //first wall
+    
+    if(paddleY >= 192 && paddleY <= 195){
+        upMovement = 0
+    }
+    else{
+        upMovement = 3
     }
 }
 function tardisHitWall() {
