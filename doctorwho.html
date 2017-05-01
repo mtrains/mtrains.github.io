@@ -640,14 +640,26 @@ if(sonic == true){
 }
 else if(sonic == false){
     ctx.beginPath();
-    ctx.rect(paddleX-6, paddleY+3, 5, paddleHeight/1.5);
+    ctx.rect(paddleX-6, paddleY+3, 5, 36);
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(paddleX+16, paddleY+3, 5, paddleHeight/1.5);
+    ctx.rect(paddleX+16, paddleY+3, 5, 36);
     ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(paddleX-3, paddleY+39, 6, 0, Math.PI*2, false);
+    ctx.fillStyle = "#ffc999";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(paddleX+19, paddleY+39, 6, 0, Math.PI*2, false);
+    ctx.fillStyle = "#ffc999";
     ctx.fill();
     ctx.closePath();
 }
