@@ -628,13 +628,13 @@ if(sonic == true){
 }
 else if(sonic == false){
     ctx.beginPath();
-    ctx.rect(paddleX-6, paddleY+3, 5, paddleHeight);
+    ctx.rect(paddleX-6, paddleY+3, 5, paddleHeight/1.5);
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(paddleX+16, paddleY+3, 5, paddleHeight);
+    ctx.rect(paddleX+16, paddleY+3, 5, paddleHeight/1.5);
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
