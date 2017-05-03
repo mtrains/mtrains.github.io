@@ -699,16 +699,32 @@ else if(sonic == false){
 //coat
     ctx.beginPath();
     ctx.moveTo(paddleX, paddleY);
-    ctx.lineTo(paddleX, paddleY+paddleHeight);
-    ctx.lineTo(paddleX+12,paddleY+paddleHeight);
+    ctx.lineTo(paddleX, paddleY+50);
+    ctx.lineTo(paddleX+11,paddleY+50);
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.moveTo(paddleX+paddleWidth, paddleY);
-    ctx.lineTo(paddleX+paddleWidth, paddleY+paddleHeight);
-    ctx.lineTo(paddleX+3,paddleY+paddleHeight);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+50);
+    ctx.lineTo(paddleX+4,paddleY+50);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX, paddleY+60);
+    ctx.lineTo(paddleX, paddleY+50);
+    ctx.lineTo(paddleX+6,paddleY+50);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX+paddleWidth, paddleY+60);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+50);
+    ctx.lineTo(paddleX+7,paddleY+50);
     ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
