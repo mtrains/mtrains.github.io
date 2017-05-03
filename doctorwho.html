@@ -696,38 +696,7 @@ else if(sonic == false){
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
-//coat
-    ctx.beginPath();
-    ctx.moveTo(paddleX, paddleY);
-    ctx.lineTo(paddleX, paddleY+50);
-    ctx.lineTo(paddleX+11,paddleY+50);
-    ctx.fillStyle = "chocolate";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(paddleX+paddleWidth, paddleY);
-    ctx.lineTo(paddleX+paddleWidth, paddleY+50);
-    ctx.lineTo(paddleX+4,paddleY+50);
-    ctx.fillStyle = "chocolate";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(paddleX, paddleY+60);
-    ctx.lineTo(paddleX, paddleY+50);
-    ctx.lineTo(paddleX+6,paddleY+50);
-    ctx.fillStyle = "chocolate";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(paddleX+paddleWidth, paddleY+60);
-    ctx.lineTo(paddleX+paddleWidth, paddleY+50);
-    ctx.lineTo(paddleX+7,paddleY+50);
-    ctx.fillStyle = "chocolate";
-    ctx.fill();
-    ctx.closePath();
+
 //bowtie    
     ctx.beginPath();
     ctx.moveTo(paddleX+3, paddleY);
@@ -766,6 +735,38 @@ else if(sonic == false){
     ctx.beginPath();
     ctx.rect(paddleX+8, paddleY+80, 8, 5);
     ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//coat    
+    ctx.beginPath();
+    ctx.moveTo(paddleX, paddleY);
+    ctx.lineTo(paddleX, paddleY+50);
+    ctx.lineTo(paddleX+11,paddleY+50);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX+paddleWidth, paddleY);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+50);
+    ctx.lineTo(paddleX+4,paddleY+50);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX, paddleY+60);
+    ctx.lineTo(paddleX, paddleY+50);
+    ctx.lineTo(paddleX+6,paddleY+50);
+    ctx.fillStyle = "chocolate";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(paddleX+paddleWidth, paddleY+60);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+50);
+    ctx.lineTo(paddleX+7,paddleY+50);
+    ctx.fillStyle = "chocolate";
     ctx.fill();
     ctx.closePath();
     //hair
