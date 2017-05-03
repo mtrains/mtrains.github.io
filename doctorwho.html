@@ -756,6 +756,18 @@ else if(sonic == false){
     ctx.fillStyle = "#5a2d0c";
     ctx.fill();
     ctx.closePath();
+ //shoes   
+    ctx.beginPath();
+    ctx.rect(paddleX-1, paddleY+80, 8, 5);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(paddleX+8, paddleY+80, 8, 5);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
     //hair
     ctx.beginPath();
 ctx.arc(paddleX+7, paddleY-9, 7.5, 0, Math.PI*2, false);
