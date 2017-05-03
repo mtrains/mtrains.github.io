@@ -827,7 +827,7 @@ else if(leftPressed && sonic == false && paddleX > 6) {
     paddleX -= leftMovement;
     sonicRight = false
 }  
-else if(upPressed && paddleY > 15) {
+if(upPressed && paddleY > 15) {
     paddleY -= upMovement;
 } 
 else if(downPressed && paddleY < canvas.height-paddleWidth) {
@@ -841,7 +841,7 @@ if(rightPressedT && tardisX < canvas.width-75){//
 else if(leftPressedT && tardisX > 0) {//
     tardisX -= 3;
 }  
-else if(upPressedT && tardisY > 5) {//
+if(upPressedT && tardisY > 5) {//
     tardisY -= 3;
 } 
 else if(downPressedT && tardisY < canvas.height-150) {//
