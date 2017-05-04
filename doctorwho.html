@@ -622,6 +622,12 @@ if(sonic == true){
         ctx.closePath();
         
         ctx.beginPath();
+        ctx.rect(paddleX+31, paddleY+28, 7, 3);
+        ctx.fillStyle = "chocolate";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
         ctx.arc(paddleX+31, paddleY+30, 3, 0, Math.PI*2, false);
         ctx.fillStyle = "#ffc999";
         ctx.fill();
