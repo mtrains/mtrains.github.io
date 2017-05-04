@@ -692,7 +692,7 @@ else if(sonic == false){
 }
     //body
     ctx.beginPath();
-    ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
+    ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight-3);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
@@ -715,13 +715,13 @@ else if(sonic == false){
     ctx.closePath();
  //legs   
     ctx.beginPath();
-    ctx.rect(paddleX+1, paddleY+paddleHeight, 6, 30);
+    ctx.rect(paddleX+1, paddleY+52, 6, 30);
     ctx.fillStyle = "#5a2d0c";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(paddleX+8, paddleY+paddleHeight, 6, 30);
+    ctx.rect(paddleX+8, paddleY+52, 6, 30);
     ctx.fillStyle = "#5a2d0c";
     ctx.fill();
     ctx.closePath();
@@ -740,32 +740,32 @@ else if(sonic == false){
 //coat    
     ctx.beginPath();
     ctx.moveTo(paddleX, paddleY);
-    ctx.lineTo(paddleX, paddleY+55);
-    ctx.lineTo(paddleX+11,paddleY+55);
+    ctx.lineTo(paddleX, paddleY+52);
+    ctx.lineTo(paddleX+11,paddleY+52);
     ctx.fillStyle = "#a57940";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.moveTo(paddleX+paddleWidth, paddleY);
-    ctx.lineTo(paddleX+paddleWidth, paddleY+55);
-    ctx.lineTo(paddleX+4,paddleY+55);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+52);
+    ctx.lineTo(paddleX+4,paddleY+52);
     ctx.fillStyle = "#a57940";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.moveTo(paddleX, paddleY+65);
-    ctx.lineTo(paddleX, paddleY+55);
-    ctx.lineTo(paddleX+7,paddleY+55);
+    ctx.lineTo(paddleX, paddleY+52);
+    ctx.lineTo(paddleX+7,paddleY+52);
     ctx.fillStyle = "#a57940";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
     ctx.moveTo(paddleX+paddleWidth, paddleY+65);
-    ctx.lineTo(paddleX+paddleWidth, paddleY+55);
-    ctx.lineTo(paddleX+8,paddleY+55);
+    ctx.lineTo(paddleX+paddleWidth, paddleY+52);
+    ctx.lineTo(paddleX+8,paddleY+52);
     ctx.fillStyle = "#a57940";
     ctx.fill();
     ctx.closePath();
