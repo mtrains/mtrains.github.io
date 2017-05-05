@@ -640,6 +640,18 @@ if(sonic == true){
         ctx.closePath();
         
         ctx.beginPath();
+        ctx.rect(paddleX+43, paddleY+27, 5, 2);
+        ctx.fillStyle = "#b3b3b3";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.rect(paddleX+43, paddleY+30, 5, 2);
+        ctx.fillStyle = "#b3b3b3";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
         ctx.arc(paddleX+31, paddleY+30, 3, 0, Math.PI*2, false);
         ctx.fillStyle = "#ffc999";
         ctx.fill();
@@ -663,7 +675,37 @@ if(sonic == true){
         ctx.fillStyle = "#a57940";
         ctx.fill();
         ctx.closePath();
+//screwdriver        
+        ctx.beginPath();
+        ctx.rect(paddleX-31, paddleY+28, 12, 3);
+        ctx.fillStyle = "chocolate";
+        ctx.fill();
+        ctx.closePath();
         
+        ctx.beginPath();
+        ctx.rect(paddleX-31, paddleY+28, 7, 1);
+        ctx.fillStyle = "#b3b3b3";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.rect(paddleX-31, paddleY+30, 7, 1);
+        ctx.fillStyle = "#b3b3b3";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.rect(paddleX-36, paddleY+27, 5, 2);
+        ctx.fillStyle = "#b3b3b3";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.rect(paddleX-36, paddleY+30, 5, 2);
+        ctx.fillStyle = "#b3b3b3";
+        ctx.fill();
+        ctx.closePath();
+ //hand       
         ctx.beginPath();
         ctx.arc(paddleX-19, paddleY+30, 3, 0, Math.PI*2, false);
         ctx.fillStyle = "#ffc999";
