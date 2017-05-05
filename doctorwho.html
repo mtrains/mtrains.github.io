@@ -652,6 +652,12 @@ if(sonic == true){
         ctx.closePath();
         
         ctx.beginPath();
+        ctx.arc(paddleX+44, paddleY+29, 0.5, 0, Math.PI*2, false);
+        ctx.fillStyle = "#00b300";
+        ctx.fill();
+        ctx.closePath();
+ //hand       
+        ctx.beginPath();
         ctx.arc(paddleX+31, paddleY+30, 3, 0, Math.PI*2, false);
         ctx.fillStyle = "#ffc999";
         ctx.fill();
@@ -703,6 +709,12 @@ if(sonic == true){
         ctx.beginPath();
         ctx.rect(paddleX-36, paddleY+30, 5, 2);
         ctx.fillStyle = "#b3b3b3";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.arc(paddleX-37, paddleY+29, 0.5, 0, Math.PI*2, false);
+        ctx.fillStyle = "#00b300";
         ctx.fill();
         ctx.closePath();
  //hand       
