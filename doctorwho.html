@@ -857,13 +857,19 @@ ctx.closePath();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(paddleX+5, paddleY-8, 0.5, 0, Math.PI*2, false);
+    ctx.arc(paddleX+4, paddleY-8, 0.5, 0, Math.PI*2, false);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(paddleX+9, paddleY-8, 0.5, 0, Math.PI*2, false);
+    ctx.arc(paddleX+10, paddleY-8, 0.5, 0, Math.PI*2, false);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(paddleX+4, paddleY-5, 6, 1);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
