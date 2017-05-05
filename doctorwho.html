@@ -851,12 +851,22 @@ ctx.closePath();
     
 //head    
     ctx.beginPath();
-ctx.arc(paddleX+7, paddleY-7, 7.5, 0, Math.PI*2, false);
-ctx.fillStyle = "#ffc999";
-ctx.fill();
-ctx.closePath();
+    ctx.arc(paddleX+7, paddleY-7, 7.5, 0, Math.PI*2, false);
+    ctx.fillStyle = "#ffc999";
+    ctx.fill();
+    ctx.closePath();
     
+    ctx.beginPath();
+    ctx.arc(paddleX+5, paddleY-8, 0.5, 0, Math.PI*2, false);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
     
+    ctx.beginPath();
+    ctx.arc(paddleX+9, paddleY-8, 0.5, 0, Math.PI*2, false);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
     //#ffc999 is head color
     //#9999ff is dim tardis color
 }
