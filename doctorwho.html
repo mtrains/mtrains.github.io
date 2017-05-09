@@ -192,7 +192,7 @@ function drawWalls() {
     ctx.closePath(); 
     //second wall
     ctx.beginPath();
-    ctx.rect(0, 350, canvas.width-165, 15);
+    ctx.rect(0, 350, canvas.width-840, 15);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath(); 
@@ -202,7 +202,7 @@ function drawWalls() {
         
     }
     //second wall
-    else if(paddleY >= 265 && paddleY < 280 && paddleX <= canvas.width-165) {
+    else if(paddleY >= 265 && paddleY < 280 && paddleX <= canvas.width-840) {
         downMovement = 0
     }
     else {
@@ -243,7 +243,7 @@ function drawWalls() {
         upMovement = 0
     }
     //second wall
-    else if(paddleY <= 381 && paddleY >= 379 && paddleX < canvas.width-165){
+    else if(paddleY <= 381 && paddleY >= 379 && paddleX < canvas.width-840){
             upMovement = 0
             }
     else{
