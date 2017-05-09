@@ -16,7 +16,7 @@
     
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var paddleHeight = 55; // really 85 from bow tie to shoe
+var paddleHeight = 55; // really 85 from bow tie to shoe head is 16 tall
 var paddleWidth = 15;
 var paddleX = 125;
 var paddleY = 50;
@@ -242,6 +242,10 @@ function drawWalls() {
     if(paddleY >= 192 && paddleY <= 195){
         upMovement = 0
     }
+    //second wall
+    else if(paddleY <= 381 && paddleY >= 379 && paddleX < canvas.width-165){
+            upMovement = 0
+            }
     else{
         upMovement = 3
     }
