@@ -16,7 +16,7 @@
     
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var paddleHeight = 55; // really 85 from bow tie to shoe head is 16 tall
+var paddleHeight = 55; // really 85 from bow tie to shoe head is 16 tall total: 101
 var paddleWidth = 15;
 var paddleX = 125;
 var paddleY = 50;
@@ -185,6 +185,7 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath();
    //downMovement
+    //first wall
     ctx.beginPath();
     ctx.rect(0, 165, canvas.width, 15);
     ctx.fillStyle = "black";
@@ -195,7 +196,8 @@ function drawWalls() {
     ctx.rect(0, 350, canvas.width-840, 15);
     ctx.fillStyle = "black";
     ctx.fill();
-    ctx.closePath(); 
+    ctx.closePath();
+    
     //first wall
     if(paddleY >= 80 && paddleY <=180) { 
         downMovement = 0
@@ -217,7 +219,12 @@ function drawWalls() {
     ctx.fill();
     ctx.closePath();
     }
-    
+    //thirdwall
+    ctx.beginPath();
+    ctx.rect(405, 295, 15, 70);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath(); 
     
     
     //else if (doorOne == false){
