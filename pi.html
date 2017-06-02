@@ -99,9 +99,19 @@ function drawYum() {
 	mouthY += pidy
 	if (mouthY = canvas.height/2) {
 		pidy -= 2
+		ctx.beginPath();
+  ctx.rect(0, 304, canvas.height/2, 32);
+  ctx.fillStyle = "blue";
+  ctx.fill();
+  ctx.closePath();
 	}
 	else if (mouthY = 187) {
 		pidy += 2 
+		ctx.beginPath();
+  ctx.rect(0, 304, canvas.height/2, 32);
+  ctx.fillStyle = "green";
+  ctx.fill();
+  ctx.closePath();
 	}
 	
 }
