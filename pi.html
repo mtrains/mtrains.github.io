@@ -21,6 +21,7 @@
   var dy = 0;
   var mouthY = 187
   var pidy = 1
+  var positive = true
 
 
   
@@ -97,7 +98,7 @@
 	
 function drawYum() {
 	mouthY += pidy
-	if (mouthY = canvas.height/2) {
+	if (mouthY >= canvas.height/2) {
 		pidy -= 2
 		ctx.beginPath();
   ctx.rect(0, 304, canvas.height/2, 32);
@@ -105,7 +106,7 @@ function drawYum() {
   ctx.fill();
   ctx.closePath();
 	}
-	else if (mouthY = 187) {
+	else if (mouthY <= 187) {
 		pidy += 2 
 		ctx.beginPath();
   ctx.rect(0, 304, canvas.height/2, 32);
@@ -113,6 +114,8 @@ function drawYum() {
   ctx.fill();
   ctx.closePath();
 	}
+	
+	//if  WORK ON
 	
 }
 
