@@ -22,7 +22,9 @@
   var mouthY = 187
   var pidy = 5
   var positive = true
-  var circly = mouthY * 2.406015038
+  var circlydy = 12.03007519 //2.406015038
+  var circlyY = 0
+  
 
 
   
@@ -41,8 +43,8 @@
 	  
 	ctx.beginPath();
     ctx.moveTo(canvas.height/2, canvas.height/2);
-    ctx.lineTo(canvas.width-20, 0);//canvas.height-circly
-    ctx.lineTo(canvas.width-20, canvas.height);//canvas.height+circly
+    ctx.lineTo(canvas.width-20, circlyY);//canvas.height-circly
+    ctx.lineTo(canvas.width-20, canvas.height-circlyY);//canvas.height+circly
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
@@ -117,6 +119,12 @@ function drawYum() {
 	}
 	
 	//if  WORK ON
+	if (circlyY >= canvas.height/2) {
+		circlydy -= circlydy * 2
+	}
+	else if (circlyY <= 0) {
+		circlydy += circlydy * 2
+	}
 	
 }
 
