@@ -22,6 +22,7 @@
   var mouthY = 187
   var pidy = 5
   var positive = true
+  var circly = mouthY * 2.406015038
 
 
   
@@ -40,9 +41,9 @@
 	  
 	ctx.beginPath();
     ctx.moveTo(canvas.height/2, canvas.height/2);
-    ctx.lineTo(canvas.width-20, 0);
-    ctx.lineTo(canvas.width-20, canvas.height);
-    ctx.fillStyle = "black";
+    ctx.lineTo(canvas.width-20, circly);
+    ctx.lineTo(canvas.width-20, canvas.height+circly);
+    ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
 	  
