@@ -104,6 +104,8 @@ function drawYum() {
 	circlyY += circlydy
 	if (mouthY >= canvas.height/2) {
 		pidy -= 2
+		circlydy -= circlydy * 2
+		
 		//ctx.beginPath();
   //ctx.rect(0, 304, canvas.height/2, 32);
   //ctx.fillStyle = "blue";
@@ -112,6 +114,7 @@ function drawYum() {
 	}
 	else if (mouthY <= 187) {
 		pidy += 2 
+		circlydy += circlydy * 2
 		//ctx.beginPath();
   //ctx.rect(0, 304, canvas.height/2, 32);
   //ctx.fillStyle = "green";
@@ -119,13 +122,13 @@ function drawYum() {
   //ctx.closePath();
 	}
 	
-	//if  WORK ON
-	if (circlyY >= canvas.height/2) {
-		circlydy -= circlydy * 2
-	}
-	else if (circlyY <= 0) {
-		circlydy += circlydy * 2
-	}
+	
+	//if (circlyY >= canvas.height/2) {
+	//	circlydy -= circlydy * 2
+	//}
+	//else if (circlyY <= 0) {
+	//	circlydy += circlydy * 2
+	//}
 	
 }
 
