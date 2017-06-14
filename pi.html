@@ -103,7 +103,7 @@ function drawYum() {
 	mouthY += pidy
 	circlyY += circlydy
 	if (mouthY >= canvas.height/2) {
-		pidy -= 2
+		pidy = -5
 		circlydy -= circlydy * 2
 		
 		//ctx.beginPath();
@@ -113,7 +113,7 @@ function drawYum() {
   //ctx.closePath();
 	}
 	else if (circlyY <= 0) {//mouthY <= 187 && 
-		pidy += 2 
+		pidy = 5
 		circlydy = 2.406015038 * 5
 		
 		
