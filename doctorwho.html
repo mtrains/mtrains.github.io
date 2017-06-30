@@ -16,7 +16,7 @@
     
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var paddleHeight = 55; // really 85 from bow tie to shoe head is 16 tall total: 101
+var paddleHeight = 55; // really 85 from bow tie to shoe head is 16 tall, total: 101
 var paddleWidth = 15;
 var paddleX = 125;
 var paddleY = 50;
@@ -291,6 +291,16 @@ function tardisHitWall() {
 
     
 function drawPaddle() {
+    
+    ctx.beginPath();
+ctx.arc(canvas.width/4, canvas.height, 32, 0, Math.PI*2, false);
+ctx.fillStyle = "purple";
+ctx.fill();
+ctx.closePath();
+    
+    ctx.font = "10px Arial";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("A PURPLE ARMADILLO", canvas.width/2, canvas.height-5);
     
     ctx.beginPath();
     ctx.rect(tardisX, tardisY, 75, 150);
