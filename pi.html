@@ -96,6 +96,14 @@
 	  ctx.font = "32px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Yum!", 780, canvas.height*.75);
+	  
+if(mouthY >= 304){
+   ctx.beginPath();
+  ctx.rect(0, 304, 638, 32);
+  ctx.fillStyle = "purple";
+  ctx.fill();
+  ctx.closePath();
+   }
 	 
 }
 	
