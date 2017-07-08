@@ -160,11 +160,11 @@ function drawCollision() {
         paddleMovement *= 0
     }
     //small propeller plane work on this later
-    //else if (x < -planeX+2  && x > -planeX-2 && paddleY<= 110) {//+ 195-96
-    //    airplaneSurvival += 8
-    //    dx *= 0
-    //    paddleMovement *= 0
-        //planeDx *= 0
+    else if (time >= 260 && time < 270 && paddleY<= 110) {//+ 195-96
+        airplaneSurvival += 8
+        dx *= 0
+        paddleMovement *= 0
+        planeDx *= 0 
     //}
     //if on ground and not runway, crash 
     else if (x < -3800 && paddleY > canvas.height-paddleHeight){
