@@ -879,7 +879,17 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
 var x = canvas.width/2;
-var y = canvas.height-30;
+var y = canvas.height-30
+var bluex = canvas.width/2-100
+var bluey = canvas.height-30
+var orangex = canvas.width/2;
+var orangey = canvas.height-30
+var yellowx = canvas.width/2;
+var yellowy = canvas.height-30
+var greenx = canvas.width/2;
+var greeny = canvas.height-30
+var turquoisex = canvas.width/2;
+var turquoisey = canvas.height-30
 var dx = 2;
 var dy = -2;
 
@@ -891,31 +901,31 @@ function drawBall() {
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(x-100 , y , ballRadius, 0, Math.PI*2);
+    ctx.arc(bluex , bluey, ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(x-150 , y , ballRadius, 0, Math.PI*2);
+    ctx.arc(orangex-150 , orangey , ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "orange";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(x-100 , y-100 , ballRadius, 0, Math.PI*2);
+    ctx.arc(yellowx-100 , yellowy-100 , ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(x-50 , y-40 , ballRadius, 0, Math.PI*2);
+    ctx.arc(greenx-50 , greeny-40 , ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "green";
     ctx.fill();
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.arc(x+100 , y , ballRadius, 0, Math.PI*2);
+    ctx.arc(turquoisex+100 , turquoisey , ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "turquoise";
     ctx.fill();
     ctx.closePath();
@@ -951,15 +961,69 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
     
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+    if(bluex + dx > canvas.width-ballRadius || bluex + dx < ballRadius) {
         dx = -dx;
     }
-    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+    if(bluey + dy > canvas.height-ballRadius || bluey + dy < ballRadius) {
         dy = -dy;
     }
     
-    x += dx;
-    y += dy;
+    bluex += dx;
+    bluey += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(orangex + dx > canvas.width-ballRadius || orangex + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(orangey + dy > canvas.height-ballRadius || orangey + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    orangex += dx;
+    orangey += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(yellowx + dx > canvas.width-ballRadius || yellowx + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(yellowy + dy > canvas.height-ballRadius || yellowy + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    yellowx += dx;
+    yellowy += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(greenx + dx > canvas.width-ballRadius || greenx + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(greeny + dy > canvas.height-ballRadius || greeny + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    greenx += dx;
+    greeny += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(turquoisex + dx > canvas.width-ballRadius || turquoisex + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(turquoisey + dy > canvas.height-ballRadius || turquoisey + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    turquoisex += dx;
+    turquoisey += dy;
+	
+
 }
 
 setInterval(draw, 20);
