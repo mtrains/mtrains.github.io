@@ -213,7 +213,7 @@ function drawWalls() {
         downMovement = 0
     }
     //fourth wall
-    else if(paddleY >= 210 && paddleY < 225 && paddleX >= canvas.width-865 && paddleX <= 825) {
+    else if(paddleY >= 210 && paddleY < 326 && paddleX >= canvas.width-865 && paddleX <= 825) {
         downMovement = 0
     }
     else {
@@ -253,14 +253,14 @@ function drawWalls() {
     else if(doorOne == true && paddleX < 817 && paddleY <= 118){
         rightMovement = 3
     }//thirdwall
-    else if(paddleX <= 414 && paddleX >= 392 && paddleY >= 210 && paddleY <= 377){//
+    else if(paddleX <= 414 && paddleX >= 392 && paddleY >= 209 && paddleY <= 377){//
         rightMovement = 0
         //tardisX = -15
     }
     else {
         rightMovement = 3
     }//thirdwall
-    if(paddleX <= 418 && paddleX >= 396 && paddleY >= 210 && paddleY <= 377){//
+    if(paddleX <= 418 && paddleX >= 396 && paddleY >= 209 && paddleY <= 377){//
         leftMovement = 0
         //tardisY = -25
     }
