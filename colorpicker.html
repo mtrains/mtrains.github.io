@@ -26,11 +26,13 @@
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
 	
+function drawBackground() {
 	ctx.beginPath();
 	ctx.rect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "rgb("+red+","+green+","+blue+")";
 	ctx.fill();
 	ctx.closePath();
+}
 	
 function keyDownHandler(e) {
     if(e.keyCode == 82) {
@@ -78,6 +80,13 @@ function keyUpHandler(e) {
         bluePressed = false;
     }
 }
+	
+	
+function draw() {
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBackground();
+}
+setInterval(draw, 10);
   
   
   
