@@ -57,13 +57,13 @@ function keyDownHandler(e) {
 		}
 	}
 	else if(e.keyCode == 40){
-		if(redPressed = true && red <= 255){
+		if(redPressed = true && red >= 0){
 			red -= 5
 		}
-		if(greenPressed = true && green <= 255){
+		if(greenPressed = true && green >= 0){
 			green -= 5
 		}
-		if(bluePressed = true && blue <= 255){
+		if(bluePressed = true && blue >= 0){
 			blue -= 5
 		}
 	}
