@@ -42,6 +42,29 @@ function keyDownHandler(e) {
 	else if(e.keyCode == 66) {
         bluePressed = true;
     }
+	
+	if(e.keyCode == 38){
+		if(redPressed = true && red <= 255){
+			red += 5
+		}
+		if(greenPressed = true && green <= 255){
+			green += 5
+		}
+		if(bluePressed = true && blue <= 255){
+			blue += 5
+		}
+	}
+	else if(e.keyCode == 40){
+		if(redPressed = true && red <= 255){
+			red -= 5
+		}
+		if(greenPressed = true && green <= 255){
+			green -= 5
+		}
+		if(bluePressed = true && blue <= 255){
+			blue -= 5
+		}
+	}
 }
 
 function keyUpHandler(e) {
