@@ -18,13 +18,43 @@
 	var red = 0
 	var green = 0
 	var blue = 0
-	
+	var redPressed = false
+	var greenPressed = false
+	var bluePressed = false
+	var upPressed = false
+	var downPressed = false
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
 	
 	ctx.beginPath();
 	ctx.rect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "rgb("+red+","+green+","+blue+")";
 	ctx.fill();
 	ctx.closePath();
+	
+function keyDownHandler(e) {
+    if(e.keyCode == 82) {
+        redPressed = true;
+    }
+    else if(e.keyCode == 71) {
+        greenPressed = true;
+    }
+	else if(e.keyCode == 66) {
+        bluePressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 82) {
+        redPressed = false;
+    }
+    else if(e.keyCode == 71) {
+        greenPressed = false;
+    }
+	else if(e.keyCode == 66) {
+        bluePressed = false;
+    }
+}
   
   
   
