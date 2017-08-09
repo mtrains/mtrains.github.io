@@ -10,17 +10,19 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="1260" height="630"></canvas>
+<canvas id="myCanvas" width="1260" height="730"></canvas>
 
 <script>
 	var canvas = document.getElementById("myCanvas");
  	var ctx = canvas.getContext("2d");
-	
+	var red = 0
+	var green = 0
+	var blue = 0
 	
 	
 	ctx.beginPath();
 	ctx.rect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = "#FF0000";
+	ctx.fillStyle = rgb(red,green,blue);
 	ctx.fill();
 	ctx.closePath();
   
