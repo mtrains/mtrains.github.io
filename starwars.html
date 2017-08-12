@@ -17,8 +17,8 @@
 
     var canvas = document.getElementById("myCanvas");
  	var ctx = canvas.getContext("2d"); 
-    var paddleWidth = 100
-    var paddleHeight = (Math.floor(Math.random() * 6) + 1)*100  
+    var paddleWidth = (Math.floor(Math.random() * 6) + 1)*100
+    var paddleHeight = 15  
     var paddleY = canvas.height-paddleHeight
     
     document.addEventListener("keydown", keyDownHandler, false);
@@ -46,7 +46,7 @@ function drawXwing(){
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(0, paddleY, paddleWidth, 100);
+    ctx.rect(0, paddleY, paddleWidth, paddleHeight);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
