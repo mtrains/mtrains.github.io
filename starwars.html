@@ -17,20 +17,33 @@
 
     var canvas = document.getElementById("myCanvas");
  	var ctx = canvas.getContext("2d"); 
-    var paddleWidth = (Math.floor(Math.random() * 6) + 1)*100
+    var paddleWidth = 100//(Math.floor(Math.random() * 6) + 1)*100
     var paddleHeight = 15  
     var paddleY = canvas.height-paddleHeight
+    var upPressed = false
+    var downPressed = false
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
     
     
 function keyDownHandler(e) {
+    if(e.keyCode == 40) {
+        upPressed = true;
+    }
     
+    else if(e.keyCode == 38) {
+        downPressed = true;
+    }
 }
     
 function keyUpHandler(e) {
-    
+    if(e.keyCode == 40) {
+        upPressed = false;
+    }
+    else if(e.keyCode == 38 ) {
+        downPressed = false;
+    }
 }
 function drawXwing(){
     ctx.beginPath();
@@ -45,16 +58,23 @@ function drawXwing(){
     ctx.fill();
     ctx.closePath();
     
-    ctx.beginPath();
-    ctx.rect(0, paddleY, 100, paddleHeight);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.closePath();
+    //ctx.beginPath();
+    //ctx.rect(0, paddleY, 100, paddleHeight);
+    //ctx.fillStyle = "red";
+    //ctx.fill();
+    //ctx.closePath();
 }
     
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawXwing();
+    
+    
+    if(upPressed==true && paddleY >= 0){
+        paddleY -=5
+    }
+    else if(downPressed == true && paddleY <= (canvas.height-paddleHeight)){
+        paddleY += 5
 }
 setInterval(draw, 10);
 
