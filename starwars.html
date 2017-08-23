@@ -22,6 +22,9 @@
     var paddleY = canvas.height-paddleHeight
     var upPressed = false
     var downPressed = false
+    var laser = false
+    var laserX = 0
+    var laserGo = false
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -35,6 +38,9 @@ function keyDownHandler(e) {
     else if(e.keyCode == 38) {
         upPressed = true;
     }
+    else if(e.keyCode == 32) {
+        laser = true
+    }
 }
     
 function keyUpHandler(e) {
@@ -44,7 +50,11 @@ function keyUpHandler(e) {
     else if(e.keyCode == 38 ) {
         upPressed = false;
     }
+    else if(e.keyCode == 32) {
+        laser = false
+    }
 }
+    
 function drawXwing(){
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
@@ -76,6 +86,20 @@ function draw() {
     else if(downPressed == true && paddleY <= (canvas.height-paddleHeight)){
         paddleY += 5
 }
+    
+    if(laser==true){
+        ctx.beginPath();
+        ctx.rect(laserX, paddleY, 20, 1);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        
+        laserGo = true
+    }
+    if(laserGo == true){
+        laserX += 2
+    }
+    
 }
 setInterval(draw, 10);
 
