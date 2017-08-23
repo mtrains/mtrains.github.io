@@ -88,15 +88,14 @@ function draw() {
 }
     
     if(laser==true){
+        laserGo = true
+    }
+    if(laserGo == true){
         ctx.beginPath();
         ctx.rect(laserX, paddleY, 20, 1);
         ctx.fillStyle = "red";
         ctx.fill();
         ctx.closePath();
-        
-        laserGo = true
-    }
-    if(laserGo == true){
         laserX += 2
     }
     
