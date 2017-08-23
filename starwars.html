@@ -92,11 +92,11 @@ function draw() {
     }
     if(laserGo == true){
         ctx.beginPath();
-        ctx.rect(laserX, paddleY, 20, 1);
+        ctx.rect(laserX, paddleY, 40, 2);
         ctx.fillStyle = "red";
         ctx.fill();
         ctx.closePath();
-        laserX += 2
+        laserX += 10
     }
     
 }
