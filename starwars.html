@@ -41,6 +41,10 @@
     var laserFive = false
     var laserFiveX = 0
     var laserFiveGo = false
+    var laserSixOK = false
+    var laserSix = false
+    var laserSixX = 0
+    var laserSixGo = false
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -69,6 +73,9 @@ function keyDownHandler(e) {
         if(laserFourGo == true && laserFiveOK== true){
             laserFive = true
         }
+        if(laserFiveGo == true && laserSixOK== true){
+            laserSix = true
+        }
     }
 }
     
@@ -91,6 +98,9 @@ function keyUpHandler(e) {
         }
         if(laserFourGo == true){
             laserFiveOK = true
+        }
+        if(laserFiveGo == true){
+            laserSixOK = true
         }
     }
 }
@@ -181,6 +191,17 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserFiveX += 20
+    }
+    if(laserSix==true){
+        laserSixGo = true
+    }
+    if(laserSixGo == true){
+        ctx.beginPath();
+        ctx.rect(laserSixX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserSixX += 20
     }
     
 }
