@@ -157,11 +157,11 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserX += 20
+        laserTwo = false
+        laserTwoX = 0 
+        laserTwoGo = false
+        laserTwoOK = false
         
-        laserThree = false
-        laserThreeX = 0 
-        laserThreeGo = false
-        laserThreeOK = false
     }
     if(laserTwo==true){
         laserTwoGo = true
@@ -173,11 +173,11 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserTwoX += 20
+        laserThree = false
+        laserThreeX = 0 
+        laserThreeGo = false
+        laserThreeOK = false
         
-        laserFour = false
-        laserFourX = 0 
-        laserFourGo = false
-        laserFourOK = false
     }
     if(laserThree==true){
         laserThreeGo = true
@@ -189,11 +189,11 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserThreeX += 20
+        laserFour = false
+        laserFourX = 0 
+        laserFourGo = false
+        laserFourOK = false
         
-        laserFive = false
-        laserFiveX = 0 
-        laserFiveGo = false
-        laserFiveOK = false
     }
     if(laserFour==true){
         laserFourGo = true
@@ -205,10 +205,11 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserFourX += 20
-        laserSix = false
-        laserSixX = 0 
-        laserSixGo = false
-        laserSixOK = false
+        laserFive = false
+        laserFiveX = 0 
+        laserFiveGo = false
+        laserFiveOK = false
+        
     }
     if(laserFive==true){
         laserFiveGo = true
@@ -220,11 +221,11 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserFiveX += 20
+        laserSix = false
+        laserSixX = 0 
+        laserSixGo = false
+        laserSixOK = false
         
-        laserSeven = false
-        laserSevenX = 0 
-        laserSevenGo = false
-        laserSevenOK = false
     }
     if(laserSix==true){
         laserSixGo = true
@@ -236,6 +237,10 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserSixX += 20
+        laserSeven = false
+        laserSevenX = 0 
+        laserSevenGo = false
+        laserSevenOK = false
     }
     if(laserSeven==true){
         laserSevenGo = true
@@ -252,10 +257,7 @@ function draw() {
         laserX = 0
         laserGo = false
         
-        laserTwo = false
-        laserTwoX = 0 
-        laserTwoGo = false
-        laserTwoOK = false
+        
     }
     
     
