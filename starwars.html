@@ -71,31 +71,31 @@ function keyDownHandler(e) {
     }
     else if(e.keyCode == 32) {
         laser = true
-        laserLock = false
+        
         
         if(laserGo == true && laserTwoOK== true){
-            laserTwoLock = false
+            
             laserTwo = true
         }
         if(laserTwoGo == true && laserThreeOK== true){
-            laserThreeLock = false
+            
             laserThree = true
         }
         if(laserThreeGo == true && laserFourOK== true){
-            laserFourLock = false
+            
             laserFour = true            
         }
         if(laserFourGo == true && laserFiveOK== true){
-            laserFiveLock = false
+            
             laserFive = true
         }
         if(laserFiveGo == true && laserSixOK== true){
-            laserSixLock = false
+            
             laserSix = true
             
         }
         if(laserSixGo == true && laserSevenOK== true){
-            laserSevenLock = false
+            
             laserSeven = true
             
         }
@@ -111,22 +111,32 @@ function keyUpHandler(e) {
     }
     else if(e.keyCode == 32) {
         laser = false
+        
         laserTwo = false
         laserTwoOK = true
+        laserTwoLock = false
         if(laserTwoGo == true){
             laserThreeOK = true
+            laserThreeLock = false
         }
         if(laserThreeGo == true){
             laserFourOK = true
+            laserFourLock = false
         }
         if(laserFourGo == true){
             laserFiveOK = true
+            laserFiveLock = false
         }
         if(laserFiveGo == true){
             laserSixOK = true
+            laserSixLock = false
         }
         if(laserSixGo == true){
             laserSevenOK = true
+            laserSevenLock = false
+        if(laserSevenGo == true){    
+            laserLock = false
+        }
         }
     }
 }
