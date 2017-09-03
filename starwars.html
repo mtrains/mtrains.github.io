@@ -71,24 +71,31 @@ function keyDownHandler(e) {
     }
     else if(e.keyCode == 32) {
         laser = true
+        laserLock = false
         
         if(laserGo == true && laserTwoOK== true){
             laserTwo = true
+            laserTwoLock = false
         }
         if(laserTwoGo == true && laserThreeOK== true){
             laserThree = true
+            laserThreeLock = false
         }
         if(laserThreeGo == true && laserFourOK== true){
             laserFour = true
+            laserFourLock = false
         }
         if(laserFourGo == true && laserFiveOK== true){
             laserFive = true
+            laserFiveLock = false
         }
         if(laserFiveGo == true && laserSixOK== true){
             laserSix = true
+            laserSixLock = false
         }
         if(laserSixGo == true && laserSevenOK== true){
             laserSeven = true
+            laserSevenLock = false
         }
     }
 }
@@ -156,7 +163,7 @@ function draw() {
     
     if(laser==true){
         laserGo = true
-        laserLock = false
+        
     }
     if(laserGo == true){
         ctx.beginPath();
@@ -174,7 +181,7 @@ function draw() {
     }
     if(laserTwo==true){
         laserTwoGo = true
-        laserTwoLock = false
+        
     }
     if(laserTwoGo == true){
         ctx.beginPath();
@@ -192,7 +199,7 @@ function draw() {
     }
     if(laserThree==true){
         laserThreeGo = true
-        laserThreeLock = false
+        
     }
     if(laserThreeGo == true){
         ctx.beginPath();
@@ -210,7 +217,7 @@ function draw() {
     }
     if(laserFour==true){
         laserFourGo = true
-        laserFourLock = false
+        
     }
     if(laserFourGo == true){
         ctx.beginPath();
@@ -228,7 +235,7 @@ function draw() {
     }
     if(laserFive==true){
         laserFiveGo = true
-        laserFiveLock = false
+        
     }
     if(laserFiveGo == true){
         ctx.beginPath();
@@ -246,7 +253,7 @@ function draw() {
     }
     if(laserSix==true){
         laserSixGo = true
-        laserSixLock = false
+        
     }
     if(laserSixGo == true){
         ctx.beginPath();
@@ -264,7 +271,7 @@ function draw() {
     }
     if(laserSeven==true){
         laserSevenGo = true
-        laserSevenLock = false
+        
     }
     if(laserSevenGo == true){
         ctx.beginPath();
