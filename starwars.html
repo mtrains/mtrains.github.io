@@ -22,29 +22,36 @@
     var paddleY = canvas.height-paddleHeight
     var upPressed = false
     var downPressed = false
+    var laserLock = true
     var laser = false
     var laserX = 0
     var laserGo = false
+    var laserTwoLock = true
     var laserTwoOK = false
     var laserTwo = false
     var laserTwoX = 0
     var laserTwoGo = false
+    var laserThreeLock = true
     var laserThreeOK = false
     var laserThree = false
     var laserThreeX = 0
     var laserThreeGo = false
+    var laserFourLock
     var laserFourOK = false
     var laserFour = false
     var laserFourX = 0
     var laserFourGo = false
+    var laserFiveLock = true
     var laserFiveOK = false
     var laserFive = false
     var laserFiveX = 0
     var laserFiveGo = false
+    var laserSixLock = true
     var laserSixOK = false
     var laserSix = false
     var laserSixX = 0
     var laserSixGo = false
+    var laserSevenLock = true
     var laserSevenOK = false
     var laserSeven = false
     var laserSevenX = 0
@@ -149,6 +156,7 @@ function draw() {
     
     if(laser==true){
         laserGo = true
+        laserLock = false
     }
     if(laserGo == true){
         ctx.beginPath();
@@ -157,14 +165,16 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserX += 20
+        if(laserTwoLock == true){
         laserTwo = false
         laserTwoX = 0 
         laserTwoGo = false
         laserTwoOK = false
-        
+    }
     }
     if(laserTwo==true){
         laserTwoGo = true
+        laserTwoLock = false
     }
     if(laserTwoGo == true){
         ctx.beginPath();
@@ -173,14 +183,16 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserTwoX += 20
+        if(laserThreeLock == true){
         laserThree = false
         laserThreeX = 0 
         laserThreeGo = false
         laserThreeOK = false
-        
+        }
     }
     if(laserThree==true){
         laserThreeGo = true
+        laserThreeLock = false
     }
     if(laserThreeGo == true){
         ctx.beginPath();
@@ -189,14 +201,16 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserThreeX += 20
+        if(laserFourLock == true){
         laserFour = false
         laserFourX = 0 
         laserFourGo = false
         laserFourOK = false
-        
+        }
     }
     if(laserFour==true){
         laserFourGo = true
+        laserFourLock = false
     }
     if(laserFourGo == true){
         ctx.beginPath();
@@ -205,14 +219,16 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserFourX += 20
+        if(laserFiveLock == true){
         laserFive = false
         laserFiveX = 0 
         laserFiveGo = false
         laserFiveOK = false
-        
+        }
     }
     if(laserFive==true){
         laserFiveGo = true
+        laserFiveLock = false
     }
     if(laserFiveGo == true){
         ctx.beginPath();
@@ -221,14 +237,16 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserFiveX += 20
+        if(laserSixLock == true){
         laserSix = false
         laserSixX = 0 
         laserSixGo = false
         laserSixOK = false
-        
+        }
     }
     if(laserSix==true){
         laserSixGo = true
+        laserSixLock = false
     }
     if(laserSixGo == true){
         ctx.beginPath();
@@ -237,13 +255,16 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserSixX += 20
+        if(laserSevenLock == true){
         laserSeven = false
         laserSevenX = 0 
         laserSevenGo = false
         laserSevenOK = false
+        }
     }
     if(laserSeven==true){
         laserSevenGo = true
+        laserSevenLock = false
     }
     if(laserSevenGo == true){
         ctx.beginPath();
@@ -252,14 +273,34 @@ function draw() {
         ctx.fill();
         ctx.closePath();
         laserSevenX += 20
-        
+        if(laserLock == true){
         laser = false
         laserX = 0
         laserGo = false
-        
+        }
         
     }
-    
+    if(laserX > canvas.width){
+        laserLock = true
+    }
+    if(laserTwoX > canvas.width){
+        laserTwoLock = true
+    }
+    if(laserThreeX > canvas.width){
+        laserThreeLock = true
+    }
+    if(laserFourX > canvas.width){
+        laserFourLock = true
+    }
+    if(laserFiveX > canvas.width){
+        laserFiveLock = true
+    }
+    if(laserSixX > canvas.width){
+        laserSixLock = true
+    }
+    if(laserSevenX > canvas.width){
+        laserSevenLock = true
+    }
     
 }
 setInterval(draw, 10);
