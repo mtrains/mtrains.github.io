@@ -56,6 +56,8 @@
     var laserSeven = false
     var laserSevenX = 0
     var laserSevenGo = false
+    var tieX = 600
+    var tieY = canvas.height/2
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -159,6 +161,18 @@ function drawXwing(){
     //ctx.fillStyle = "red";
     //ctx.fill();
     //ctx.closePath();
+}
+function drawTIE(){
+    ctx.beginPath();
+    ctx.moveTo(tieX, tieY);
+    ctx.lineTo(tieX-5, tieY-30);
+    ctx.lineTo(tieX-20, tieY-30);
+    ctx.moveTo(tieX-25, tieY);
+    ctx.lineTo(tieX-20, tieY+30);
+    ctx.lineTo(tieX-5, tieY+30);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath()
 }
     
 function draw() {
