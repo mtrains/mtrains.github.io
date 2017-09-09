@@ -164,12 +164,37 @@ function drawXwing(){
 }
 function drawTIE(){
     ctx.beginPath();
+    ctx.rect(tieX-10,paddleWidth, paddleHeight);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
     ctx.moveTo(tieX, tieY);
-    ctx.lineTo(tieX-5, tieY-30);
-    ctx.lineTo(tieX-20, tieY-30);
-    ctx.moveTo(tieX-25, tieY);
-    ctx.lineTo(tieX-20, tieY+30);
-    ctx.lineTo(tieX-5, tieY+30);
+    ctx.lineTo(tieX-10, tieY-50);
+    ctx.lineTo(tieX+3, tieY+1);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX, tieY);
+    ctx.lineTo(tieX-10, tieY-50);
+    ctx.lineTo(tieX-40, tieY-50);
+    ctx.moveTo(tieX-50, tieY);
+    ctx.lineTo(tieX-40, tieY+50);
+    ctx.lineTo(tieX-10, tieY+50);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX, tieY);
+    ctx.lineTo(tieX-10, tieY-50);
+    ctx.lineTo(tieX-40, tieY-50);
+    ctx.moveTo(tieX-50, tieY);
+    ctx.lineTo(tieX-40, tieY+50);
+    ctx.lineTo(tieX-10, tieY+50);
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.closePath()
