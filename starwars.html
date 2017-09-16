@@ -233,6 +233,22 @@ function drawTIE(){
     ctx.fill();
     ctx.closePath()
     
+    ctx.beginPath();
+    ctx.moveTo(tieX+23, tieY-49);
+    ctx.lineTo(tieX+52, tieY-49);
+    ctx.lineTo(tieX+37, tieY-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+23, tieY+49);
+    ctx.lineTo(tieX+52, tieY+49);
+    ctx.lineTo(tieX+37, tieY+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
     
 }
     
