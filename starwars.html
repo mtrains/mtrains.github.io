@@ -258,7 +258,7 @@ function drawTIE(){
     ctx.fill();
     ctx.closePath();
     
-    if(tieX == 600){
+    if(tieX <= 600){
         ctx.beginPath();
         ctx.rect(tielaserX, tieY, 40, 2);
         ctx.fillStyle = "green";
