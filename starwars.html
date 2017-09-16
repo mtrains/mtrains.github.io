@@ -59,6 +59,7 @@
     var tieX = canvas.width
     var tieY = (Math.floor(Math.random() * 660) + 1)+35
     var tieSpeed = 3
+    var tielaserX = 600
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -164,6 +165,15 @@ function drawXwing(){
     //ctx.closePath();
 }
 function drawTIE(){
+    if(tieX == 600){
+        ctx.beginPath();
+        ctx.rect(tielaserX, tieY, 40, 2);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.closePath();
+        
+        tielaserX -= 20
+    }
     ctx.beginPath();
     ctx.rect(tieX+20, tieY-50, 35, 100);
     ctx.fillStyle = "#cccccc";
