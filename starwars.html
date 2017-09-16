@@ -58,6 +58,7 @@
     var laserSevenGo = false
     var tieX = 600
     var tieY = canvas.height/2
+    var tieSpeed = 3
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -418,6 +419,8 @@ function draw() {
     if(laserSevenX > canvas.width){
         laserSevenLock = true
     }
+    
+    tieX += tieSpeed
     
 }
 setInterval(draw, 10);
