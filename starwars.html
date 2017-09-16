@@ -17,7 +17,7 @@
 
     var canvas = document.getElementById("myCanvas");
  	var ctx = canvas.getContext("2d"); 
-    var paddleWidth = 200//(Math.floor(Math.random() * 6) + 1)*100
+    var paddleWidth = 200//
     var paddleHeight = 30 
     var paddleY = canvas.height-paddleHeight
     var upPressed = false
@@ -56,8 +56,8 @@
     var laserSeven = false
     var laserSevenX = 0
     var laserSevenGo = false
-    var tieX = 600
-    var tieY = canvas.height/2
+    var tieX = canvas.width
+    var tieY = (Math.floor(Math.random() * 670) + 1)+30
     var tieSpeed = 3
     
     document.addEventListener("keydown", keyDownHandler, false);
