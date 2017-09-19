@@ -60,6 +60,9 @@
     var tieY = (Math.floor(Math.random() * 660) + 1)+35
     var tieSpeed = 3
     var tielaserX = 600
+    var tieXtwo = canvas.width*2
+    var tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
+    var tielaserXtwo = 600
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -267,6 +270,110 @@ function drawTIE(){
         
         tielaserX -= 20
     }
+    
+    
+    
+    ctx.beginPath();
+    ctx.rect(tieXtwo+20, tieYtwo-50, 35, 100);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo, tieYtwo);
+    ctx.lineTo(tieXtwo+20, tieYtwo-50);
+    ctx.lineTo(tieXtwo+23, tieYtwo+1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo, tieYtwo);
+    ctx.lineTo(tieXtwo+20, tieYtwo+50);
+    ctx.lineTo(tieXtwo+23, tieYtwo-1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+75, tieYtwo);
+    ctx.lineTo(tieXtwo+55, tieYtwo-50);
+    ctx.lineTo(tieXtwo+52, tieYtwo+1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+75, tieYtwo);
+    ctx.lineTo(tieXtwo+55, tieYtwo+50);
+    ctx.lineTo(tieXtwo+52, tieYtwo-1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+2, tieYtwo-1);
+    ctx.lineTo(tieXtwo+21, tieYtwo-48);
+    ctx.lineTo(tieXtwo+35, tieYtwo-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+2, tieYtwo+1);
+    ctx.lineTo(tieXtwo+21, tieYtwo+48);
+    ctx.lineTo(tieXtwo+35, tieYtwo+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+73, tieYtwo-1);
+    ctx.lineTo(tieXtwo+54, tieYtwo-48);
+    ctx.lineTo(tieXtwo+40, tieYtwo-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+73, tieYtwo+1);
+    ctx.lineTo(tieXtwo+54, tieYtwo+48);
+    ctx.lineTo(tieXtwo+40, tieYtwo+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+23, tieYtwo-49);
+    ctx.lineTo(tieXtwo+52, tieYtwo-49);
+    ctx.lineTo(tieXtwo+37, tieYtwo-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXtwo+23, tieYtwo+49);
+    ctx.lineTo(tieXtwo+52, tieYtwo+49);
+    ctx.lineTo(tieXtwo+37, tieYtwo+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.arc(tieXtwo+37, tieYtwo, 8, 0, Math.PI*2, false);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
+    
+    if(tieX <= 600){
+        ctx.beginPath();
+        ctx.rect(tielaserXtwo, tieY, 40, 2);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.closePath();
+        
+        tielaserXtwo -= 20
+    }
 }
     
 function draw() {
@@ -431,6 +538,8 @@ function draw() {
     }
     
     tieX -= tieSpeed
+    
+    tieXtwo -= tieSpeed
     
 }
 setInterval(draw, 10);
