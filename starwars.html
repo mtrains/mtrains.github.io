@@ -60,6 +60,7 @@
     var tieY = (Math.floor(Math.random() * 660) + 1)+35
     var tieSpeed = 3
     var tielaserX = 600
+    var tieSurvival = true
     var tieXtwo = canvas.width*2
     var tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
     var tielaserXtwo = 600
@@ -168,7 +169,8 @@ function drawXwing(){
     //ctx.closePath();
 }
 function drawTIE(){
-    
+    if(tieSurvival == true){
+        
     ctx.beginPath();
     ctx.rect(tieX+20, tieY-50, 35, 100);
     ctx.fillStyle = "#cccccc";
@@ -270,7 +272,8 @@ function drawTIE(){
         
         tielaserX -= 20
     }
-    
+    }
+    if(laserX <= tieX && laserX >= tieX + 20 && paddleY <= tieY + 25 && paddleY >= tieY - 25){
     
     
     ctx.beginPath();
@@ -373,6 +376,7 @@ function drawTIE(){
         ctx.closePath();
         
         tielaserXtwo -= 20
+    }
     }
 }
     
