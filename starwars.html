@@ -273,7 +273,7 @@ function drawTIE(){
         tielaserX -= 20
     }
     }
-    if(laserX <= tieX && laserX >= tieX + 20 && paddleY <= tieY + 25 && paddleY >= tieY - 25){
+    if(laserX >= tieX && laserX <= tieX + 20 && paddleY <= tieY + 25 && paddleY >= tieY - 25){
         tieSurvival = false
     }
     ctx.beginPath();
