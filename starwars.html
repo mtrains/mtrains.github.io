@@ -64,6 +64,7 @@
     var tieXtwo = canvas.width*2
     var tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
     var tielaserXtwo = 600
+    var tieSurvivalTwo = true
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -282,6 +283,20 @@ function drawTIE(){
     else if(laserThreeX >= tieX && laserThreeX <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laserThreeGo == true){
         tieSurvival = false
     }
+    else if(laserFourX >= tieX && laserFourX <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laserFourGo == true){
+        tieSurvival = false
+    }
+    else if(laserFiveX >= tieX && laserFiveX <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laserFiveGo == true){
+        tieSurvival = false
+    }
+    else if(laserSixX >= tieX && laserSixX <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laserSixGo == true){
+        tieSurvival = false
+    }
+    else if(laserSevenX >= tieX && laserSevenX <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laserSevenGo == true){
+        tieSurvival = false
+    }
+    
+    if(tieSurvivalTwo == true){
     ctx.beginPath();
     ctx.rect(tieXtwo+20, tieYtwo-50, 35, 100);
     ctx.fillStyle = "#cccccc";
@@ -382,6 +397,28 @@ function drawTIE(){
         ctx.closePath();
         
         tielaserXtwo -= 20
+    }
+    }
+    if(laserX >= tieXtwo && laserX <= tieXtwo + 20 && paddleY <= tieYtwo + 50 && paddleY >= tieYtwo - 50 && laserGo == true){
+        tieSurvivalTwo = false
+    }
+    else if(laserTwoX >= tieXtwo && laserTwoX <= tieXtwo + 20 && paddleY <= tieYtwo + 50 && paddleY >= tieYtwo - 50 && laserTwoGo == true){
+        tieSurvivalTwo = false
+    }
+    else if(laserThreeX >= tieXtwo && laserThreeX <= tieXtwo + 20 && paddleY <= tieYtwo + 50 && paddleY >= tieYtwo - 50 && laserThreeGo == true){
+        tieSurvivalTwo = false
+    }
+    else if(laserFourX >= tieXtwo && laserFourX <= tieXtwo + 20 && paddleY <= tieYtwo + 50 && paddleY >= tieYtwo - 50 && laserFourGo == true){
+        tieSurvivalTwo = false
+    }
+    else if(laserFiveX >= tieXtwo && laserFiveX <= tieXtwo + 20 && paddleY <= tieYtwo + 50 && paddleY >= tieYtwo - 50 && laserFiveGo == true){
+        tieSurvivalTwo = false
+    }
+    else if(laserSixX >= tieXtwo && laserSixX <= tieXtwo + 20 && paddleY <= tieYtwo + 50 && paddleY >= tieYtwo - 50 && laserSixGo == true){
+        tieSurvivalTwo = false
+    }
+    else if(laserSevenX >= tieXtwo && laserSevenX <= tieXtwo + 20 && paddleY <= tieYtwo + 50 && paddleY >= tieYtwo - 50 && laserSevenGo == true){
+        tieSurvivalTwo = false
     }
     
 }
