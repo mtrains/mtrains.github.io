@@ -65,6 +65,10 @@
     var tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
     var tielaserXtwo = 600
     var tieSurvivalTwo = true
+    var tieXthree = canvas.width*2
+    var tieYthree = (Math.floor(Math.random() * 660) + 1)+35
+    var tielaserXthree = 600
+    var tieSurvivalThree = true
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -421,6 +425,131 @@ function drawTIE(){
         tieSurvivalTwo = false
     }
     
+    if(tieSurvivalThree == true){
+    ctx.beginPath();
+    ctx.rect(tieXthree+20, tieYthree-50, 35, 100);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree, tieYthree);
+    ctx.lineTo(tieXthree+20, tieYthree-50);
+    ctx.lineTo(tieXthree+23, tieYthree+1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree, tieYthree);
+    ctx.lineTo(tieXthree+20, tieYthree+50);
+    ctx.lineTo(tieXthree+23, tieYthree-1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+75, tieYthree);
+    ctx.lineTo(tieXthree+55, tieYthree-50);
+    ctx.lineTo(tieXthree+52, tieYthree+1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+75, tieYthree);
+    ctx.lineTo(tieXthree+55, tieYthree+50);
+    ctx.lineTo(tieXthree+52, tieYthree-1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+2, tieYthree-1);
+    ctx.lineTo(tieXthree+21, tieYthree-48);
+    ctx.lineTo(tieXthree+35, tieYthree-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+2, tieYthree+1);
+    ctx.lineTo(tieXthree+21, tieYthree+48);
+    ctx.lineTo(tieXthree+35, tieYthree+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+73, tieYthree-1);
+    ctx.lineTo(tieXthree+54, tieYthree-48);
+    ctx.lineTo(tieXthree+40, tieYthree-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+73, tieYthree+1);
+    ctx.lineTo(tieXthree+54, tieYthree+48);
+    ctx.lineTo(tieXthree+40, tieYthree+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+23, tieYthree-49);
+    ctx.lineTo(tieXthree+52, tieYthree-49);
+    ctx.lineTo(tieXthree+37, tieYthree-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieXthree+23, tieYthree+49);
+    ctx.lineTo(tieXthree+52, tieYthree+49);
+    ctx.lineTo(tieXthree+37, tieYthree+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.arc(tieXthree+37, tieYthree, 8, 0, Math.PI*2, false);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
+    
+    if(tieXthree <= 600){
+        ctx.beginPath();
+        ctx.rect(tielaserXthree, tieYthree, 40, 2);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.closePath();
+        
+        tielaserXtwo -= 20
+    }
+    }
+    if(laserX >= tieXthree && laserX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserGo == true && laserX <= canvas.width-30){
+        tieSurvivalTwo = false
+    }
+    else if(laserTwoX >= tieXthree && laserTwoX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserTwoGo == true && laserTwoX <= canvas.width-30){
+        tieSurvivalTwo = false
+    }
+    else if(laserThreeX >= tieXthree && laserThreeX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserThreeGo == true && laserThreeX <= canvas.width-30){
+        tieSurvivalTwo = false
+    }
+    else if(laserFourX >= tieXthree && laserFourX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserFourGo == true && laserFourX <= canvas.width-30){
+        tieSurvivalTwo = false
+    }
+    else if(laserFiveX >= tieXthree && laserFiveX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserFiveGo == true && laserFiveX <= canvas.width-30){
+        tieSurvivalTwo = false
+    }
+    else if(laserSixX >= tieXthree && laserSixX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserSixGo == true && laserSixX <= canvas.width-30){
+        tieSurvivalTwo = false
+    }
+    else if(laserSevenX >= tieXthree && laserSevenX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserSevenGo == true && laserSevenX <= canvas.width-30){
+        tieSurvivalTwo = false
+    }
+    
 }
     
 function draw() {
@@ -585,8 +714,10 @@ function draw() {
     }
     
     tieX -= tieSpeed
-    
     tieXtwo -= tieSpeed
+    tieXthree -= tieSpeed
+    
+    
     
 }
 setInterval(draw, 10);
