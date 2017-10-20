@@ -65,7 +65,7 @@
     var tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
     var tielaserXtwo = 600
     var tieSurvivalTwo = true
-    var tieXthree = canvas.width*2
+    var tieXthree = canvas.width*3
     var tieYthree = (Math.floor(Math.random() * 660) + 1)+35
     var tielaserXthree = 600
     var tieSurvivalThree = true
@@ -525,7 +525,7 @@ function drawTIE(){
         ctx.fill();
         ctx.closePath();
         
-        tielaserXtwo -= 20
+        tielaserXthree -= 20
     }
     }
     if(laserX >= tieXthree && laserX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserGo == true && laserX <= canvas.width-30){
