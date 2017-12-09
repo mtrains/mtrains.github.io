@@ -584,6 +584,22 @@ function drawTIE(){
         
     }
     
+    if(tieXtwo <= canvas.width*-2 && tieSpeed == 3){
+        tieXtwo = canvas.width
+        tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
+        tielaserXtwo = 600
+        tieSurvivalTwo = true
+        
+    }
+    
+    if(tieXthree <= canvas.width*-2 && tieSpeed == 3){
+        tieXthree = canvas.width
+        tieYthree = (Math.floor(Math.random() * 660) + 1)+35
+        tielaserXthree = 600
+        tieSurvivalTwo = true
+        
+    }
+    
 }
     
 function draw() {
