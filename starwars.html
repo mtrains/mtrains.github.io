@@ -576,6 +576,14 @@ function drawTIE(){
         score += 1
     }
     
+    if(tieX <= canvas.width*-2 && tieSpeed == 3){
+        tieX = canvas.width
+        tieY = (Math.floor(Math.random() * 660) + 1)+35
+        tielaserX = 600
+        tieSurvival = true
+        
+    }
+    
 }
     
 function draw() {
