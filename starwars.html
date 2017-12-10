@@ -92,13 +92,7 @@ function drawXwing(){
     ctx.fillStyle = "#cccccc";
     ctx.fill();
     ctx.closePath();
-    
-    //ctx.beginPath();
-    //ctx.rect(0, paddleY, 100, paddleHeight);
-    //ctx.fillStyle = "red";
-    //ctx.fill();
-    //ctx.closePath();
-    
+        
     ctx.font = "16px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Score: "+score, 8, 20);
@@ -211,6 +205,7 @@ function drawTIE(){
     for(var i=0;i<lasers.length;i++){
         var laser = lasers[i];
         if(laser.x >= tieX && laser.x <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laser.go == true && tieSurvival == true){
+            laser.go = false;
             tieSurvival = false
             score += 1
         }
@@ -321,7 +316,7 @@ function drawTIE(){
     }
     for(var i=0;i<lasers.length;i++){
         var laser = lasers[i];
-        if(laser.x >= tieXtwo && laser.x <= tieXtwo+20 && paddleY <= tieYtwo+50 && paddleY >= tieYtwo-50 && laser.go == true && laser.x <= canvas.width-30 && tieSurvivalTwo == true){//work on
+        if(laser.x >= tieXtwo && laser.x <= tieXtwo+20 && <= tieYtwo+50 && paddleY >= tieYtwo-50 && laser.go == true && laser.x <= canvas.width-30 && tieSurvivalTwo == true){//work on
             tieSurvivalTwo = false
             score += 1
         }
@@ -466,8 +461,8 @@ function drawTIE(){
     
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawXwing();
-        drawTIE();
+    drawXwing();
+    drawTIE();
     
     
     if(upPressed==true && paddleY >= 0){
