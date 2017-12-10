@@ -477,7 +477,8 @@ function draw() {
         paddleY += 5
     }
     
-    for(var i=0;i<laser.length;i++){
+    for(var i=0;i<lasers.length;i++){
+        var laser = lasers[0];
         if(laser.go == true){
             ctx.beginPath();
             ctx.rect(laser.x, paddleY, 40, 2);
