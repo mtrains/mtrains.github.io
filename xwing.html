@@ -10,58 +10,44 @@
 </head>
 <body>
 
-<canvas id="myCanvas"></canvas>
+<canvas id="myCanvas" width="1260" height="730"></canvas>
 
 <script>
-
-
     var canvas = document.getElementById("myCanvas");
-    var tieImg = new Image();
-    tieImg.src = 'tiefighter.png';
-    var xwingImg = new Image();
-    xwingImg.src = 'xwing.png';
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    var ctx = canvas.getContext("2d"); 
+ 	var ctx = canvas.getContext("2d"); 
     var paddleWidth = 200//
     var paddleHeight = 30 
     var paddleY = canvas.height-paddleHeight
     var upPressed = false
     var downPressed = false
     var lasers = [];
-    var lives = 10;
     for(var i=0;i<7;i++){
         lasers[i] = {
+          lock: true,
+          ok: false,
           x: 0,
+          laser: false,
           go: false
         };
     }
-    var ties = [];
-    var score = 0;
-    var level = 1;
-    createTieFighters(level);
+    var tieX = canvas.width
+    var tieY = (Math.floor(Math.random() * 660) + 1)+35
+    var tieSpeed = 3
+    var tielaserX = 600
+    var tieSurvival = true
+    var tieXtwo = canvas.width*2
+    var tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
+    var tielaserXtwo = 600
+    var tieSurvivalTwo = true
+    var tieXthree = canvas.width*3
+    var tieYthree = (Math.floor(Math.random() * 660) + 1)+35
+    var tielaserXthree = 600
+    var tieSurvivalThree = true
+    var score = 0
     
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
     
-
-function createTieFighters(count){
-	ties = [];
-    for(var i=0;i<count;i++){
-        ties[i]={};
-        resetTie(ties[i]);
-    }
-	
-}
-   
-    
-function resetTie(tie){
-	tie.x = (Math.floor(Math.random() * canvas.width) + 1)+canvas.width;
-	tie.y = Math.floor(Math.random() * canvas.height)+35;
-	tie.speed = 3;
-    tie.laserX = 600;
-    tie.alive = true;           
-};
     
 function keyDownHandler(e) {
     if(e.keyCode == 40) {
@@ -72,12 +58,34 @@ function keyDownHandler(e) {
         upPressed = true;
     }
     else if(e.keyCode == 32) {
-        for(var i=0;i<lasers.length;i++){
-            if(!lasers[i].go){
-                lasers[i].go = true;
-                lasers[i].x = 0;
-                break;
-            }
+        laser = true
+        
+        
+        if(laserGo == true && laserTwoOK== true){
+            
+            laserTwo = true
+        }
+        if(laserTwoGo == true && laserThreeOK== true){
+            
+            laserThree = true
+        }
+        if(laserThreeGo == true && laserFourOK== true){
+            
+            laserFour = true            
+        }
+        if(laserFourGo == true && laserFiveOK== true){
+            
+            laserFive = true
+        }
+        if(laserFiveGo == true && laserSixOK== true){
+            
+            laserSix = true
+            
+        }
+        if(laserSixGo == true && laserSevenOK== true){
+            
+            laserSeven = true
+            
         }
     }
 }
@@ -89,64 +97,180 @@ function keyUpHandler(e) {
     else if(e.keyCode == 38 ) {
         upPressed = false;
     }
+    else if(e.keyCode == 32) {
+        laser = false
+        
+        laserTwo = false
+        laserTwoOK = true
+        laserTwoLock = false
+        if(laserTwoGo == true){
+            laserThreeOK = true
+            laserThreeLock = false
+        }
+        if(laserThreeGo == true){
+            laserFourOK = true
+            laserFourLock = false
+        }
+        if(laserFourGo == true){
+            laserFiveOK = true
+            laserFiveLock = false
+        }
+        if(laserFiveGo == true){
+            laserSixOK = true
+            laserSixLock = false
+        }
+        if(laserSixGo == true){
+            laserSevenOK = true
+            laserSevenLock = false
+        if(laserSevenGo == true){    
+            laserLock = false
+        }
+        }
+    }
 }
     
 function drawXwing(){
-	
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
     
-	ctx.drawImage(xwingImg,0,paddleY-50,200,100);
-
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText("Score: "+score+" Level: "+level+" Lives: "+lives, 8, 20);
-}
-   
-function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
     ctx.beginPath();
-    ctx.moveTo(tie.x+x1, tie.y+y1);
-    ctx.lineTo(tie.x+x2, tie.y+y2);
-    ctx.lineTo(tie.x+x3, tie.y+y3);
-    ctx.fillStyle = fill;
+    ctx.rect(0, paddleY, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#cccccc";
     ctx.fill();
     ctx.closePath();
-/*<<<<<<< master
-	
+    
+    //ctx.beginPath();
+    //ctx.rect(0, paddleY, 100, paddleHeight);
+    //ctx.fillStyle = "red";
+    //ctx.fill();
+    //ctx.closePath();
+    
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Score: "+score, 8, 20);
 }
-
 function drawTIE(){
-    for(var t=0;t<ties.length;t++){
-        var tie = ties[t];
-        if(tie.alive){
-        	ctx.drawImage(tieImg,tie.x,tie.y-50,100,100);
-            if(tie.x <= 600){
-                ctx.beginPath();
-                ctx.rect(tie.laserX, tie.y, 40, 2);
-                ctx.fillStyle = "green";
-                ctx.fill();
-                ctx.closePath();
+    if(tieSurvival == true){
         
-                tie.laserX -= 20
-            }
-            if(tie.x < canvas.width){
-                for(var i=0;i<lasers.length;i++){
-                    var laser = lasers[i];
-                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true){
-                        laser.go = false;
-                        resetTie(tie);
-                        incScore();
-                    }
-                }            	
-            }
-            if(tie.x <= -100){
-            	resetTie(tie);
-            }
-    	}  
-=======
+    ctx.beginPath();
+    ctx.rect(tieX+20, tieY-50, 35, 100);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX, tieY);
+    ctx.lineTo(tieX+20, tieY-50);
+    ctx.lineTo(tieX+23, tieY+1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX, tieY);
+    ctx.lineTo(tieX+20, tieY+50);
+    ctx.lineTo(tieX+23, tieY-1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+75, tieY);
+    ctx.lineTo(tieX+55, tieY-50);
+    ctx.lineTo(tieX+52, tieY+1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+75, tieY);
+    ctx.lineTo(tieX+55, tieY+50);
+    ctx.lineTo(tieX+52, tieY-1);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+2, tieY-1);
+    ctx.lineTo(tieX+21, tieY-48);
+    ctx.lineTo(tieX+35, tieY-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+2, tieY+1);
+    ctx.lineTo(tieX+21, tieY+48);
+    ctx.lineTo(tieX+35, tieY+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+73, tieY-1);
+    ctx.lineTo(tieX+54, tieY-48);
+    ctx.lineTo(tieX+40, tieY-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+73, tieY+1);
+    ctx.lineTo(tieX+54, tieY+48);
+    ctx.lineTo(tieX+40, tieY+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+23, tieY-49);
+    ctx.lineTo(tieX+52, tieY-49);
+    ctx.lineTo(tieX+37, tieY-1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.moveTo(tieX+23, tieY+49);
+    ctx.lineTo(tieX+52, tieY+49);
+    ctx.lineTo(tieX+37, tieY+1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath()
+    
+    ctx.beginPath();
+    ctx.arc(tieX+37, tieY, 8, 0, Math.PI*2, false);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
+    
+    if(tieX <= 600){
+        ctx.beginPath();
+        ctx.rect(tielaserX, tieY, 40, 2);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.closePath();
+        
+        tielaserX -= 20
+    }
+    }
+    for(var i=0;i<lasers.length;i++){
+        var laser = lasers[i];
+        if(laser.x >= tieX && laser.x <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laser.go == true && tieSurvival == true){
+            tieSurvival = false
+            score += 1
+        }
+    }
+    
+    if(tieSurvivalTwo == true){
+    ctx.beginPath();
+    ctx.rect(tieXtwo+20, tieYtwo-50, 35, 100);
+    ctx.fillStyle = "#cccccc";
+    ctx.fill();
+    ctx.closePath();
     
     ctx.beginPath();
     ctx.moveTo(tieXtwo, tieYtwo);
@@ -413,22 +537,14 @@ function drawTIE(){
         tielaserXthree = 600
         tieSurvivalThree = true
         
-*/>>>>>>> master
     }
-}
-
-function incScore(){
-	score+=1;
-	if((score % 5) ==0){
-		level++;
-		createTieFighters(level);
-	}
+    
 }
     
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawXwing();
-    drawTIE();
+        drawXwing();
+        drawTIE();
     
     
     if(upPressed==true && paddleY >= 0){
@@ -436,33 +552,165 @@ function draw() {
     }
     else if(downPressed == true && paddleY <= (canvas.height-paddleHeight)){
         paddleY += 5
+}
+    
+    if(laser==true){
+        laserGo = true
+        
+    }
+    if(laserGo == true){
+        ctx.beginPath();
+        ctx.rect(laserX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserX += 20
+        if(laserTwoLock == true){
+        laserTwo = false
+        laserTwoX = 0 
+        laserTwoGo = false
+        laserTwoOK = false
+    }
+    }
+    if(laserTwo==true){
+        laserTwoGo = true
+        
+    }
+    if(laserTwoGo == true){
+        ctx.beginPath();
+        ctx.rect(laserTwoX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserTwoX += 20
+        if(laserThreeLock == true){
+        laserThree = false
+        laserThreeX = 0 
+        laserThreeGo = false
+        laserThreeOK = false
+        }
+    }
+    if(laserThree==true){
+        laserThreeGo = true
+        
+    }
+    if(laserThreeGo == true){
+        ctx.beginPath();
+        ctx.rect(laserThreeX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserThreeX += 20
+        if(laserFourLock == true){
+        laserFour = false
+        laserFourX = 0 
+        laserFourGo = false
+        laserFourOK = false
+        }
+    }
+    if(laserFour==true){
+        laserFourGo = true
+        
+    }
+    if(laserFourGo == true){
+        ctx.beginPath();
+        ctx.rect(laserFourX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserFourX += 20
+        if(laserFiveLock == true){
+        laserFive = false
+        laserFiveX = 0 
+        laserFiveGo = false
+        laserFiveOK = false
+        }
+    }
+    if(laserFive==true){
+        laserFiveGo = true
+        
+    }
+    if(laserFiveGo == true){
+        ctx.beginPath();
+        ctx.rect(laserFiveX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserFiveX += 20
+        if(laserSixLock == true){
+        laserSix = false
+        laserSixX = 0 
+        laserSixGo = false
+        laserSixOK = false
+        }
+    }
+    if(laserSix==true){
+        laserSixGo = true
+        
+    }
+    if(laserSixGo == true){
+        ctx.beginPath();
+        ctx.rect(laserSixX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserSixX += 20
+        if(laserSevenLock == true){
+        laserSeven = false
+        laserSevenX = 0 
+        laserSevenGo = false
+        laserSevenOK = false
+        }
+    }
+    if(laserSeven==true){
+        laserSevenGo = true
+        
+    }
+    if(laserSevenGo == true){
+        ctx.beginPath();
+        ctx.rect(laserSevenX, paddleY, 40, 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        laserSevenX += 20
+        if(laserLock == true){
+        laser = false
+        laserX = 0
+        laserGo = false
+        }
+        
+    }
+    if(laserX > canvas.width){
+        laserLock = true
+    }
+    if(laserTwoX > canvas.width){
+        laserTwoLock = true
+    }
+    if(laserThreeX > canvas.width){
+        laserThreeLock = true
+    }
+    if(laserFourX > canvas.width){
+        laserFourLock = true
+    }
+    if(laserFiveX > canvas.width){
+        laserFiveLock = true
+    }
+    if(laserSixX > canvas.width){
+        laserSixLock = true
+    }
+    if(laserSevenX > canvas.width){
+        laserSevenLock = true
     }
     
-    for(var i=0;i<lasers.length;i++){
-        var laser = lasers[0];
-        if(laser.go == true){
-            ctx.beginPath();
-            ctx.rect(laser.x, paddleY, 40, 2);
-            ctx.fillStyle = "red";
-            ctx.fill();
-            ctx.closePath();
-            laser.x += 20
-        }
-        if(laser.x > canvas.width){
-            laser.go = false;
-        }
-    } 
-    for(var t=0;t<ties.length;t++){
-		ties[t].x-=ties[t].speed;    	
-    }
+    tieX -= tieSpeed
+    tieXtwo -= tieSpeed
+    tieXthree -= tieSpeed
+    
     
     
 }
 setInterval(draw, 10);
-
     
-
-
 </script>
 
 </body>
