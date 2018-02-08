@@ -32,7 +32,7 @@ function drawStuff {
 	ctx.fillStyle = "red";
 	ctx.fillText("Mad Libs!!!!", 300, 200);	
 	
-}
+
 	if(goDipilMadLib == true){
 		ctx.beginPath();
 		ctx.rect(0, 0, 1200, 600);
@@ -55,7 +55,7 @@ var video = prompt ("In order to do this mad lib, you must watch Defenders of Di
 if(video = "stop") {
 	document.location.reload();
 	}
-
+}
 var one = prompt ("Enter a plural noun. Please capitalize it. Example: Bananas, Robbers, Geese, etc.") 
 var two = prompt ("Enter a name. Example: Alex, Sam, River Song, etc.")
 var three = prompt ("Enter an adjective. Example: happy, blue, mean, etc.")
@@ -72,6 +72,7 @@ goDipilMadLib = true
         document.location.reload();
     }
 }
+
 function draw() {
     
 	drawKeyDownHandler();
