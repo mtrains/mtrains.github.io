@@ -21,7 +21,7 @@
 	
 document.addEventListener("keydown", drawKeyDownHandler, false);
 
-function drawStuff () {
+function drawStuff() {
 	ctx.beginPath();
 	ctx.rect(0, 0, 1200, 600);
 	ctx.fillStyle = "purple";
@@ -51,7 +51,7 @@ function drawStuff () {
 function drawKeyDownHandler(e) {
 	
 if(e.keyCode == 68) {
-var video = prompt ("sfawefIn order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so. (See website at bottom of the page.) Enter stop below to pause.")
+var video = prompt ("In order to do this mad lib, you must watch Defenders of Dipil Part 1. Go to https://www.youtube.com/watch?v=bbioB5gfJ9o to do so. (See website at bottom of the page.) Enter stop below to pause.")
 if(video = "stop") {
 	document.location.reload();
 	}
@@ -75,7 +75,6 @@ goDipilMadLib = true
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-	drawKeyDownHandler();
 	drawStuff();
 }
 setInterval(draw, 10);
