@@ -16,6 +16,7 @@
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 	var goDipilMadLib = false
+	var backgroundColor = orange
 	//var rightPressed = false;
 	//var leftPressed = false;
 	
@@ -24,7 +25,7 @@ document.addEventListener("keydown", drawKeyDownHandler, false);
 function drawStuff() {
 	ctx.beginPath();
 	ctx.rect(0, 0, 1200, 600);
-	ctx.fillStyle = "orange";
+	ctx.fillStyle = backgroundColor;
 	ctx.fill();
 	ctx.closePath();
 	
@@ -67,10 +68,11 @@ var eight = prompt ("Enter an adjective. Example: red, sleepy, awesome, etc.")
 var infinity = 3275
 
 	if(eight == agjkljkiojefhefoejfefjwofiewjfjfewiojfiewojfieowjfowjf){
-	   goDipilMadLib = false
+	   backgroundColor = red
 	   }
 	else{
 		goDipilMadLib = true
+		backgroundColor = green
 	}
 
     
