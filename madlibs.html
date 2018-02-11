@@ -45,6 +45,13 @@ function drawStuff() {
 		ctx.fillStyle = "#0095DD";
 		ctx.fillText("Greetings, "+one+" of Dipil. I am Agent "+two+" of the "+three+"Organization of "+four+" Protection. For "+five+" years, you have "+six+" ready, ready to be "+seven+" upon for the "+eight+" last defense", 30, 30);
 	}
+	else if(goDipilMadLib == false){
+		ctx.beginPath();
+		ctx.rect(0, 0, 1200, 600);
+		ctx.fillStyle = green;
+		ctx.fill();
+		ctx.closePath();
+	}
 }
 
 
@@ -68,11 +75,11 @@ var eight = prompt ("Enter an adjective. Example: red, sleepy, awesome, etc.")
 var infinity = 3275
 
 	if(eight == "agjkljkiojefhefoejfefjwofiewjfjfewiojfiewojfieowjfowjf"){
-	   backgroundColor = red
+	   backgroundColor = "red"
 	  
 	 } else {
 		goDipilMadLib = true
-		backgroundColor = green
+		backgroundColor = "green"
 	}
 
     
@@ -84,6 +91,7 @@ var infinity = 3275
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 	drawStuff();
+	drawKeyDownHandler(e);
 }
 setInterval(draw, 10);
 
