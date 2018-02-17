@@ -52,6 +52,9 @@ function drawStuff() {
 		ctx.fill();
 		ctx.closePath();
 	}
+	if(backgroundColor == "green"){
+		goDipilMadLib = true
+	}
 }
 
 
@@ -75,7 +78,11 @@ var eight = prompt ("Enter an adjective. Example: red, sleepy, awesome, etc.")
 var infinity = 3275
 
 	if(eight == "agjkljkiojefhefoejfefjwofiewjfjfewiojfiewojfieowjfowjf"){
-	   backgroundColor = "red"
+	   ctx.beginPath();
+		ctx.rect(0, 0, 1200, 600);
+		ctx.fillStyle = "red";
+		ctx.fill();
+		ctx.closePath();
 	  
 	 } else {
 		goDipilMadLib = true
