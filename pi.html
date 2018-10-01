@@ -24,6 +24,7 @@
   var positive = true
   var circlydy =  2.406015038 * 5 //12.03007519
   var circlyY = 0
+  var rectLength = 638
   
 
 
@@ -59,6 +60,16 @@
 	//ctx.fillStyle = "black";
 	//ctx.fill();
 	//ctx.closePath();
+  ctx.beginPath();
+  ctx.rect(0, 304, rectX, 32);
+  ctx.fillStyle = "pink";
+  ctx.fill();
+  ctx.closePath();	
+	  
+if(mouthY >= 304){
+	rectX = 638
+   }
+	  rectX -= 1.5
 	  
 	ctx.beginPath();
     ctx.moveTo(canvas.height/2, canvas.height/2);
@@ -103,13 +114,7 @@
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Yummy!", 780, canvas.height*.75);
 	  
-if(mouthY >= 304){
-   ctx.beginPath();
-  ctx.rect(0, 304, 638, 32);
-  ctx.fillStyle = "pink";
-  ctx.fill();
-  ctx.closePath();
-   }
+
 	 
 }
 	
