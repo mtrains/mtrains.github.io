@@ -68,6 +68,12 @@
 	  
 if(mouthY >= 304){
 	rectLength = 638
+	
+	  ctx.beginPath();
+  ctx.rect(0, 304, rectLength, 32);
+  ctx.fillStyle = "yellow";
+  ctx.fill();
+  ctx.closePath();
    }
 	  rectLength -= 1.5
 	  
