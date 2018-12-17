@@ -25,7 +25,19 @@
   var circlydy =  2.406015038 * 5 //12.03007519
   var circlyY = 0
   var rectLength = 638
-  //var date = getDate()
+  var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+
+
+if(dd<10) {
+    dd = '0'+dd
+} 
+
+if(mm<10) {
+    mm = '0'+mm
+} 
+
   
 
 
