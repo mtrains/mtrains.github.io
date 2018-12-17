@@ -30,6 +30,7 @@
   var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
+var time = 0
 
 
 if(dd<10) {
@@ -203,6 +204,7 @@ function draw() {
 	drawYum();
     x += dx;
     y += dy;
+	time += 0.01
 	
 	
 	
