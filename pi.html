@@ -25,6 +25,7 @@
   var circlydy =  2.406015038 * 5 //12.03007519
   var circlyY = 0
   var rectLength = 638
+  var foodHoliday = "Yum!"
   var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -128,15 +129,20 @@ if(mouthY >= 304){
   ctx.fillStyle = "yellow";
   ctx.fill();
   ctx.closePath();
+
+	  //dates for pie holidays
+if(dd == 25 && mm == 12){
+   foodHoliday = "Happy National Pumpkin Pie Day!" 
+   }	
 	  
-	  ctx.font = "32px Arial";
+	  
+	  
+	ctx.font = "32px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Yum!", 780, canvas.height*.75);
+    ctx.fillText(foodHoliday, 780, canvas.height*.75);
 	  
-//dates for pie holidays
- //ctx.font = "32px Arial";
-   // ctx.fillStyle = "#0095DD";
-    //ctx.fillText(date, 900, canvas.height*.75);
+
+	  
 	 
 }
 	
