@@ -26,6 +26,7 @@
   var circlyY = 0
   var rectLength = 638
   var foodHoliday = "Yum!"
+  var wordPlacement = 780
   var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -136,13 +137,14 @@ if(dd == 25 && mm == 12){
    }	
 if(dd == 17 && mm == 12){
    foodHoliday = "Updates are in progress" 
+	wordPlacement = 680
    }	
 	  
 	  
 	  
 	ctx.font = "32px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText(foodHoliday, 780, canvas.height*.75);
+    ctx.fillText(foodHoliday, wordPlacement, canvas.height*.75);
 	  
 
 	  
