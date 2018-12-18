@@ -27,6 +27,7 @@
   var rectLength = 638
   var foodHoliday = "Don't Ask"
   var wordPlacement = 780
+  var wordPlacementVertical = canvas.height*.75
   var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -192,12 +193,14 @@ if(dd == 09 && mm == 06){
 	  
 if(dd == 18 && mm == 12){//change dd to 01 and mm to 08
    foodHoliday = "Happy Raspberry Cream Pie Day!" 
-	wordPlacement = 600
+	wordPlacement = 560
+	wordPlacementVertical = canvas.height*.75+36
    }	  
 	  
 if(dd == 15 && mm == 08){
    foodHoliday = "Happy Lemon Meringue Pie Day!" 
-	wordPlacement = 600
+	wordPlacement = 565
+	wordPlacementVertical = canvas.height*.75+36
    }	  
 	  
 	  
