@@ -30,7 +30,7 @@
   var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
-var time = 0
+var time = 0//work on 1700 should be max
 
 
 if(dd<10) {
@@ -208,7 +208,15 @@ function draw() {
     y += dy;
 	time += 0.01
 	
-	
+	if(time >= 1700){
+		dx = 0 
+		pidy = 0
+		circlyY = 0
+		
+		alert("Pacman has encountered an error. Reload the page or click OK to continue.");
+    	document.location.reload();
+		
+	}
 	
 }
   
