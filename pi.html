@@ -25,7 +25,7 @@
   var circlydy =  2.406015038 * 5 //12.03007519
   var circlyY = 0
   var rectLength = 638
-  var foodHoliday = "Don't Ask"
+  var foodHoliday = "Yum!"
   var wordPlacement = 780
   var wordPlacementVertical = canvas.height*.75
   var today = new Date();
@@ -148,17 +148,19 @@ if(dd == 23 && mm == 01){
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Happy Rhubarb Pie Day!", wordPlacement, canvas.height*.75+36);
 	
-   }		  
-if(dd == 22 && mm == 02){ 
-   foodHoliday = "Happy Cherry Pie Day!" 
-	wordPlacement = 620
-   }	
+   }		
 
 if(mm == 02){
 	ctx.font = "32px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Happy Great American Pie Month!", wordPlacement-70, canvas.height*.75+86);
+   }	 
+	  
+if(dd == 20 && mm == 02){ 
+   foodHoliday = "Happy Cherry Pie Day!" 
+	wordPlacement = 620
    }	
+
 
 if(dd == 02 && mm == 03){
    foodHoliday = "Happy Banana Cream Pie Day!" 
@@ -190,6 +192,11 @@ if(dd == 09 && mm == 06){
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Happy Strawberry-Rhubarb Pie Day!", wordPlacement-75, canvas.height*.75+88);	  
 }
+	
+if(dd == 12 && mm == 07){
+   foodHoliday = "Happy Pecan Pie Day!" 
+	wordPlacement = 620
+   }		  
 	  
 if(dd == 01 && mm == 08){//change dd to 01 and mm to 08
    foodHoliday = "Happy Raspberry Cream Pie Day!" 
@@ -208,18 +215,60 @@ if(dd == 18 && mm == 08){
 	wordPlacement = 605
    }  
 	  
+
+	  
+if(dd == 20 && mm == 08){
+   foodHoliday = "Happy Chocolate Pecan Pie Day!" 
+	wordPlacement = 555
+	wordPlacementVertical = canvas.height*.75+88
+   }	
+	  
+if(dd == 24 && mm == 08){
+   foodHoliday = "Happy Peach Pie Day!" 
+	wordPlacement = 620
+   }	  
+
+if(dd == 28 && mm == 09){
+   foodHoliday = "Happy Strawberry Cream Pie Day!" 
+	wordPlacement = 555
+	wordPlacementVertical = canvas.height*.75+88
+   }
+	
+if(dd == 12 && mm == 10){
+   foodHoliday = "Happy Pumpkin Pie Day!" 
+	wordPlacement = 620
+   }	 	  
+	  
+if(dd == 23 && mm == 10){
+   foodHoliday = "Happy Boston Cream Pie Day!" 
+	wordPlacement = 555
+	wordPlacementVertical = canvas.height*.75+88
+   }	  
+	 
+if(dd == 27 && mm == 11){
+   foodHoliday = "Happy Bavarian Cream Pie Day!" 
+	wordPlacement = 555
+	wordPlacementVertical = canvas.height*.75+88
+   }	  	  
+
+if(dd == 01 && mm == 12){
+   foodHoliday = "Happy National Pie Day!" 
+	wordPlacement = 620
+}
+	  
+	  
+	  
 if(dd == 25 && mm == 12){
    foodHoliday = "Happy Pumpkin Pie Day!" 
 	wordPlacement = 620
-   }	
-	 
-if(dd == 19 && mm == 12){
-   foodHoliday = "Updates are in progress" 
-	wordPlacement = 620
-   }	
-	  
-	  
-	  
+   }	 
+
+
+//if(dd == 19 && mm == 12){
+//   foodHoliday = "Updates are in progress" 
+//	wordPlacement = 620
+//   }	
+	  	  
 	ctx.font = "32px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText(foodHoliday, wordPlacement, wordPlacementVertical);
