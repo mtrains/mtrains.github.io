@@ -98,9 +98,7 @@ function drawXwing(){
     ctx.closePath();
 
 	ctx.drawImage(xwingImg,0,paddleY-50,200,100);
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText("Score: "+score+" Level: "+level+" Lives: "+lives, 8, 20);
+    
 }
 
 function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
@@ -181,6 +179,15 @@ function draw() {
     for(var t=0;t<ties.length;t++){
 		ties[t].x-=ties[t].speed;
     }
+	  ctx.beginPath();
+            ctx.rect(8, 20, 40, 2);
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.closePath();
+	
+	ctx.font = "16px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Score: "+score+" Level: "+level+" Lives: "+lives, 8, 20);
 
 
 }
