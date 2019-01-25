@@ -50,6 +50,9 @@ function createTieFighters(count){
         ties[i]={};
         resetTie(ties[i]);
     }
+	if(tie.y >= canvas.height-40){
+		resetTie(tie); 
+	}
 
 }
 
@@ -173,13 +176,7 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawXwing();
     drawTIE();
-if(tielaserboom == true){
-		ctx.beginPath();
-            ctx.rect(0, tie.y, canvas.width, 2);
-            ctx.fillStyle = "red";
-            ctx.fill();
-            ctx.closePath();
-}
+
 	
     if(upPressed==true && paddleY >= 0){
         paddleY -=5
