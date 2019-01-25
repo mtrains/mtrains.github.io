@@ -38,6 +38,7 @@
     var ties = [];
     var score = 0;
     var level = 1;
+	var tielaserboom = false
     createTieFighters(level);
 
     document.addEventListener("keydown", keyDownHandler, false);
@@ -123,6 +124,7 @@ function drawTIE(){
         if(tie.alive){
         	ctx.drawImage(tieImg,tie.x,tie.y-50,100,100);
             if(tie.x <= 600){
+				tielaserboom = false
                 ctx.beginPath();
                 ctx.rect(tie.laserX, tie.y, 40, 2);
                 ctx.fillStyle = "green";
@@ -131,10 +133,16 @@ function drawTIE(){
 		    
 		if(tie.laserX <= 120 && tie.y >= paddleY-40 && tie.y <= paddleY+40){
 		lives -= 1
+		tielaserboom = true
 		}
 			
-
+		if(tielaserboom == false){
                 tie.laserX -= 20
+		}
+		if(tielaserboom == true){
+                tie.laserX = 12093709
+		}
+				
             }
             if(tie.x < canvas.width){
                 for(var i=0;i<lasers.length;i++){
