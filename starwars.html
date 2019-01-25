@@ -99,6 +99,12 @@ function drawXwing(){
 
 	ctx.drawImage(xwingImg,0,paddleY-50,200,100);
     
+	ctx.beginPath();
+    ctx.rect(0, paddleY, canvas.width, 1);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+	
 }
 
 function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
@@ -122,6 +128,11 @@ function drawTIE(){
                 ctx.fillStyle = "green";
                 ctx.fill();
                 ctx.closePath();
+		    
+		//if(tie.laserX <= 120 && tie.y     ){
+		//work on	
+		//}
+			
 
                 tie.laserX -= 20
             }
