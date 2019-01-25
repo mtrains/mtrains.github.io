@@ -50,10 +50,7 @@ function createTieFighters(count){
         ties[i]={};
         resetTie(ties[i]);
     }
-	if(tie.y >= canvas.height-40){
-		resetTie(tie); 
-	}
-
+	
 }
 
 
@@ -63,6 +60,10 @@ function resetTie(tie){
 	tie.speed = 3;
     tie.laserX = 600;
     tie.alive = true;
+	if(tie.y >= canvas.height-40){
+		resetTie(tie); 
+	}
+
 };
 
 function keyDownHandler(e) {
