@@ -67,14 +67,14 @@ function resetTie(tie){
 };
 
 function keyDownHandler(e) {
-    if(e.keyCode == 40) {
+    if(e.keyCode == 40 && lives > 0) {
         downPressed = true;
     }
 
-    else if(e.keyCode == 38) {
+    else if(e.keyCode == 38 && lives > 0) {
         upPressed = true;
     }
-    else if(e.keyCode == 32) {
+    else if(e.keyCode == 32 && lives > 0) {
         for(var i=0;i<lasers.length;i++){
             if(!lasers[i].go){
                 lasers[i].go = true;
@@ -86,10 +86,10 @@ function keyDownHandler(e) {
 }
 
 function keyUpHandler(e) {
-    if(e.keyCode == 40) {
+    if(e.keyCode == 40 && lives > 0) {
         downPressed = false;
     }
-    else if(e.keyCode == 38 ) {
+    else if(e.keyCode == 38 && lives > 0) {
         upPressed = false;
     }
 }
@@ -108,6 +108,8 @@ function drawXwing(){
 	
 }
 
+
+
 function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
     ctx.beginPath();
     ctx.moveTo(tie.x+x1, tie.y+y1);
@@ -123,7 +125,7 @@ function drawTIE(){
         var tie = ties[t];
         if(tie.alive){
         	ctx.drawImage(tieImg,tie.x,tie.y-50,100,100);
-            if(tie.x <= 600){
+            if(tie.x <= 600 && lives > 0){
 				tielaserboom = false
                 ctx.beginPath();
                 ctx.rect(tie.laserX, tie.y, 40, 2);
@@ -131,7 +133,7 @@ function drawTIE(){
                 ctx.fill();
                 ctx.closePath();
 	//making tie lasers cause damage to x wing	    
-		if(tie.laserX <= 120 && tie.laserX >= 5 && tie.y >= paddleY-40 && tie.y <= paddleY+40){
+		if(tie.laserX <= 120 && tie.laserX >= 5 && tie.y >= paddleY-40 && tie.y <= paddleY+40 && lives > 0){
 		lives -= 1
 		tielaserboom = true
 		}
@@ -143,7 +145,7 @@ function drawTIE(){
                 tie.laserX = 12093709
 		}
 		    //making tie cause 5 damage to x wing if they crash
-		if(tie.y >= paddleY-20 && tie.y <= paddleY+20 && tie.x <=120 && tie.x >= 5){
+		if(tie.y >= paddleY-20 && tie.y <= paddleY+20 && tie.x <=120 && tie.x >= 5 && lives > 0){
 			lives -= 5
 			resetTie(tie);
 		}
@@ -152,7 +154,7 @@ function drawTIE(){
             if(tie.x < canvas.width){
                 for(var i=0;i<lasers.length;i++){
                     var laser = lasers[i];
-                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true){
+                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true && lives > 0){
                         laser.go = false;
                         resetTie(tie);
                         incScore();
@@ -171,6 +173,18 @@ function incScore(){
 		level++;
 		createTieFighters(level);
 	}
+}
+	
+function death(){
+	if(lives < 0){
+		lives = 0
+	}
+	if(lives = 0){
+		ctx.font = "72px Arial";
+    ctx.fillStyle = "#f37101ff";
+    ctx.fillText("GAME OVER", canvas.width/2-360, canvas.height/2);
+	}
+	
 }
 
 function draw() {
