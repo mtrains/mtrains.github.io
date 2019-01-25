@@ -36,7 +36,7 @@
         };
     }
     var ties = [];
-    var score = 0;
+    var score = 100;
     var level = 1;
 	var tielaserboom = false
     createTieFighters(level);
@@ -176,7 +176,7 @@ function incScore(){
 }
 	
 function death(){
-	if(lives < 0){
+	if(lives <= -0.00001){
 		lives = 0
 	}
 	if(lives <= 0){
