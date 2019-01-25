@@ -174,7 +174,12 @@ function draw() {
     drawXwing();
     drawTIE();
 
-
+ctx.beginPath();
+            ctx.rect(0, tie.y, canvas.width, 2);
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.closePath();
+	
     if(upPressed==true && paddleY >= 0){
         paddleY -=5
     }
