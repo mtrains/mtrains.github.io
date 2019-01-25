@@ -139,7 +139,7 @@ function drawTIE(){
                 tie.laserX = 12093709
 		}
 		    //making tie cause 5 damage to x wing if they crash
-		if(tie.y >= paddleY-15 && tie.y <= paddleY+15 && tie.x <=120 && tie.x >= 5){
+		if(tie.y >= paddleY-20 && tie.y <= paddleY+20 && tie.x <=120 && tie.x >= 5){
 			lives -= 5
 			resetTie(tie);
 		}
@@ -173,12 +173,13 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawXwing();
     drawTIE();
-
-ctx.beginPath();
+if(tielaserboom == true){
+		ctx.beginPath();
             ctx.rect(0, tie.y, canvas.width, 2);
             ctx.fillStyle = "red";
             ctx.fill();
             ctx.closePath();
+}
 	
     if(upPressed==true && paddleY >= 0){
         paddleY -=5
