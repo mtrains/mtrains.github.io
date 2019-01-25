@@ -129,9 +129,9 @@ function drawTIE(){
                 ctx.fill();
                 ctx.closePath();
 		    
-		//if(tie.laserX <= 120 && tie.y     ){
-		//work on	
-		//}
+		if(tie.laserX <= 120 && tie.y >= paddleY-40 && tie.y <= paddleY+40){
+		lives -= 1
+		}
 			
 
                 tie.laserX -= 20
