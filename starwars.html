@@ -175,7 +175,7 @@ function incScore(){
 	}
 }
 	
-function death(){
+function drawDeath(){
 	if(lives <= -0.00001){
 		lives = 0
 	}
@@ -191,6 +191,7 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawXwing();
     drawTIE();
+	drawDeath();
 
 	
     if(upPressed==true && paddleY >= 0){
