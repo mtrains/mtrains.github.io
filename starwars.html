@@ -18,8 +18,8 @@
     tieImg.src = 'tiefighter.png';
     var xwingImg = new Image();
     xwingImg.src = 'xwing.png';
-	var explosionGif = new Gif(); 
-	explosionGif.src = 'http://www.animatedimages.org/data/media/1176/animated-explosion-image-0007.gif';
+	//var explosionGif = new Gif(); 
+	//explosionGif.src = 'http://www.animatedimages.org/data/media/1176/animated-explosion-image-0007.gif';
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight-24;
     var ctx = canvas.getContext("2d");
@@ -104,8 +104,8 @@ function drawXwing(){
     ctx.fill();
     ctx.closePath();
 if(lives > 0){
-	//ctx.drawImage(xwingImg,0,paddleY-50,200,100);
-	ctx.drawGif(explosionImg,0,paddleY-50,100,100);
+	ctx.drawImage(xwingImg,0,paddleY-50,200,100);
+	//ctx.drawGif(explosionImg,0,paddleY-50,100,100);
 }
 
 	
