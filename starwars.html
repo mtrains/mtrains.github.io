@@ -20,8 +20,21 @@
     xwingImg.src = 'xwing.png';
 	//var explosionGif = new Gif(); 
 	//explosionGif.src = 'http://www.animatedimages.org/data/media/1176/animated-explosion-image-0007.gif';
-	var myGif = GIF();
- 	myGif.load("GIFhttp://www.animatedimages.org/data/media/1176/animated-explosion-image-0007.gif");
+	//var myGif = GIF();
+ 	//myGif.load("GIFhttp://www.animatedimages.org/data/media/1176/animated-explosion-image-0007.gif");
+var myGif;
+// Can not load gif cross domain unless it has CORS header
+const gifURL = "https://upload.wikimedia.org/wikipedia/commons/a/a2/Wax_fire.gif";
+// timeout just waits till script has been parsed and executed
+// then starts loading a gif
+setTimeout(()=>{
+    myGif = GIF();                  // creates a new gif  
+    myGif.onerror = function(e){
+       console.log("Gif loading error " + e.type);
+    }
+    myGif.load(gifURL);  
+
+},0); 
 	
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight-24;
