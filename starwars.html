@@ -226,7 +226,7 @@ function draw() {
         var laser = lasers[0];
         if(laser.go == true){
             ctx.beginPath();
-            ctx.rect(laser.x, paddleY, 40, 2);
+            ctx.rect(laser.x, redLaseY, 40, 2);
             ctx.fillStyle = "red";
             ctx.fill();
             ctx.closePath();
