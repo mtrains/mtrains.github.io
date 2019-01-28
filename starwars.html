@@ -168,16 +168,16 @@ function drawTIE(){
 		    //making tie cause 5 damage to x wing if they crash
 		if(tie.y >= paddleY-50 && tie.y <= paddleY+50 && tie.x <=120 && tie.x >= 5 && lives > 0){
 			lives -= 5
-			resetTie(tie);
+			resetTie(tie);//add explosion here
 		}
 				
             }
             if(tie.x < canvas.width){
                 for(var i=0;i<lasers.length;i++){
                     var laser = lasers[i];
-                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true && lives > 0){
+                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && redLaserY <= tie.y + 50 && redLaserY >= tie.y - 50 && laser.go == true && lives > 0){
                         laser.go = false;
-                        resetTie(tie);
+                        resetTie(tie);//add explosion here
                         incScore();
                     }
                 }
