@@ -43,7 +43,7 @@
     var paddleWidth = 200//
     var paddleHeight = 30
     var paddleY = canvas.height-paddleHeight
-    var redLaserY = paddleY 
+    var redLaseY = paddleY 
     var upPressed = false
     var downPressed = false
     var lasers = [];
@@ -175,7 +175,7 @@ function drawTIE(){
             if(tie.x < canvas.width){
                 for(var i=0;i<lasers.length;i++){
                     var laser = lasers[i];
-                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && redLaserY <= tie.y + 50 && redLaserY >= tie.y - 50 && laser.go == true && lives > 0){
+                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && redLaseY <= tie.y + 50 && redLaseY >= tie.y - 50 && laser.go == true && lives > 0){
                         resetTie(tie);//add explosion here
                         laser.go = false;
 						incScore();
