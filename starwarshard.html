@@ -166,7 +166,7 @@ function drawTIE(){
                 tie.laserX = 12093709
 		}
 		    //making tie cause 5 damage to x wing if they crash
-		if(tie.y >= paddleY-50 && tie.y <= paddleY+50 && tie.x <=120 && tie.x >= 5 && lives > 0){
+		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= 5 && lives > 0){
 			lives -= 5
 			resetTie(tie);//add explosion here
 		}
@@ -258,4 +258,4 @@ setInterval(draw, 1);
 </body>
 </html>
 
-<p>This site is currently undergoing updates. (aka the owner is messing around) If the game is not working, go to:    http://mtrains.github.io/starwarstesting.html     to play the game.</p>
+<p>Feeling frustrated? Go to mtrains.github.io/starwars.html for the real game, and go to mtrains.github.io/starwarstesting.html for a ridiculously easy version. </p>
