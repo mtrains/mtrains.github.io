@@ -166,7 +166,7 @@ function drawTIE(){
                 tie.laserX = 12093709
 		}
 		    //making tie cause 5 damage to x wing if they crash
-		if(tie.y >= paddleY-50 && tie.y <= paddleY+50 && tie.x <=120 && tie.x >= 5 && lives > 0){
+		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= 5 && lives > 0){
 			lives -= 5
 			resetTie(tie);//add explosion here
 		}
