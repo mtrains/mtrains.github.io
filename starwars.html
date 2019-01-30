@@ -182,7 +182,7 @@ function drawTIE(){
             if(tie.x < canvas.width){
                 for(var i=0;i<lasers.length;i++){
                     var laser = lasers[i];
-                    if(laser.x >= tie.x && laser.x <= tie.x + 100 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true && lives > 0){
+                    if(laser.x >= tie.x && laser.x <= tie.x + 120 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true && lives > 0){
                         resetTie(tie);//add explosion here
                         laser.go = false;
 						incScore();
