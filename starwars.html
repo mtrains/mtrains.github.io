@@ -153,6 +153,12 @@ function drawTIE(){
                 ctx.fillStyle = "green";
                 ctx.fill();
                 ctx.closePath();
+		    
+		ctx.beginPath();
+                ctx.rect(tie.x, 0, 100, canvas.height);
+                ctx.fillStyle = "green";
+                ctx.fill();
+                ctx.closePath();
 	//making tie lasers cause damage to x wing	    
 		if(tie.laserX <= 120 && tie.laserX >= 5 && tie.y >= paddleY-40 && tie.y <= paddleY+40 && lives > 0){
 		lives -= 1
