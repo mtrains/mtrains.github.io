@@ -57,7 +57,7 @@
     var ties = [];
     var score = 0;
     var level = 1;
-	var gameSpeed = 10
+	
 	var tielaserboom = false
     createTieFighters(level);
 
@@ -154,12 +154,12 @@ function drawTIE(){
                 ctx.fillStyle = "green";
                 ctx.fill();
                 ctx.closePath();
-		    gameSpeed = 750
-		ctx.beginPath();
-                ctx.rect(tie.x, 0, 100, canvas.height);
-                ctx.fillStyle = "green";
-                ctx.fill();
-                ctx.closePath();
+		   
+		//ctx.beginPath();
+                //ctx.rect(tie.x, 0, 100, canvas.height);
+                //ctx.fillStyle = "green";
+                //ctx.fill();
+                //ctx.closePath();
 	//making tie lasers cause damage to x wing	    
 		if(tie.laserX <= 120 && tie.laserX >= 5 && tie.y >= paddleY-40 && tie.y <= paddleY+40 && lives > 0){
 		lives -= 1
@@ -258,7 +258,7 @@ function draw() {
 
 
 }
-setInterval(draw, gameSpeed);
+setInterval(draw, 10);
 
 </script>
 
