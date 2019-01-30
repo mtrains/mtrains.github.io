@@ -57,6 +57,7 @@
     var ties = [];
     var score = 0;
     var level = 1;
+	var gameSpeed = 10
 	var tielaserboom = false
     createTieFighters(level);
 
@@ -153,7 +154,7 @@ function drawTIE(){
                 ctx.fillStyle = "green";
                 ctx.fill();
                 ctx.closePath();
-		    
+		    gameSpeed = 750
 		ctx.beginPath();
                 ctx.rect(tie.x, 0, 100, canvas.height);
                 ctx.fillStyle = "green";
@@ -257,7 +258,7 @@ function draw() {
 
 
 }
-setInterval(draw, 500);
+setInterval(draw, gameSpeed);
 
 </script>
 
