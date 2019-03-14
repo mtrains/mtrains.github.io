@@ -9,19 +9,21 @@
     </style>
 </head>
 <body>
+<canvas id="myCanvas"></canvas>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
 
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
 
-    ctx.font = "320px Arial";
+    ctx.font = canvas.height"px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("MUU", 0, 320);
+    ctx.fillText("MUU", 0, canvas.height-22);
 
 
 
