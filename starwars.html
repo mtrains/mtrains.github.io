@@ -184,26 +184,25 @@ function keyDownHandler(e) {
 	    
     }
 	else if(e.keyCode == 82) {
-		    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight-42;
-    var ctx = canvas.getContext("2d");
-    var paddleWidth = 200//
-    var paddleHeight = 30
-    var paddleY = canvas.height-paddleHeight
-    var redLaseY = paddleY 
-    var upPressed = false
-    var downPressed = false
-    var lasers = [];
-    var lives = 10;
-    for(var i=0;i<7;i++){
-        lasers[i] = {
-          x: 0,
-          go: false
-        };
-    }
-    var ties = [];
-    var score = 0;
-    var level = 1;
+
+    paddleWidth = 200//
+    paddleHeight = 30
+    paddleY = canvas.height-paddleHeight
+    redLaseY = paddleY 
+    upPressed = false
+    downPressed = false
+    lasers = [];
+    lives = 10;
+    //for(var i=0;i<7;i++){
+    //    lasers[i] = {
+    //      x: 0,
+    //      go: false
+    //    };
+    //}
+    ties = [];
+    score = 0;
+    level = 1;
+			tielaserboom = false
 	}
 }
 
