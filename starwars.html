@@ -206,7 +206,11 @@ function keyDownHandler(e) {
 	resetTie(tie); 
 	tie = ties[t];	
 	laser = lasers[i];	
-		
+	
+	ties = [];
+    for(var i=0;i<count;i++){
+        ties[i]={};
+        resetTie(ties[i]);	
 		
 	}
 }
