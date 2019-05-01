@@ -204,13 +204,16 @@ function keyDownHandler(e) {
     level = 1;
 	tielaserboom = false
 	resetTie(tie); 
-	tie = ties[t];	
-	laser = lasers[i];	
+    for(var t=0;t<ties.length;t++){
+        var tie = ties[t];
+    }
+		
+    //for(var i=0;i<lasers.length;i++){
+    //    var laser = lasers[0];
+    //} //insert this if not working
+		
 	
-	ties = [];
-    for(var i=0;i<count;i++){
-        ties[i]={};
-        resetTie(ties[i]);	
+	
 		
 	}
 }
