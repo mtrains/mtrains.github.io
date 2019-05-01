@@ -165,7 +165,7 @@ function keyDownHandler(e) {
         upPressed = true;
     }
 	
-	if(e.keyCode == 83 && lives > 0) {//down or s
+    else if(e.keyCode == 83 && lives > 0) {//down or s
         downPressed = true;
     }
 	
@@ -183,6 +183,9 @@ function keyDownHandler(e) {
         }
     }
 }
+	else if(e.keyCode == 82) {
+		document.location.reload();
+	}
 
 function keyUpHandler(e) {
     if(e.keyCode == 40 && lives > 0) {
