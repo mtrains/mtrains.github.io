@@ -191,6 +191,12 @@ function keyUpHandler(e) {
     else if(e.keyCode == 38 && lives > 0) {
         upPressed = false;
     }
+    if(e.keyCode == 83 && lives > 0) {
+        downPressed = false;
+    }
+    else if(e.keyCode == 87 && lives > 0) {
+        upPressed = false;
+    }
 }
 
 function drawXwing(){
