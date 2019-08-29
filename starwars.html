@@ -127,6 +127,7 @@
     var ties = [];
     var score = 0;
     var level = 1;
+	var endSkip = false
 	
 	var tielaserboom = false
     createTieFighters(level);
@@ -172,6 +173,11 @@ function keyDownHandler(e) {
     else if(e.keyCode == 87 && lives > 0) {//up or w
         upPressed = true;
     }
+	
+	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+		level += 1;
+		endSkip = true;
+	}
 		
     else if(e.keyCode == 32 && lives > 0) {
         for(var i=0;i<lasers.length;i++){
@@ -240,6 +246,9 @@ function keyUpHandler(e) {
     else if(e.keyCode == 87 && lives > 0) {
         upPressed = false;
     }
+	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+		endSkip = false;
+	}
 }
 
 function drawXwing(){
