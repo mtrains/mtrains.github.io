@@ -131,6 +131,7 @@
 	var today = new Date();
 	var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
+	var launchTies = true
 	
 	var tielaserboom = false
     createTieFighters(level);
@@ -339,6 +340,7 @@ function incScore(){
 	score+=1;
 	if((score % 5) ==0){
 		level++;
+		launchTies = false
 		createTieFighters(level);
 	}
 }
