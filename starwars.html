@@ -346,9 +346,10 @@ function incScore(){
 	if(launchTies == false){
 		launchTime += 1
 	}
-	if(launchTime >= 700){
+	if(launchTime >= 500){
 		launchTies = true
 		launchTime = 0
+		resetTie(tie);
 		createTieFighters(level);
 	}
 }
