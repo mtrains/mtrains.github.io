@@ -132,6 +132,7 @@
 	var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
 	var launchTies = true
+	var launchTime = 0
 	
 	var tielaserboom = false
     createTieFighters(level);
@@ -341,6 +342,13 @@ function incScore(){
 	if((score % 5) ==0){
 		level++;
 		launchTies = false
+	}
+	if(launchTies == false){
+		launchTime += 1
+	}
+	if(launchTime >= 700){
+		launchTies = true
+		launchTime = 0
 		createTieFighters(level);
 	}
 }
@@ -397,9 +405,17 @@ function draw() {
             laser.go = false;
         }
     }
+if(launchTies = false && tie.x <= canvas.width){
     for(var t=0;t<ties.length;t++){
 		ties[t].x-=ties[t].speed;
     }
+}
+if(launchTies = true){
+    for(var t=0;t<ties.length;t++){
+		ties[t].x-=ties[t].speed;
+    }
+}
+	
 	  ctx.beginPath();
             ctx.rect(7, 6, 250, 16);
             ctx.fillStyle = "#606060";
