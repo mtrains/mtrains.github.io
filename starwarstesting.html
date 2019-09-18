@@ -28,6 +28,8 @@
     var downPressed = false
     var lasers = [];
     var lives = "Infinite";
+		var endSkip = false
+
     for(var i=0;i<7;i++){
         lasers[i] = {
           x: 0,
@@ -35,8 +37,8 @@
         };
     }
     var ties = [];
-    var score = 426;//CHANGE!!!!
-    var level = 3586;//CHANGE THIS LATER!!!!!!!!!!
+    var score = 0;
+    var level = 1;
     createTieFighters(level);
 
     document.addEventListener("keydown", keyDownHandler, false);
@@ -68,6 +70,10 @@ function keyDownHandler(e) {
     else if(e.keyCode == 38) {
         upPressed = true;
     }
+	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+		level += 1;
+		endSkip = true;
+	}
     else if(e.keyCode == 32) {
         for(var i=0;i<lasers.length;i++){
             if(!lasers[i].go){
@@ -86,6 +92,9 @@ function keyUpHandler(e) {
     else if(e.keyCode == 38 ) {
         upPressed = false;
     }
+	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+		endSkip = false;
+	}	
 }
 
 function drawXwing(){
