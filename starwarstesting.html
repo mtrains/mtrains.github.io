@@ -70,7 +70,7 @@ function keyDownHandler(e) {
     else if(e.keyCode == 38) {
         upPressed = true;
     }
-	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+	else if(e.keyCode == 76) {//l for skip level
 		level += 1;
 		endSkip = true;
 	}
@@ -92,7 +92,7 @@ function keyUpHandler(e) {
     else if(e.keyCode == 38 ) {
         upPressed = false;
     }
-	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+	else if(e.keyCode == 76) {//l for skip level
 		endSkip = false;
 	}	
 }
