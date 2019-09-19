@@ -127,6 +127,7 @@
     var ties = [];
     var score = 0;
     var level = 1;
+	var fighterBack = 0
 	var endSkip = false
 	var today = new Date();
 	var dd = today.getDate();
@@ -151,7 +152,7 @@ function createTieFighters(count){
 //muu
 
 function resetTie(tie){
-	tie.x = (Math.floor(Math.random() * canvas.width) + 1)+canvas.width;
+	tie.x = (Math.floor(Math.random() * canvas.width + fighterBack) + 1)+canvas.width;
 	tie.y = Math.floor(Math.random() * canvas.height)+35;
 	tie.speed = 3;
     tie.laserX = 600;
@@ -342,14 +343,16 @@ function incScore(){
 	score+=1;
 	if((score % 5) ==0){
 		level++;
+		fighterBack = 2000
 		//launchTies = false
 	}
 	if(launchTies == false){
 		launchTime += 1
 	}
 	if(launchTime >= 2000){
-		launchTies = true
+		//launchTies = true
 		launchTime = 0
+		fighterBack = 0
 		resetTie(tie);
 		createTieFighters(level);
 	}
