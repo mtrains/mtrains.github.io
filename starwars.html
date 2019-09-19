@@ -160,16 +160,6 @@ function resetTie(tie){
 		resetTie(tie); 
 	}
 	
-//if(launchTies == false && tie.x <= canvas.width){
-//    for(var t=0;t<ties.length;t++){
-//		ties[t].x-=ties[t].speed;
-//    }
-//}
-//if(launchTies == true){
-    for(var t=0;t<ties.length;t++){
-		ties[t].x-=ties[t].speed;
-    }
-//}
 
 };
 
@@ -418,6 +408,16 @@ function draw() {
             laser.go = false;
         }
     }
+//if(launchTies == false && tie.x <= canvas.width){
+//   for(var t=0;t<ties.length;t++){
+//		ties[t].x-=ties[t].speed;
+//    }
+//}
+if(launchTies == true){
+    for(var t=0;t<ties.length;t++){
+		ties[t].x-=ties[t].speed;
+    }
+}
 
 	
 	  ctx.beginPath();
