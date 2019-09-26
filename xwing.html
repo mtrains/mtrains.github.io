@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop</title>
+    <title>Fly the X-Wing!</title>
     <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 0 auto; }
@@ -10,708 +10,408 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="1260" height="730"></canvas>
+<canvas id="myCanvas"></canvas>
 
 <script>
-    var canvas = document.getElementById("myCanvas");
- 	var ctx = canvas.getContext("2d"); 
+    var canvas = document.getElementById("myCanvas");//muu
+    var tieImg = new Image();
+    tieImg.src = 'tiefighter.png';
+    var xwingImg = new Image();
+    xwingImg.src = 'xwing.png';//'https://cdn.discordapp.com/attachments/539511445407268898/539542929119772695/image_part_032.png';
+	var explosionFourImg = new Image(); 
+	explosionFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543621535307399188/image_part_003.png';
+	//var explosionFiveImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionSixImg = new Image(); 
+	explosionSixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627449649463337/image_part_006.png';
+	//var explosionSevenImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionEightImg = new Image(); 
+	explosionEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627691933302796/image_part_008.png';
+	//var explosionNineImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionTenImg = new Image(); 
+	explosionTenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627846342541332/image_part_010.png';
+	//var explosionElevenImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionTwelveImg = new Image(); 
+	explosionTwelveImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627985413079041/image_part_012.png';
+	//var explosionThirteenImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionFourteenImg = new Image(); 
+	explosionFourteenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628127197462558/image_part_014.png';
+	//var explosionFifteenImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionSixteenImg = new Image(); 
+	explosionSixteenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628246537863188/image_part_016.png';
+	//var explosionSeventeenImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionEighteenImg = new Image(); 
+	explosionEighteenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628404696809483/image_part_018.png';
+	//var explosionNineteenImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionTwentyImg = new Image(); 
+	explosionTwentyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628553120514050/image_part_020.png';
+	//var explosionTwentyOneImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionTwentyTwoImg = new Image(); 
+	explosionTwentyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628679230521359/image_part_022.png';
+	//var explosionTwentyThreeImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionTwentyFourImg = new Image(); 
+	explosionTwentyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628826740260874/image_part_024.png';
+	//var explosionTwentyFiveImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionTwentySixImg = new Image(); 
+	explosionTwentySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629019212677129/image_part_026.png';
+	//var explosionTwentySevenImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionTwentyEightImg = new Image(); 
+	explosionTwentyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629171180568576/image_part_028.png';
+	//var explosionTwentyNineImg = new Image(); 
+	//explosionThreeImg.src = '';
+	var explosionThirtyImg = new Image();       //after this just do every other frame, eliminate other frames if needed
+	explosionThirtyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629316085252109/image_part_030.png';
+	var explosionThirtyTwoImg = new Image();       
+	explosionThirtyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629480602632203/image_part_032.png';
+	var explosionThirtyFourImg = new Image();       
+	explosionThirtyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629599909609502/image_part_034.png';
+	var explosionThirtySixImg = new Image();       
+	explosionThirtySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629722114981899/image_part_036.png';
+	var explosionThirtyEightImg = new Image();       
+	explosionThirtyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543630032489152523/image_part_038.png';
+	var explosionFortyImg = new Image();       
+	explosionFortyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543630291340886026/image_part_040.png';
+	var explosionFortyTwoImg = new Image();       //unnecessary
+	explosionFortyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543630917688885249/image_part_042.png';
+	var explosionFortyFourImg = new Image();       
+	explosionFortyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631070742970394/image_part_044.png';
+	var explosionFortySixImg = new Image();       //unnecessary
+	explosionFortySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631186854019072/image_part_046.png';
+	var explosionFortyEightImg = new Image();       
+	explosionFortyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631320841191434/image_part_048.png';
+	var explosionFiftyImg = new Image();       //if loading trouble, this image is unnecessary 
+	explosionFiftyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631427657400338/image_part_050.png';
+	var explosionFiftyTwoImg = new Image();       
+	explosionFiftyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631545613680652/image_part_052.png';
+	var explosionFiftyFourImg = new Image();       //unnecessary 
+	explosionFiftyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631842490974218/image_part_054.png';
+	var explosionFiftySixImg = new Image();       
+	explosionFiftySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631957926608902/image_part_056.png';
+	var explosionFiftyEightImg = new Image();       //unnecessary
+	explosionFiftyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632086964371486/image_part_058.png';
+	var explosionSixtyImg = new Image();       
+	explosionSixtyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632191310266368/image_part_060.png';
+	var explosionSixtyTwoImg = new Image();       //unnecessary
+	explosionSixtyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632292841652236/image_part_062.png';
+	var explosionSixtyFourImg = new Image();       
+	explosionSixtyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632443630944266/image_part_064.png';
+	
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight-42;
+    var ctx = canvas.getContext("2d");
     var paddleWidth = 200//
-    var paddleHeight = 30 
+    var paddleHeight = 30
     var paddleY = canvas.height-paddleHeight
+    var redLaseY = paddleY 
     var upPressed = false
     var downPressed = false
     var lasers = [];
+    var lives = 10;
     for(var i=0;i<7;i++){
         lasers[i] = {
-          lock: true,
-          ok: false,
           x: 0,
-          laser: false,
           go: false
         };
     }
-    var tieX = canvas.width
-    var tieY = (Math.floor(Math.random() * 660) + 1)+35
-    var tieSpeed = 3
-    var tielaserX = 600
-    var tieSurvival = true
-    var tieXtwo = canvas.width*2
-    var tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
-    var tielaserXtwo = 600
-    var tieSurvivalTwo = true
-    var tieXthree = canvas.width*3
-    var tieYthree = (Math.floor(Math.random() * 660) + 1)+35
-    var tielaserXthree = 600
-    var tieSurvivalThree = true
-    var score = 0
-    
+    var ties = [];
+    var score = 0;
+    var level = 1;
+	var fighterBack = 0
+	var endSkip = false
+	var today = new Date();
+	var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+	var launchTies = true
+	var launchTime = 0
+	
+	var tielaserboom = false
+    createTieFighters(level);
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
-    
-    
+function createTieFighters(count){
+	ties = [];
+    for(var i=0;i<count;i++){
+        ties[i]={};
+        resetTie(ties[i]);
+    }
+	
+}
+function resetTie(tie){
+	tie.x = (Math.floor(Math.random() * canvas.width) + 1)+canvas.width+fighterBack;
+	tie.y = Math.floor(Math.random() * canvas.height)+35;
+	tie.speed = 3;//change launchTime stuff if this is changed
+    tie.laserX = 600;
+    tie.alive = true;
+	if(tie.y >= canvas.height-40){
+		resetTie(tie); 
+	}
+	
+};
 function keyDownHandler(e) {
-    if(e.keyCode == 40) {
+    if(e.keyCode == 40 && lives > 0) {//down arrow
         downPressed = true;
     }
-    
-    else if(e.keyCode == 38) {
+    else if(e.keyCode == 38 && lives > 0) {//up arrow
         upPressed = true;
     }
-    else if(e.keyCode == 32) {
-        laser = true
-        
-        
-        if(laserGo == true && laserTwoOK== true){
-            
-            laserTwo = true
-        }
-        if(laserTwoGo == true && laserThreeOK== true){
-            
-            laserThree = true
-        }
-        if(laserThreeGo == true && laserFourOK== true){
-            
-            laserFour = true            
-        }
-        if(laserFourGo == true && laserFiveOK== true){
-            
-            laserFive = true
-        }
-        if(laserFiveGo == true && laserSixOK== true){
-            
-            laserSix = true
-            
-        }
-        if(laserSixGo == true && laserSevenOK== true){
-            
-            laserSeven = true
-            
-        }
+	
+    else if(e.keyCode == 83 && lives > 0) {//down or s
+        downPressed = true;
     }
+	
+    else if(e.keyCode == 87 && lives > 0) {//up or w
+        upPressed = true;
+    }
+	
+	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+		level += 1;
+		endSkip = true;
+	}
+		
+    else if(e.keyCode == 32 && lives > 0) {
+        for(var i=0;i<lasers.length;i++){
+            if(!lasers[i].go){
+                lasers[i].go = true;
+                lasers[i].x = 0;
+                break;
+            }
+        }	
+	    
+    }
+	else if(e.keyCode == 82) {
+/*	canvas = document.getElementById("myCanvas");
+    paddleWidth = 200//
+    paddleHeight = 30
+    paddleY = canvas.height-paddleHeight
+    redLaseY = paddleY 
+    upPressed = false
+    downPressed = false
+    lasers = [];
+    lives = 10;
+    for(var i=0;i<7;i++){
+        lasers[i] = {
+          x: 0,
+          go: false
+        };
+    }
+    ties = [];
+    score = 0;
+    level = 1;
+	tielaserboom = false
+	
+//    for(t=0;t<ties.length;t++){
+//        tie = ties[t];
+//    }
+		
+ties = [];
+    for(i=0;i<count;i++){
+        ties[i]={};
+        resetTie(ties[i]);
+    }
+		
+//    for(i=0;i<lasers.length;i++){
+//        laser = lasers[0];
+//    } //insert this if not working
+//	resetTie(tie); 	
+	*/
+		window.location.reload(false);
+	
+		
+	}
 }
-    
 function keyUpHandler(e) {
-    if(e.keyCode == 40) {
+    if(e.keyCode == 40 && lives > 0) {
         downPressed = false;
     }
-    else if(e.keyCode == 38 ) {
+    else if(e.keyCode == 38 && lives > 0) {
         upPressed = false;
     }
-    else if(e.keyCode == 32) {
-        laser = false
-        
-        laserTwo = false
-        laserTwoOK = true
-        laserTwoLock = false
-        if(laserTwoGo == true){
-            laserThreeOK = true
-            laserThreeLock = false
-        }
-        if(laserThreeGo == true){
-            laserFourOK = true
-            laserFourLock = false
-        }
-        if(laserFourGo == true){
-            laserFiveOK = true
-            laserFiveLock = false
-        }
-        if(laserFiveGo == true){
-            laserSixOK = true
-            laserSixLock = false
-        }
-        if(laserSixGo == true){
-            laserSevenOK = true
-            laserSevenLock = false
-        if(laserSevenGo == true){    
-            laserLock = false
-        }
-        }
+    if(e.keyCode == 83 && lives > 0) {
+        downPressed = false;
     }
+    else if(e.keyCode == 87 && lives > 0) {
+        upPressed = false;
+    }
+	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+		endSkip = false;
+	}
 }
-    
 function drawXwing(){
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
-    
+if(lives > 0){
+	ctx.drawImage(xwingImg,0,paddleY-50,200,100);
+	//ctx.drawGif(explosionImg,0,paddleY-50,100,100);
+	//ctx.drawImage(myGif,0,0);
+}
+	
+}
+function incScore(){
+	score+=1;
+	if((score % 5) ==0){
+		level++;
+		createTieFighters(level);
+		fighterBack = 2000
+		launchTies = false
+	}
+	if(launchTies == false){
+		launchTime += 1
+	}
+	if(launchTime >= 666){//change this to 2000/tie.speed if tie.speed is changed
+		launchTies = true
+		launchTime = 0
+		fighterBack = 0
+		resetTie(tie);
+		
+	}
+}
+function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
     ctx.beginPath();
-    ctx.rect(0, paddleY, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#cccccc";
+    ctx.moveTo(tie.x+x1, tie.y+y1);
+    ctx.lineTo(tie.x+x2, tie.y+y2);
+    ctx.lineTo(tie.x+x3, tie.y+y3);
+    ctx.fillStyle = fill;
     ctx.fill();
     ctx.closePath();
-    
-    //ctx.beginPath();
-    //ctx.rect(0, paddleY, 100, paddleHeight);
-    //ctx.fillStyle = "red";
-    //ctx.fill();
-    //ctx.closePath();
-    
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText("Score: "+score, 8, 20);
 }
 function drawTIE(){
-    if(tieSurvival == true){
-        
-    ctx.beginPath();
-    ctx.rect(tieX+20, tieY-50, 35, 100);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX, tieY);
-    ctx.lineTo(tieX+20, tieY-50);
-    ctx.lineTo(tieX+23, tieY+1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX, tieY);
-    ctx.lineTo(tieX+20, tieY+50);
-    ctx.lineTo(tieX+23, tieY-1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+75, tieY);
-    ctx.lineTo(tieX+55, tieY-50);
-    ctx.lineTo(tieX+52, tieY+1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+75, tieY);
-    ctx.lineTo(tieX+55, tieY+50);
-    ctx.lineTo(tieX+52, tieY-1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+2, tieY-1);
-    ctx.lineTo(tieX+21, tieY-48);
-    ctx.lineTo(tieX+35, tieY-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+2, tieY+1);
-    ctx.lineTo(tieX+21, tieY+48);
-    ctx.lineTo(tieX+35, tieY+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+73, tieY-1);
-    ctx.lineTo(tieX+54, tieY-48);
-    ctx.lineTo(tieX+40, tieY-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+73, tieY+1);
-    ctx.lineTo(tieX+54, tieY+48);
-    ctx.lineTo(tieX+40, tieY+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+23, tieY-49);
-    ctx.lineTo(tieX+52, tieY-49);
-    ctx.lineTo(tieX+37, tieY-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieX+23, tieY+49);
-    ctx.lineTo(tieX+52, tieY+49);
-    ctx.lineTo(tieX+37, tieY+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.arc(tieX+37, tieY, 8, 0, Math.PI*2, false);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath();
-    
-    if(tieX <= 600){
-        ctx.beginPath();
-        ctx.rect(tielaserX, tieY, 40, 2);
-        ctx.fillStyle = "green";
-        ctx.fill();
-        ctx.closePath();
-        
-        tielaserX -= 20
+    for(var t=0;t<ties.length;t++){
+        var tie = ties[t];
+        if(tie.alive){
+        	ctx.drawImage(tieImg,tie.x,tie.y-50,100,100);
+            if(tie.x <= 600 && lives > 0){
+				tielaserboom = false
+                ctx.beginPath();
+                ctx.rect(tie.laserX, tie.y, 40, 2);
+                ctx.fillStyle = "green";
+                ctx.fill();
+                ctx.closePath();
+		   
+		//ctx.beginPath();
+                //ctx.rect(tie.x, 0, 100, canvas.height);
+                //ctx.fillStyle = "green";
+                //ctx.fill();
+                //ctx.closePath();
+	//making tie lasers cause damage to x wing	    
+		if(tie.laserX <= 120 && tie.laserX >= 5 && tie.y >= paddleY-40 && tie.y <= paddleY+40 && lives > 0){
+		lives -= 1
+		tielaserboom = true
+		}
+			
+		if(tielaserboom == false){
+                tie.laserX -= 20
+		}
+		if(tielaserboom == true){
+                tie.laserX = 12093709
+		}
+		    //making tie cause 5 damage to x wing if they crash
+		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= 5 && lives > 0){
+			lives -= 5
+			resetTie(tie);//add explosion here
+		}
+				
+            }
+            if(tie.x < canvas.width){
+                for(var i=0;i<lasers.length;i++){
+                    var laser = lasers[i];
+                    if(laser.x >= tie.x && laser.x <= tie.x + 120 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true && lives > 0){
+                        resetTie(tie);//add explosion here
+                        laser.go = false;
+						incScore();
+                    }
+                }
+            }
+            if(tie.x <= -100){
+            	resetTie(tie);
+            }
+    	}
     }
-    }
-    for(var i=0;i<lasers.length;i++){
-        var laser = lasers[i];
-        if(laser.x >= tieX && laser.x <= tieX + 20 && paddleY <= tieY + 50 && paddleY >= tieY - 50 && laser.go == true && tieSurvival == true){
-            tieSurvival = false
-            score += 1
-        }
-    }
-    
-    if(tieSurvivalTwo == true){
-    ctx.beginPath();
-    ctx.rect(tieXtwo+20, tieYtwo-50, 35, 100);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo, tieYtwo);
-    ctx.lineTo(tieXtwo+20, tieYtwo-50);
-    ctx.lineTo(tieXtwo+23, tieYtwo+1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo, tieYtwo);
-    ctx.lineTo(tieXtwo+20, tieYtwo+50);
-    ctx.lineTo(tieXtwo+23, tieYtwo-1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+75, tieYtwo);
-    ctx.lineTo(tieXtwo+55, tieYtwo-50);
-    ctx.lineTo(tieXtwo+52, tieYtwo+1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+75, tieYtwo);
-    ctx.lineTo(tieXtwo+55, tieYtwo+50);
-    ctx.lineTo(tieXtwo+52, tieYtwo-1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+2, tieYtwo-1);
-    ctx.lineTo(tieXtwo+21, tieYtwo-48);
-    ctx.lineTo(tieXtwo+35, tieYtwo-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+2, tieYtwo+1);
-    ctx.lineTo(tieXtwo+21, tieYtwo+48);
-    ctx.lineTo(tieXtwo+35, tieYtwo+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+73, tieYtwo-1);
-    ctx.lineTo(tieXtwo+54, tieYtwo-48);
-    ctx.lineTo(tieXtwo+40, tieYtwo-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+73, tieYtwo+1);
-    ctx.lineTo(tieXtwo+54, tieYtwo+48);
-    ctx.lineTo(tieXtwo+40, tieYtwo+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+23, tieYtwo-49);
-    ctx.lineTo(tieXtwo+52, tieYtwo-49);
-    ctx.lineTo(tieXtwo+37, tieYtwo-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXtwo+23, tieYtwo+49);
-    ctx.lineTo(tieXtwo+52, tieYtwo+49);
-    ctx.lineTo(tieXtwo+37, tieYtwo+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.arc(tieXtwo+37, tieYtwo, 8, 0, Math.PI*2, false);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath();
-    
-    if(tieXtwo <= 600){
-        ctx.beginPath();
-        ctx.rect(tielaserXtwo, tieYtwo, 40, 2);
-        ctx.fillStyle = "green";
-        ctx.fill();
-        ctx.closePath();
-        
-        tielaserXtwo -= 20
-    }
-    }
-    for(var i=0;i<lasers.length;i++){
-        var laser = lasers[i];
-        if(laser.x >= tieXtwo && laser.x <= tieXtwo+20 && paddleY <= tieYtwo+50 && paddleY >= tieYtwo-50 && laser.go == true && laser.x <= canvas.width-30 && tieSurvivalTwo == true){//work on
-            tieSurvivalTwo = false
-            score += 1
-        }
-    }
-    
-    if(tieSurvivalThree == true){
-    ctx.beginPath();
-    ctx.rect(tieXthree+20, tieYthree-50, 35, 100);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree, tieYthree);
-    ctx.lineTo(tieXthree+20, tieYthree-50);
-    ctx.lineTo(tieXthree+23, tieYthree+1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree, tieYthree);
-    ctx.lineTo(tieXthree+20, tieYthree+50);
-    ctx.lineTo(tieXthree+23, tieYthree-1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+75, tieYthree);
-    ctx.lineTo(tieXthree+55, tieYthree-50);
-    ctx.lineTo(tieXthree+52, tieYthree+1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+75, tieYthree);
-    ctx.lineTo(tieXthree+55, tieYthree+50);
-    ctx.lineTo(tieXthree+52, tieYthree-1);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+2, tieYthree-1);
-    ctx.lineTo(tieXthree+21, tieYthree-48);
-    ctx.lineTo(tieXthree+35, tieYthree-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+2, tieYthree+1);
-    ctx.lineTo(tieXthree+21, tieYthree+48);
-    ctx.lineTo(tieXthree+35, tieYthree+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+73, tieYthree-1);
-    ctx.lineTo(tieXthree+54, tieYthree-48);
-    ctx.lineTo(tieXthree+40, tieYthree-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+73, tieYthree+1);
-    ctx.lineTo(tieXthree+54, tieYthree+48);
-    ctx.lineTo(tieXthree+40, tieYthree+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+23, tieYthree-49);
-    ctx.lineTo(tieXthree+52, tieYthree-49);
-    ctx.lineTo(tieXthree+37, tieYthree-1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.moveTo(tieXthree+23, tieYthree+49);
-    ctx.lineTo(tieXthree+52, tieYthree+49);
-    ctx.lineTo(tieXthree+37, tieYthree+1);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath()
-    
-    ctx.beginPath();
-    ctx.arc(tieXthree+37, tieYthree, 8, 0, Math.PI*2, false);
-    ctx.fillStyle = "#cccccc";
-    ctx.fill();
-    ctx.closePath();
-    
-    if(tieXthree <= 600){
-        ctx.beginPath();
-        ctx.rect(tielaserXthree, tieYthree, 40, 2);
-        ctx.fillStyle = "green";
-        ctx.fill();
-        ctx.closePath();
-        
-        tielaserXthree -= 20
-    }
-    }
-    for(var i=0;i<lasers.length;i++){
-        var laser = lasers[i];
-        if(laser.x >= tieXthree && laser.x <= tieXthree+20 && paddleY <= tieYthree+50 && paddleY >= tieYthree-50 && laser.go == true && laser.x <= canvas.width-30 && tieSurvivalThree == true){//work on
-            tieSurvivalThree = false
-            score += 1
-        }
-    }
-    //if(laserX >= tieXthree && laserX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserGo == true && laserX <= canvas.width-30 && tieSurvivalThree == true){
-    //    tieSurvivalThree = false
-    //    score += 1
-    //}
-   // else if(laserTwoX >= tieXthree && laserTwoX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserTwoGo == true && laserTwoX <= canvas.width-30 && tieSurvivalThree == true){
-//        tieSurvivalThree = false
-//        score += 1
-//    }
-//    else if(laserThreeX >= tieXthree && laserThreeX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserThreeGo == true && laserThreeX <= canvas.width-30 && tieSurvivalThree == true){
-//        tieSurvivalThree = false
-//        score += 1
-//    }
-//    else if(laserFourX >= tieXthree && laserFourX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserFourGo == true && laserFourX <= canvas.width-30 && tieSurvivalThree == true){
-//        tieSurvivalThree = false
-//        score += 1
-//    }
-//    else if(laserFiveX >= tieXthree && laserFiveX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserFiveGo == true && laserFiveX <= canvas.width-30 && tieSurvivalThree == true){
-//        tieSurvivalThree = false
- //       score += 1
- //   }
- //   else if(laserSixX >= tieXthree && laserSixX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserSixGo == true && laserSixX <= canvas.width-30 && tieSurvivalThree == true){
-//        tieSurvivalThree = false
- //       score += 1
-//    }
-//    else if(laserSevenX >= tieXthree && laserSevenX <= tieXthree + 20 && paddleY <= tieYthree + 50 && paddleY >= tieYthree - 50 && laserSevenGo == true && laserSevenX <= canvas.width-30 && tieSurvivalThree == true){
- //       tieSurvivalThree = false
-//        score += 1
-//    }
-    
-    if(tieX <= canvas.width*-2 && tieSpeed == 3){
-        tieX = canvas.width
-        tieY = (Math.floor(Math.random() * 660) + 1)+35
-        tielaserX = 600
-        tieSurvival = true
-        
-    }
-    
-    if(tieXtwo <= canvas.width*-2 && tieSpeed == 3){
-        tieXtwo = canvas.width
-        tieYtwo = (Math.floor(Math.random() * 660) + 1)+35
-        tielaserXtwo = 600
-        tieSurvivalTwo = true
-        
-    }
-    
-    if(tieXthree <= canvas.width*-2 && tieSpeed == 3){
-        tieXthree = canvas.width
-        tieYthree = (Math.floor(Math.random() * 660) + 1)+35
-        tielaserXthree = 600
-        tieSurvivalThree = true
-        
-    }
-    
 }
-    
+	
+function drawDeath(){
+	if(lives <= -0.00001){
+		lives = 0
+	}
+	if(lives <= 0){
+		ctx.font = "72px Arial";
+    ctx.fillStyle = "#f37101ff";
+    ctx.fillText("GAME OVER", canvas.width/2-260, canvas.height/2);
+	
+ctx.font = "40px Arial";
+    ctx.fillStyle = "orange";
+    ctx.fillText("Press r to restart", canvas.width/2-180, canvas.height/2+100);	
+	
+	
+if(dd == 04 && mm == 05){ 
+	ctx.font = "60px Arial";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("Happy Star Wars Day!", canvas.width/2-320, canvas.height/2+200);
+}
+}
+	
+}
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawXwing();
-        drawTIE();
-    
-    
+    drawXwing();
+    drawTIE();
+	drawDeath();
+	
     if(upPressed==true && paddleY >= 0){
         paddleY -=5
     }
     else if(downPressed == true && paddleY <= (canvas.height-paddleHeight)){
         paddleY += 5
+    }
+    for(var i=0;i<lasers.length;i++){
+        var laser = lasers[0];
+        if(laser.go == true){
+            ctx.beginPath();
+            ctx.rect(laser.x, paddleY, 40, 2);
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.closePath();
+            laser.x += 15
+        }
+        if(laser.x > canvas.width){
+            laser.go = false;
+        }
+    }
+//if(launchTies == false && tie.x <= canvas.width){
+//   for(var t=0;t<ties.length;t++){
+//		ties[t].x-=ties[t].speed;
+//    }
+//}
+    for(var t=0;t<ties.length;t++){
+		ties[t].x-=ties[t].speed;
+    
 }
-    
-    if(laser==true){
-        laserGo = true
-        
-    }
-    if(laserGo == true){
-        ctx.beginPath();
-        ctx.rect(laserX, paddleY, 40, 2);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.closePath();
-        laserX += 20
-        if(laserTwoLock == true){
-        laserTwo = false
-        laserTwoX = 0 
-        laserTwoGo = false
-        laserTwoOK = false
-    }
-    }
-    if(laserTwo==true){
-        laserTwoGo = true
-        
-    }
-    if(laserTwoGo == true){
-        ctx.beginPath();
-        ctx.rect(laserTwoX, paddleY, 40, 2);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.closePath();
-        laserTwoX += 20
-        if(laserThreeLock == true){
-        laserThree = false
-        laserThreeX = 0 
-        laserThreeGo = false
-        laserThreeOK = false
-        }
-    }
-    if(laserThree==true){
-        laserThreeGo = true
-        
-    }
-    if(laserThreeGo == true){
-        ctx.beginPath();
-        ctx.rect(laserThreeX, paddleY, 40, 2);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.closePath();
-        laserThreeX += 20
-        if(laserFourLock == true){
-        laserFour = false
-        laserFourX = 0 
-        laserFourGo = false
-        laserFourOK = false
-        }
-    }
-    if(laserFour==true){
-        laserFourGo = true
-        
-    }
-    if(laserFourGo == true){
-        ctx.beginPath();
-        ctx.rect(laserFourX, paddleY, 40, 2);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.closePath();
-        laserFourX += 20
-        if(laserFiveLock == true){
-        laserFive = false
-        laserFiveX = 0 
-        laserFiveGo = false
-        laserFiveOK = false
-        }
-    }
-    if(laserFive==true){
-        laserFiveGo = true
-        
-    }
-    if(laserFiveGo == true){
-        ctx.beginPath();
-        ctx.rect(laserFiveX, paddleY, 40, 2);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.closePath();
-        laserFiveX += 20
-        if(laserSixLock == true){
-        laserSix = false
-        laserSixX = 0 
-        laserSixGo = false
-        laserSixOK = false
-        }
-    }
-    if(laserSix==true){
-        laserSixGo = true
-        
-    }
-    if(laserSixGo == true){
-        ctx.beginPath();
-        ctx.rect(laserSixX, paddleY, 40, 2);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.closePath();
-        laserSixX += 20
-        if(laserSevenLock == true){
-        laserSeven = false
-        laserSevenX = 0 
-        laserSevenGo = false
-        laserSevenOK = false
-        }
-    }
-    if(laserSeven==true){
-        laserSevenGo = true
-        
-    }
-    if(laserSevenGo == true){
-        ctx.beginPath();
-        ctx.rect(laserSevenX, paddleY, 40, 2);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.closePath();
-        laserSevenX += 20
-        if(laserLock == true){
-        laser = false
-        laserX = 0
-        laserGo = false
-        }
-        
-    }
-    if(laserX > canvas.width){
-        laserLock = true
-    }
-    if(laserTwoX > canvas.width){
-        laserTwoLock = true
-    }
-    if(laserThreeX > canvas.width){
-        laserThreeLock = true
-    }
-    if(laserFourX > canvas.width){
-        laserFourLock = true
-    }
-    if(laserFiveX > canvas.width){
-        laserFiveLock = true
-    }
-    if(laserSixX > canvas.width){
-        laserSixLock = true
-    }
-    if(laserSevenX > canvas.width){
-        laserSevenLock = true
-    }
-    
-    tieX -= tieSpeed
-    tieXtwo -= tieSpeed
-    tieXthree -= tieSpeed
-    
-    
-    
+	
+	  ctx.beginPath();
+            ctx.rect(7, 6, 250, 16);
+            ctx.fillStyle = "#606060";
+            ctx.fill();
+            ctx.closePath();
+	
+	ctx.font = "16px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Score: "+score+" Level: "+level+" Lives: "+lives, 8, 20);
 }
 setInterval(draw, 10);
-    
 </script>
 
 </body>
-</html> 
+</html>
