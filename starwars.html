@@ -152,7 +152,7 @@ function createTieFighters(count){
 
 
 function resetTie(tie){
-	tie.x = (Math.floor(Math.random() * canvas.width + fighterBack) + 1)+canvas.width;
+	tie.x = (Math.floor(Math.random() * canvas.width) + 1)+canvas.width+fighterBack;
 	tie.y = Math.floor(Math.random() * canvas.height)+35;
 	tie.speed = 3;//change launchTime stuff if this is changed
     tie.laserX = 600;
@@ -277,6 +277,7 @@ function incScore(){
 	score+=1;
 	if((score % 5) ==0){
 		level++;
+		createTieFighters(level);
 		fighterBack = 2000
 		launchTies = false
 	}
@@ -288,7 +289,7 @@ function incScore(){
 		launchTime = 0
 		fighterBack = 0
 		resetTie(tie);
-		createTieFighters(level);
+		
 	}
 }
 
