@@ -273,7 +273,24 @@ if(lives > 0){
 
 	
 }
-
+function incScore(){
+	score+=1;
+	if((score % 5) ==0){
+		level++;
+		fighterBack = 2000
+		launchTies = false
+	}
+	if(launchTies == false){
+		launchTime += 1
+	}
+	if(launchTime >= 666){//change this to 2000/tie.speed if tie.speed is changed
+		launchTies = true
+		launchTime = 0
+		fighterBack = 0
+		resetTie(tie);
+		createTieFighters(level);
+	}
+}
 
 
 function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
@@ -339,24 +356,7 @@ function drawTIE(){
     	}
     }
 }
-function incScore(){
-	score+=1;
-	if((score % 5) ==0){
-		level++;
-		fighterBack = 2000
-		launchTies = false
-	}
-	if(launchTies == false){
-		launchTime += 1
-	}
-	if(launchTime >= 666){//change this to 2000/tie.speed if tie.speed is changed
-		launchTies = true
-		launchTime = 0
-		fighterBack = 0
-		resetTie(tie);
-		createTieFighters(level);
-	}
-}
+
 
 	
 function drawDeath(){
