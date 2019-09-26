@@ -141,6 +141,29 @@ var mm = today.getMonth()+1; //January is 0!
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
 
+	
+function incScore(){
+	score+=1;
+	if((score % 5) ==0){
+		level++;
+		createTieFighters(level);
+		fighterBack = 2000
+		launchTies = false
+	}
+	if(launchTies == false){
+		launchTime += 1
+	}
+	if(launchTime >= 666){//change this to 2000/tie.speed if tie.speed is changed
+		launchTies = true
+		launchTime = 0
+		fighterBack = 0
+		resetTie(tie);
+		
+	}
+}
+	
+	
+	
 function createTieFighters(count){
 	ties = [];
     for(var i=0;i<count;i++){
@@ -273,25 +296,7 @@ if(lives > 0){
 
 	
 }
-function incScore(){
-	score+=1;
-	if((score % 5) ==0){
-		level++;
-		createTieFighters(level);
-		fighterBack = 2000
-		launchTies = false
-	}
-	if(launchTies == false){
-		launchTime += 1
-	}
-	if(launchTime >= 666){//change this to 2000/tie.speed if tie.speed is changed
-		launchTies = true
-		launchTime = 0
-		fighterBack = 0
-		resetTie(tie);
-		
-	}
-}
+
 
 
 function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
