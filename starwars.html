@@ -344,13 +344,13 @@ function incScore(){
 	if((score % 5) ==0){
 		level++;
 		fighterBack = 2000
-		//launchTies = false
+		launchTies = false
 	}
 	if(launchTies == false){
 		launchTime += 1
 	}
 	if(launchTime >= 2000){
-		//launchTies = true
+		launchTies = true
 		launchTime = 0
 		fighterBack = 0
 		resetTie(tie);
@@ -416,10 +416,10 @@ function draw() {
 //		ties[t].x-=ties[t].speed;
 //    }
 //}
-if(launchTies == true){
+
     for(var t=0;t<ties.length;t++){
 		ties[t].x-=ties[t].speed;
-    }
+    
 }
 
 	
