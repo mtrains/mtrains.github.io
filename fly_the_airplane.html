@@ -326,13 +326,19 @@ function drawPaddle() {
     ctx.closePath();
     //engine
     ctx.beginPath();
-    ctx.rect(paddleForward+126, paddleY+27, 15, 3);
+    ctx.rect(paddleForward+115, paddleY+27, 30, 5);
     ctx.fillStyle = "blue";
     ctx.fill(); 
     ctx.closePath();
     
     ctx.beginPath();
-    ctx.rect(paddleForward+125, paddleY+30, 15, 3);
+    ctx.rect(paddleForward+115, paddleY+32, 30, 2);
+    ctx.fillStyle = "yellow";
+    ctx.fill(); 
+    ctx.closePath();
+        
+    ctx.beginPath();
+    ctx.rect(paddleForward+115, paddleY+34, 30, 5);
     ctx.fillStyle = "red";
     ctx.fill(); 
     ctx.closePath();
