@@ -187,7 +187,7 @@ function drawCollision() {
 function drawPaddle() {
     
     ctx.beginPath();
-    ctx.arc(760, 50, 50, 0, Math.PI*2, false);
+    ctx.arc(canvas.width-50, 50, 50, 0, Math.PI*2, false);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
