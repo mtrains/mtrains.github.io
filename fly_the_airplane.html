@@ -37,7 +37,7 @@ var paddleMovement = 0
 //puffs of smoke
 var smokedx = 2;
 var smokeYes = false
-var smokeOne = paddleForward+100
+var smokeOne = (paddleForward+100)
 
 
 var everything = 1
@@ -743,8 +743,9 @@ function draw() {
    x += dx;
    y += dy;
    planeX += planeDx;
+if(smokeYes == true){
    smokeOne -= smokedx;
-    
+}
    
    if(upPressed && paddleY < canvas.height-paddleHeight) {
        paddleY += paddleMovement;
