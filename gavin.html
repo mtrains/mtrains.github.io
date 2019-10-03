@@ -60,6 +60,34 @@ var smokeTenTwo = (paddleForward-500)
 var smokeElevenTwo = (paddleForward-530)
 var smokeOneThree = (paddleForward-560)
 var smokeTwoThree = (paddleForward-590)
+var hOne = 0
+var aTwo = 0
+var pThree = 0
+var pFour = 0
+var yFive = 0
+var bOne = 0
+var iTwo = 0
+var rThree = 0
+var tFour = 0
+var hFive = 0
+var dSix = 0
+var aSeven = 0
+var yEight = 0
+
+var hOneMove = 3
+var aTwoMove = 3
+var pThreeMove = 3
+var pFourMove = 3
+var yFiveMove = 3
+var bOneMove = 3
+var iTwoMove = 3
+var rThreeMove = 3
+var tFourMove = 3
+var hFiveMove = 3
+var dSixMove = 3
+var aSevenMove = 3
+var yEightMove = 3
+
 var everything = 1
 var awesome = everything
 var time = 0
@@ -87,6 +115,9 @@ function keyUpHandler(e) {
         downPressed = false;
     }
 }
+    
+    
+    
 function drawObstacles() {
     
   if(awesome = everything){
@@ -100,6 +131,146 @@ function drawObstacles() {
    
 }
 
+    
+    
+    
+    
+function drawBirthday(){
+        ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("H", canvas.width/15*2, hOne);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("A", canvas.width/15*3, aTwo);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("P", canvas.width/15*4, pThree);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("P", canvas.width/15*5, pFour);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Y", canvas.width/15*6, yFive);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("B", canvas.width/14*2, bOne);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("I", canvas.width/14*2, iTwo);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("R", canvas.width/14*2, rThree);
+    
+            ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("T", canvas.width/14*2, tFour);
+    
+    ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("H", canvas.width/14*2, hFive);
+    
+    ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("D", canvas.width/14*2, dSix);
+    
+    ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("A", canvas.width/14*2, aSeven);
+    
+    ctx.font = "150px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Y", canvas.width/14*2, yEight);
+    
+   
+     //move letters
+    if(hOne >= canvas.height){
+        hOneMove = -3
+    }
+    if(hOne <= 0){
+        hOneMove = 3
+    }
+    
+        if(aTwo >= canvas.height){
+        aTwoMove = -3
+    }
+    if(aTwo <= 0){
+        aTwoMove = 3
+    }
+        if(pThree >= canvas.height){
+       pThreeMove = -3
+    }
+    if(pThree <= 0){
+        pThreeMove = 3
+    }
+        if(pFour >= canvas.height){
+        pFourMove = -3
+    }
+    if(pFour <= 0){
+        pFourMove = 3
+    }
+        if(yFive >= canvas.height){
+        yFiveMove = -3
+    }
+    if(yFive <= 0){
+        yFiveMove = 3
+    }
+        if(bOne >= canvas.height){
+        bOneMove = -3
+    }
+    if(bOne <= 0){
+        bOneMove = 3
+    }
+        if(iTwo >= canvas.height){
+        iTwoMove = -3
+    }
+    if(iTwo <= 0){
+        iTwoMove = 3
+    }
+        if(rThree >= canvas.height){
+        rThreeMove = -3
+    }
+    if(rThree <= 0){
+        rThreeMove = 3
+    }
+        if(tFour >= canvas.height){
+        tFourMove = -3
+    }
+    if(tFour <= 0){
+        tFourMove = 3
+    }
+        if(hFive >= canvas.height){
+        hFiveMove = -3
+    }
+    if(hFive <= 0){
+        hFiveMove = 3
+    }
+        if(dSix >= canvas.height){
+        dSixMove = -3
+    }
+    if(dSix <= 0){
+        dSixMove = 3
+    }
+        if(aSeven >= canvas.height){
+        aSevenMove = -3
+    }
+    if(aSeven <= 0){
+        aSevenMove = 3
+    }
+        if(yEight >= canvas.height){
+        hyEightMove = -3
+    }
+    if(yEight <= 0){
+        yEightMove = 3
+    }
+        
+}
 
 function drawPaddle() {
     
@@ -820,7 +991,23 @@ function draw() {
     drawObstacles(); 
    drawPaddle();
    drawSmoke();
-
+    drawBirthday();
+hOne += hOneMove
+aTwo += aTwoMove
+pThree += pThreeMove
+pFour += pFourMove
+yFive += yFiveMove
+bOne += bOneMove
+iTwo += iTwoMove
+rThree += rThreeMove
+tFour += tFourMove
+hFive += hFiveMove
+dSix += dSixMove
+aSeven += aSevenMove
+yEight += yEightMove
+    
+    
+    
    
    x += dx;
    y += dy;
