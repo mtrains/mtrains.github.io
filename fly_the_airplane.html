@@ -36,7 +36,7 @@ var paddleMovement = 0
 
 //puffs of smoke
 var smokedx = 2;
-var smokeYes = true
+var smokeYes = false
 var smokeOne = paddleForward+100
 
 
@@ -54,6 +54,9 @@ function keyDownHandler(e) {
     }
     else if(e.keyCode == 32) {
         document.location.reload();
+    }
+    else if(e.keyCode == 83) {
+        smokeYes = true
     }
 }
 function keyUpHandler(e) {
