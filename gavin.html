@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Fly the Airplane</title>
+    <title>Happy Birthday Gavin!</title>
     <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 0 auto; }
@@ -92,127 +92,11 @@ function drawObstacles() {
   if(awesome = everything){
       time += .1
   }
-  //sky#0095DD
-  ctx.beginPath();
-  ctx.rect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "turquoise";
-  ctx.fill();
-  ctx.closePath();
-    //instructions
-    ctx.font = "50px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Use the up and down arrows to fly the airplane.", x+320, 300);
-    //runway
-  ctx.beginPath();
-  ctx.rect(x, y, 3760, 4);
-  ctx.fillStyle = "gray";
-  ctx.fill();
-  ctx.closePath();
-  //control tower
-  ctx.beginPath();
-  ctx.rect(x+3760, canvas.height-80, 20, 80);
-  ctx.fillStyle = "red";
-  ctx.fill();
-  ctx.closePath();
   
-  ctx.beginPath();
-  ctx.rect(x+3750, canvas.height-70, 40, 20);
-  ctx.fillStyle = "red";
-  ctx.fill();
-  ctx.closePath();
-    
-  ctx.beginPath();
-  ctx.rect(x+3760, canvas.height-70, 8, 16);
-  ctx.fillStyle = "black";
-  ctx.fill();
-  ctx.closePath();
-  
-  ctx.beginPath();
-  ctx.rect(x+3772, canvas.height-70, 8, 16);
-  ctx.fillStyle = "black";
-  ctx.fill();
-  ctx.closePath();
-  //random house
-  ctx.beginPath();
-  ctx.rect(x+3960, canvas.height-40, 40, 40);
-  ctx.fillStyle = "brown";
-  ctx.fill();
-  ctx.closePath();
-  
-    ctx.beginPath();
-    ctx.rect(x+3976, canvas.height-20, 8, 20); 
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(x+3956, canvas.height-40);
-    ctx.lineTo(x+4004, canvas.height-40);
-    ctx.lineTo(x+3981, canvas.height-56);
-    ctx.fillStyle = "brown";
-    ctx.fill();
-    ctx.closePath();
-  //tree
-    ctx.beginPath();
-    ctx.arc(x+4238, canvas.height-80, 24, 0, Math.PI*2, false);
-    ctx.fillStyle = "green";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.rect(x+4232, canvas.height-60, 12, 60); 
-    ctx.fillStyle = "brown";
-    ctx.fill();
-    ctx.closePath();
-    //100 tall
-  //40 wide
-    
+   
 }
-function drawCollision() {
-    //control tower
-    if (x < -3535 && x > -3780 && paddleY>= 520) {
-        airplaneSurvival += 8 
-        dx *= 0
-        paddleMovement *= 0
-    }
-    //The plane can not take off until about 3 quarters down the runway.
-    else if (x < -2000 && x > -2006){
-        paddleMovement += 6
-    }
-    
-    //random house
-    else if (x < -3735 && x > -4000 && paddleY>= 552) {
-        airplaneSurvival += 8
-        dx *= 0
-        paddleMovement *= 0
-    }
-    //tree
-    else if (x < -4038 && x > -4098 && paddleY>= 520) {
-        airplaneSurvival += 8
-        dx *= 0
-        paddleMovement *= 0
-    }
-    //small propeller plane work on this later
-    else if (time >= 260 && time < 270 && paddleY<= 110) {//+ 195-96
-        airplaneSurvival += 8
-        dx *= 0
-        paddleMovement *= 0
-        planeDx *= 0 
-    }
-    //if on ground and not runway, crash 
-    else if (x < -3800 && paddleY > canvas.height-paddleHeight){
-        dx *= 0
-        paddleMovement *= 0
-        
-    ctx.font = "32px Arial";
-    ctx.fillStyle = "orange";
-    ctx.fillText("Game Over.", 400, 260);
-        
-    ctx.font = "32px Arial";
-    ctx.fillStyle = "orange";
-    ctx.fillText("Press Space to Restart.", 300, 300);
-    }
-}
+
+
 function drawPaddle() {
     
     ctx.beginPath();
@@ -848,28 +732,7 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
 }
 //if(airplaneSurvival === 4)
     
-function drawOtherPlanes() {
-    //small propeller plane
-    ctx.beginPath();
-    ctx.rect(planeX, 60, 96, 20);
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.rect(planeX+28, 46, 40, 14);
-    ctx.fillStyle = "gray";
-    ctx.fill();
-    ctx.closePath();
-    
-    ctx.beginPath();
-    ctx.moveTo(planeX+28, 46);
-    ctx.lineTo(planeX+28, 60);
-    ctx.lineTo(planeX+18, 60);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath();
-}
+
 function drawSmoke() {
     if(smokeOne <= -14){
         smokeOne = 700;
@@ -949,10 +812,9 @@ function drawSmoke() {
     
 function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height);
-   drawObstacles();
+   
    drawPaddle();
-   drawCollision();
-   //drawOtherPlanes();
+   
    drawSmoke();
    
    x += dx;
