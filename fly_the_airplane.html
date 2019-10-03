@@ -59,7 +59,8 @@ var smokeEightTwo = (paddleForward-440)
 var smokeNineTwo = (paddleForward-470)
 var smokeTenTwo = (paddleForward-500)
 var smokeElevenTwo = (paddleForward-530)
-
+var smokeOneThree = (paddleForward-560)
+var smokeTwoThree = (paddleForward-590)
 
 var everything = 1
 var awesome = everything
@@ -701,7 +702,18 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
-          
+      
+         ctx.beginPath();
+    ctx.arc(smokeOneThree, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+     
+    ctx.beginPath();
+    ctx.arc(smokeTwoThree, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
      
  }
         
@@ -927,6 +939,13 @@ function drawSmoke() {
     if(smokeElevenTwo <= -10){
         smokeElevenTwo = 700;
     }
+        if(smokeOneThree <= -10){
+        smokeOneThree = 700;
+    }
+    if(smokeTwoThree <= -10){
+        smokeTwoThree = 700;
+    }
+    
     
 }
     
@@ -964,7 +983,8 @@ if(smokeYes == true){
    smokeNineTwo -= smokedx;
    smokeTenTwo -= smokedx;
    smokeElevenTwo -= smokedx;
-    
+       smokeOneThree -= smokedx;
+   smokeTwoThree -= smokedx; 
     
     
     
