@@ -290,10 +290,17 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath(); 
         
-if(paddleY >= (canvas.height-paddleHeight-14)){
+if(paddleY >= (canvas.height-paddleHeight-24)){
     //front gear    
     ctx.beginPath();
-    ctx.arc(paddleForward+225, paddleY+32, paddleHeight/8, 0, Math.PI*2, false);
+    ctx.arc(paddleForward+225, paddleY+33, paddleHeight/9, 0, Math.PI*2, false);
+    ctx.fillStyle = "black"; 
+    ctx.fill();
+    ctx.closePath(); 
+    
+        //back gear    
+    ctx.beginPath();
+    ctx.arc(paddleForward+40, paddleY+33, paddleHeight/9, 0, Math.PI*2, false);
     ctx.fillStyle = "black"; 
     ctx.fill();
     ctx.closePath(); 
