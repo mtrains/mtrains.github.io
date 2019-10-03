@@ -48,6 +48,17 @@ var smokeEight = (paddleForward-110)
 var smokeNine = (paddleForward-140)
 var smokeTen = (paddleForward-170)
 var smokeEleven = (paddleForward-200)
+var smokeOneTwo = (paddleForward-230)
+var smokeTwoTwo = (paddleForward-260)
+var smokeThreeTwo = (paddleForward-290)
+var smokeFourTwo = (paddleForward-320)
+var smokeFiveTwo = (paddleForward-350)
+var smokeSixTwo = (paddleForward-380)
+var smokeSevenTwo = (paddleForward-410)
+var smokeEightTwo = (paddleForward-440)
+var smokeNineTwo = (paddleForward-470)
+var smokeTenTwo = (paddleForward-500)
+var smokeElevenTwo = (paddleForward-530)
 
 
 var everything = 1
@@ -574,6 +585,65 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     //smoke draw here    
  if(smokeYes == true){
     ctx.beginPath();
+    ctx.arc(smokeOneTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+     
+    ctx.beginPath();
+    ctx.arc(smokeTwoTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+     
+    ctx.beginPath();
+    ctx.arc(smokeThreeTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          
+     ctx.beginPath();
+    ctx.arc(smokeFourTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeFiveTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeSixTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeSevenTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeEightTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeNineTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeTenTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeElevenTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          
+     ctx.beginPath();
     ctx.arc(smokeOne, paddleY+32, 20, 0, Math.PI*2, false);
     ctx.fillStyle = "white";
     ctx.fill();
@@ -632,7 +702,6 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     ctx.fill();
     ctx.closePath();
           
-     
      
  }
         
@@ -825,7 +894,39 @@ function drawSmoke() {
     if(smokeEleven <= -10){
         smokeEleven = 700;
     }
-    
+    if(smokeOneTwo <= -10){
+        smokeOneTwo = 700;
+    }
+    if(smokeTwoTwo <= -10){
+        smokeTwoTwo = 700;
+    }
+    if(smokeThreeTwo <= -10){
+        smokeThreeTwo = 700;
+    }
+    if(smokeFourTwo <= -10){
+        smokeFourTwo = 700;
+    }
+    if(smokeFiveTwo <= -10){
+        smokeFiveTwo = 700;
+    }
+    if(smokeSixTwo <= -10){
+        smokeSixTwo = 700;
+    }
+    if(smokeSevenTwo <= -10){
+        smokeSevenTwo = 700;
+    }
+    if(smokeEightTwo <= -10){
+        smokeEightTwo = 700;
+    }
+    if(smokeNineTwo <= -10){
+        smokeNineTwo = 700;
+    }
+    if(smokeTenTwo <= -10){
+        smokeTenTwo = 700;
+    }
+    if(smokeElevenTwo <= -10){
+        smokeElevenTwo = 700;
+    }
     
 }
     
@@ -852,7 +953,17 @@ if(smokeYes == true){
    smokeNine -= smokedx;
    smokeTen -= smokedx;
    smokeEleven -= smokedx;
-    
+    smokeOneTwo -= smokedx;
+   smokeTwoTwo -= smokedx;
+   smokeThreeTwo -= smokedx;
+   smokeFourTwo -= smokedx;
+   smokeFiveTwo -= smokedx;
+   smokeSixTwo -= smokedx;
+   smokeSevenTwo -= smokedx;
+   smokeEightTwo -= smokedx;
+   smokeNineTwo -= smokedx;
+   smokeTenTwo -= smokedx;
+   smokeElevenTwo -= smokedx;
     
     
     
