@@ -371,37 +371,8 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     ctx.fill(); 
     ctx.closePath();
         
-    //smoke draw here    
- if(smokeYes == true){
-    ctx.beginPath();
-    ctx.arc(smokeOne, paddleY+32, 20, 0, Math.PI*2, false);
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.closePath();
-     
-     
-     
-     
-     
- }
-        
-    //wing
-    ctx.beginPath();
-    ctx.moveTo(paddleForward+111, paddleY+24);
-    ctx.lineTo(paddleForward+156,paddleY+24);
-    ctx.lineTo(paddleForward+75,paddleY+36);
-    ctx.fillStyle = "gray";
-    ctx.fill();
-    ctx.closePath(); 
-    //elevator
-    ctx.beginPath();
-    ctx.moveTo(paddleForward+6, paddleY);
-    ctx.lineTo(paddleForward+21,paddleY);
-    ctx.lineTo(paddleForward+0,paddleY+10);
-    ctx.fillStyle = "gray";
-    ctx.fill();
-    ctx.closePath();
-    //windows    
+          
+   //windows    
     ctx.beginPath();
     ctx.rect(paddleForward+75, paddleY+12, 3, 3);
     ctx.fillStyle = "black";
@@ -586,7 +557,41 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     ctx.rect(paddleForward+228, paddleY+12, 12, 3);
     ctx.fillStyle = "black";
     ctx.fill(); 
+    ctx.closePath();     
+        
+        
+        
+    //smoke draw here    
+ if(smokeYes == true){
+    ctx.beginPath();
+    ctx.arc(smokeOne, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
     ctx.closePath();
+     
+     
+     
+     
+     
+ }
+        
+    //wing
+    ctx.beginPath();
+    ctx.moveTo(paddleForward+111, paddleY+24);
+    ctx.lineTo(paddleForward+156,paddleY+24);
+    ctx.lineTo(paddleForward+75,paddleY+36);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath(); 
+    //elevator
+    ctx.beginPath();
+    ctx.moveTo(paddleForward+6, paddleY);
+    ctx.lineTo(paddleForward+21,paddleY);
+    ctx.lineTo(paddleForward+0,paddleY+10);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
+    
     }
     else if (airplaneSurvival > 6) {
     ctx.beginPath();
