@@ -289,6 +289,15 @@ function drawPaddle() {
     ctx.fillStyle = "blue"; 
     ctx.fill();
     ctx.closePath(); 
+        
+if(paddleY >= (canvas.height-paddleHeight-14)){
+    //front gear    
+    ctx.beginPath();
+    ctx.arc(paddleForward+225, paddleY+32, paddleHeight/8, 0, Math.PI*2, false);
+    ctx.fillStyle = "black"; 
+    ctx.fill();
+    ctx.closePath(); 
+}
     //red belly
     ctx.beginPath();
     ctx.rect(paddleForward+33, paddleY+27, paddleWidth+12, 3);
