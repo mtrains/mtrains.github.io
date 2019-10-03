@@ -816,10 +816,11 @@ function drawSmoke() {
     
 function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height);
-   
+      
+    drawObstacles(); 
    drawPaddle();
    drawSmoke();
-    drawObstacles();
+
    
    x += dx;
    y += dy;
