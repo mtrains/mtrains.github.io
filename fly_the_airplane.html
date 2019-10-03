@@ -374,7 +374,7 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     //smoke draw here    
  if(smokeYes == true){
     ctx.beginPath();
-    ctx.arc(smokeOne, paddleY+32, 10, 0, Math.PI*2, false);
+    ctx.arc(smokeOne, paddleY+32, 20, 0, Math.PI*2, false);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
@@ -725,7 +725,7 @@ function drawOtherPlanes() {
     ctx.fill();
     ctx.closePath();
 }
-function backSmoke() {
+function drawSmoke() {
     if(smokeOne <= -10){
         smokeOne = 700;
     }
@@ -738,7 +738,8 @@ function draw() {
    drawObstacles();
    drawPaddle();
    drawCollision();
-   drawOtherPlanes();
+   //drawOtherPlanes();
+   drawSmoke();
    
    x += dx;
    y += dy;
