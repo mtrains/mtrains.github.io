@@ -38,6 +38,16 @@ var paddleMovement = 0
 var smokedx = 2;
 var smokeYes = false
 var smokeOne = (paddleForward+100)
+var smokeTwo = (paddleForward+85)
+var smokeThree = (paddleForward+70)
+var smokeFour = (paddleForward+55)
+var smokeFive = (paddleForward+40)
+var smokeSix = (paddleForward+25)
+var smokeSeven = (paddleForward+10)
+var smokeEight = (paddleForward-5)
+var smokeNine = (paddleForward-20)
+var smokeTen = (paddleForward-35)
+var smokeEleven = (paddleForward-50)
 
 
 var everything = 1
@@ -569,8 +579,59 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     ctx.fill();
     ctx.closePath();
      
+    ctx.beginPath();
+    ctx.arc(smokeTwo, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
      
-     
+    ctx.beginPath();
+    ctx.arc(smokeThree, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          
+     ctx.beginPath();
+    ctx.arc(smokeFour, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeFive, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeSix, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeSeven, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeEight, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeNine, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeTen, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          ctx.beginPath();
+    ctx.arc(smokeEleven, paddleY+32, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+          
      
      
  }
@@ -751,6 +812,22 @@ function draw() {
    planeX += planeDx;
 if(smokeYes == true){
    smokeOne -= smokedx;
+   smokeTwo -= smokedx;
+   smokeThree -= smokedx;
+   smokeFour -= smokedx;
+   smokeFive -= smokedx;
+   smokeSix -= smokedx;
+   smokeSeven -= smokedx;
+   smokeEight -= smokedx;
+   smokeNine -= smokedx;
+   smokeTen -= smokedx;
+   smokeEleven -= smokedx;
+    
+    
+    
+    
+    
+    
 }
    
    if(upPressed && paddleY < canvas.height-paddleHeight) {
