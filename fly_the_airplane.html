@@ -69,6 +69,8 @@ var smokeTwoThree = (paddleForward-590)
 var everything = 1
 var awesome = everything
 var time = 0
+var level = 0
+var addMorePlanes = 0
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 function keyDownHandler(e) {
@@ -83,6 +85,9 @@ function keyDownHandler(e) {
     }
     else if(e.keyCode == 83) {
         smokeYes = true
+    }
+else if(e.keyCode == 80) {
+        addMorePlanes += 0.05
     }
 }
 function keyUpHandler(e) {
@@ -231,6 +236,10 @@ function resetTie(tie){
     
 	tie.x = (Math.floor(Math.random() * canvas.width) + 1);
 	tie.y = Math.floor(Math.random() * canvas.height)+35;
+	if((addMorePlanes % 1) ==0){
+		level++;
+		createTieFighters(level);
+	}
 
 	
 };    
