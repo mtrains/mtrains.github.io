@@ -123,9 +123,9 @@ function drawObstacles() {
   ctx.fill();
   ctx.closePath();
     //instructions
-    ctx.font = "50px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Use the up and down arrows to fly the airplane.", x+320, 300);
+//    ctx.font = "50px Arial";
+//    ctx.fillStyle = "black";
+//    ctx.fillText("Use the up and down arrows to fly the airplane.", x+320, 300);
     //runway
   ctx.beginPath();
   ctx.rect(x, y, 3760, 4);
@@ -135,13 +135,13 @@ function drawObstacles() {
   //control tower
   ctx.beginPath();
   ctx.rect(x+3760, canvas.height-80, 20, 80);
-  ctx.fillStyle = "red";
+  ctx.fillStyle = "gray";
   ctx.fill();
   ctx.closePath();
   
   ctx.beginPath();
   ctx.rect(x+3750, canvas.height-70, 40, 20);
-  ctx.fillStyle = "red";
+  ctx.fillStyle = "gray";
   ctx.fill();
   ctx.closePath();
     
@@ -1059,8 +1059,8 @@ function draw() {
     drawTie();
 	drawCarbon();
    
-   x += dx;
-   y += dy;
+   //x += dx;
+   //y += dy;
    planeX += planeDx;
 if(smokeYes == true){
    smokeOne -= smokedx;
