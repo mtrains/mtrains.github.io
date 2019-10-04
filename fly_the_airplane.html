@@ -17,8 +17,8 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight
-var planeImg = new Image();
-planeImg.src = 'plane_smoke.png';
+var tieImg = new Image();
+tieImg.src = 'plane_smoke.png';
 var x = canvas.width*0;
 var y = canvas.height-4;
 var dx = -4;
@@ -35,6 +35,7 @@ var airplaneSurvival = 6;
 var pie =  3.14159265358979
 var yum = pie
 var paddleMovement = 0
+var ties = [];
 
 //puffs of smoke
 var smokedx = 1.3;
@@ -230,12 +231,20 @@ function resetTie(tie){
     
 	tie.x = (Math.floor(Math.random() * canvas.width) + 1)+canvas.width+fighterBack;
 	tie.y = Math.floor(Math.random() * canvas.height)+35;
-    ctx.drawImage(planeImg,tie.x,tie.y-50,100,100);
+
 	
 };    
     
+function drawTie(){	
+    for(var t=0;t<ties.length;t++){
+        var tie = ties[t];
+	ctx.drawImage(tieImg,tie.x,tie.y-50,100,100);    
     
-    
+	
+	
+	
+
+}
 function drawPaddle() {
     
     ctx.beginPath();
@@ -977,7 +986,7 @@ function draw() {
    drawCollision();
    //drawOtherPlanes();
    drawSmoke();
-    resetTie(tie);
+    drawTie();
    
    x += dx;
    y += dy;
