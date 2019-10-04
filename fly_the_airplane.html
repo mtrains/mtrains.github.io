@@ -19,6 +19,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight
 var tieImg = new Image();
 tieImg.src = 'plane_smoke.png';
+var oilTruckImg = new Image();
+oilTruckImg.src = 'Tanker Truck.png';	
 var x = canvas.width*0;
 var y = canvas.height-4;
 var dx = -4;
@@ -931,7 +933,7 @@ if(carbonYes == true){
     
 function drawOtherPlanes() {
     //small propeller plane
-    ctx.beginPath();
+   /* ctx.beginPath();
     ctx.rect(planeX, 60, 96, 20);
     ctx.fillStyle = "white";
     ctx.fill();
@@ -950,6 +952,11 @@ function drawOtherPlanes() {
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
+	*/
+	
+	//truck
+	
+	ctx.drawImage(oilTruckImg,canvas.width/4*3,canvas.height-100,100,100); 
 }
 function drawSmoke() {
     if(smokeOne <= -18){
@@ -1054,7 +1061,7 @@ function draw() {
    drawObstacles();
    drawPaddle();
    drawCollision();
-   //drawOtherPlanes();
+   drawOtherPlanes();
    drawSmoke();
     drawTie();
 	drawCarbon();
