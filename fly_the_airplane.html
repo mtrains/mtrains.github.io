@@ -17,6 +17,8 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight
+var planeImg = new Image();
+planeImg.src = 'plane_smoke.png';
 var x = canvas.width*0;
 var y = canvas.height-4;
 var dx = -4;
@@ -216,6 +218,24 @@ function drawCollision() {
     ctx.fillText("Press Space to Restart.", 300, 300);
     }
 }
+    
+function createPlanes(count){
+	ties = [];
+    for(var i=0;i<count;i++){
+        ties[i]={};
+    }
+	
+}
+function resetTie(tie){
+    
+	tie.x = (Math.floor(Math.random() * canvas.width) + 1)+canvas.width+fighterBack;
+	tie.y = Math.floor(Math.random() * canvas.height)+35;
+    ctx.drawImage(planeImg,tie.x,tie.y-50,100,100);
+	
+};    
+    
+    
+    
 function drawPaddle() {
     
     ctx.beginPath();
@@ -957,6 +977,7 @@ function draw() {
    drawCollision();
    //drawOtherPlanes();
    drawSmoke();
+    resetTie(tie);
    
    x += dx;
    y += dy;
