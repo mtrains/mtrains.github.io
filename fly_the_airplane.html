@@ -65,6 +65,16 @@ var smokeTenTwo = (paddleForward-500)
 var smokeElevenTwo = (paddleForward-530)
 var smokeOneThree = (paddleForward-560)
 var smokeTwoThree = (paddleForward-590)
+//words carbon
+var carbondx = 1.5
+var carbonYes = false
+var carbonOne = (paddleY+30)
+var carbonTwo = (paddleY+30)
+var carbonThree = (paddleY-30)(paddleForward-170)
+var carbonFour = (paddleY-30)(paddleForward-380)
+var carbonFive = (paddleY-90)(paddleForward-170)
+var carbonSix = (paddleY-90)(paddleForward-380)
+
 
 var everything = 1
 var awesome = everything
@@ -85,6 +95,9 @@ function keyDownHandler(e) {
     }
     else if(e.keyCode == 83) {
         smokeYes = true
+    }
+	    else if(e.keyCode == 67) {
+        carbonYes = true
     }
 else if(e.keyCode == 80) {
         addMorePlanes += 0.05
@@ -619,7 +632,34 @@ if(paddleY >= (canvas.height-paddleHeight-24)){
     ctx.fillStyle = "black";
     ctx.fill(); 
     ctx.closePath();     
-        
+        //carbon words draw here
+if(carbonYes == true){
+	ctx.font = "30px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Carbon", (paddleForward-170), carbonOne);
+	
+	ctx.font = "30px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Carbon", (paddleForward-380), carbonTwo);
+	
+		ctx.font = "30px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Carbon", (paddleForward-170), carbonThree);
+	
+		ctx.font = "30px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Carbon", (paddleForward-380), carbonFour);
+	
+		ctx.font = "30px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Carbon", (paddleForward-170), carbonFive);
+	
+		ctx.font = "30px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Carbon", (paddleForward-380), carbonSix);
+
+	
+}
         
         
     //smoke draw here    
@@ -987,6 +1027,27 @@ function drawSmoke() {
     
     
 }
+function drawCarbon() {
+	    if(carbonOne <= (paddleY-150)){
+        carbonOne = (paddleY+30);
+    }
+		    if(carbonTwo <= (paddleY-150)){
+        carbonTwo = (paddleY+30);
+    }
+		    if(carbonThree <= (paddleY-150)){
+        carbonThree = (paddleY+30);
+    }
+		    if(carbonFour <= (paddleY-150)){
+        carbonFour = (paddleY+30);
+    }
+		    if(carbonFive <= (paddleY-150)){
+        carbonFive = (paddleY+30);
+    }
+		    if(carbonSix <= (paddleY-150)){
+        carbonSix = (paddleY+30);
+    }
+	
+}
     
 function draw() {
    ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -996,6 +1057,7 @@ function draw() {
    //drawOtherPlanes();
    drawSmoke();
     drawTie();
+	drawCarbon();
    
    x += dx;
    y += dy;
@@ -1026,10 +1088,16 @@ if(smokeYes == true){
        smokeOneThree -= smokedx;
    smokeTwoThree -= smokedx; 
     
-    
-    
-    
 }
+	if(carbonYes == true){
+		carbonOne -= carbondx; 
+		carbonTwo -= carbondx; 
+		carbonThree -= carbondx; 
+		carbonFour -= carbondx; 
+		carbonFive -= carbondx; 
+		carbonSix -= carbondx; 
+		
+	}
    
    if(upPressed && paddleY < canvas.height-paddleHeight) {
        paddleY += paddleMovement;
