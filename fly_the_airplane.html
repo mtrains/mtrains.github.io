@@ -69,11 +69,11 @@ var smokeTwoThree = (paddleForward-590)
 var carbondx = 1.5
 var carbonYes = false
 var carbonOne = (paddleY+30)
-var carbonTwo = (paddleY+30)
-var carbonThree = (paddleY-30)
-var carbonFour = (paddleY-30)
-var carbonFive = (paddleY-90)
-var carbonSix = (paddleY-90)
+var carbonTwo = (paddleY-10)
+var carbonThree = (paddleY-80)
+var carbonFour = (paddleY-100)
+var carbonFive = (paddleY-190)
+var carbonSix = (paddleY-210)
 
 
 var everything = 1
@@ -1028,22 +1028,22 @@ function drawSmoke() {
     
 }
 function drawCarbon() {
-	    if(carbonOne <= (paddleY-150)){
+	    if(carbonOne <= (paddleY-300)){
         carbonOne = (paddleY+30);
     }
-		    if(carbonTwo <= (paddleY-150)){
+		    if(carbonTwo <= (paddleY-300)){
         carbonTwo = (paddleY+30);
     }
-		    if(carbonThree <= (paddleY-150)){
+		    if(carbonThree <= (paddleY-300)){
         carbonThree = (paddleY+30);
     }
-		    if(carbonFour <= (paddleY-150)){
+		    if(carbonFour <= (paddleY-300)){
         carbonFour = (paddleY+30);
     }
-		    if(carbonFive <= (paddleY-150)){
+		    if(carbonFive <= (paddleY-300)){
         carbonFive = (paddleY+30);
     }
-		    if(carbonSix <= (paddleY-150)){
+		    if(carbonSix <= (paddleY-300)){
         carbonSix = (paddleY+30);
     }
 	
