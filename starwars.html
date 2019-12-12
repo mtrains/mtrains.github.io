@@ -62,22 +62,10 @@ function incScore(){
 	score+=1;
     totalScore+=1;
 	if(score >= level){//add time delay to allow last TIE fighter to explode
-		level += 2;//changed this, w/o 
-		createTieFighters(level);
-		fighterBack = 2000
+
 		launchTies = false
-        score = 0
 	}
-	if(launchTies == false){
-		launchTime += 1
-	}
-	if(launchTime >= 666){//change this to 2000/tie.speed if tie.speed is changed
-		launchTies = true
-		launchTime = 0
-		fighterBack = 0
-		resetTie(tie);
-		
-	}
+	
 }
 	
 	
@@ -280,7 +268,7 @@ function explosion(tie){
     if((tie.time % 10) ==0){
   
         tie.roundedTime += 4 //this is a reduced frame rate for less chance of lag. This also makes some images unnecessary. 
-        
+                            //still lags
         
         
     //when tie.time = %10 then it will take tie.roundedTime and increase by 2, which will in turn change the Img displayed
@@ -326,6 +314,21 @@ function draw() {
     
 
 
+    if(launchTies == false){
+		launchTime ++ 
+	}
+	if(launchTime >= 130){//change this to 2000/tie.speed if tie.speed is changed
+		level += 2;//changed this, w/o 
+		createTieFighters(level);
+        score = 0
+       
+        launchTies = true
+		launchTime = 0
+		resetTie(tie);
+		
+	}
+    
+    
 	
     if(upPressed==true && paddleY >= 50){
         paddleY -=5
