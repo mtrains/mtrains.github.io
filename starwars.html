@@ -11,102 +11,16 @@
 <body>
 
 <canvas id="myCanvas"></canvas>
-//muu
+
 <script>
+    
+    //Important! Must upload all explosion images to github before publishing code. 
+    
     var canvas = document.getElementById("myCanvas");//muu
-    var tieImg = new Image();
-    tieImg.src = 'tiefighter.png';
     var xwingImg = new Image();
-    xwingImg.src = 'xwing.png';//'https://cdn.discordapp.com/attachments/539511445407268898/539542929119772695/image_part_032.png';
-	var explosionFourImg = new Image(); 
-	explosionFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543621535307399188/image_part_003.png';
-	//var explosionFiveImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionSixImg = new Image(); 
-	explosionSixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627449649463337/image_part_006.png';
-	//var explosionSevenImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionEightImg = new Image(); 
-	explosionEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627691933302796/image_part_008.png';
-	//var explosionNineImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionTenImg = new Image(); 
-	explosionTenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627846342541332/image_part_010.png';
-	//var explosionElevenImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionTwelveImg = new Image(); 
-	explosionTwelveImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543627985413079041/image_part_012.png';
-	//var explosionThirteenImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionFourteenImg = new Image(); 
-	explosionFourteenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628127197462558/image_part_014.png';
-	//var explosionFifteenImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionSixteenImg = new Image(); 
-	explosionSixteenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628246537863188/image_part_016.png';
-	//var explosionSeventeenImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionEighteenImg = new Image(); 
-	explosionEighteenImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628404696809483/image_part_018.png';
-	//var explosionNineteenImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionTwentyImg = new Image(); 
-	explosionTwentyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628553120514050/image_part_020.png';
-	//var explosionTwentyOneImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionTwentyTwoImg = new Image(); 
-	explosionTwentyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628679230521359/image_part_022.png';
-	//var explosionTwentyThreeImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionTwentyFourImg = new Image(); 
-	explosionTwentyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543628826740260874/image_part_024.png';
-	//var explosionTwentyFiveImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionTwentySixImg = new Image(); 
-	explosionTwentySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629019212677129/image_part_026.png';
-	//var explosionTwentySevenImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionTwentyEightImg = new Image(); 
-	explosionTwentyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629171180568576/image_part_028.png';
-	//var explosionTwentyNineImg = new Image(); 
-	//explosionThreeImg.src = '';
-	var explosionThirtyImg = new Image();       //after this just do every other frame, eliminate other frames if needed
-	explosionThirtyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629316085252109/image_part_030.png';
-	var explosionThirtyTwoImg = new Image();       
-	explosionThirtyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629480602632203/image_part_032.png';
-	var explosionThirtyFourImg = new Image();       
-	explosionThirtyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629599909609502/image_part_034.png';
-	var explosionThirtySixImg = new Image();       
-	explosionThirtySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543629722114981899/image_part_036.png';
-	var explosionThirtyEightImg = new Image();       
-	explosionThirtyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543630032489152523/image_part_038.png';
-	var explosionFortyImg = new Image();       
-	explosionFortyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543630291340886026/image_part_040.png';
-	var explosionFortyTwoImg = new Image();       //unnecessary
-	explosionFortyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543630917688885249/image_part_042.png';
-	var explosionFortyFourImg = new Image();       
-	explosionFortyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631070742970394/image_part_044.png';
-	var explosionFortySixImg = new Image();       //unnecessary
-	explosionFortySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631186854019072/image_part_046.png';
-	var explosionFortyEightImg = new Image();       
-	explosionFortyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631320841191434/image_part_048.png';
-	var explosionFiftyImg = new Image();       //if loading trouble, this image is unnecessary 
-	explosionFiftyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631427657400338/image_part_050.png';
-	var explosionFiftyTwoImg = new Image();       
-	explosionFiftyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631545613680652/image_part_052.png';
-	var explosionFiftyFourImg = new Image();       //unnecessary 
-	explosionFiftyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631842490974218/image_part_054.png';
-	var explosionFiftySixImg = new Image();       
-	explosionFiftySixImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543631957926608902/image_part_056.png';
-	var explosionFiftyEightImg = new Image();       //unnecessary
-	explosionFiftyEightImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632086964371486/image_part_058.png';
-	var explosionSixtyImg = new Image();       
-	explosionSixtyImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632191310266368/image_part_060.png';
-	var explosionSixtyTwoImg = new Image();       //unnecessary
-	explosionSixtyTwoImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632292841652236/image_part_062.png';
-	var explosionSixtyFourImg = new Image();       
-	explosionSixtyFourImg.src = 'https://cdn.discordapp.com/attachments/539806276184571905/543632443630944266/image_part_064.png';
-	
+    xwingImg.src = 'xwing.png';
+    var starWarsImg = new Image();
+    starWarsImg.src = 'star-wars-episode-9.jpg';
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight-42;
     var ctx = canvas.getContext("2d");
@@ -126,7 +40,8 @@
     }
     var ties = [];
     var score = 0;
-    var level = 1;
+    var totalScore = 0
+    var level = 5;
 	var fighterBack = 0
 	var endSkip = false
 	var today = new Date();
@@ -134,6 +49,7 @@
 var mm = today.getMonth()+1; //January is 0!
 	var launchTies = true
 	var launchTime = 0
+    var number = 4
 	
 	var tielaserboom = false
     createTieFighters(level);
@@ -144,11 +60,13 @@ var mm = today.getMonth()+1; //January is 0!
 	
 function incScore(){
 	score+=1;
-	if((score % 5) ==0){
-		level++;
+    totalScore+=1;
+	if(score >= level){//add time delay to allow last TIE fighter to explode
+		level += 2;//changed this, w/o 
 		createTieFighters(level);
 		fighterBack = 2000
 		launchTies = false
+        score = 0
 	}
 	if(launchTies == false){
 		launchTime += 1
@@ -175,15 +93,24 @@ function createTieFighters(count){
 
 
 function resetTie(tie){
-	tie.x = (Math.floor(Math.random() * canvas.width) + 1)+canvas.width+fighterBack;
+    tie.backPass = 5
+	tie.x = (Math.floor(Math.random() * canvas.width * tie.backPass) + 1)+canvas.width+fighterBack;
 	tie.y = Math.floor(Math.random() * canvas.height)+35;
-	tie.speed = 3;//change launchTime stuff if this is changed
+	tie.speed = 3; //change launchTime stuff if this is changed
     tie.laserX = 600;
     tie.alive = true;
+    tie.indivAlive = true
+    tie.Img = new Image();
+    tie.Img.src = 'tiefighter.png';
+    tie.time = 4//change to 4 later
+    tie.roundedTime = 4
+    tie.startTime = false
+    tie.size = 100
+    tie.explosionMove = 0
 	if(tie.y >= canvas.height-40){
 		resetTie(tie); 
 	}
-	
+
 
 };
 
@@ -204,11 +131,11 @@ function keyDownHandler(e) {
         upPressed = true;
     }
 	
-	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+	/*else if(e.keyCode == 76 && lives > 0) {//l for skip level
 		level += 1;
-		endSkip = true;
+		endSkip = true;//This doesn't work right now. Fix this later. (Requires fundamental changes)
 	}
-		
+		*/
     else if(e.keyCode == 32 && lives > 0) {
         for(var i=0;i<lasers.length;i++){
             if(!lasers[i].go){
@@ -220,48 +147,9 @@ function keyDownHandler(e) {
 	    
     }
 	else if(e.keyCode == 82) {
-/*	canvas = document.getElementById("myCanvas");
-    paddleWidth = 200//
-    paddleHeight = 30
-    paddleY = canvas.height-paddleHeight
-    redLaseY = paddleY 
-    upPressed = false
-    downPressed = false
-    lasers = [];
-    lives = 10;
-    for(var i=0;i<7;i++){
-        lasers[i] = {
-          x: 0,
-          go: false
-        };
-    }
-    ties = [];
-    score = 0;
-    level = 1;
-	tielaserboom = false
-	
-//    for(t=0;t<ties.length;t++){
-//        tie = ties[t];
-//    }
-		
-ties = [];
-    for(i=0;i<count;i++){
-        ties[i]={};
-        resetTie(ties[i]);
-    }
-		
-//    for(i=0;i<lasers.length;i++){
-//        laser = lasers[0];
-//    } //insert this if not working
-//	resetTie(tie); 	
-	*/
 		window.location.reload(false);
-
-	
-		
 	}
 }
-
 
 function keyUpHandler(e) {
     if(e.keyCode == 40 && lives > 0) {
@@ -292,11 +180,8 @@ if(lives > 0){
 	ctx.drawImage(xwingImg,0,paddleY-50,200,100);
 	//ctx.drawGif(explosionImg,0,paddleY-50,100,100);
 	//ctx.drawImage(myGif,0,0);
+    }
 }
-
-	
-}
-
 
 
 function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
@@ -307,13 +192,21 @@ function triangle(tie,x1,y1,x2,y2,x3,y3,fill){
     ctx.fillStyle = fill;
     ctx.fill();
     ctx.closePath();
-
 }
 function drawTIE(){
     for(var t=0;t<ties.length;t++){
         var tie = ties[t];
+        
+            if(tie.startTime == true){
+                explosion(tie);
+            }
+  /*      		ctx.font = "72px Arial";//get rid of this later, this is to show tie.time for each fighter
+    ctx.fillStyle = "#f37101ff";
+    ctx.fillText(tie.time, tie.x,tie.y-50);
+        */
         if(tie.alive){
-        	ctx.drawImage(tieImg,tie.x,tie.y-50,100,100);
+        	ctx.drawImage(tie.Img,tie.x-(tie.explosionMove),tie.y-(tie.size/2), tie.size,tie.size);
+           
             if(tie.x <= 600 && lives > 0){
 				tielaserboom = false
                 ctx.beginPath();
@@ -340,29 +233,62 @@ function drawTIE(){
                 tie.laserX = 12093709
 		}
 		    //making tie cause 5 damage to x wing if they crash
-		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= 5 && lives > 0){
+		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= 5 && lives > 0 && tie.indivAlive == true){
 			lives -= 5
-			resetTie(tie);//add explosion here
+            //score increase here
+            incScore();
+            tie.speed = 0 //stopTIE here
+            tie.indivAlive = false   
+            tie.startTime = true
 		}
 				
             }
             if(tie.x < canvas.width){
                 for(var i=0;i<lasers.length;i++){
                     var laser = lasers[i];
-                    if(laser.x >= tie.x && laser.x <= tie.x + 120 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true && lives > 0){
-                        resetTie(tie);//add explosion here
+                    if(laser.x >= tie.x && laser.x <= tie.x + 120 && paddleY <= tie.y + 50 && paddleY >= tie.y - 50 && laser.go == true && lives > 0 && tie.indivAlive == true){
+                        tie.speed = 0 //stopTIE here
+                        tie.indivAlive = false   
+                        tie.startTime = true
                         laser.go = false;
 						incScore();
+
                     }
                 }
             }
-            if(tie.x <= -100){
+  
+            if(tie.x <= -100){ //when TIE passes the X-wing, it is reset back to go in for another run. This should make the TIE fighters more dense if they are not destroyed
             	resetTie(tie);
+                tie.backPass = 1.5
             }
     	}
+       
+    
     }
 }
 
+    
+function explosion(tie){
+    
+    
+        tie.time ++
+        tie.Img.src = 'image_part_0'+tie.roundedTime+'.png';
+        tie.size = 200
+        tie.explosionMove = 50
+    
+    if((tie.time % 10) ==0){
+  
+        tie.roundedTime += 4 //this is a reduced frame rate for less chance of lag. This also makes some images unnecessary. 
+        
+        
+        
+    //when tie.time = %10 then it will take tie.roundedTime and increase by 2, which will in turn change the Img displayed
+    }
+    
+    
+    
+    
+}
 
 	
 function drawDeath(){
@@ -377,6 +303,8 @@ function drawDeath(){
 ctx.font = "40px Arial";
     ctx.fillStyle = "orange";
     ctx.fillText("Press r to restart", canvas.width/2-180, canvas.height/2+100);	
+        
+        ctx.drawImage(starWarsImg,canvas.width/2-200,canvas.height/2+120, 370,150);
 	
 	
 if(dd == 04 && mm == 05){ 
@@ -394,9 +322,11 @@ function draw() {
     drawXwing();
     drawTIE();
 	drawDeath();
+    
+
 
 	
-    if(upPressed==true && paddleY >= 0){
+    if(upPressed==true && paddleY >= 50){
         paddleY -=5
     }
     else if(downPressed == true && paddleY <= (canvas.height-paddleHeight)){
@@ -437,8 +367,11 @@ function draw() {
 	
 	ctx.font = "16px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("Score: "+score+" Level: "+level+" Lives: "+lives, 8, 20);
+    ctx.fillText("Score: "+totalScore+" Level: "+((0.5*level)-1.5)+" Lives: "+lives, 8, 20);
 
+    	ctx.font = "16px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(+score+" out of "+level+" TIE fighters destroyed", 408, 20);
 
 }
 setInterval(draw, 10);
@@ -449,4 +382,5 @@ setInterval(draw, 10);
 </html>
 
 <p>This site is currently undergoing updates. (aka the owner is messing around) If the game is not working, go to:     http://mtrains.github.io/xwing.html </p>
-<p>Or go to http://mtrains.github.io/starwarshard.html for a ridiculously hard version. </p>
+<p>Or go to http://mtrains.github.io/starwarshard.html for a ridiculously hard version. 
+</p>
