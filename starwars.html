@@ -270,8 +270,9 @@ function drawTIE(){
     
 function explosion(tie){
     
-    
+    if(tie.time <= 180){
         tie.time ++
+    }
         tie.Img.src = 'image_part_0'+tie.roundedTime+'.png';
         tie.size = 200
         tie.explosionMove = 50
