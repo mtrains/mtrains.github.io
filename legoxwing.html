@@ -165,7 +165,7 @@ function drawXwing(){
     ctx.fill();
     ctx.closePath();
 if(lives > 0){
-	ctx.drawImage(xwingImg,0,paddleY-50,200,100);
+	ctx.drawImage(xwingImg,0,paddleY-50,270,100);
 	//ctx.drawGif(explosionImg,0,paddleY-50,100,100);
 	//ctx.drawImage(myGif,0,0);
     }
@@ -193,7 +193,7 @@ function drawTIE(){
     ctx.fillText(tie.time, tie.x,tie.y-50);
         */
         if(tie.alive){
-        	ctx.drawImage(tie.Img,tie.x-(tie.explosionMove),tie.y-(tie.size/2), tie.size,tie.size);
+        	ctx.drawImage(tie.Img,tie.x-(tie.explosionMove),tie.y-(tie.size/2), tie.size+50,tie.size);
            
             if(tie.x <= 600 && lives > 0){
 				tielaserboom = false
