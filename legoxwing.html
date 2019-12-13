@@ -120,7 +120,7 @@ function keyDownHandler(e) {
         upPressed = true;
     }
 	
-	else if(e.keyCode == 88 && lives > 0 && endSkip == false) {//l for skip level
+	else if(e.keyCode == 88 && lives > 0) {//l for skip level
 		xwingNumber += 1;
 		endSkip = true;//This doesn't work right now. Fix this later. (Requires fundamental changes)
 	}
