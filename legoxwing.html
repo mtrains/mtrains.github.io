@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Fly the X-Wing!</title>
+    <title>Fly the LEGO X-Wing!</title>
     <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 0 auto; }
@@ -165,7 +165,7 @@ function drawXwing(){
     ctx.fill();
     ctx.closePath();
 if(lives > 0){
-	ctx.drawImage(xwingImg,0,paddleY-50,250,100);
+	ctx.drawImage(xwingImg,0,paddleY-50,240,100);
 	//ctx.drawGif(explosionImg,0,paddleY-50,100,100);
 	//ctx.drawImage(myGif,0,0);
     }
@@ -193,7 +193,7 @@ function drawTIE(){
     ctx.fillText(tie.time, tie.x,tie.y-50);
         */
         if(tie.alive){
-        	ctx.drawImage(tie.Img,tie.x-(tie.explosionMove),tie.y-(tie.size/2), tie.size+62,tie.size);
+        	ctx.drawImage(tie.Img,tie.x-(tie.explosionMove),tie.y-(tie.size/2), tie.size+64,tie.size);
            
             if(tie.x <= 600 && lives > 0){
 				tielaserboom = false
