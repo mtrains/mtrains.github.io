@@ -50,6 +50,7 @@ var mm = today.getMonth()+1; //January is 0!
 	var launchTies = true
 	var launchTime = 0
     var number = 4
+    var xwingNumber = 1
 	
 	var tielaserboom = false
     createTieFighters(level);
@@ -119,11 +120,11 @@ function keyDownHandler(e) {
         upPressed = true;
     }
 	
-	/*else if(e.keyCode == 76 && lives > 0) {//l for skip level
-		level += 1;
+	else if(e.keyCode == 88 && lives > 0 && endSkip == false) {//l for skip level
+		xwingNumber += 1;
 		endSkip = true;//This doesn't work right now. Fix this later. (Requires fundamental changes)
 	}
-		*/
+		
     else if(e.keyCode == 32 && lives > 0) {
         for(var i=0;i<lasers.length;i++){
             if(!lasers[i].go){
@@ -152,7 +153,7 @@ function keyUpHandler(e) {
     else if(e.keyCode == 87 && lives > 0) {
         upPressed = false;
     }
-	else if(e.keyCode == 76 && lives > 0) {//l for skip level
+	else if(e.keyCode == 88 && lives > 0) {//x for change xwing
 		endSkip = false;
 	}
 }
@@ -312,8 +313,27 @@ function draw() {
     drawTIE();
 	drawDeath();
     
-
-
+//changing the x wing fighter
+	if(xwingNumber >= 5){
+		xwingNumber = 1
+	}	
+	if(xwingNumber >= 1){
+		xwingImg.src = Lego_Xwing_2018.png
+	}		
+	if(xwingNumber >= 2){
+		xwingImg.src = Lego_Xwing_2012.png
+	}	
+	if(xwingNumber >= 3){
+		xwingImg.src = Lego_Xwing_Microfighter.png
+	}		
+	if(xwingNumber >= 4){
+		xwingImg.src = Lego_Resistance_X_wing.png
+	}		
+	
+	
+	
+	
+	
     if(launchTies == false){
 		launchTime ++ 
 	}
