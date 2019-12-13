@@ -121,7 +121,7 @@ function keyDownHandler(e) {
     }
 	
 	else if(e.keyCode == 88 && lives > 0) {//l for skip level
-		xwingNumber += 1;
+		xwingNumber ++ ;
 		endSkip = true;//This doesn't work right now. Fix this later. (Requires fundamental changes)
 	}
 		
@@ -318,16 +318,16 @@ function draw() {
 		xwingNumber = 1
 	}	
 	if(xwingNumber == 1){
-		xwingImg.src = Lego_Xwing_2018.png
+		xwingImg.src = 'Lego_Xwing_2018.png';
 	}		
 	if(xwingNumber == 2){
-		xwingImg.src = Lego_Xwing_2012.png
+		xwingImg.src = 'Lego_Xwing_2012.png';
 	}	
 	if(xwingNumber == 3){
-		xwingImg.src = Lego_Xwing_Microfighter.png
+		xwingImg.src = 'Lego_Xwing_Microfighter.png';
 	}		
 	if(xwingNumber == 4){
-		xwingImg.src = Lego_Resistance_X_wing.png
+		xwingImg.src = 'Lego_Resistance_X_wing.png';
 	}		
 	
 	
