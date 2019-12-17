@@ -252,7 +252,35 @@ function drawTIE(){
             }
     	}
        
-    
+    //changing the x wing and tie fighter
+	if(xwingNumber >= 5){
+		xwingNumber = 1
+	}	
+	if(xwingNumber == 1){
+		xwingImg.src = 'Lego_Xwing_2018.png';
+		if(tie.indivAlive == true){
+			tie.Img.src = 'Lego_TIE_fighter_2018.png';
+		}
+	}		
+	if(xwingNumber == 2){
+		xwingImg.src = 'Lego_Xwing_2012.png';
+		if(tie.indivAlive == true){
+			tie.Img.src = 'Lego_TIE_fighter_2012.png';
+		}
+	}	
+	if(xwingNumber == 3){
+		xwingImg.src = 'Lego_Xwing_Microfighter.png';
+		if(tie.indivAlive == true){
+			tie.Img.src = 'Lego_TIE_Interceptor_2014.png';
+		}
+	}		
+	if(xwingNumber == 4){
+		xwingImg.src = 'Lego_Resistance_X_wing.png';
+		if(tie.indivAlive == true){
+			tie.Img.src = 'Lego_TIE_Fighter_First_Order.png';
+		}		
+	}		
+	
     }
 }
 
@@ -313,35 +341,7 @@ function draw() {
     drawTIE();
 	drawDeath();
     
-//changing the x wing fighter
-	if(xwingNumber >= 5){
-		xwingNumber = 1
-	}	
-	if(xwingNumber == 1){
-		xwingImg.src = 'Lego_Xwing_2018.png';
-		if(tie.indivAlive == true){
-			tie.Img.src = 'Lego_TIE_fighter_2018.png';
-		}
-	}		
-	if(xwingNumber == 2){
-		xwingImg.src = 'Lego_Xwing_2012.png';
-		if(tie.indivAlive == true){
-			tie.Img.src = 'Lego_TIE_fighter_2012.png';
-		}
-	}	
-	if(xwingNumber == 3){
-		xwingImg.src = 'Lego_Xwing_Microfighter.png';
-		if(tie.indivAlive == true){
-			tie.Img.src = 'Lego_TIE_Interceptor_2014.png';
-		}
-	}		
-	if(xwingNumber == 4){
-		xwingImg.src = 'Lego_Resistance_X_wing.png';
-		if(tie.indivAlive == true){
-			tie.Img.src = 'Lego_TIE_Fighter_First_Order.png';
-		}		
-	}		
-	
+
 	
 	
 	
