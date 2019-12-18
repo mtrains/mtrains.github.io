@@ -50,7 +50,8 @@ var mm = today.getMonth()+1; //January is 0!
 	var launchTies = true
 	var launchTime = 0
     var number = 4
-	
+    var loadTime = 1
+	 var loadExplode = 4
 	var tielaserboom = false
     createTieFighters(level);
 
@@ -58,6 +59,30 @@ var mm = today.getMonth()+1; //January is 0!
     document.addEventListener("keyup", keyUpHandler, false);
 
 	
+function loadDraw(){
+    //This is where I will load images before they are needed so they will be ready when needed
+    var loadImg = new Image();        
+   
+    if(loadTime <= 49){
+    loadImg.src = 'xwing.png';
+    }    
+    if(loadTime >= 50 && loadTime <= 100){
+        loadImg.src = 'tiefighter.png';
+    }
+    if(loadTime >= 101 && loadTime <= 2000){
+    loadImg.src = 'image_part_0'+loadExplode+'.png'
+        if((loadTime % 50) ==0){
+           loadExplode += 4
+           }
+        
+    }
+    
+    
+    
+    ctx.drawImage(loadImg, -200,-200, 100, 100);//out of screen
+    loadTime += 1
+}
+    
 function incScore(){
 	score+=1;
     totalScore+=1;
@@ -192,7 +217,7 @@ function drawTIE(){
     ctx.fillStyle = "#f37101ff";
     ctx.fillText(tie.time, tie.x,tie.y-50);
         */
-        if(tie.alive){
+        if(tie.alive && tie.time <= 180){
         	ctx.drawImage(tie.Img,tie.x-(tie.explosionMove),tie.y-(tie.size/2), tie.size,tie.size);
            
             if(tie.x <= 600 && lives > 0){
@@ -311,7 +336,9 @@ function draw() {
     drawXwing();
     drawTIE();
 	drawDeath();
-    
+    if(loadTime <= 2000){
+    loadDraw();
+    }
 
 
     if(launchTies == false){
@@ -341,7 +368,7 @@ function draw() {
         var laser = lasers[0];
         if(laser.go == true){
             ctx.beginPath();
-            ctx.rect(laser.x, paddleY, 40, 2);
+            ctx.rect(laser.x+100, paddleY, 40, 2);
             ctx.fillStyle = "red";
             ctx.fill();
             ctx.closePath();
