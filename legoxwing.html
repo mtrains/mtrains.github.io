@@ -77,8 +77,25 @@ function loadDraw(){
            }
         
     }
-    
-    
+    if(loadTime > 2000 && loadTime < 2050){
+	    loadImg.src = 'Lego_Xwing_2012.png';
+    }
+        if(loadTime > 2050 && loadTime < 2100){
+	    loadImg.src = 'Lego_TIE_fighter_2012.png';
+    }
+	    if(loadTime > 2100 && loadTime < 2150){
+	    loadImg.src = 'Lego_Xwing_Microfighter.png';
+    }
+	    if(loadTime > 2150 && loadTime < 2200){
+	    loadImg.src = 'Lego_TIE_Interceptor_2014.png';
+    }
+	    if(loadTime > 2200 && loadTime < 2250){
+	    loadImg.src = 'Lego_Resistance_X_wing.png';
+    }
+	    if(loadTime > 2250 && loadTime < 2300){
+	    loadImg.src = 'Lego_TIE_Fighter_First_Order.png';
+    }
+	
     
     ctx.drawImage(loadImg, 0,-0, 100, 100);//change later so out of screen (-200, -200)
     loadTime += 1
@@ -368,7 +385,7 @@ function draw() {
     drawXwing();
     drawTIE();
 	drawDeath();
-        if(loadTime <= 2000){
+        if(loadTime <= 2400){
     loadDraw();
     }
 
