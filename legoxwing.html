@@ -49,6 +49,8 @@
 var mm = today.getMonth()+1; //January is 0!
 	var launchTies = true
 	var launchTime = 0
+	var loadTime = 1
+	 var loadExplode = 4
     var number = 4
     var xwingNumber = 1
 	
@@ -58,6 +60,30 @@ var mm = today.getMonth()+1; //January is 0!
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
 
+function loadDraw(){
+    //This is where I will load images before they are needed so they will be ready when needed
+    var loadImg = new Image();        
+   
+    if(loadTime <= 49){
+    loadImg.src = 'Lego_Xwing_2018.png';
+    }    
+    if(loadTime >= 50 && loadTime <= 100){
+        loadImg.src = 'Lego_TIE_fighter_2018.png';
+    }
+    if(loadTime >= 101 && loadTime <= 2000){
+    loadImg.src = 'image_part_0'+loadExplode+'.png'
+        if((loadTime % 50) ==0){
+           loadExplode += 4
+           }
+        
+    }
+    
+    
+    
+    ctx.drawImage(loadImg, -200,-200, 0, 0);//change later so out of screen
+    loadTime += 1
+}
+	
 	
 function incScore(){
 	score+=1;
@@ -342,7 +368,9 @@ function draw() {
     drawXwing();
     drawTIE();
 	drawDeath();
-    
+        if(loadTime <= 2000){
+    loadDraw();
+    }
 
 	
 	
