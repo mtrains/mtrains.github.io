@@ -265,7 +265,7 @@ function drawTIE(){
                 tie.laserX = 12093709
 		}
 		    //making tie cause 5 damage to x wing if they crash
-		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= 5 && lives > 0 && tie.indivAlive == true){
+		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= -50 && lives > 0 && tie.indivAlive == true){
 			lives -= 5
             //score increase here
             incScore();
