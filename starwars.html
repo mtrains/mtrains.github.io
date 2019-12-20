@@ -46,7 +46,7 @@
 	var endSkip = false
 	var today = new Date();
 	var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
+var mm = today.getMonth()+1; //Jan is 0
 	var launchTies = true
 	var launchTime = 0
     var number = 4
@@ -61,7 +61,8 @@ var mm = today.getMonth()+1; //January is 0!
 	
 function loadDraw(){
     //This is where I will load images before they are needed so they will be ready when needed
-    var loadImg = new Image();        
+    //later have them always there out of screen
+   /* var loadImg = new Image();        
    
     if(loadTime <= 49){
     loadImg.src = 'xwing.png';
@@ -75,12 +76,68 @@ function loadDraw(){
            loadExplode += 4
            }
         
-    }
+    }*/
     
     
     
-    ctx.drawImage(loadImg, -200,-200, 100, 100);//out of screen
-    loadTime += 1
+    /*ctx.drawImage(loadImg, -200,-200, 100, 100);//out of screen
+    loadTime += 1*/
+    var loadXwing = new Image();
+    loadXwing.src = 'xwing.png'
+    ctx.drawImage(loadXwing, -200, -200, 100, 100);
+    var loadTIE = new Image();
+    loadTIE.src = 'tiefighter.png'
+    ctx.drawImage(loadTIE, -200, -200, 100, 100);
+    var loadExplosionFour = new Image();
+    loadExplosionFour.src = 'image_part_04.png'
+    ctx.drawImage(loadExplosionFour, -200,-200, 100, 100);
+    var loadExplosionEight = new Image();
+    loadExplosionEight.src = 'image_part_08.png'
+    ctx.drawImage(loadExplosionEight, -200,-200, 100, 100);
+    var loadExplosionTwelve = new Image();
+    loadExplosionTwelve.src = 'image_part_012.png'
+    ctx.drawImage(loadExplosionTwelve, -200,-200, 100, 100);
+    var loadExplosionSixteen = new Image();
+    loadExplosionSixteen.src = 'image_part_016.png'
+    ctx.drawImage(loadExplosionSixteen, -200,-200, 100, 100);
+    var loadExplosionTwenty = new Image();
+    loadExplosionTwenty.src = 'image_part_020.png'
+    ctx.drawImage(loadExplosionTwenty, -200,-200, 100, 100);
+    var loadExplosionTwentyFour = new Image();
+    loadExplosionTwentyFour.src = 'image_part_024.png'
+    ctx.drawImage(loadExplosionTwentyFour, -200,-200, 100, 100);
+    var loadExplosionTwentyEight = new Image();
+    loadExplosionTwentyEight.src = 'image_part_028.png'
+    ctx.drawImage(loadExplosionTwentyEight, -200,-200, 100, 100);
+    var loadExplosionThirtyTwo = new Image();
+    loadExplosionThirtyTwo.src = 'image_part_032.png'
+    ctx.drawImage(loadExplosionThirtyTwo, -200,-200, 100, 100);
+    var loadExplosionThirtySix = new Image();
+    loadExplosionThirtySix.src = 'image_part_036.png'
+    ctx.drawImage(loadExplosionThirtySix, -200,-200, 100, 100);
+    var loadExplosionForty = new Image();
+    loadExplosionForty.src = 'image_part_040.png'
+    ctx.drawImage(loadExplosionForty, -200,-200, 100, 100);
+    var loadExplosionFortyFour = new Image();
+    loadExplosionFortyFour.src = 'image_part_044.png'
+    ctx.drawImage(loadExplosionFortyFour, -200,-200, 100, 100);
+    var loadExplosionFortyEight = new Image();
+    loadExplosionFortyEight.src = 'image_part_048.png'
+    ctx.drawImage(loadExplosionFortyEight, -200,-200, 100, 100);
+    var loadExplosionFiftyTwo = new Image();
+    loadExplosionFiftyTwo.src = 'image_part_052.png'
+    ctx.drawImage(loadExplosionFiftyTwo, -200,-200, 100, 100);
+    var loadExplosionFiftySix = new Image();
+    loadExplosionFiftySix.src = 'image_part_056.png'
+    ctx.drawImage(loadExplosionFiftySix, -200,-200, 100, 100);
+    var loadExplosionSixty = new Image();
+    loadExplosionSixty.src = 'image_part_060.png'
+    ctx.drawImage(loadExplosionSixty, -200,-200, 100, 100);
+    var loadExplosionSixtyFour = new Image();
+    loadExplosionSixtyFour.src = 'image_part_064.png'
+    ctx.drawImage(loadExplosionSixtyFour, -200,-200, 100, 100);
+    
+    
 }
     
 function incScore(){
@@ -115,7 +172,7 @@ function resetTie(tie){
     tie.indivAlive = true
     tie.Img = new Image();
     tie.Img.src = 'tiefighter.png';
-    tie.time = 4//change to 4 later
+    tie.time = 4
     tie.roundedTime = 4
     tie.startTime = false
     tie.size = 100
@@ -149,7 +206,7 @@ function keyDownHandler(e) {
 		endSkip = true;//This doesn't work right now. Fix this later. (Requires fundamental changes)
 	}
 		*/
-    else if(e.keyCode == 32 && lives > 0) {
+   else if(e.keyCode == 32 && lives > 0) { //restore this later
         for(var i=0;i<lasers.length;i++){
             if(!lasers[i].go){
                 lasers[i].go = true;
@@ -158,7 +215,7 @@ function keyDownHandler(e) {
             }
         }	
 	    
-    }
+    }  //restore this later
 	else if(e.keyCode == 82) {
 		window.location.reload(false);
 	}
@@ -246,7 +303,7 @@ function drawTIE(){
                 tie.laserX = 12093709
 		}
 		    //making tie cause 5 damage to x wing if they crash
-		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= 5 && lives > 0 && tie.indivAlive == true){
+		if(tie.y >= paddleY-70 && tie.y <= paddleY+70 && tie.x <=120 && tie.x >= -50 && lives > 0 && tie.indivAlive == true){
 			lives -= 5
             //score increase here
             incScore();
@@ -336,9 +393,9 @@ function draw() {
     drawXwing();
     drawTIE();
 	drawDeath();
-    if(loadTime <= 2000){
+  
     loadDraw();
-    }
+    
 
 
     if(launchTies == false){
@@ -364,6 +421,8 @@ function draw() {
         paddleY += 5
     }
 
+
+    
     for(var i=0;i<lasers.length;i++){
         var laser = lasers[0];
         if(laser.go == true){
