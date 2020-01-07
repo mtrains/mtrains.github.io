@@ -29,6 +29,10 @@
     var musicPlay = true
     var musicDelay = 0
     
+    document.addEventListener("mousemove", mouseMoveHandler, false);
+
+    
+    
 function sound(src) {
   this.sound = document.createElement("audio");
   this.sound.src = src;
@@ -44,20 +48,28 @@ function sound(src) {
   }
 }
  
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    var relativeY = e.clientY - canvas.offsetUp;
+}
     
     
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
  
 
-    
+    ctx.beginPath();
+    ctx.arc(relativeX, relativeY, 20, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath();
 
     mySound = new sound("fBlues.mp3");
-  if(musicPlay == true && musicDelay >= 250){
+  if(musicPlay == true && musicDelay >= 100){
     mySound.play();
     musicPlay = false
   }
-0
+
     musicDelay ++
     
     ctx.beginPath();
