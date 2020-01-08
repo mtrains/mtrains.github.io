@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Jazz Chords</title>
+    <link rel="shortcut icon" href="pianoIcon.png" type="image/x-icon" />
+    <script src="sounds.js" type="text/javascript"></script>
+
+
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+    
+
+var canvas = document.getElementById("myCanvas");
+    
+    
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight-32;
+    var ctx = canvas.getContext("2d");
+    
+var ballRadius = 10;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 2;
+var dy = -2;
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX = (canvas.width-paddleWidth)/2;
+var paddleY = canvas.height-paddleHeight
+var rightPressed = false;
+var leftPressed = false;
+var brickRowCount = 3;
+var brickColumnCount = 5;
+var brickWidth = 75;
+var brickHeight = 20;
+var brickPadding = 10;
+var brickOffsetTop = 30;
+var brickOffsetLeft = 30;
+var score = 0;
+var lives = 3;
+       var mySound;
+    var musicPlay = true
+    var musicDelay = 0
+
+var bricks = [];
+for(c=0; c<brickColumnCount; c++) {
+    bricks[c] = [];
+    for(r=0; r<brickRowCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
+    }
+}
+
+
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
+
+function keyDownHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = true;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = false;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = false;
+    }
+}
+
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+        var relativeY = e.clientY 
+
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX
+    }
+        if(relativeY > 0 && relativeY < canvas.height) {
+        paddleY = relativeY 
+    }
+}
+
+
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath();
+    
+    if(paddleX >= (x-2) && paddleX <= (x+2) && paddleY >= (y-2) && paddleY <= (y+2) ){
+        lives = 100
+        
+        
+    }
+}
+
+function drawPaddle() {
+ 
+    
+       //     ctx.beginPath();
+      //  ctx.arc(paddleX, paddleY, 100, 50, 0, Math.PI*2);
+      //  ctx.fillStyle = "turquoise";
+      //  ctx.fill();
+      //  ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.rect(canvas.width/2, canvas.height/2, 100, 100);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();    
+    
+   if(paddleX >= canvas.width/2 && paddleX <= ((canvas.width/2)+100) && paddleY >= canvas.height/2 && paddleY <= ((canvas.height/2)+100)){
+       lives -= 555
+          mySound = new sound("fBlues.mp3");
+  if(musicPlay == true && musicDelay >= 100){
+    mySound.play();
+    musicPlay = false
+  }
+
+    musicDelay ++
+       }
+}
+
+function drawBricks() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            if(bricks[c][r].status == 1) {
+                var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                bricks[c][r].x = brickX;
+                bricks[c][r].y = brickY;
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+    }
+}
+
+function collisionDetection() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                    score++
+
+                }
+            }
+        }
+    }
+}
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+score, 8, 20);
+}
+
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks();
+    drawBall();
+    drawPaddle();
+    drawScore();
+    drawLives();
+    collisionDetection();
+
+     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy < ballRadius) {
+        dy = -dy;
+    }
+    else if(y + dy > canvas.height-ballRadius) {
+        if(x > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+        }
+         else {
+            lives--;
+
+                 dy = -dy;
+
+            
+        }
+    }
+
+    if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        paddleX += 7;
+    } else if(leftPressed && paddleX > 0) {
+        paddleX -= 7;
+    }
+    x += dx;
+    y += dy;
+    
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    var canvas = document.getElementById("myCanvas");
+    
+    
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight-32;
+    var ctx = canvas.getContext("2d");
+    var    goyosoundo = false
+    var mySound;
+    var musicPlay = true
+    var musicDelay = 0
+    var circleX = canvas.width/2
+    var circleY = canvas.height/2
+    
+    document.addEventListener("mousemove", mouseMoveHandler, false);
+
+  function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    var relativeY = e.clientY 
+}  
+    
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
+ 
+
+    
+function drawBall(){
+    if(relativeX > 0 && relativeX < canvas.width){
+        circleX = relativeX
+    }
+    if(relativeY > 0 && relativeY < canvas.height){
+        circleY = relativeY
+    }
+    //if(relativeX > 0 && relativeX < canvas.width && relativeY > 0 && relativeY < canvas.height) {
+        ctx.beginPath();
+        ctx.arc(circleX, circleY, canvas.height/2, 100, 0, Math.PI*2);
+        ctx.fillStyle = "turquoise";
+        ctx.fill();
+        ctx.closePath();
+   // }
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText(e.clientX, canvas.width/2, canvas.width/2);
+    }
+    
+    
+    
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+ drawBall();
+
+
+
+    mySound = new sound("fBlues.mp3");
+  if(musicPlay == true && musicDelay >= 100){
+    mySound.play();
+    musicPlay = false
+  }
+
+    musicDelay ++
+    
+   ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();  
+    
+
+}
+    
+
+setInterval(draw, 10);
+
+    
+    */
+    
+</script>
+
+</body>
+</html>
+
+<p>This site is currently undergoing updates.</p>
+
