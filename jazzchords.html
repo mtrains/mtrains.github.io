@@ -29,10 +29,10 @@ var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     
 var ballRadius = 10;
-var x = canvas.width/2;
+var x = canvas.width/4*3.5;
 var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
+var dx = 3;
+var dy = 0;
 var mouseX = (canvas.width-75)/2;
 var mouseY = canvas.height-10
 var buttonSize = canvas.width/13
@@ -55,9 +55,19 @@ var mySoundNote4;
         var button11Color = "red";
         var button12Color = "red";
         var playButtonColor = "red";
-    
-
-
+    var rootNote = "C3"                    //Change all "#"s in mp3 names to "sharp"s
+ /*   var note1 = "A3"
+    var note2 = "Bb3"
+    var note3 = "B3"
+    var note4 = "C3"
+    var note5 = "Csharp3"
+    var note6 = "D3"
+    var note7 = "Eb3"
+    var note8 = "E3"
+    var note9 = "F3"
+    var note10 = "Fsharp3"
+    var note11 = "G3"
+    var note12 = "Gsharp3"*/
 
 
 
@@ -203,7 +213,7 @@ function drawButtons() {
     
         ctx.font = "50px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Ab", canvas.width/6*1.5+30, canvas.height/4+68-120);
+    ctx.fillText("A♭", canvas.width/6*1.5+30, canvas.height/4+68-120);
     
         ctx.font = "50px Arial";
     ctx.fillStyle = "black";
@@ -211,7 +221,7 @@ function drawButtons() {
     
         ctx.font = "50px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Bb", canvas.width/6*2.5+30, canvas.height/4+68-120);
+    ctx.fillText("B♭", canvas.width/6*2.5+30, canvas.height/4+68-120);
     
         ctx.font = "50px Arial";
     ctx.fillStyle = "black";
@@ -231,7 +241,7 @@ function drawButtons() {
     
         ctx.font = "50px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Eb", canvas.width/6*2+30, canvas.height/4+68);
+    ctx.fillText("E♭", canvas.width/6*2+30, canvas.height/4+68);
     
             ctx.font = "50px Arial";
     ctx.fillStyle = "black";
@@ -372,73 +382,73 @@ function buttonResults(){
           if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
         resetButtonColors();
         button1Color = "yellow";
+              rootNote = "Gsharp3";
            
        }if(mouseX >= canvas.width/6*2 && mouseX <= ((canvas.width/6*2)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
         resetButtonColors();
         button2Color = "yellow";
-           
+           rootNote = "A3"
        }
         if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
         resetButtonColors();
         button3Color = "yellow";
-           
+           rootNote = "Bb3";
        }
         if(mouseX >= canvas.width/6*3 && mouseX <= ((canvas.width/6*3)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
         resetButtonColors();
         button4Color = "yellow";
-           
+           rootNote = "B3"
        }
         if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
         resetButtonColors();
         button5Color = "yellow";
-           
+           rootNote = "C3"
        }
         if(mouseX >= canvas.width/6*4 && mouseX <= ((canvas.width/6*4)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
         resetButtonColors();
         button6Color = "yellow";
-           
+           rootNote = "Csharp3"
        }
         if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
         resetButtonColors();
         button7Color = "yellow";
-           
+           rootNote = "D3"
        }
         if(mouseX >= canvas.width/6*2 && mouseX <= ((canvas.width/6*2)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
         resetButtonColors();
         button8Color = "yellow";
-           
+           rootNote = "Eb3"
        }
         if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
         resetButtonColors();
         button9Color = "yellow";
-           
+           rootNote = "E3"
        }
         
   
           
    if(mouseX >= canvas.width/6*3 && mouseX <= ((canvas.width/6*3)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){
-     // alert('Hooray!');
        resetButtonColors();
        button10Color = "yellow";
-
+        rootNote = "F3"
    }
        if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
         resetButtonColors();
         button11Color = "yellow";
-           
+           rootNote = "Fsharp3";
        }
           
        if(mouseX >= canvas.width/6*4 && mouseX <= ((canvas.width/6*4)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
         resetButtonColors();
         button12Color = "yellow";
-           
+           rootNote = "G3"
        }
           
         if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/2 && mouseY <= ((canvas.height/2)+buttonSize)){   
-                         mySoundNote1 = new sound("C3.mp3");
-                mySoundNote2 = new sound("E3.mp3");
-                mySoundNote3 = new sound("G3.mp3");
-                        mySoundNote4 = new sound("C4.mp3");
+                         mySoundNote1 = new sound(""+rootNote+".mp3");
+               // mySoundNote2 = new sound("E3.mp3");
+               // mySoundNote3 = new sound("G3.mp3");
+               //         mySoundNote4 = new sound("C4.mp3");
 
   if(musicPlay == true){
       
@@ -494,12 +504,6 @@ draw();
 
 
 
-
-    
-    
-
-    
-    
     
     
 </script>
