@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Jazz Chords</title>
+    <link rel="shortcut icon" href="pianoIcon.png" type="image/x-icon" />
+    <script src="sounds.js" type="text/javascript"></script>
+
+
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+
+<script>
+    
+
+var canvas = document.getElementById("myCanvas");
+    
+    
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight-32;
+    var ctx = canvas.getContext("2d");
+    
+var ballRadius = 10;
+var x = canvas.width/4*3.5;
+var y = canvas.height-30;
+var dx = 3;
+var dy = 0;
+var mouseX = (canvas.width-75)/2;
+var mouseY = canvas.height-10
+var buttonSize = canvas.width/13
+var mySoundNote1;
+var mySoundNote2;
+var mySoundNote3;
+var mySoundNote4;
+var mySoundNote5;
+
+    var musicPlay = true
+    var button1Color = "red";
+        var button2Color = "red";
+        var button3Color = "red";
+        var button4Color = "red";
+        var button5Color = "red";
+        var button6Color = "red";
+        var button7Color = "red";
+        var button8Color = "red";
+        var button9Color = "red";
+        var button10Color = "red";
+        var button11Color = "red";
+        var button12Color = "red";
+        var playButtonColor = "red";
+        var majorButtonColor = "red";
+        var minorButtonColor = "red";
+        var sevenButtonColor = "red";
+    var rootNote = -4 //Change all "#"s in mp3 names to "sharp"s
+    var secondNote = -8
+    var thirdNote = -11
+    var fourthNote = -16    
+    var fifthNote = -16
+    var chord = "major"
+   /*var note1 = "A3"
+    var note2 = "Bb3"
+    var note3 = "B3"
+    var note4 = "C3"
+    var note5 = "Csharp3"
+    var note6 = "D3"
+    var note7 = "Eb3"
+    var note8 = "E3"
+    var note9 = "F3"
+    var note10 = "Fsharp3"
+    var note11 = "G3"
+    var note12 = "Gsharp3"*/
+
+    
+    /*
+note key: 
+1 = A3
+2 = Bb3
+3 = B3
+4 = C3
+5 = Csharp3
+6 = D3
+7 = Eb3
+8 = E3
+9 = F3
+10 = Fsharp3
+11 = G3
+12 = Gsharp3
+13 = A4
+14 = Bb4
+15 = B4
+16 = C4
+17 = Csharp4
+18 = D4
+19 = Eb4
+20 = E4
+21 = F4
+22 = Fsharp4
+23 = G4
+24 = Gsharp4
+
+
+*/
+document.addEventListener("mousemove", mouseMoveHandler, false);
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
+
+
+
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+        var relativeY = e.clientY 
+
+    if(relativeX > 0 && relativeX < canvas.width) {
+        mouseX = relativeX
+    }
+        if(relativeY > 0 && relativeY < canvas.height) {
+        mouseY = relativeY 
+    }
+}
+
+function resetButtonColors(){
+    button1Color = "red"
+    button2Color = "red"
+    button3Color = "red"
+    button4Color = "red"
+    button5Color = "red"
+    button6Color = "red"
+    button7Color = "red"
+    button8Color = "red"
+    button9Color = "red"
+    button10Color = "red"
+    button11Color = "red"
+    button12Color = "red"
+
+    
+    
+    
+}
+    
+    function resetChordTypeButtonColors(){
+        majorButtonColor = "red"
+        minorButtonColor = "red"
+        sevenButtonColor = "red"
+        
+        
+    }
+
+
+function drawBall() {
+    dx = 2
+    
+
+}
+
+function drawButtons() {
+ 
+
+    
+    ctx.beginPath();
+    ctx.rect(canvas.width/6*1.5, canvas.height/4, buttonSize, buttonSize);
+    ctx.fillStyle = button7Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*2, canvas.height/4, buttonSize, buttonSize);
+    ctx.fillStyle = button8Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*2.5, canvas.height/4, buttonSize, buttonSize);
+    ctx.fillStyle = button9Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*3, canvas.height/4, buttonSize, buttonSize);
+    ctx.fillStyle = button10Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*3.5, canvas.height/4, buttonSize, buttonSize);
+    ctx.fillStyle = button11Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*4, canvas.height/4, buttonSize, buttonSize);
+    ctx.fillStyle = button12Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*1.5, canvas.height/4-120, buttonSize, buttonSize);
+    ctx.fillStyle = button1Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*2, canvas.height/4-120, buttonSize, buttonSize);
+    ctx.fillStyle = button2Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*2.5, canvas.height/4-120, buttonSize, buttonSize);
+    ctx.fillStyle = button3Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*3, canvas.height/4-120, buttonSize, buttonSize);
+    ctx.fillStyle = button4Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*3.5, canvas.height/4-120, buttonSize, buttonSize);
+    ctx.fillStyle = button5Color;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*4, canvas.height/4-120, buttonSize, buttonSize);
+    ctx.fillStyle = button6Color;
+    ctx.fill();
+    ctx.closePath();  
+      
+
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("A♭", canvas.width/6*1.5+30, canvas.height/4+68-120);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("A", canvas.width/6*2+30, canvas.height/4+68-120);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("B♭", canvas.width/6*2.5+30, canvas.height/4+68-120);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("B", canvas.width/6*3+30, canvas.height/4+68-120);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("C", canvas.width/6*3.5+30, canvas.height/4+68-120);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("C#", canvas.width/6*4+30, canvas.height/4+68-120);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("D", canvas.width/6*1.5+30, canvas.height/4+68);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("E♭", canvas.width/6*2+30, canvas.height/4+68);
+    
+            ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("E", canvas.width/6*2.5+30, canvas.height/4+68);
+    
+    
+    
+    ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("F", canvas.width/2+30, canvas.height/4+68);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("F#", canvas.width/6*3.5+30, canvas.height/4+68);
+    
+        ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("G", canvas.width/6*4+30, canvas.height/4+68);
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*1.5, canvas.height/4*2, buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)), buttonSize);
+    ctx.fillStyle = majorButtonColor;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*2.5, canvas.height/4*2, buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)), buttonSize);
+    ctx.fillStyle = minorButtonColor;
+    ctx.fill();
+    ctx.closePath();  
+    
+        ctx.beginPath();
+    ctx.rect(canvas.width/6*3.5, canvas.height/4*2, buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)), buttonSize);
+    ctx.fillStyle = sevenButtonColor;
+    ctx.fill();
+    ctx.closePath();  
+    
+                    ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Major", canvas.width/6*1.5+30, canvas.height/2+68);
+    
+                    ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Minor", canvas.width/6*2.5+30, canvas.height/4*2+68);
+    
+                    ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("7", canvas.width/6*3.5+30, canvas.height/4*2+68);
+    
+    
+    
+    
+    
+    
+    ctx.beginPath();
+    ctx.rect(canvas.width/6*2.5, canvas.height/4*3, buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)), buttonSize);
+    ctx.fillStyle = playButtonColor;
+    ctx.fill();
+    ctx.closePath();  
+    
+                ctx.font = ""+canvas.width/26+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Play", canvas.width/6*2.5+30, canvas.height/4*3+68);
+    
+    
+       if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize) && button1Color !== "yellow"){
+       button1Color = "orange"
+
+       }    
+    else if(button1Color == "orange"){
+         button1Color = "red"
+    }
+       if(mouseX >= canvas.width/6*2 && mouseX <= ((canvas.width/6*2)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize) && button2Color !== "yellow"){
+       button2Color = "orange"
+
+       }    
+    else if(button2Color == "orange"){
+         button2Color = "red"
+    }
+       if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize) && button3Color !== "yellow"){
+       button3Color = "orange"
+
+       }    
+    else if(button3Color == "orange"){
+         button3Color = "red"
+    }
+       if(mouseX >= canvas.width/6*3 && mouseX <= ((canvas.width/6*3)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize) && button4Color !== "yellow"){
+       button4Color = "orange"
+
+       }    
+    else if(button4Color == "orange"){
+         button4Color = "red"
+    }
+       if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize) && button5Color !== "yellow"){
+       button5Color = "orange"
+
+       }    
+    else if(button5Color == "orange"){
+         button5Color = "red"
+    }
+       if(mouseX >= canvas.width/6*4 && mouseX <= ((canvas.width/6*4)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize) && button6Color !== "yellow"){
+       button6Color = "orange"
+
+       }    
+    else if(button6Color == "orange"){
+         button6Color = "red"
+    }
+       if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize) && button7Color !== "yellow"){
+       button7Color = "orange"
+
+       }    
+    else if(button7Color == "orange"){
+         button7Color = "red"
+    }
+       if(mouseX >= canvas.width/6*2 && mouseX <= ((canvas.width/6*2)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize) && button8Color !== "yellow"){
+       button8Color = "orange"
+
+       }    
+    else if(button8Color == "orange"){
+         button8Color = "red"
+    }
+       if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize) && button9Color !== "yellow"){
+       button9Color = "orange"
+
+       }    
+    else if(button9Color == "orange"){
+         button9Color = "red"
+    }
+    
+    
+    
+    
+    
+    
+   if(mouseX >= canvas.width/6*3 && mouseX <= ((canvas.width/6*3)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize) && button10Color !== "yellow"){
+       button10Color = "orange"
+
+       }    
+    else if(button10Color == "orange"){
+         button10Color = "red"
+    }
+    if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize) && button11Color !== "yellow"){
+            button11Color = "orange"
+            }
+
+    else if(button11Color == "orange"){
+         button11Color = "red"
+    }
+    if(mouseX >= canvas.width/6*4 && mouseX <= ((canvas.width/6*4)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize) && button12Color !== "yellow"){
+            button12Color = "orange"
+            }
+
+    else if(button12Color == "orange"){
+         button12Color = "red"
+    }
+    
+        if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*3 && mouseY <= ((canvas.height/4*3)+buttonSize) && playButtonColor !== "yellow"){
+            playButtonColor = "orange"
+            }
+
+    else if(playButtonColor == "orange"){
+         playButtonColor = "red"
+    }
+    
+            if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize) && majorButtonColor !== "yellow"){
+            majorButtonColor = "orange"
+            }
+
+    else if(majorButtonColor == "orange"){
+         majorButtonColor = "red"
+    }
+            if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize) && minorButtonColor !== "yellow"){
+            minorButtonColor = "orange"
+            }
+
+    else if(minorButtonColor == "orange"){
+         minorButtonColor = "red"
+    }
+            if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize) && sevenButtonColor !== "yellow"){
+            sevenButtonColor = "orange"
+            }
+
+    else if(sevenButtonColor == "orange"){
+         sevenButtonColor = "red"
+    }
+    
+    
+    
+}
+    
+    function chordType(){
+        if(chord == "major"){
+           secondNote = rootNote+4
+           thirdNote = rootNote+7
+            fourthNote = rootNote+12
+            fifthNote = -16
+           }
+        if(chord == "minor"){
+           secondNote = rootNote+3
+           thirdNote = rootNote+7
+            fourthNote = rootNote+12
+            fifthNote = -16
+           }   
+        if(chord == "seven"){
+           secondNote = rootNote+4
+           thirdNote = rootNote+7
+            fourthNote = rootNote+10
+            fifthNote = rootNote+12
+           }
+        
+        
+    }
+    
+function buttonResults(){
+      onclick = function(event) {
+          if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
+        resetButtonColors();
+        button1Color = "yellow";
+              rootNote = 12
+              chordType();
+              
+           
+       }if(mouseX >= canvas.width/6*2 && mouseX <= ((canvas.width/6*2)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
+        resetButtonColors();
+        button2Color = "yellow";
+           rootNote = 1
+           chordType();
+       }
+        if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
+        resetButtonColors();
+        button3Color = "yellow";
+           rootNote = 2;
+            chordType();
+       }
+        if(mouseX >= canvas.width/6*3 && mouseX <= ((canvas.width/6*3)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
+        resetButtonColors();
+        button4Color = "yellow";
+           rootNote = 3
+            chordType();
+       }
+        if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
+        resetButtonColors();
+        button5Color = "yellow";
+           rootNote = 4
+            chordType();
+       }
+        if(mouseX >= canvas.width/6*4 && mouseX <= ((canvas.width/6*4)+buttonSize) && mouseY >= canvas.height/4-120 && mouseY <= ((canvas.height/4-120)+buttonSize)){   
+        resetButtonColors();
+        button6Color = "yellow";
+           rootNote = 5
+            chordType();
+       }
+        if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
+        resetButtonColors();
+        button7Color = "yellow";
+           rootNote = 6
+            chordType();
+       }
+        if(mouseX >= canvas.width/6*2 && mouseX <= ((canvas.width/6*2)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
+        resetButtonColors();
+        button8Color = "yellow";
+           rootNote = 7
+            chordType();
+       }
+        if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
+        resetButtonColors();
+        button9Color = "yellow";
+           rootNote = 8
+            chordType();
+       }
+        
+  
+          
+   if(mouseX >= canvas.width/6*3 && mouseX <= ((canvas.width/6*3)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){
+       resetButtonColors();
+       button10Color = "yellow";
+        rootNote = 9
+       chordType();
+   }
+       if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
+        resetButtonColors();
+        button11Color = "yellow";
+           rootNote = 10
+           chordType();
+       }
+          
+       if(mouseX >= canvas.width/6*4 && mouseX <= ((canvas.width/6*4)+buttonSize) && mouseY >= canvas.height/4 && mouseY <= ((canvas.height/4)+buttonSize)){   
+        resetButtonColors();
+        button12Color = "yellow";
+           rootNote = 11
+           chordType();
+       }
+          
+          if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize)){  
+          resetChordTypeButtonColors();
+          majorButtonColor = "yellow"
+          chord = "major";
+          chordType();
+          
+          }
+          if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize)){  
+              resetChordTypeButtonColors();
+              minorButtonColor = "yellow"
+              chord = "minor";
+              chordType();
+          }
+          if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize)){  
+              resetChordTypeButtonColors();
+              sevenButtonColor = "yellow"
+              chord = "seven"
+              chordType();
+              
+          }
+          
+          
+        if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*3 && mouseY <= ((canvas.height/4*3)+buttonSize)){   
+                mySoundNote1 = new sound(""+rootNote+".mp3");
+                mySoundNote2 = new sound(""+secondNote+".mp3");
+                mySoundNote3 = new sound(""+thirdNote+".mp3");
+                mySoundNote4 = new sound(""+fourthNote+".mp3");
+                mySoundNote5 = new sound(""+fifthNote+".mp3");
+
+  if(musicPlay == true){
+      
+      mySoundNote1.play();
+      mySoundNote2.play();
+      mySoundNote3.play();
+      mySoundNote4.play();
+      mySoundNote5.play();
+
+  }
+           
+       }
+          
+          
+          
+  };
+    
+}
+
+
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    drawButtons();
+    buttonResults();
+
+     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy < ballRadius) {
+        dy = -dy;
+    }
+    else if(y + dy > canvas.height-ballRadius) {
+        if(x > mouseX && x < mouseX + 75) {
+            dy = -dy;
+        }
+         else {
+
+                 dy = -dy;
+
+            
+        }
+    }
+
+
+    x += dx;
+    y += dy;
+    
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+
+
+    
+    
+</script>
+
+</body>
+</html>
+
+<p>This site is currently undergoing updates.</p>
+
