@@ -65,6 +65,14 @@ var mySoundNote5;
     var fourthNote = -16    
     var fifthNote = -16
     var chord = "major"
+    var chordCat = 1
+    var upChordButtonColor = "red"
+    var downChordButtonColor = "red"
+    var leftButtonName = "Major"
+    var middleButtonName = "Minor"
+    var rightButtonName = "7"
+    var buttonDelay = 0
+    var rightButtonTextSize = canvas.width/26
    /*var note1 = "A3"
     var note2 = "Bb3"
     var note3 = "B3"
@@ -168,7 +176,7 @@ function resetButtonColors(){
 
 
 function drawBall() {
-    dx = 2
+   dx = 2
     
 
 }
@@ -319,21 +327,61 @@ function drawButtons() {
     ctx.fill();
     ctx.closePath();  
     
+    
+    ctx.beginPath();
+    ctx.rect(canvas.width/6*2.5, canvas.height/4*2-(buttonSize/3.5)-5, buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)), buttonSize/3.5);
+    ctx.fillStyle = upChordButtonColor;
+    ctx.fill();
+    ctx.closePath();  
+    
+            ctx.beginPath();
+    ctx.rect(canvas.width/6*2.5, canvas.height/4*2+(buttonSize)+5, buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)), buttonSize/3.5);
+    ctx.fillStyle = downChordButtonColor;
+    ctx.fill();
+    ctx.closePath();  
+    
+    ctx.beginPath();
+    ctx.moveTo(canvas.width/2, canvas.height/4*2-(buttonSize/3.5)-5);//resize
+    ctx.lineTo(canvas.width/2-(buttonSize/7), canvas.height/4*2-(buttonSize/3.5)-5+buttonSize/3.5-(canvas.width/270));
+    ctx.lineTo(canvas.width/2+(buttonSize/7), canvas.height/4*2-(buttonSize/3.5)-5+buttonSize/3.5-(canvas.width/270));
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.moveTo(canvas.width/2, canvas.height/4*2+(buttonSize)+5+buttonSize/3.5);
+    ctx.lineTo(canvas.width/2-(buttonSize/7), canvas.height/4*2+(buttonSize)+5+(canvas.width/270));
+    ctx.lineTo(canvas.width/2+(buttonSize/7), canvas.height/4*2+(buttonSize)+5+(canvas.width/270));
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
                     ctx.font = ""+canvas.width/26+"px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Major", canvas.width/6*1.5+30, canvas.height/2+68);
+    ctx.fillText(leftButtonName, canvas.width/6*1.5+30, canvas.height/2+68);
     
                     ctx.font = ""+canvas.width/26+"px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Minor", canvas.width/6*2.5+30, canvas.height/4*2+68);
+    ctx.fillText(middleButtonName, canvas.width/6*2.5+30, canvas.height/4*2+68);
     
-                    ctx.font = ""+canvas.width/26+"px Arial";
+                    ctx.font = ""+rightButtonTextSize+"px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("7", canvas.width/6*3.5+30, canvas.height/4*2+68);
+    ctx.fillText(rightButtonName, canvas.width/6*3.5+30, canvas.height/4*2+68);
     
     
-    
-    
+    if(chordCat == 1){
+        leftButtonName = "Major"
+        middleButtonName = "Minor"
+        rightButtonName = "7"
+        rightButtonTextSize = canvas.width/26
+    }
+    if(chordCat == 2){
+        leftButtonName = "Major 7"
+        middleButtonName = "Minor 7"
+        rightButtonName = "Diminished"
+        rightButtonTextSize = canvas.width/40
+
+    }
     
     
     ctx.beginPath();
@@ -470,6 +518,19 @@ function drawButtons() {
     
     
     
+            if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2-(buttonSize/3.5)-5 && mouseY <= ((canvas.height/4*2-(buttonSize/3.5)-5)+buttonSize/3.5) && upChordButtonColor !== "yellow"){
+            upChordButtonColor = "orange"
+            }
+        else if(upChordButtonColor == "orange"){
+         upChordButtonColor = "red"
+    }
+            if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2+(buttonSize)+5 && mouseY <= ((canvas.height/4*2+(buttonSize)+5)+buttonSize/3.5) && downChordButtonColor !== "yellow"){
+            downChordButtonColor = "orange"
+            }
+        else if(downChordButtonColor == "orange"){
+         downChordButtonColor = "red"
+    }
+    
 }
     
     function chordType(){
@@ -491,7 +552,25 @@ function drawButtons() {
             fourthNote = rootNote+10
             fifthNote = rootNote+12
            }
-        
+        if(chord == "majorSeven"){
+           secondNote = rootNote+4
+           thirdNote = rootNote+7
+            fourthNote = rootNote+11
+            fifthNote = rootNote+12
+           }
+        if(chord == "minorSeven"){
+           secondNote = rootNote+3
+           thirdNote = rootNote+7
+            fourthNote = rootNote+10
+            fifthNote = rootNote+12
+           }
+        if(chord == "diminished"){
+            secondNote = rootNote+3
+           thirdNote = rootNote+6
+            fourthNote = rootNote+12
+            fifthNote = -12
+            
+        }
         
     }
     
@@ -578,23 +657,60 @@ function buttonResults(){
           if(mouseX >= canvas.width/6*1.5 && mouseX <= ((canvas.width/6*1.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize)){  
           resetChordTypeButtonColors();
           majorButtonColor = "yellow"
+              if(chordCat == 1){
           chord = "major";
+              }
+              if(chordCat == 2){
+                  chord = "majorSeven";
+              }
           chordType();
           
           }
           if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize)){  
               resetChordTypeButtonColors();
               minorButtonColor = "yellow"
+              if(chordCat == 1){
               chord = "minor";
+              }
+              if(chordCat == 2){
+              chord = "minorSeven";
+              }
               chordType();
           }
           if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize)){  
               resetChordTypeButtonColors();
               sevenButtonColor = "yellow"
-              chord = "seven"
+              if(chordCat == 1){
+              chord = "seven";
+              }
+              if(chordCat == 2){
+                  chord = "diminished";
+              }
               chordType();
               
           }
+          if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2-(buttonSize/3.5)-5 && mouseY <= ((canvas.height/4*2-(buttonSize/3.5)-5)+buttonSize/3.5)){
+              resetChordTypeButtonColors();
+              if(buttonDelay == 0){
+              chordCat -= 1//upchord
+                 buttonDelay++ 
+              }
+              
+              chordType();
+              
+          }
+          if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2+(buttonSize)+5 && mouseY <= ((canvas.height/4*2+(buttonSize)+5)+buttonSize/3.5)){
+              resetChordTypeButtonColors();//downchord
+              if(buttonDelay == 0){
+              chordCat += 1
+                  buttonDelay++
+              }
+              chordType();
+              
+              
+          }
+          
+          
           
           
         if(mouseX >= canvas.width/6*2.5 && mouseX <= ((canvas.width/6*2.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*3 && mouseY <= ((canvas.height/4*3)+buttonSize)){   
@@ -629,6 +745,13 @@ function draw() {
     drawBall();
     drawButtons();
     buttonResults();
+    
+    if(chordCat <= 0){
+        chordCat = 2//or the highest chordCategory
+    }
+    if(chordCat > 2){//or whatever the highest chordCat will be
+                  chordCat = 1
+              }
 
      if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
@@ -647,7 +770,13 @@ function draw() {
             
         }
     }
-
+    if(buttonDelay >= 1){
+        buttonDelay++
+    }
+    if(buttonDelay >= 5){
+        buttonDelay = 0
+        
+    }
 
     x += dx;
     y += dy;
