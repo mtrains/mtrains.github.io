@@ -41,6 +41,8 @@ var mySoundNote2;
 var mySoundNote3;
 var mySoundNote4;
 var mySoundNote5;
+var mySoundNote6;
+var mySoundNote7;
 
     var musicPlay = true
     var button1Color = "red";
@@ -59,12 +61,14 @@ var mySoundNote5;
         var majorButtonColor = "red";
         var minorButtonColor = "red";
         var sevenButtonColor = "red";
-    var rootNote = -4 //Change all "#"s in mp3 names to "sharp"s
-    var secondNote = -8
-    var thirdNote = -11
-    var fourthNote = -16    
-    var fifthNote = -16
-    var chord = "major"
+    var rootNote = -400 //Change all "#"s in mp3 names to "sharp"s
+    var secondNote = -800
+    var thirdNote = -1100
+    var fourthNote = -1600    
+    var fifthNote = -1600
+    var sixthNote = -1600
+    var seventhNote = -1600
+    var chord = "muu"
     var chordCat = 1
     var upChordButtonColor = "red"
     var downChordButtonColor = "red"
@@ -72,6 +76,7 @@ var mySoundNote5;
     var middleButtonName = "Minor"
     var rightButtonName = "7"
     var buttonDelay = 0
+    var leftButtonTextSize = canvas.width/26
     var rightButtonTextSize = canvas.width/26
    /*var note1 = "A3"
     var note2 = "Bb3"
@@ -113,9 +118,24 @@ note key:
 22 = Fsharp4
 23 = G4
 24 = Gsharp4
-
+25 = A5
+26 = Bb5
+27 = B5
+28 = C5
+29 = Csharp5
+30 = D5
+31 = Eb5
+32 = E5
+33 = F5
+34 = Fsharp5
+35 = G5
+36 = Gsharp5
 
 */
+    
+    
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);    
 document.addEventListener("mousemove", mouseMoveHandler, false);
 
 function sound(src) {
@@ -133,7 +153,179 @@ function sound(src) {
   }
 }
 
+function keyDownHandler(e) {
+    if(e.keyCode == 81) {//Q
+        resetButtonColors();
+        button1Color = "yellow";
+        rootNote = 12
+        chordType();
+    }
+    else if(e.keyCode == 87) {//W
+                resetButtonColors();
+        button2Color = "yellow";
+              rootNote = 1
+              chordType();
+    }
+    else if(e.keyCode == 69) {//E
+                resetButtonColors();
+        button3Color = "yellow";
+              rootNote = 2
+              chordType();
+    }
+    else if(e.keyCode == 82) {//R
+                resetButtonColors();
+        button4Color = "yellow";
+              rootNote = 3
+              chordType();
+    }
+    else if(e.keyCode == 84) {//T
+                resetButtonColors();
+        button5Color = "yellow";
+              rootNote = 4
+              chordType();
+    }
+    else if(e.keyCode == 89) {//Y
+                resetButtonColors();
+        button6Color = "yellow";
+              rootNote = 5
+              chordType();
+    }
+    else if(e.keyCode == 65) {//A
+                resetButtonColors();
+        button7Color = "yellow";
+              rootNote = 6
+              chordType();
+    }
+    else if(e.keyCode == 83) {//S
+                resetButtonColors();
+        button8Color = "yellow";
+              rootNote = 7
+              chordType();
+    }
+    else if(e.keyCode == 68) {//D
+                resetButtonColors();
+        button9Color = "yellow";
+              rootNote = 8
+              chordType();
+    }
+    else if(e.keyCode == 70) {//F
+                resetButtonColors();
+        button10Color = "yellow";
+              rootNote = 9
+              chordType();
+    }
+    else if(e.keyCode == 71) {//G
+                resetButtonColors();
+        button11Color = "yellow";
+              rootNote = 10
+              chordType();
+    }
+    else if(e.keyCode == 72) {//H
+                resetButtonColors();
+        button12Color = "yellow";
+              rootNote = 11
+              chordType();
+    }
+    if(e.keyCode == 49) {//1
+                resetChordTypeButtonColors();
+          majorButtonColor = "yellow"
+              if(chordCat == 1){
+          chord = "major";
+              }
+              if(chordCat == 2){
+                  chord = "majorSeven";
+              }
+              if(chordCat == 3){
+              chord = "augmented";
+              }
+              if(chordCat == 4){
+                  chord = "thirteen"
+              }
+          chordType();
+        
+    }
+        else if(e.keyCode == 50) {//2
+               resetChordTypeButtonColors();
+              minorButtonColor = "yellow"
+              if(chordCat == 1){
+              chord = "minor";
+              }
+              if(chordCat == 2){
+              chord = "minorSeven";
+              }
+              if(chordCat == 3){
+              chord = "nine";
+              }
+              if(chordCat == 4){
+                  chord = "discord"
+              }
+              chordType();
+            
+    }
+        else if(e.keyCode == 51) {//3
+              resetChordTypeButtonColors();
+              sevenButtonColor = "yellow"
+              if(chordCat == 1){
+              chord = "seven";
+              }
+              if(chordCat == 2){
+                  chord = "diminished";
+              }
+              if(chordCat == 3){
+              chord = "eleven";
+              }
+              if(chordCat == 4){
+                  chord = "discord"
+              }
+              chordType();
+              
+    }
+    
+}
 
+function keyUpHandler(e) {
+    if(e.keyCode == 32) {//space
+        //play
+            mySoundNote1 = new sound(""+rootNote+".mp3");
+            mySoundNote2 = new sound(""+secondNote+".mp3");
+            mySoundNote3 = new sound(""+thirdNote+".mp3");
+            mySoundNote4 = new sound(""+fourthNote+".mp3");
+            mySoundNote5 = new sound(""+fifthNote+".mp3");
+            mySoundNote6 = new sound(""+sixthNote+".mp3");
+            mySoundNote7 = new sound(""+seventhNote+".mp3");
+      mySoundNote1.play();
+      mySoundNote2.play();
+      mySoundNote3.play();
+      mySoundNote4.play();
+      mySoundNote5.play();
+      mySoundNote6.play();
+      mySoundNote7.play();    
+        playButtonColor = "orange";
+        
+    }
+    else if(e.keyCode == 38) {
+        resetChordTypeButtonColors();
+              if(buttonDelay == 0){
+              chordCat -= 1//upchord
+                 buttonDelay++ 
+              }
+              chord = "muu"
+              chordType();
+        upChordButtonColor = "orange"
+    }
+    else if(e.keyCode == 40) {
+        resetChordTypeButtonColors();//downchord
+              if(buttonDelay == 0){
+              chordCat += 1
+                  buttonDelay++
+              }
+              chord = "muu"
+              chordType();
+                downChordButtonColor = "orange"
+
+    }
+
+}
 
 function mouseMoveHandler(e) {
     var relativeX = e.clientX - canvas.offsetLeft;
@@ -176,9 +368,13 @@ function resetButtonColors(){
 
 
 function drawBall() {
-   dx = 2
-    
-
+   /* ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath();
+    */
+dx = 1
 }
 
 function drawButtons() {
@@ -356,7 +552,7 @@ function drawButtons() {
     ctx.fill();
     ctx.closePath();
     
-                    ctx.font = ""+canvas.width/26+"px Arial";
+                    ctx.font = ""+leftButtonTextSize+"px Arial";
     ctx.fillStyle = "black";
     ctx.fillText(leftButtonName, canvas.width/6*1.5+30, canvas.height/2+68);
     
@@ -373,16 +569,31 @@ function drawButtons() {
         leftButtonName = "Major"
         middleButtonName = "Minor"
         rightButtonName = "7"
+        leftButtonTextSize = canvas.width/26
         rightButtonTextSize = canvas.width/26
     }
     if(chordCat == 2){
         leftButtonName = "Major 7"
         middleButtonName = "Minor 7"
         rightButtonName = "Diminished"
+        leftButtonTextSize = canvas.width/26
         rightButtonTextSize = canvas.width/40
 
     }
-    
+    if(chordCat == 3){
+        leftButtonName = "Augmented"
+        middleButtonName = "9"
+        rightButtonName = "11"
+        leftButtonTextSize = canvas.width/40
+        rightButtonTextSize = canvas.width/26
+    } 
+    if(chordCat == 4){
+        leftButtonName = "13"
+        middleButtonName = "Discord"
+        rightButtonName = "Discord"
+        leftButtonTextSize = canvas.width/26
+        rightButtonTextSize = canvas.width/26
+    } 
     
     ctx.beginPath();
     ctx.rect(canvas.width/6*2.5, canvas.height/4*3, buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)), buttonSize);
@@ -538,39 +749,105 @@ function drawButtons() {
            secondNote = rootNote+4
            thirdNote = rootNote+7
             fourthNote = rootNote+12
-            fifthNote = -16
+            fifthNote = -160
+            sixthNote = -160
+            seventhNote = rootNote-160
            }
         if(chord == "minor"){
            secondNote = rootNote+3
            thirdNote = rootNote+7
             fourthNote = rootNote+12
-            fifthNote = -16
+            fifthNote = -160
+            sixthNote = -160
+            seventhNote = rootNote-160
+
            }   
         if(chord == "seven"){
            secondNote = rootNote+4
            thirdNote = rootNote+7
             fourthNote = rootNote+10
             fifthNote = rootNote+12
+            sixthNote = -160
+            seventhNote = rootNote-160
            }
         if(chord == "majorSeven"){
            secondNote = rootNote+4
            thirdNote = rootNote+7
             fourthNote = rootNote+11
             fifthNote = rootNote+12
+            sixthNote = -160
+            seventhNote = rootNote-160
            }
         if(chord == "minorSeven"){
            secondNote = rootNote+3
            thirdNote = rootNote+7
             fourthNote = rootNote+10
             fifthNote = rootNote+12
+            sixthNote = -160
+            seventhNote = rootNote-160
            }
         if(chord == "diminished"){
             secondNote = rootNote+3
            thirdNote = rootNote+6
             fourthNote = rootNote+12
             fifthNote = -12
+            sixthNote = -160
+            seventhNote = rootNote-160
             
         }
+        if(chord == "augmented"){
+            secondNote = rootNote+4
+           thirdNote = rootNote+8
+            fourthNote = rootNote+12
+            fifthNote = -12
+            sixthNote = -160
+            seventhNote = rootNote-160
+            
+        }
+        if(chord == "nine"){
+           secondNote = rootNote+4
+           thirdNote = rootNote+7
+            fourthNote = rootNote+10
+            fifthNote = rootNote+14
+            sixthNote = -160
+            seventhNote = rootNote-160
+           }
+        if(chord == "eleven"){
+           secondNote = rootNote+4
+           thirdNote = rootNote+7
+            fourthNote = rootNote+10
+            fifthNote = rootNote+14
+            sixthNote = rootNote+17
+            seventhNote = rootNote-160
+           }
+        if(chord == "thirteen"){
+           secondNote = rootNote+4
+           thirdNote = rootNote+7
+            fourthNote = rootNote+10
+            fifthNote = rootNote+14
+            sixthNote = rootNote+17
+            seventhNote = rootNote+21        
+           }
+        if(chord == "discord"){
+            secondNote = rootNote+1
+           thirdNote = rootNote+2
+            fourthNote = rootNote+3
+            fifthNote = rootNote+4
+            sixthNote = rootNote+5
+            seventhNote = rootNote+6
+        }
+        if(chord == "muu"){
+            
+            secondNote = -140
+           thirdNote = -150
+            fourthNote = -190
+            fifthNote = -140
+            sixthNote = -190
+            seventhNote = -180
+            
+            
+        }
+        
         
     }
     
@@ -663,6 +940,12 @@ function buttonResults(){
               if(chordCat == 2){
                   chord = "majorSeven";
               }
+              if(chordCat == 3){
+              chord = "augmented";
+              }
+              if(chordCat == 4){
+                  chord = "thirteen"
+              }//remember, when adding more chords I must add them to the keyboard control area as well
           chordType();
           
           }
@@ -675,6 +958,12 @@ function buttonResults(){
               if(chordCat == 2){
               chord = "minorSeven";
               }
+              if(chordCat == 3){
+              chord = "nine";
+              }
+              if(chordCat == 4){
+                  chord = "discord"
+              }
               chordType();
           }
           if(mouseX >= canvas.width/6*3.5 && mouseX <= ((canvas.width/6*3.5)+(buttonSize*2+((canvas.width/6*3)-(canvas.width/6*2.5+100)) )) && mouseY >= canvas.height/4*2 && mouseY <= ((canvas.height/4*2)+buttonSize)){  
@@ -686,6 +975,12 @@ function buttonResults(){
               if(chordCat == 2){
                   chord = "diminished";
               }
+              if(chordCat == 3){
+              chord = "eleven";
+              }
+              if(chordCat == 4){
+                  chord = "discord"
+              }
               chordType();
               
           }
@@ -695,7 +990,7 @@ function buttonResults(){
               chordCat -= 1//upchord
                  buttonDelay++ 
               }
-              
+              chord = "muu"
               chordType();
               
           }
@@ -705,6 +1000,7 @@ function buttonResults(){
               chordCat += 1
                   buttonDelay++
               }
+              chord = "muu"
               chordType();
               
               
@@ -719,6 +1015,8 @@ function buttonResults(){
                 mySoundNote3 = new sound(""+thirdNote+".mp3");
                 mySoundNote4 = new sound(""+fourthNote+".mp3");
                 mySoundNote5 = new sound(""+fifthNote+".mp3");
+                mySoundNote6 = new sound(""+sixthNote+".mp3");
+            mySoundNote7 = new sound(""+seventhNote+".mp3");
 
   if(musicPlay == true){
       
@@ -727,6 +1025,8 @@ function buttonResults(){
       mySoundNote3.play();
       mySoundNote4.play();
       mySoundNote5.play();
+      mySoundNote6.play();
+      mySoundNote7.play();
 
   }
            
@@ -747,9 +1047,9 @@ function draw() {
     buttonResults();
     
     if(chordCat <= 0){
-        chordCat = 2//or the highest chordCategory
+        chordCat = 4//or the highest chordCategory
     }
-    if(chordCat > 2){//or whatever the highest chordCat will be
+    if(chordCat > 4){//or whatever the highest chordCat will be
                   chordCat = 1
               }
 
