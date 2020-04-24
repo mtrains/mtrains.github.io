@@ -189,19 +189,19 @@ function keyUpHandler(e) {
 
 
 function drawBall() {
-    ctx.beginPath();
+    /*ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "turquoise";//ball
     ctx.fill();
-    ctx.closePath();
+    ctx.closePath();*/
 }
 
 function drawPaddle() {
-    ctx.beginPath();
+   /* ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
     ctx.fillStyle = "#FF0000";//unnecessary paddle
     ctx.fill();
-    ctx.closePath();
+    ctx.closePath();*/
 }
 function topBar() {
     ctx.beginPath();
@@ -483,15 +483,15 @@ function progression(b) {
 }
 
 function drawScore() {
-    ctx.font = "16px Arial";
+    /*ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Width: "+canvas.width+" Height "+canvas.height, 8, 20);//won't be needed in final version
+    ctx.fillText("Width: "+canvas.width+" Height "+canvas.height, 8, 20);//won't be needed in final version*/
 }
 
 function drawLives() {
-    ctx.font = "16px Arial";
+    /*ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Time: "+progressionTime, canvas.width-165, 20);//just to show the variable progressionTime in corner
+    ctx.fillText("Time: "+progressionTime, canvas.width-165, 20);//just to show the variable progressionTime in corner*/
 }
     
 
@@ -499,10 +499,10 @@ function drawLives() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
-    drawBall();
-    drawPaddle();
-    drawScore();
-    drawLives();
+    //drawBall();
+    //drawPaddle();
+    //drawScore();
+    //drawLives();
     collisionDetection();
     topBar();
     
