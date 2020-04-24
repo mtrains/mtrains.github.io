@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>12 Bar Blues</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");    
+    
+    //This should be renamed to 12 Bar Blues
+    
+    
+    
+    
+    
+
+canvas.width = window.innerHeight*1.5
+canvas.height = window.innerHeight
+    
+if(canvas.width > window.innerWidth){
+    canvas.width = window.innerWidth
+    canvas.height = window.innerWidth/1.5
+}
+
+var ballRadius = canvas.width/91.3;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 0;
+var dy = 0;
+var paddleHeight = canvas.width/91.3;
+var paddleWidth = canvas.width;
+var paddleX = (canvas.width-paddleWidth)/2;
+var rightPressed = false;
+var leftPressed = false;
+var brickRowCount = 3;
+var brickColumnCount = 4;
+var brickWidth = canvas.width/6;
+var brickHeight = canvas.height/6;
+var brickPadding = canvas.height/50;
+var brickOffsetTop = canvas.width/8;
+var brickOffsetLeft = canvas.width/6.5-(brickPadding/2);
+var chordButtonRowCount = 1;
+var chordButtonColumnCount = 4;
+var chordButtonWidth = canvas.width/6;
+var chordButtonHeight = canvas.height/6;
+var chordButtonPadding = canvas.height/50;
+var chordButtonOffsetTop = canvas.width/8*3;
+var chordButtonOffsetLeft = canvas.width/6.5-(brickPadding/2);
+var score = 0;
+var lives = 39999999999;
+var mouseX = (canvas.width-75)/2;
+var mouseY = canvas.height-10
+var getChord = false;
+var progressionTime = 0;
+var startProgression = false;
+var repeat = "infinite";
+var playingRootNote = 4
+var playingSecondNote = 8
+var playingThirdNote = 11
+var playingFourthNote = 14
+var playingFifthNote = 16
+var onlyPlayOnce = false;
+    
+var chordButtons = [];  
+for(c=0; c<chordButtonColumnCount; c++) {
+    chordButtons[c] = [];
+    for(r=0; r<chordButtonRowCount; r++) {
+        chordButtons[c][r] = { x: 0, y: 0, status: 1, color: "#0095DD"};
+    }
+}
+
+var bricks = [];
+for(c=0; c<brickColumnCount; c++) {
+    bricks[c] = [];
+    for(r=0; r<brickRowCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: 1, color: "#0095DD", root: 4, noteName: "C7", chordType: "7"};//change later so noteName is just the root Note, and the brick label has the noteName and the chordType smushed together
+    }
+}
+
+
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
+    
+    
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}    
+function defineSounds(b){
+    mySoundNote1 = new sound(playingRootNote+".mp3");//root note sound
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+                    b = bricks[c][r];
+            if(b.chordType == "7" && b.x <= x && b.x+brickWidth >= x && b.y <= y && b.y+brickHeight >= y){//add here if ball is on top of brick
+                playingSecondNote = playingRootNote+4
+                playingThirdNote = playingRootNote+7
+                playingFourthNote = playingRootNote+10
+                playingFifthNote = playingRootNote+12
+                
+            }
+            
+        }
+    }
+    //sounds for other notes
+    mySoundNote2 = new sound(playingSecondNote+".mp3");
+    mySoundNote3 = new sound(playingThirdNote+".mp3");
+    mySoundNote4 = new sound(playingFourthNote+".mp3");
+    mySoundNote5 = new sound(playingFifthNote+".mp3");
+    
+}
+
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+        var relativeY = e.clientY 
+
+    if(relativeX > 0 && relativeX < canvas.width) {
+        mouseX = relativeX
+    }
+        if(relativeY > 0 && relativeY < canvas.height) {
+        mouseY = relativeY 
+    }
+}
+    
+    
+function keyDownHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = true;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = true;
+       
+
+    }
+    
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = false;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = false;
+    }
+    else if(e.keyCode == 32){
+        if(startProgression == false){
+        startProgression = true;
+        }
+        else if(startProgression == true){
+            startProgression = false;
+            progressionTime = 0;
+            x = canvas.width*3
+            for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+                    b = bricks[c][r];
+            
+            b.color = "#0095DD";
+            
+        }
+            }
+        }
+    }
+}
+
+
+
+
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";//ball
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#FF0000";//unnecessary paddle
+    ctx.fill();
+    ctx.closePath();
+}
+function topBar() {
+    ctx.beginPath();
+    ctx.rect(canvas.width-2*brickWidth, 0, canvas.width/7, canvas.height/10);
+    ctx.fillStyle = "#0095DD";//play button
+    ctx.fill();
+    ctx.closePath();
+    
+        
+        
+    
+    
+}
+
+function drawBricks() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            if(bricks[c][r].status !== 0) {
+                var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                bricks[c][r].x = brickX;
+                bricks[c][r].y = brickY;
+                var b = bricks[c][r];
+                if (b.status == 2){
+                    b.color = "yellow"
+                }
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.fillStyle = b.color;
+                ctx.fill();
+                ctx.closePath();
+                ctx.font = (canvas.width/18.25)+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(b.noteName, brickX+brickPadding, brickY+(brickHeight/10*6.5));
+                
+            }
+        }
+    }
+}
+    
+
+
+function collisionDetection() {
+                    onclick = function(event){
+                        
+                        if(mouseX >= canvas.width-2*brickWidth && mouseX <= canvas.width-2*brickWidth+canvas.width/7 && mouseY >= 0 && mouseY <= 0+canvas.height/10){//play button
+            if(startProgression == false){
+        startProgression = true;
+        }
+        else if(startProgression == true){
+            startProgression = false;
+            progressionTime = 0;
+            x = canvas.width*3
+            for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+                    b = bricks[c][r];
+            
+            b.color = "#0095DD";
+            
+        }
+            }
+        }
+            
+        
+        }
+if(getChord == false && startProgression == false){
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            b = bricks[c][r];
+            if(b.status == 1) {
+                if(mouseX > b.x && mouseX < b.x+brickWidth && mouseY > b.y && mouseY < b.y+brickHeight) {
+                    b.status = 2;//when you click on a brick, it turns yellow, and it pulls up options on what to change it to
+                    dy = -dy;
+                    getChord = true;
+                    score++
+                     
+                }
+         
+                
+            }
+        }
+    }
+}
+}
+}
+    function selectChord(b){
+       drawBricks();
+        var chordButtonColor = "red";
+        var chordButtonType = "C"; 
+        
+        ctx.beginPath();
+        ctx.rect(0, canvas.height/2, canvas.width, canvas.height/2);
+        ctx.fillStyle = "gray";
+        ctx.fill();
+        ctx.closePath();
+        
+        for(d=0; d<chordButtonColumnCount; d++) {
+        for(s=0; s<chordButtonRowCount; s++) {
+            if(chordButtons[d][s].status == 1) {
+                var chordButtonX = (d*(chordButtonWidth+chordButtonPadding))+chordButtonOffsetLeft;
+                var chordButtonY = (s*(chordButtonHeight+chordButtonPadding))+chordButtonOffsetTop;
+                chordButtons[d][s].x = chordButtonX;
+                chordButtons[d][s].y = chordButtonY;
+                var m = chordButtons[d][s];
+                ctx.beginPath();
+                ctx.rect(chordButtonX, chordButtonY, chordButtonWidth, chordButtonHeight);
+                ctx.fillStyle = chordButtonColor;
+                ctx.fill();
+                ctx.closePath();
+                ctx.font = (canvas.width/18.25)+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(chordButtonType, chordButtonX+chordButtonPadding*3, chordButtonY+(chordButtonHeight/10*6.5));
+                 
+                 if(chordButtonColor == "blue"){
+                    chordButtonColor = "purple"
+                     chordButtonType = "D"
+                }
+                 if(chordButtonColor == "green"){
+                    chordButtonColor = "blue"
+                     chordButtonType = "G"
+                }
+                
+                if(chordButtonColor == "red"){
+                    chordButtonColor = "green"
+                    chordButtonType = "F"
+                }
+              
+            }
+        }
+    }
+  onclick = function(event){
+      
+     if(mouseY < canvas.height/2){
+         for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+                    b = bricks[c][r];
+            if(b.status == 2){
+            b.status = 1;
+                b.color = "#0095DD" 
+            }
+         getChord = false
+        }
+         }
+     }
+
+    for(d=0; d<chordButtonColumnCount; d++) {
+        for(s=0; s<chordButtonRowCount; s++) {
+            m = chordButtons[d][s];
+            if(m.status == 1) {
+                if(mouseX > m.x && mouseX < m.x+brickWidth && mouseY > m.y && mouseY < m.y+brickHeight) {
+                    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+                    b = bricks[c][r];
+                    if(b.status == 2){
+                        b.status = 1;
+                        if(mouseX < canvas.width/2){
+                            if(mouseX < canvas.width/30*9.5){
+                        b.color = "red";
+                        b.noteName = "C7";
+                                b.root = 4;
+                        }
+                            else if(mouseX > canvas.width/30*9.5){
+                                b.color = "green";
+                                b.noteName = "F7";
+                                b.root = 9
+                        }
+                        }
+                        else if(mouseX > canvas.width/2){
+                            if(mouseX < canvas.width/30*20.5){
+                            b.color = "blue";
+                                b.noteName = "G7";
+                                b.root = 11
+                            }
+                            else if(mouseX > canvas.width/30*20.5){
+                            b.color = "purple";
+                                b.noteName = "D7";
+                                b.root = 6
+                                
+                            }
+                        }
+                        drawBricks();
+                        
+                       
+                    }
+                    getChord = false
+           
+                     
+                }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+      
+    }
+function progression(b) {
+    progressionTime++
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+                    b = bricks[c][r];
+            
+    if(progressionTime <= 100){//first brick for first 100 units of time
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)//it moves the ball there
+        y = canvas.width/8+(brickHeight/2)
+        
+    }
+    else if(progressionTime <= 200){//second brick for second 100 units of time, etc. 
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+brickWidth+brickPadding
+    }
+    else if(progressionTime <= 300){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+2*brickWidth+2*brickPadding
+    }
+    else if(progressionTime <= 400){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+3*brickWidth+3*brickPadding
+    }
+    else if(progressionTime <= 500){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)
+        y = canvas.width/8+(brickHeight/2)+brickHeight+brickPadding
+    }
+    else if(progressionTime <= 600){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+brickWidth+brickPadding
+    }
+    else if(progressionTime <= 700){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+2*brickWidth+2*brickPadding
+    }
+    else if(progressionTime <= 800){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+3*brickWidth+3*brickPadding
+    }
+    else if(progressionTime <= 900){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)
+        y = canvas.width/8+(brickHeight/2)+2*brickHeight+2*brickPadding
+    }
+    else if(progressionTime <= 1000){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+brickWidth+brickPadding
+    }
+    else if(progressionTime <= 1100){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+2*brickWidth+2*brickPadding
+    }
+    else if(progressionTime <= 1200){
+        x = canvas.width/6.5+(brickWidth/2)-(brickPadding/2)+3*brickWidth+3*brickPadding
+    }
+    else if(progressionTime >= 1200){
+        if(repeat == "infinite"){
+        progressionTime = 0;
+        }
+        else if(repeat == 1){
+            startProgression = false;
+            progressionTime = 0;
+            x = canvas.width*3
+        }
+    }
+    if(b.x <= x && b.x+brickWidth >= x && b.y <= y && b.y+brickHeight >= y){//if the ball is on top of the brick
+        b.color = "yellow";//it turns yellow
+        if(onlyPlayOnce == false){
+            playingRootNote = b.root //the root Note that will play becomes equal to the note on the brick
+            defineSounds(b);//reset definition of the sound so that it will become what I just changed it to 
+            mySoundNote1.play(); //play the note
+            mySoundNote2.play();
+            mySoundNote3.play();
+            mySoundNote4.play();
+            mySoundNote5.play();
+          onlyPlayOnce = true //don't play it anymore until next brick
+        }
+    }
+    else {
+        b.color = "#0095DD";//if not it is light blue
+    }
+            if(((progressionTime-1) % 100)==0){//if the progressionTime rate changes, this will need to be changed
+             onlyPlayOnce = false   //when the chord changes, it allows a note to play
+            }
+            
+            
+        }
+    }
+}
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Width: "+canvas.width+" Height "+canvas.height, 8, 20);//won't be needed in final version
+}
+
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Time: "+progressionTime, canvas.width-165, 20);//just to show the variable progressionTime in corner
+}
+    
+
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks();
+    drawBall();
+    drawPaddle();
+    drawScore();
+    drawLives();
+    collisionDetection();
+    topBar();
+    
+    
+    
+    if(getChord == true){
+        selectChord(b);
+    }
+    if(startProgression == true){
+        progression();
+    }
+
+     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy < ballRadius) {
+        dy = -dy;
+    }
+    else if(y + dy > canvas.height-ballRadius) {
+        if(x > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+        }
+         else {
+            lives--;
+            if(!lives) {
+                document.location.reload();
+            }
+            else {
+                x = canvas.width/20;
+                y = canvas.height-30;
+                dx = 0;
+                dy = -1;
+                paddleX = (canvas.width-paddleWidth)/2;
+            }
+        }
+    }
+
+    if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        paddleX += 7;
+    } else if(leftPressed && paddleX > 0) {
+        paddleX -= 7;
+    }
+    x += dx;
+    y += dy;
+    
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
