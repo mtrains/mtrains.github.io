@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Piano</title>
+    <link rel="shortcut icon" href="pianoIcon.png" type="image/x-icon" />
+    <script src="sounds.js" type="text/javascript"></script>
+
+
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+    
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+
+<script>
+   
+
+var canvas = document.getElementById("myCanvas");
+    
+    
+   try{     
+    canvas.width = 1365//window.innerWidth;
+    canvas.height = window.innerHeight-25;
+    var ctx = canvas.getContext("2d");
+    var mouseX = 0;
+    var mouseY = 0;
+    var count = 0;
+    var ballx = 0
+    var bally = 0
+    var octaveAdjust = 250//0
+    var octaveNote = 12//0
+    
+    var pianoImg = new Image();
+    pianoImg.src = 'piano_keys.png';
+    
+    keyboardHeight = canvas.width/6.39
+    keyboardY = canvas.height/2-(keyboardHeight/2)
+    
+    var mySoundNote1;
+var mySoundNote2;
+var mySoundNote3;
+var mySoundNote4;
+var mySoundNote5;
+var mySoundNote6;
+var mySoundNote7;
+    
+  
+    
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);    
+document.addEventListener("mousemove", mouseMoveHandler, false);
+
+   
+    
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
+
+function keyDownHandler(e) {
+    
+    if(e.keyCode == 81) {//Q
+        ctx.font = "20px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(mouseX+", "+mouseY, 100,20);
+    }
+    
+    
+     
+    
+}
+
+function keyUpHandler(e) {
+
+}
+
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+        var relativeY = e.clientY 
+
+    if(relativeX > 0 && relativeX < canvas.width) {
+        mouseX = relativeX
+    }
+        if(relativeY > 0 && relativeY < canvas.height) {
+        mouseY = relativeY 
+    }
+}
+
+    
+
+
+function drawButtons() {
+    onclick = function(event) {//note-black keys should be first, and the white keys should be else if statements so that black keys on top of white keys sound the black keys not the white
+        octaveAdjust=-500
+        octaveNote=-24
+        while(octaveNote<41){
+            if(mouseY>keyboardY && mouseY<keyboardY+128){//if black key
+               if(mouseX>=526+octaveAdjust && mouseX<546+octaveAdjust){//C#
+                    mySoundNote1 = new sound((octaveNote+5)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=569+octaveAdjust && mouseX<589+octaveAdjust){//D#
+                    mySoundNote1 = new sound((octaveNote+7)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=634+octaveAdjust && mouseX<652+octaveAdjust){//F#
+                    mySoundNote1 = new sound((octaveNote+10)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=673+octaveAdjust && mouseX<693+octaveAdjust){//G#
+                    mySoundNote1 = new sound((octaveNote+12)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=712+octaveAdjust && mouseX<732+octaveAdjust){//A#
+                    mySoundNote1 = new sound((octaveNote+14)+".mp3");
+                    mySoundNote1.play();
+                }
+            }
+            else if(mouseY>keyboardY && mouseY<keyboardY+keyboardHeight){//if on keyboard
+                if(mouseX>=505+octaveAdjust && mouseX<541+octaveAdjust){//C (based around middle C, and adjusted for octaves)
+                    mySoundNote1 = new sound((octaveNote+4)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=541+octaveAdjust && mouseX<576+octaveAdjust){//D
+                    mySoundNote1 = new sound((octaveNote+6)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=576+octaveAdjust && mouseX<612+octaveAdjust){//E
+                    mySoundNote1 = new sound((octaveNote+8)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=612+octaveAdjust && mouseX<648+octaveAdjust){//F
+                    mySoundNote1 = new sound((octaveNote+9)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=648+octaveAdjust && mouseX<684+octaveAdjust){//G
+                    mySoundNote1 = new sound((octaveNote+11)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=684+octaveAdjust && mouseX<719+octaveAdjust){//A
+                    mySoundNote1 = new sound((octaveNote+13)+".mp3");
+                    mySoundNote1.play();
+                }
+                if(mouseX>=719+octaveAdjust && mouseX<755+octaveAdjust){//B
+                    mySoundNote1 = new sound((octaveNote+15)+".mp3");
+                    mySoundNote1.play();
+                }
+
+            }
+            octaveNote+=12
+            octaveAdjust+=250
+            
+            
+        }
+    }
+}
+    
+function drawKeyboard(){
+    ctx.drawImage(pianoImg,0,keyboardY,canvas.width,keyboardHeight);
+}
+       
+function drawCoordinates(){
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(mouseX+", "+mouseY+" Keyboard Height: "+keyboardHeight+" Canvas Height: "+canvas.height, 10,20);
+}
+
+function drawBall(){
+    ctx.beginPath();
+    ctx.arc(ballx, bally, 72, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath(); 
+    
+    ballx++
+    
+    
+}
+    
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+   
+    //drawBall();
+    drawButtons();
+    drawKeyboard();
+    //drawCoordinates();
+     
+    
+    count++
+    
+    requestAnimationFrame(draw);
+    
+    
+}
+
+draw();
+}
+catch(error){
+    ctx.beginPath();
+    ctx.rect(canvas.width/6*4, canvas.height/4-120, 30, 30);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath(); 
+}
+
+    
+    
+</script>
+
+</body>
+</html>
+
+<p>Certainly doesn't simulate a real piano, but have fun with it!</p>
+
