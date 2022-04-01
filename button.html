@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Don't push the red button!</title>
+	    <link rel="shortcut icon" href="redbutton.png" type="image/x-icon" />
+
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+var mediaSource = "rickroll.mp4"
+
+var muted = false;
+var canvas = document.getElementById("myCanvas"); // get the canvas from the page
+var ctx = canvas.getContext("2d");
+canvas.width = window.innerHeight*1.333333;
+canvas.height = window.innerHeight;
+var buttonRadius = canvas.height/3;
+var buttonEdgeLeft = canvas.width/2-(canvas.height/3)
+var buttonEdgeRight = canvas.width/2+(canvas.height/3)
+var buttonEdgeTop = canvas.height/2-(canvas.height/3)
+var buttonEdgeBottom = canvas.height/2+(canvas.height/3)
+var mouseX = 0;
+var mouseY = 0;
+var mouseDistanceFromCenter = Math.sqrt((canvas.width/2-mouseX)**2+(canvas.height/2-mouseX)**2);
+document.addEventListener("mousemove", mouseMoveHandler, false);
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+        var relativeY = e.clientY 
+
+    if(relativeX > 0 && relativeX < canvas.width) {
+        mouseX = relativeX
+    }
+        if(relativeY > 0 && relativeY < canvas.height) {
+        mouseY = relativeY 
+    }
+}
+
+var videoContainer; // object to hold video and associated info
+var video = document.createElement("video"); // create a video element
+video.src = mediaSource;
+// the video will now begin to load.
+// As some additional info is needed we will place the video in a
+// containing object for convenience
+video.autoPlay = false; // ensure that the video does not auto play
+video.loop = true; // set the video to loop.
+video.muted = muted;
+videoContainer = {  // we will add properties as needed
+     video : video,
+     ready : false,   
+};
+// To handle errors. This is not part of the example at the moment. Just fixing for Edge that did not like the ogv format video
+video.onerror = function(e){
+    document.body.removeChild(canvas);
+    document.body.innerHTML += "<h2>There is a problem loading the video</h2><br>";
+    document.body.innerHTML += "Users of IE9+ , the browser does not support WebM videos used by this demo";
+    document.body.innerHTML += "<br><a href='https://tools.google.com/dlpage/webmmf/'> Download IE9+ WebM support</a> from tools.google.com<br> this includes Edge and Windows 10";
+    
+ }
+video.oncanplay = readyToPlayVideo; // set the event to the play function that 
+                                  // can be found below
+function readyToPlayVideo(event){ // this is a referance to the video
+    // the video may not match the canvas size so find a scale to fit
+    videoContainer.scale = Math.min(
+                         canvas.width / this.videoWidth, 
+                         canvas.height / this.videoHeight); 
+    videoContainer.ready = true;
+    // the video can be played so hand it off to the display function
+    requestAnimationFrame(updateCanvas);
+    // add instruction
+    document.getElementById("playPause").textContent = "Click video to play/pause.";
+    document.querySelector(".mute").textContent = "Mute";
+}
+
+function updateCanvas(){
+    ctx.clearRect(0,0,canvas.width,canvas.height); 
+    // only draw if loaded and ready
+    if(videoContainer !== undefined && videoContainer.ready){ 
+        // find the top left of the video on the canvas
+        video.muted = muted;
+        var scale = videoContainer.scale;
+        var vidH = videoContainer.video.videoHeight;
+        var vidW = videoContainer.video.videoWidth;
+        var top = canvas.height / 2 - (vidH /2 ) * scale;
+        var left = canvas.width / 2 - (vidW /2 ) * scale;
+        // now just draw the video the correct size
+        ctx.drawImage(videoContainer.video, left, top, vidW * scale, vidH * scale);
+        if(videoContainer.video.paused){ // if not playing show the paused screen 
+            drawPayIcon();
+        }
+    }
+    // all done for display 
+    // request the next frame in 1/60th of a second
+    requestAnimationFrame(updateCanvas);
+}
+
+function drawPayIcon(){
+     ctx.fillStyle = "black";  // darken display
+     ctx.globalAlpha = 0.5;
+     ctx.fillRect(0,0,canvas.width,canvas.height);
+     ctx.fillStyle = "#DDD"; // colour of play icon
+     ctx.globalAlpha = 0.75; // partly transparent
+     ctx.beginPath(); // create the path for the icon
+     var size = (canvas.height / 2) * 0.5;  // the size of the icon
+     ctx.moveTo(canvas.width/2 + size/2, canvas.height / 2); // start at the pointy end
+     ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 + size);
+     ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 - size);
+     ctx.closePath();
+     ctx.fill();
+     ctx.globalAlpha = 1; // restore alpha
+    
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
+    
+    
+    ctx.beginPath();
+    ctx.arc(canvas.width/2, canvas.height/2, buttonRadius, 0, Math.PI*2);
+    ctx.fillStyle = "red";//ball
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.font = canvas.height/10+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Don't push the red button!", canvas.width/16,canvas.height/8+5);
+    
+    ctx.font = canvas.height/20+"px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("or else...", canvas.width/16*13,canvas.height/16*15-5);
+}    
+
+function playPauseClick(){
+    mouseDistanceFromCenter = Math.sqrt((canvas.width/2-mouseX)**2+(canvas.height/2-mouseY)**2);
+    if(mouseDistanceFromCenter<buttonRadius){
+     if(videoContainer !== undefined && videoContainer.ready){
+          if(videoContainer.video.paused){                                 
+                videoContainer.video.play();
+          }else{
+                videoContainer.video.pause();
+          }
+     }
+    }
+}
+function videoMute(){
+    muted = !muted;
+	if(muted){
+         document.querySelector(".mute").textContent = "Mute";
+    }else{
+         document.querySelector(".mute").textContent= "Sound on";
+    }
+
+
+}
+    
+function draw(){
+    ctx.beginPath();
+    ctx.arc(100, 100, 100, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";//ball
+    ctx.fill();
+    ctx.closePath();
+    
+    
+    
+}
+// register the event
+canvas.addEventListener("click",playPauseClick);
+document.querySelector(".mute").addEventListener("click",videoMute)
+  
+    
+    
+</script>
+
+</body>
+</html>
