@@ -46,10 +46,9 @@ var brickOffsetLeft = 30;
 var score = 0;
 var lives = 3;
     
- var pure = 100;
- var mtwtf = 51;
- var underclassPure = 101;
- var underclassMTWTF = 52;    
+ var pure = 0;
+ var mtwtf = 0;
+   
 
     
   var today = new Date();
@@ -72,6 +71,7 @@ if(mm<10) {
     else if(mm==5){
         pure = 24 - dd
     }
+
     
 //take out weekends
 mtwtf = pure
@@ -97,6 +97,31 @@ if (mmCount==5){
         ddCount++;
     }
 }
+    
+ var underclassPure = pure+8;
+ var underclassMTWTF = mtwtf+6;     
+    
+ if((dd==28 || dd==29) && mm== 5){
+     underclassMTWTF = 3;
+ }
+ if(dd==30 && mm==5){
+     underclassPure = 2;
+     underclassMTWTF = 2;
+ }
+  if(dd==31 && mm==5){
+     underclassPure = 1;
+      underclassMTWTF = 1;
+ }  
+    if(dd==1 && mm==6){
+     underclassPure = 0;
+        underclassMTWTF = 0;
+ }
+    
+    
+    
+    
+    
+    
     
 
 var bricks = [];
@@ -193,51 +218,79 @@ function collisionDetection() {
     }
 }
 
-function drawScore() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Score: "+score, 8, 20);
+function drawFail() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.font = canvas.width/20+"px Arial";
+    ctx.fillStyle = "gold";
+    ctx.fillText("This program is no longer valid", canvas.width/15, canvas.width/10*1.8);
 }
 
-function drawLives() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+function drawDone() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.font = canvas.width/10+"px Arial";
+    ctx.fillStyle = "gold";
+    ctx.fillText("School is done!!!!!!!!", canvas.width/10, canvas.width/10*1.8);
 }
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#FF6666";
+    ctx.fillStyle = "green";
     ctx.fill();
     ctx.closePath();
     
- 
+ if(mm>=6 && dd>1){
+     drawDone();  
+     if(mm>=8 || yy!= 2022){
+         drawFail();
+     }
+ }
+ else{   
     ctx.font = canvas.width/25+"px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "gold";
     ctx.fillText("There are", canvas.width/2-canvas.width/10, canvas.width/10);
    
     ctx.font = canvas.width/10+"px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "gold";
     ctx.fillText(mtwtf, canvas.width/2-canvas.width/15, canvas.width/10*1.8);
     
     ctx.font = canvas.width/25+"px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "gold";
     ctx.fillText("days until the last day of school for seniors", canvas.width/7, canvas.width/5*1.15);
     
     ctx.font = canvas.width/70+"px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "gold";
     ctx.fillText(mm+"/"+dd+"/"+yy, canvas.width/2*1.8, canvas.width/40);
     
     ctx.font = canvas.width/50+"px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "gold";
     ctx.fillText("*Days until May 24, not including today", canvas.width/3*1.5, canvas.height/5*4.75);
     
     ctx.font = canvas.width/25+"px Arial";
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "gold";
     ctx.fillText(pure+" days including no school days", canvas.width/6*1.2, canvas.width/5*1.7);
     
+    ctx.font = canvas.width/25+"px Arial";
+    ctx.fillStyle = "gold";
+    ctx.fillText(underclassMTWTF+" days for non-seniors,", canvas.width/6*1.2, canvas.width/5*1.9);
+    
+    ctx.font = canvas.width/25+"px Arial";
+    ctx.fillStyle = "gold";
+    ctx.fillText(underclassPure+" days including no school days", canvas.width/6*1.2, canvas.width/5*2.1);
+ }    
     
     requestAnimationFrame(draw);
 }
