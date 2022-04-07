@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+
+
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");    
+canvas.width = window.innerHeight*1.5
+canvas.height = window.innerHeight
+    
+if(canvas.width > window.innerWidth){
+    canvas.width = window.innerWidth
+    canvas.height = window.innerWidth/1.5
+}
+var ballRadius = 10;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 5;
+var dy = -5;
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX = (canvas.width-paddleWidth)/2;
+var rightPressed = false;
+var leftPressed = false;
+var brickRowCount = 3;
+var brickColumnCount = 5;
+var brickWidth = 75;
+var brickHeight = 20;
+var brickPadding = 10;
+var brickOffsetTop = 30;
+var brickOffsetLeft = 30;
+var score = 0;
+var lives = 3;
+    
+ var pure = 100;
+ var mtwtf = 51;
+ var underclassPure = 101;
+ var underclassMTWTF = 52;    
+
+    
+  var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yy = today.getYear()+1900;
+    
+  if(dd<10) {
+    dd = '0'+dd
+} 
+
+if(mm<10) {
+    mm = '0'+mm
+}   
+    
+//calculate pure
+    if(mm==4){
+        pure = 24 + (30-dd);
+    }
+    else if(mm==5){
+        pure = 24 - dd
+    }
+    
+//take out weekends
+mtwtf = pure
+var ddCount = dd;
+    ddCount++; //to avoid off-by-one-errors on weekends
+var mmCount = mm
+if (mm==4){
+        
+    while(ddCount<=30){
+        if(ddCount == 9 || ddCount == 10 || ddCount == 16 || ddCount == 17 || ddCount == 22 || ddCount == 23 || ddCount == 24 || ddCount == 30){ //weekends and no school days in april
+           mtwtf--;
+           }
+        ddCount++;
+    }
+    mmCount++;
+    ddCount = 1;
+}
+if (mmCount==5){
+    while(ddCount<=31){
+        if(ddCount == 1 || ddCount == 3 || ddCount == 7 || ddCount == 8 || ddCount == 14 || ddCount == 15 || ddCount == 21 || ddCount == 22){//weekends and no school days in may
+           mtwtf--;
+           }
+        ddCount++;
+    }
+}
+    
+
+var bricks = [];
+for(c=0; c<brickColumnCount; c++) {
+    bricks[c] = [];
+    for(r=0; r<brickRowCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
+    }
+}
+
+
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
+
+
+function keyDownHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = true;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = false;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = false;
+    }
+}
+
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
+}
+
+
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawBricks() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            if(bricks[c][r].status == 1) {
+                var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                bricks[c][r].x = brickX;
+                bricks[c][r].y = brickY;
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+    }
+}
+
+function collisionDetection() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                    score++
+                     if(score == brickRowCount*brickColumnCount) {
+                        alert("YOU WIN!");
+                        document.location.reload();
+                    }
+                }
+            }
+        }
+    }
+}
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+score, 8, 20);
+}
+
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#FF6666";
+    ctx.fill();
+    ctx.closePath();
+    
+ 
+    ctx.font = canvas.width/25+"px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("There are", canvas.width/2-canvas.width/10, canvas.width/10);
+   
+    ctx.font = canvas.width/10+"px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText(mtwtf, canvas.width/2-canvas.width/15, canvas.width/10*1.8);
+    
+    ctx.font = canvas.width/25+"px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("days until the last day of school for seniors", canvas.width/7, canvas.width/5*1.15);
+    
+    ctx.font = canvas.width/70+"px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText(mm+"/"+dd+"/"+yy, canvas.width/2*1.8, canvas.width/40);
+    
+    ctx.font = canvas.width/50+"px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("*Days until May 24, not including today", canvas.width/3*1.5, canvas.height/5*4.75);
+    
+    ctx.font = canvas.width/25+"px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText(pure+" days including no school days", canvas.width/6*1.2, canvas.width/5*1.7);
+    
+    
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
