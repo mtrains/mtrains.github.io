@@ -11,13 +11,14 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="3040" height="1840"></canvas>
+<canvas id="myCanvas"></canvas>
 
 <script>
 	var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   
-
+canvas.width = window.innerWidth*2;
+canvas.height = window.innerHeight*2;
 
 
 
