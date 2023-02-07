@@ -1,0 +1,1090 @@
+<p>This is my game. </p>
+<p>Refresh the page to restart. </p>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="480" height="320"></canvas>
+
+<script>
+// Enter = 13
+//Shift  = 16
+//Backspace = 8
+//tab = 9
+//caps lock = 20
+//ctrl = 17
+//alt = 18
+//space = 32
+//esc = 27
+//1 = 49
+//2=  50
+//3=  51
+//4=  52
+//5=  53
+//6=  54
+//7=  55
+//8=  56
+//9=  57
+//0=  48
+//Q=  81
+//W=  87
+//e=
+//r=
+//t=
+//y=
+//u=
+//i=
+//o=
+//p=
+//a= 65
+//s=
+//d=
+//f=
+//g=
+//h=
+//j=
+//k=
+//l=
+//;=
+//z= 90
+//x=
+//c=
+//v=
+//b=  66
+//n=
+//m=
+//,=
+//.=
+// /=
+var start = prompt("Are you ready to start? Answer with yes or no." )
+if(start === "yes")
+{
+confirm ("Use the left and right arrows or the mouse to move the paddle and keep the ball from hitting the ground. When the ball hits a brick, it destroys it. If all the bricks are destroyed, you win!")
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var ballRadius = 10;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 5;
+var dy = -5;
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX = (canvas.width-paddleWidth)/2;
+var rightPressed = false;
+var leftPressed = false;
+var brickRowCount = 3;
+var brickColumnCount = 5;
+var brickWidth = 75;
+var brickHeight = 20;
+var brickPadding = 10;
+var brickOffsetTop = 30;
+var brickOffsetLeft = 30;
+var score = 0;
+var lives = 3;
+
+var bricks = [];
+for(c=0; c<brickColumnCount; c++) {
+    bricks[c] = [];
+    for(r=0; r<brickRowCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
+    }
+}
+
+
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
+
+
+function keyDownHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = true;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 39) {
+        rightPressed = false;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = false;
+    }
+}
+
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
+}
+
+
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawBricks() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            if(bricks[c][r].status == 1) {
+                var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                bricks[c][r].x = brickX;
+                bricks[c][r].y = brickY;
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+    }
+}
+
+function collisionDetection() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                    score++
+                     if(score == brickRowCount*brickColumnCount) {
+                        alert("YOU WIN!");
+                        document.location.reload();
+                    }
+                }
+            }
+        }
+    }
+}
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+score, 8, 20);
+}
+
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks();
+    drawBall();
+    drawPaddle();
+    drawScore();
+    drawLives();
+    collisionDetection();
+
+     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy < ballRadius) {
+        dy = -dy;
+    }
+    else if(y + dy > canvas.height-ballRadius) {
+        if(x > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+        }
+         else {
+            lives--;
+            if(!lives) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
+            else {
+                x = canvas.width/2;
+                y = canvas.height-30;
+                dx = 5;
+                dy = -5;
+                paddleX = (canvas.width-paddleWidth)/2;
+            }
+        }
+    }
+
+    if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        paddleX += 7;
+    } else if(leftPressed && paddleX > 0) {
+        paddleX -= 7;
+    }
+    x += dx;
+    y += dy;
+    
+    requestAnimationFrame(draw);
+}
+
+draw();
+}
+
+
+
+
+
+
+
+if (start==="letters") 
+{ 
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	var ballRadius = 10;
+	var x = canvas.width/2;
+	var y = canvas.height-30;
+	var dx = 5;
+	var dy = -5;
+	var paddleHeight = 10;
+	var paddleWidth = 75;
+	var paddleX = (canvas.width-paddleWidth)/2;
+	var rightPressed = false;
+	var leftPressed = false;
+	var score = 0;
+	var lives = 3;
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
+	
+ctx.font = "16px Arial";
+ctx.fillStyle = "#0095DD";
+ctx.fillText("hi", 80, 200);	
+	
+function keyDownHandler(e) {
+    if(e.keyCode == 5) {
+	    rightPressed = false
+        
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("5", 8, 20);
+		
+    }
+    else if(e.keyCode == 6) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("6", 8, 20);
+    }    
+	    else if(e.keyCode == 7) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("7", 8, 20);
+    }    
+	    else if(e.keyCode == 8) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("8", 8, 20);
+    }    
+	    else if(e.keyCode == 9) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("9", 8, 20);
+    }    
+	    else if(e.keyCode == 10) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("10", 8, 20);
+    }    
+	    else if(e.keyCode == 11) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("11", 8, 20);
+    }    
+	    else if(e.keyCode == 12) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("12", 8, 20);
+    }    
+	    else if(e.keyCode == 13) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("13", 8, 20);
+    }    
+	    else if(e.keyCode == 14) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("14", 8, 20);
+    }    
+	    else if(e.keyCode == 15) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("15", 8, 20);
+    }    
+	    else if(e.keyCode == 16) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("16", 8, 20);
+    }    
+	    else if(e.keyCode == 17) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("17", 8, 20);
+    }    
+	    else if(e.keyCode == 18) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("18", 8, 20);
+    }    
+	    else if(e.keyCode == 19) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("19", 8, 20);
+    }    
+	    else if(e.keyCode == 20) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("20", 8, 20);
+    }    
+	    else if(e.keyCode == 21) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("21", 8, 20);
+    }    
+	    else if(e.keyCode == 22) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("22", 8, 20);
+    }    
+	    else if(e.keyCode == 23) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("23", 8, 20);
+    }    
+	    else if(e.keyCode == 24) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("24", 8, 20);
+    }    
+	    else if(e.keyCode == 25) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("25", 8, 20);
+    }    
+	    else if(e.keyCode == 26) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("26", 8, 20);
+    }    
+	    else if(e.keyCode == 27) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("27", 8, 20);
+    }    
+	    else if(e.keyCode == 28) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("28", 8, 20);
+    }    
+	    else if(e.keyCode == 29) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("29", 8, 20);
+    }    
+	    else if(e.keyCode == 30) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("30", 8, 20);
+    }    
+	    else if(e.keyCode == 31) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("31", 8, 20);
+    }    
+	    else if(e.keyCode == 32) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("32", 8, 20);
+    }    
+    else if(e.keyCode == 33) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("33", 8, 20);
+    }	    
+	else if(e.keyCode == 34) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("34", 8, 20);
+    }
+	else if(e.keyCode == 35) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("35", 8, 20);
+    }    
+
+	else if(e.keyCode == 36) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("36", 8, 20);
+    }    
+	else if(e.keyCode == 37) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("37", 8, 20);
+    }    
+	else if(e.keyCode == 38) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("38", 8, 20);
+    }    
+	else if(e.keyCode == 39) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("39", 8, 20);
+    }    
+	else if(e.keyCode == 40) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("40", 8, 20);
+    }    
+	else if(e.keyCode == 41) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("41", 8, 20);
+    }    
+	else if(e.keyCode == 42) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("42", 8, 20);
+    }    
+	else if(e.keyCode == 43) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("43", 8, 20);
+    }    
+	else if(e.keyCode == 44) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("44", 8, 20);
+    }    
+	else if(e.keyCode == 45) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("45", 8, 20);
+    }    
+	else if(e.keyCode == 46) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("46", 8, 20);
+    }    
+	else if(e.keyCode == 47) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("47", 8, 20);
+    }    
+	else if(e.keyCode == 48) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("48", 8, 20);
+    }    
+	else if(e.keyCode == 49) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("49", 8, 20);
+    }    
+	else if(e.keyCode == 50) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("50", 8, 20);
+    }    
+	else if(e.keyCode == 51) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("51", 8, 20);
+    }    
+	else if(e.keyCode == 52) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("52", 8, 53);
+    }    
+	else if(e.keyCode == 53) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("53", 8, 67);
+    }    
+	else if(e.keyCode == 54) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("54", 8, 20);
+    }    
+	else if(e.keyCode == 55) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("55", 8, 20);
+    }    
+	else if(e.keyCode == 56) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("56", 8, 20);
+    }    
+	else if(e.keyCode == 57) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("57", 8, 20);
+    }    
+	else if(e.keyCode == 58) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("58", 8, 20);
+    }    
+	else if(e.keyCode == 59) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("59", 8, 20);
+    }    
+	else if(e.keyCode == 60) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("60", 8, 20);
+    }    
+	else if(e.keyCode == 61) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("61", 8, 20);
+    }    
+	else if(e.keyCode == 62) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("62", 8, 20);
+    }    
+	else if(e.keyCode == 63) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("63", 8, 20);
+    }    
+	else if(e.keyCode == 64) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("64", 8, 20);
+    }    
+	else if(e.keyCode == 65) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("65", 8, 20);
+    }    
+	else if(e.keyCode == 66) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("66", 8, 20);
+    }    
+	else if(e.keyCode == 67) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("67", 8, 20);
+    }    
+	else if(e.keyCode == 68) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("68", 8, 20);
+    }    
+	else if(e.keyCode == 69) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("69", 8, 20);
+    }    
+	else if(e.keyCode == 70) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("70", 8, 20);
+    }    
+	else if(e.keyCode == 71) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("71", 8, 20);
+    }    
+	else if(e.keyCode == 72) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("72", 8, 20);
+    }    
+	else if(e.keyCode == 73) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("73", 400, 200);
+    }    	    
+	
+	else if(e.keyCode == 74) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("74", 400, 200);
+    }
+	else if(e.keyCode == 75) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("75", 400, 200);
+    }
+	else if(e.keyCode == 76) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("76", 400, 200);
+    }
+	else if(e.keyCode == 77) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("77", 400, 200);
+    }
+	else if(e.keyCode == 78) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("78", 400, 200);
+    }
+	else if(e.keyCode == 79) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("79", 400, 200);
+    }
+	else if(e.keyCode == 80) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("80", 400, 200);
+    }
+	else if(e.keyCode == 81) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("81", 400, 200);
+    }
+	else if(e.keyCode == 82) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("82", 400, 200);
+    }
+	else if(e.keyCode == 83) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("83", 400, 200);
+    }
+	else if(e.keyCode == 84) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("84", 400, 200);
+    }
+	else if(e.keyCode == 85) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("85", 400, 200);
+    }
+	else if(e.keyCode == 86) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("86", 400, 200);
+    }
+	else if(e.keyCode == 87) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("87", 400, 200);
+    }
+	else if(e.keyCode == 88) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("88", 400, 200);
+    }
+	else if(e.keyCode == 89) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("89", 400, 200);
+    }
+	else if(e.keyCode == 90) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "green";
+    ctx.fillText("90", 400, 200);
+    }    
+	
+	else if(e.keyCode == 1) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("1", 8, 20);
+    }    
+	else if(e.keyCode == 2) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("2", 8, 20);
+    }    
+	else if(e.keyCode == 3) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("3", 8, 20);
+    }    
+	else if(e.keyCode == 4) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("4", 8, 20);
+    }        
+	    
+    }
+}
+
+//function keyUpHandler(e) {
+    //if(e.keyCode == 39) {
+       // rightPressed = false;
+    //}
+   // else if(e.keyCode == 37) {
+  //      leftPressed = false;
+ //   }
+//}
+
+
+
+
+
+if (start==="no")
+{
+	var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var ballRadius = 20;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 2;
+var dy = -2;
+
+function drawBall() {
+//red ball
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+//left eye    
+    ctx.beginPath();
+    ctx.arc(x-5, y-4, ballRadius - 18, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//right eye    
+    ctx.beginPath();
+    ctx.arc(x+5, y-4, ballRadius - 18, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//long part    
+    ctx.beginPath();
+    ctx.rect(x-7, y+4, 14, 2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//left short part    
+    ctx.beginPath();
+    ctx.rect(x-10, y+6, 5, 2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//right short part    
+    ctx.beginPath();
+    ctx.rect(x+5, y+6, 5, 2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//top left dot    
+    ctx.beginPath();
+    ctx.rect(x-8, y+5, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//top right dot    
+    ctx.beginPath();
+    ctx.rect(x+7, y+5, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//bottom left dot    
+    ctx.beginPath();
+    ctx.rect(x-5, y+6, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//bottom right dot    
+    ctx.beginPath();
+    ctx.rect(x+4, y+6, 1, 1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//bottom left    
+    ctx.beginPath();
+    ctx.rect(x-10, y+8, 4, 1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//bottom right
+    ctx.beginPath();
+    ctx.rect(x+6, y+8, 4, 1);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+//left cover    
+    ctx.beginPath();
+    ctx.rect(x-10, y+6, 1, 1);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+//right cover    
+    ctx.beginPath();
+    ctx.rect(x+9, y+6, 1, 1);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+
+
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    x += dx;
+    y += dy;
+}
+
+setInterval(draw, 20);
+}
+
+if(start === "big fat ball")
+{
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+}
+
+if(start === "abcdefghijklmnopqrstuvwxyz")
+{
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var ballRadius = 10;
+var x = canvas.width/2;
+var y = canvas.height-30
+var bluex = canvas.width/2-100
+var bluey = canvas.height-30
+var orangex = canvas.width/2;
+var orangey = canvas.height-30
+var yellowx = canvas.width/2;
+var yellowy = canvas.height-30
+var greenx = canvas.width/2;
+var greeny = canvas.height-30
+var turquoisex = canvas.width/2;
+var turquoisey = canvas.height-30
+var dx = 2;
+var dy = -2;
+
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(bluex , bluey, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(orangex-150 , orangey , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(yellowx-100 , yellowy-100 , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(greenx-50 , greeny-40 , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(turquoisex+100 , turquoisey , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "turquoise";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-130 , y , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "purple";
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(x-210 , y+200 , ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+    
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    x += dx;
+    y += dy;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(bluex + dx > canvas.width-ballRadius || bluex + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(bluey + dy > canvas.height-ballRadius || bluey + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    bluex += dx;
+    bluey += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(orangex + dx > canvas.width-ballRadius || orangex + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(orangey + dy > canvas.height-ballRadius || orangey + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    orangex += dx;
+    orangey += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(yellowx + dx > canvas.width-ballRadius || yellowx + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(yellowy + dy > canvas.height-ballRadius || yellowy + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    yellowx += dx;
+    yellowy += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(greenx + dx > canvas.width-ballRadius || greenx + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(greeny + dy > canvas.height-ballRadius || greeny + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    greenx += dx;
+    greeny += dy;
+	
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    
+    if(turquoisex + dx > canvas.width-ballRadius || turquoisex + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(turquoisey + dy > canvas.height-ballRadius || turquoisey + dy < ballRadius) {
+        dy = -dy;
+    }
+    
+    turquoisex += dx;
+    turquoisey += dy;
+	
+
+}
+
+setInterval(draw, 20);
+	
+}
+
+else
+{
+  ctx.beginPath();
+   ctx.arc(56, 56, 56, 0, Math.PI*2);
+   ctx.fillStyle = "green";
+   ctx.fill();
+   ctx.closePath();  
+
+
+
+//var canvas = document.getElementById("myCanvas");
+//var ctx = canvas.getContext("2d");
+//var ballRadius = 10;
+//var x = canvas.width/2;
+//var y = canvas.height-30;
+//var dx = 2;
+//var dy = -2;
+
+//function drawBall() {
+    //ctx.beginPath();
+   // ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+   // ctx.fillStyle = "#0095DD";
+   // ctx.fill();
+   // ctx.closePath();
+//}
+
+//function draw() {
+   // ctx.clearRect(0, 0, canvas.width, canvas.height);
+   // drawBall();
+    
+   // if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+   //     dx = -dx;
+  //  }
+  //  if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+  //      dy = -dy;
+ //   }
+    
+  //  x += dx;
+  //  y += dy;
+//}
+}
+
+
+
+</script>
+
+</body>
+</html>
+
+<p> Thanks to Mozilla Developer Network for tutorial. 
+(2D breakout game using pure JavaScript)</p>
+<p></p>
+<p> If game does not work, the owner is editing it. The game may or may not work on cell phones, tablets, etc. </p>
+
+
+
+
+
