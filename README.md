@@ -1,2 +1,2 @@
 # mtrains.github.io
-Testing random projects. 
+Used to test projects before being "published". 
