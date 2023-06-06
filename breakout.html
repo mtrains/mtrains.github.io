@@ -276,6 +276,14 @@ ctx.font = "16px Arial";
 ctx.fillStyle = "#0095DD";
 ctx.fillText("hi", 80, 200);	
 	
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+}
+setInterval(draw, 1000);	
+	
+	
+	
 function keyDownHandler(e) {
     if(e.keyCode == 5) {
 	    rightPressed = false
@@ -1032,11 +1040,11 @@ setInterval(draw, 20);
 
 else
 {
-  ctx.beginPath();
+  /*ctx.beginPath();
    ctx.arc(56, 56, 56, 0, Math.PI*2);
    ctx.fillStyle = "green";
    ctx.fill();
-   ctx.closePath();  
+   ctx.closePath();  */
 
 
 
