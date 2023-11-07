@@ -43,8 +43,6 @@ Figure out how to control volume of audio
 Add steam sounds that fades to create seamless loop
 
 
-
-
 */
 
 
@@ -60,7 +58,11 @@ var testPos = canvas.width;
 function testAnimation(){
     testPos--; 
     if (testPos == 0) testPos = canvas.width; 
-	
+    ctx.beginPath();
+	ctx.arc(testPos, canvas.height/2, 10, 0, Math.PI*2, false);
+	ctx.fillStyle = "green";
+	ctx.fill();
+	ctx.closePath();
 	
 }
 
