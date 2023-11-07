@@ -55,7 +55,7 @@ var testPos = canvas.width;
 
 function testAnimation(){
     testPos--; 
-    if (testPos == 0) testPos = canvas.width; 
+    if (testPos == -10) testPos = canvas.width + 10; 
     ctx.beginPath();
 	ctx.arc(testPos, canvas.height/2, 10, 0, Math.PI*2, false);
 	ctx.fillStyle = "green";
