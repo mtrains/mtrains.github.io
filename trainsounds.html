@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +36,6 @@ Those goals are pretty lofty so we'll see how far we can get
 */
 /*
 To do: 
-Set up the canvas
 Add a simple animation that lets me
     know the code is working
 Add stuff that makes audio work
@@ -56,10 +51,18 @@ Add steam sounds that fades to create seamless loop
     
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-  
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+var testPos = canvas.width;
 
+
+
+function testAnimation(){
+    testPos--; 
+    if (testPos == 0) testPos = canvas.width; 
+	
+	
+}
 
 
 function draw() {
